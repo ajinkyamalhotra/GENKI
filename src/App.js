@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavigationBar from './NavigationBar';
-import Login from './login';
+import Game from './game';
 import './App.css';
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavigationBar />
-        <Login />
+        <Game />
       </div>
     );
   }
