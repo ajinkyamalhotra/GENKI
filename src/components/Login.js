@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Button, Form, Container, Header} from 'semantic-ui-react';
-import './styles/Login.css';
+import '../styles/Login.css';
 
 class Login extends Component{
   render(){
