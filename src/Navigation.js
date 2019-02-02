@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Table, Button} from 'semantic-ui-react';
+import Game from './Game.js';
+import Login from './Login.js';
 
-class NavigationBar extends Component {
+class Navigation extends Component {
 
 
   render() {
@@ -14,13 +16,13 @@ class NavigationBar extends Component {
             <Table.Header>
               <Table.Row>
                 <Button.Group floated='right'>
-                  <Link to='/public/HomePage.html'>
+                  <Link to='/homepage'>
                     <Button>Home Page</Button>
                   </Link>
                   <Link to='/public/Profile.html'>
                     <Button>Profile</Button>
                   </Link>
-                  <Link to='/public/Game.html'>
+                  <Link to='/game'>
                     <Button>Game</Button>
                   </Link>
                   <Link to='/public/LoginPage.html'>
@@ -31,10 +33,13 @@ class NavigationBar extends Component {
             </Table.Header>
           </Table>
         }
+        <Route path='/homepage' component={ Login }/>
+        <Route path='/game'component={ Game }/>
       </div>
     </Router>
     )
   }
 }
 
-export default NavigationBar;
+
+export default Navigation;
