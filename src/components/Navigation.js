@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Table, Button} from 'semantic-ui-react';
-import HomePage from './HomePage.js';
-import Game from '../Game.js';
-import Login from './Login.js';
+import HomePage from './HomePage';
+import Game from '../Game';
+import Login from './Login';
 
 class Navigation extends Component {
 
@@ -13,7 +13,7 @@ class Navigation extends Component {
       <Router>
       <div className="navigation-bar">
         {
-          <Table color='grey' inverted>
+          <Table color='grey' inverted attached>
             <Table.Header>
               <Table.Row>
                 <Button.Group floated='right'>
