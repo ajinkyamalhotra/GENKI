@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Table, Button} from 'semantic-ui-react';
 import HomePage from './HomePage.js';
-import Game from './Game.js';
+import Game from '../Game.js';
 import Login from './Login.js';
 
 class Navigation extends Component {
