@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Table, Button} from 'semantic-ui-react';
-import HomePage from './HomePage';
-import Game from './Game';
-import Login from './Login';
+import Game from './Game.js';
+import Login from './Login.js';
 
 class Navigation extends Component {
 

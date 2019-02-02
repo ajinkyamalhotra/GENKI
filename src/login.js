@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Button, Form, Container, Header} from 'semantic-ui-react';
+import './styles/Login.css';
 
 class Login extends Component{
   render(){
     return(
-      <div className='loginForm' style={{borderStyle: 'solid', width: '30%', margin: 'auto', marginTop: '15%'}}>
+      <div className='loginForm'>
         <Container>
           <Form size='huge'>
             <Header as='h1'>Log In</Header>

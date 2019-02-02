@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Image} from 'semantic-ui-react';
 
 class Game extends Component {
   render() {
