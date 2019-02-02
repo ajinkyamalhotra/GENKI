@@ -5,9 +5,15 @@ import HomePage from './HomePage';
 import Game from '../Game';
 import Login from './Login';
 
+/**
+ * Component which contains all routing logic for the Genki VN application.
+ * This component returns the rendered component corresponding to the button
+ * which was clicked by the user.
+ *
+ * Read more about the routing technique used here at
+ * https://reacttraining.com/react-router/web/guides/quick-start
+ */
 class Navigation extends Component {
-
-
   render() {
     return (
       <Router>
@@ -17,6 +23,7 @@ class Navigation extends Component {
             <Table.Header>
               <Table.Row>
                 <Button.Group floated='right'>
+                  // Each link corresponds to a particular path
                   <Link to='/'>
                     <Button>Home Page</Button>
                   </Link>
@@ -35,6 +42,7 @@ class Navigation extends Component {
           </Table>
         }
 
+        // What each path links to
         <Route path='/' exact component={HomePage} />
         <Route path='/Game' component={Game} />
         <Route path='/Login' component={Login} />
