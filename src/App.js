@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import Navigation from './components/Navigation';
 import TitleBar from './components/TitleBar';
+=======
+import NavigationBar from './NavigationBar';
+import Profile from './Profile';
+>>>>>>> AM/EM-Branch
 import './App.css';
 
 
@@ -13,8 +18,13 @@ class App extends Component {
     return (
       // Render the Navigation component
       <div className="App">
+<<<<<<< HEAD
         <TitleBar />
         <Navigation />
+=======
+        <NavigationBar />
+        <Profile />
+>>>>>>> AM/EM-Branch
       </div>
     );
   }
