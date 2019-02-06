@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Button, Form, Container, Header} from 'semantic-ui-react';
 
-import logo from './logo.png'; // Tell Webpack this JS file uses this image
+import logo from '../images/logo.png'; // Tell Webpack this JS file uses this image
 
 console.log(logo); // /logo.84287d09.png
 

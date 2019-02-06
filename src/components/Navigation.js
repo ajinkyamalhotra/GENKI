@@ -4,6 +4,7 @@ import {Table, Button} from 'semantic-ui-react';
 import HomePage from './HomePage';
 import Game from '../Game';
 import Login from './Login';
+import Profile from './Profile';
 
 /**
  * Component which contains all routing logic for the Genki VN application.
@@ -23,11 +24,10 @@ class Navigation extends Component {
             <Table.Header>
               <Table.Row>
                 <Button.Group floated='right'>
-                  // Each link corresponds to a particular path
                   <Link to='/'>
                     <Button>Home Page</Button>
                   </Link>
-                  <Link to='/public/Profile.html'>
+                  <Link to='/Profile'>
                     <Button>Profile</Button>
                   </Link>
                   <Link to='/Game'>
@@ -42,10 +42,12 @@ class Navigation extends Component {
           </Table>
         }
 
-        // What each path links to
+
         <Route path='/' exact component={HomePage} />
         <Route path='/Game' component={Game} />
         <Route path='/Login' component={Login} />
+        <Route path='/Profile' component={Profile} />
+
 
       </div>
     </Router>
