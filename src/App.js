@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import NavigationBar from './NavigationBar';
-import Login from './login';
+import Navigation from './components/Navigation';
+import TitleBar from './components/TitleBar';
 import './App.css';
 
+
+/**
+ * The base component of the Genki VN application.  It renders the Navigation
+ * component only.
+ */
 class App extends Component {
   render() {
     return (
+      // Render the Navigation component
       <div className="App">
-        <NavigationBar />
-        <Login />
+        <TitleBar />
+        <Navigation />
       </div>
     );
   }
