@@ -38,9 +38,11 @@ const logo= require('../images/logo.png');
   */
 class Navigation extends Component {
 
-    state = { activeItem: 'home' }
+  state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  handleClickOnGENKI = () => this.setState({ activeItem: 'home' })
 
   render() {
       const { activeItem } = this.state
@@ -53,18 +55,18 @@ class Navigation extends Component {
                     <Table.HeaderCell></Table.HeaderCell> 
                     <Table.HeaderCell rowSpan='2' collapsing style={{padding: '0'}}>
                         <Link to='/'>
-                            <Image size='tiny' src={logo} />
+                            <Image size='tiny' src={logo} onClick={this.handleClickOnGENKI}/>
                         </Link>
                     </Table.HeaderCell>
                     
                     <Table.HeaderCell  textAlign='left' collapsing>
-                        <Link to='/'> <Header as='h1' class='header' color='orange'> GENKI </Header> </Link>
+                        <Link to='/'> <Header as='h1' class='header' color='orange' onClick={this.handleClickOnGENKI}> GENKI </Header> </Link>
                     </Table.HeaderCell>
                 
                     <Table.HeaderCell inverted>
                         <Menu inverted pointing secondary floated='right'>
                             <Link to='/'>
-                                <Menu.Item name = 'home' active={activeItem === 'home'} onClick={this.handleItemClick}>Home</Menu.Item>
+                                <Menu.Item id='HomeButton' name = 'home' active={activeItem === 'home'} onClick={this.handleItemClick}>Home</Menu.Item>
                             </Link>
                             <Link to='/Profile'>
                                 <Menu.Item name = 'profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>Profile</Menu.Item>
