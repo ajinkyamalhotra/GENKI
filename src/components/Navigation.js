@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Table, Button} from 'semantic-ui-react';
+import {Table, Button, Image} from 'semantic-ui-react';
 import HomePage from './HomePage';
 import Game from '../Game';
 import Login from './Login';
 import Profile from './Profile';
+
+const logo= require('../images/logo.png');
 
 /**
  * Component which contains all routing logic for the Genki VN application.
@@ -20,23 +22,29 @@ class Navigation extends Component {
       <Router>
       <div className="navigation-bar">
         {
-          <Table color='grey' inverted attached>
+          <Table color='black' inverted attached >
             <Table.Header>
               <Table.Row>
+                  <Table.HeaderCell rowSpan='2'>
+                    <Image size='tiny' src={logo} style={{}} />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell></Table.HeaderCell>
+                <Table.HeaderCell>
                 <Button.Group floated='right'>
                   <Link to='/'>
-                    <Button>Home Page</Button>
+                    <Button color='orange' floated='left' size='large' style={{borderStyle: 'solid'}}>Home Page</Button>
                   </Link>
                   <Link to='/Profile'>
-                    <Button>Profile</Button>
+                    <Button color='orange' floated='left' size='large' style={{borderStyle: 'solid'}}>Profile</Button>
                   </Link>
                   <Link to='/Game'>
-                    <Button>Game</Button>
+                    <Button color='orange' floated='left' size='large' style={{borderStyle: 'solid'}}>Game</Button>
                   </Link>
                   <Link to='/Login'>
-                    <Button>Log Out</Button>
+                    <Button color='orange' floated='left' size='large' style={{borderStyle: 'solid'}}>Logout</Button>
                   </Link>
                 </Button.Group>
+                </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
           </Table>
