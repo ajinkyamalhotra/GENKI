@@ -6,10 +6,10 @@ import '../styles/Login.css';
 class Login extends Component{
   render(){
     return(
-      <div className='page' style={{height: '100vh'}}>
+      <div className='page'>
       <br />
       <div className='loginForm'>
-        <Segment inverted color>
+        <Segment inverted>
             <Header as='h2' attached='top' size='massive' inverted color='orange'> GENKI </Header>
             <Divider clearing />
             
@@ -19,7 +19,7 @@ class Login extends Component{
 
             <br /> <br />    
 
-            <Input size='massive' focus placeholder='Username' compact />
+            <Input size='massive' focus placeholder='Username' compact color='orange' />
 
             <br /> <br /> <br /> <br />
 
