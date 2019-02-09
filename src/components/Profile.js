@@ -8,7 +8,7 @@ console.log(logo); // /logo.84287d09.png
 
 
 export default class Profile extends Component {
-  state = { activeItem: 'bio' }
+  state = { activeItem: 'page1' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -16,28 +16,20 @@ export default class Profile extends Component {
     const { activeItem } = this.state
 
     return (
-      <Grid style={{height: '100vh', color:'black'}}>
-        <Grid.Column width={3} inverted color='black' style={{height: '100vh', color:'black'}}>
-          <Menu fluid vertical tabular style={{height: '100vh'}} inverted>
-            <Menu.Item name='bio' active={activeItem === 'bio'} onClick={this.handleItemClick} />
-            <Menu.Item name='pics' active={activeItem === 'pics'} onClick={this.handleItemClick} />
-            <Menu.Item
-              name='companies'
-              active={activeItem === 'companies'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name='links'
-              active={activeItem === 'links'}
-              onClick={this.handleItemClick}
-            />
+      <Grid>
+        <Grid.Column width={2} >
+          <Menu width={2} fluid vertical tabular style={{height: '90vh'}}>
+            <Menu.Item name='page1' color='orange' active={activeItem === 'page1'} onClick={this.handleItemClick}> Page1 </Menu.Item>
+            <Menu.Item name='page2' color='orange' active={activeItem === 'page2'} onClick={this.handleItemClick}> Page2 </Menu.Item>
+            <Menu.Item name='page3' color='orange' active={activeItem === 'page3'} onClick={this.handleItemClick}> Page3 </Menu.Item>
+            <Menu.Item name='page4' color='orange' active={activeItem === 'page4'} onClick={this.handleItemClick}> Page4 </Menu.Item>
           </Menu>
         </Grid.Column>
 
         
         <Container>
-          <img src={logo} alt="Logo" style={{ width: '80%', margin: 'auto', marginLeft: '30%'}}/>
-          <h1 style={{ margin: 'auto', marginLeft: '63%'}}> Team GENKI</h1>
+          <img src={logo} alt="Logo" style={{ width: '80%', margin: 'auto', marginLeft: '25%'}}/>
+          <h1 style={{ margin: 'auto', marginLeft: '57%'}}>Team GENKI</h1>
         </Container>
       </Grid>
     )

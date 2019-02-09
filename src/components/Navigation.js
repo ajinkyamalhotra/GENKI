@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Table, Button, Image} from 'semantic-ui-react';
+import {Table, Button, Image, Segment, Menu, Label, Header} from 'semantic-ui-react';
 import HomePage from './HomePage';
 import Game from '../Game';
 import Login from './Login';
 import Profile from './Profile';
-
+import '../styles/Navigation.css';
 const logo= require('../images/logo.png');
 
 /**
@@ -16,21 +16,11 @@ const logo= require('../images/logo.png');
  * Read more about the routing technique used here at
  * https://reacttraining.com/react-router/web/guides/quick-start
  */
-class Navigation extends Component {
-  render() {
-    return (
-      <Router>
-      <div className="navigation-bar">
-        {
-          <Table color='black' inverted attached >
-            <Table.Header>
-              <Table.Row>
-                  <Table.HeaderCell rowSpan='2'>
-                    <Image size='tiny' src={logo} style={{}} />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell></Table.HeaderCell>
-                <Table.HeaderCell>
-                <Button.Group floated='right'>
+
+ /**
+  * OLD button menu code
+  * 
+  * <Button.Group floated='right'>
                   <Link to='/'>
                     <Button color='orange' floated='left' size='large' style={{borderStyle: 'solid'}}>Home Page</Button>
                   </Link>
@@ -44,10 +34,53 @@ class Navigation extends Component {
                     <Button color='orange' floated='left' size='large' style={{borderStyle: 'solid'}}>Logout</Button>
                   </Link>
                 </Button.Group>
-                </Table.HeaderCell>
-              </Table.Row>
+  * 
+  */
+class Navigation extends Component {
+
+    state = { activeItem: 'home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+      const { activeItem } = this.state
+    return (
+      <Router>
+      <div className="navigation-bar"> {
+        <Table color='black' inverted attached >
+            <Table.Header>
+                <Table.Row >
+                    <Table.HeaderCell></Table.HeaderCell> 
+                    <Table.HeaderCell rowSpan='2' collapsing style={{padding: '0'}}>
+                        <Link to='/'>
+                            <Image size='tiny' src={logo} />
+                        </Link>
+                    </Table.HeaderCell>
+                    
+                    <Table.HeaderCell  textAlign='left' collapsing>
+                        <Link to='/'> <Header as='h1' class='header' color='orange'> GENKI </Header> </Link>
+                    </Table.HeaderCell>
+                
+                    <Table.HeaderCell inverted>
+                        <Menu inverted pointing secondary floated='right'>
+                            <Link to='/'>
+                                <Menu.Item name = 'home' active={activeItem === 'home'} onClick={this.handleItemClick}>Home</Menu.Item>
+                            </Link>
+                            <Link to='/Profile'>
+                                <Menu.Item name = 'profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>Profile</Menu.Item>
+                            </Link>
+                            <Link to='/Game'>
+                                <Menu.Item name = 'game' active={activeItem === 'game'} onClick={this.handleItemClick}>Game</Menu.Item>
+                            </Link>
+                            <Link to='/Login'>
+                                <Menu.Item name = 'login' active={activeItem === 'login'} onClick={this.handleItemClick}>Logout</Menu.Item>
+                            </Link>
+                        </Menu>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell></Table.HeaderCell>
+                </Table.Row>
             </Table.Header>
-          </Table>
+        </Table>
         }
 
 
