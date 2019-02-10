@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Table, Button} from 'semantic-ui-react';
+import {Table, Image, Menu, Header} from 'semantic-ui-react';
 import HomePage from './HomePage';
 import Game from '../Game';
 import Login from './Login';
 import Profile from './Profile';
+import '../styles/Navigation.css';
+const logo= require('../images/logo.png');
 
 /**
  * Component which contains all routing logic for the Genki VN application.
@@ -14,40 +16,96 @@ import Profile from './Profile';
  * Read more about the routing technique used here at
  * https://reacttraining.com/react-router/web/guides/quick-start
  */
+
 class Navigation extends Component {
-  render() {
+
+  //Default active item is set to home
+  state = { activeItem: 'home' };
+
+  //To change active item to the selected menu-item when a menu-item is clicked
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  //To change the active item to home when GENKI logo or label is clicked
+  handleClickOnGENKI = () => this.setState({ activeItem: 'home' });
+
+  /** Semantic-UI menu used
+   * https://react.semantic-ui.com/collections/menu/
+   */
+   render() {
+      const { activeItem } = this.state
     return (
       <Router>
-      <div className="navigation-bar">
-        {
-          <Table color='grey' inverted attached>
+      <div className="navigation-bar"> {
+        <Table color='black' inverted attached >
             <Table.Header>
-              <Table.Row>
-                <Button.Group floated='right'>
-                  <Link to='/'>
-                    <Button>Home Page</Button>
-                  </Link>
-                  <Link to='/Profile'>
-                    <Button>Profile</Button>
-                  </Link>
-                  <Link to='/Game'>
-                    <Button>Game</Button>
-                  </Link>
-                  <Link to='/Login'>
-                    <Button>Log Out</Button>
-                  </Link>
-                </Button.Group>
-              </Table.Row>
+                <Table.Row >
+                    
+                    {/*Cell add's padding to the left side of the nav bar*/}
+                    <Table.HeaderCell></Table.HeaderCell> 
+                    
+                    {/*Cell to store the GENKI logo*/}
+                    <Table.HeaderCell rowSpan='2' collapsing
+                    style={{padding: '0'}}>
+                        <Link to='/'>
+                            <Image size='tiny' src={logo}
+                            onClick={this.handleClickOnGENKI}/>
+                        </Link>
+                    </Table.HeaderCell>
+                    
+                    {/*Cell to store the GENKI label header*/}
+                    <Table.HeaderCell  textAlign='left' collapsing>
+                        <Link to='/'>
+                        <Header as='h1' class='header' color='orange'
+                        onClick={this.handleClickOnGENKI}>
+                        GENKI </Header> </Link>
+                    </Table.HeaderCell>
+                
+                    {/*Cell to store the Menu-Items*/}
+                    <Table.HeaderCell inverted>
+                        <Menu inverted pointing secondary floated='right'>
+                            
+                            <Link to='/'>
+                                <Menu.Item id='HomeButton' name = 'home'
+                                active={activeItem === 'home'}
+                                onClick={this.handleItemClick}>
+                                Home</Menu.Item>
+                            </Link>
+                            
+                            <Link to='/Profile'>
+                                <Menu.Item name = 'profile'
+                                active={activeItem === 'profile'}
+                                onClick={this.handleItemClick}>
+                                Profile</Menu.Item>
+                            </Link>
+                            
+                            <Link to='/Game'>
+                                <Menu.Item name = 'game'
+                                active={activeItem === 'game'}
+                                onClick={this.handleItemClick}>
+                                Game</Menu.Item>
+                            </Link>
+                            
+                            <Link to='/Login'>
+                                <Menu.Item name = 'login'
+                                active={activeItem === 'login'}
+                                onClick={this.handleItemClick}>
+                                Logout</Menu.Item>
+                            </Link>
+                        
+                        </Menu>
+                    </Table.HeaderCell>
+                    
+                    {/*Adding padding to the right side of the nav bar*/}
+                    <Table.HeaderCell></Table.HeaderCell>
+                </Table.Row>
             </Table.Header>
-          </Table>
+        </Table>
         }
-
 
         <Route path='/' exact component={HomePage} />
         <Route path='/Game' component={Game} />
         <Route path='/Login' component={Login} />
         <Route path='/Profile' component={Profile} />
-
 
       </div>
     </Router>
