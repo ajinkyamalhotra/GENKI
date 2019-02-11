@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Table, Image, Menu, Header} from 'semantic-ui-react';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {Table, Image, Menu, Header, Icon} from 'semantic-ui-react';
 import HomePage from './HomePage';
 import Game from '../Game';
 import Login from './Login';
@@ -68,6 +68,7 @@ class Navigation extends Component {
                                 <Menu.Item id='HomeButton' name = 'home'
                                 active={activeItem === 'home'}
                                 onClick={this.handleItemClick}>
+                                <Icon inverted name='home'/>
                                 Home</Menu.Item>
                             </Link>
                             
@@ -75,6 +76,7 @@ class Navigation extends Component {
                                 <Menu.Item name = 'profile'
                                 active={activeItem === 'profile'}
                                 onClick={this.handleItemClick}>
+                                <Icon inverted name='user circle'/>
                                 Profile</Menu.Item>
                             </Link>
                             
@@ -82,6 +84,7 @@ class Navigation extends Component {
                                 <Menu.Item name = 'game'
                                 active={activeItem === 'game'}
                                 onClick={this.handleItemClick}>
+                                <Icon inverted name='game'/>
                                 Game</Menu.Item>
                             </Link>
                             
@@ -89,6 +92,7 @@ class Navigation extends Component {
                                 <Menu.Item name = 'login'
                                 active={activeItem === 'login'}
                                 onClick={this.handleItemClick}>
+                                <Icon inverted name='power off'/>
                                 Logout</Menu.Item>
                             </Link>
                         
