@@ -1,11 +1,10 @@
 .loginForm{
-  width: 25%;
-  height: 50%;
-  margin: auto;
-  margin-top: 5%;
-  background-color: orange;
+  margin-left: 75vh;
+  margin-right: 75vh;
+  border-style: solid;
+  background-color: black;
 }
 .page{
-    height: 100vh;
+    height: 92.5vh;
     background-color: orange;
 }

@@ -38,7 +38,7 @@ class Navigation extends Component {
       <div className="navigation-bar"> {
         <Table color='black' inverted attached >
             <Table.Header>
-                <Table.Row >
+                <Table.Row rowSpan='1'>
                     
                     {/*Cell add's padding to the left side of the nav bar*/}
                     <Table.HeaderCell></Table.HeaderCell> 
