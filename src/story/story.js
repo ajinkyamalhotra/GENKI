@@ -1,33 +1,71 @@
 // bg
-const microphone = require("./bg/microphone.jpeg");
+const microphone = require("./bg/Genki school.png");
 const entrance = require("./bg/entrance.jpeg");
 // bgm
 const take = require("./bgm/take.mp3");
 // speakers
-const b = "Block";
+const takeshi = "たけし";
+const mary = "メアリー";
 // sprites
-const bn = require("./sprites/block-neutral.png");
+const tn = require("./sprites/Takeshi-neutral.png");
 const bh = require("./sprites/block-happy.png");
 const bp = require("./sprites/block-pout.png");
+
+const mn = require("./sprites/Mary-neutral.png")
 
 let story = [
   {
     bg: microphone,
     bgm: take,
-    sprite: bn,
-    speaker: b,
-    text: "In this demo, we'll go over through the majority of the features that this application offers."
+    sprite: tn,
+    speaker: takeshi,
+    text: "こんにちは！私の名前はたけしです。遊び方を教えてあげます。スクリーンを押してください。Hello! My name is Takeshi. I will teach you how to play. Please Click on the screen"
   },
   {
-    text: "You can see how it's applied in the repository's \"story\" folder, so follow along if you'd like."
+    text: "いいですね！Good"
   },
   {
-    text: "Before we split into the specific features, let's go through the fundamentals."
+    text: "このゲームはVN. This is a Virtual Novel game"
   },
   {
-    text:
-      "When writing a visual novel with this application, you can just focus on two files: `story.js` and `choices.js`."
+    text: "VNゲームは。。。A virtual novel game is..."
   },
+  {
+    text: "Oh, hi Mary!"
+  },
+  {
+    //sprite is the middle sprite, putting "" makes it null
+    speaker: mary,
+    sprite: "",
+    spriteLeft: mn,
+    spriteRight: tn,
+    text: "Hello Takeshi, who is your friend here?"
+  },
+  {
+    //sprite is the middle sprite, putting "" makes it null
+    speaker: takeshi,
+    text: "This is my friend, he is learning Japanese! Can you help me guide him through the game?"
+  },
+  {
+    //sprite is the middle sprite, putting "" makes it null
+    speaker: mary,
+    text: "Sure! Let's get you ready for Genki VN!"
+  },
+
+
+  //end of game
+  {
+    routeBegins: "leave",
+    speaker: takeshi,
+    sprite: tn,
+    spriteLeft: "",
+    spriteRight:"",
+    spriteEffect: "shake",
+    text: "Thank you for playing Genki Tutorial. You are now ready to play!",
+    jumpTo: "title-screen"
+  }
+
+  /*
   {
     text:
       "However, if you plan to write something without any choices like a linear visual novel, then you don't need to worry about `choices.js`."
@@ -48,13 +86,13 @@ let story = [
   },
   { text: "For example..." },
   { speaker: "", text: 'soundEffect: require("./sounds/jump.mp3")', soundEffect: require("./sounds/jump.mp3") },
-  { speaker: b, text: "And voices are done in the same manner." },
+  { speaker: takeshi, text: "And voices are done in the same manner." },
   {
     sprite: bh,
     text: "Okay, looks like we're done with the fundamentals."
   },
   {
-    sprite: bn,
+    sprite: tn,
     text: "It's a little short, but it can do what you need for the most part."
   },
   { text: "Anyway, let's diverge to some specific features." },
@@ -73,7 +111,7 @@ let story = [
   },
 
   { spriteEffect: "shrink", text: "A drawback is that when the sprite changes..." },
-  { spriteEffect: "shrink", sprite: bn, text: "It reanimates." },
+  { spriteEffect: "shrink", sprite: tn, text: "It reanimates." },
   {
     spriteEffect: "shrink",
     text: "The solution is to continuously apply a non-animated version of the effect after the initial animation."
@@ -86,13 +124,13 @@ let story = [
 
   {
     spriteEffect: "shrunk",
-    sprite: bn,
+    sprite: tn,
     text:
       'The only difference between "shrink" and "shrunk" is that "shrunk" does not have the animation property in the CSS while "shrink" does.'
   },
   {
     spriteEffect: "grow-back",
-    sprite: bn,
+    sprite: tn,
     text: "Anyway, `spriteLeft` and `spriteRight` also have their own effect functions."
   },
 
@@ -100,14 +138,14 @@ let story = [
   {
     speaker: "",
     sprite: "",
-    spriteLeft: bn,
-    spriteRight: bn,
+    spriteLeft: tn,
+    spriteRight: tn,
     spriteLeftEffect: "grow",
     spriteRightEffect: "shake",
     text: 'spriteLeftEffect: "grow", spriteRightEffect: "shake"'
   },
   {
-    speaker: b,
+    speaker: takeshi,
     spriteRight: "",
     spriteLeftEffect: "grown",
     text: "The effect property simply uses the value as its CSS class."
@@ -137,7 +175,7 @@ let story = [
     bg: microphone,
     text: "And here's the default sprite enter transition..."
   },
-  { sprite: bn },
+  { sprite: tn },
   {
     text: "Background transitions only have fades, but sprite transitions have a bit more at the moment."
   },
@@ -145,7 +183,7 @@ let story = [
   {
     speaker: "",
     spriteLeftTransition: "from-right-leave-left",
-    spriteLeft: bn,
+    spriteLeft: tn,
     text: 'spriteLeftTransition: "from-right-leave-left", spriteLeft: require("./sprites/sprite.png")'
   },
   {
@@ -155,18 +193,18 @@ let story = [
   },
   {
     spriteLeftTransition: "from-left-leave-right",
-    spriteLeft: bn,
+    spriteLeft: tn,
     text: "Now to move from one position to another takes a bit more work."
   },
   {
     spriteLeftTransition: "move-right",
     spriteLeft: "",
     spriteTransition: "move-right",
-    sprite: bn,
+    sprite: tn,
     text:
       'spriteLeftTransition: "move-right", spriteTransition: "move-right", spriteLeft: "", sprite: require("./sprites/sprite.png"),'
   },
-  { speaker: b, text: "As you might have noticed, spriteLeft has to disappear with an empty string for this to work." },
+  { speaker: takeshi, text: "As you might have noticed, spriteLeft has to disappear with an empty string for this to work." },
   {
     text:
       "Since this application uses ReactCSSTransitionGroup, it is taking advantage of the leave and enter animations to make it work."
@@ -175,7 +213,7 @@ let story = [
   {
     speaker: "",
     spriteRightTransition: "from-right-leave-left",
-    spriteRight: bn,
+    spriteRight: tn,
     text: 'spriteRightTransition: "from-right-leave-left"'
   },
   {
@@ -186,7 +224,7 @@ let story = [
     text:
       'spriteRightTransition: "move-left-far", spriteLeftTransition: "move-left-far", spriteRight: "", spriteLeft: require("./sprites/sprite.png"),'
   },
-  { speaker: b, text: "That's about it for now.", jumpTo: "features" },
+  { speaker: takeshi, text: "That's about it for now.", jumpTo: "features" },
 
   // Storing choices
   {
@@ -214,7 +252,7 @@ let story = [
   },
   {
     sprite: bh,
-    speaker: b,
+    speaker: takeshi,
     text: "Thanks.",
     jumpTo: "blockHelp"
   },
@@ -261,7 +299,7 @@ let story = [
     text: "A few hours later, he texts back."
   },
   {
-    speaker: b,
+    speaker: takeshi,
     text: "Sorry, I've been a bit busy organizing my wedding."
   },
   { text: "I forgot to send you a letter, but would you like to come?" },
@@ -271,7 +309,7 @@ let story = [
     text: "He texts back immediately."
   },
   {
-    speaker: b,
+    speaker: takeshi,
     text: "Hey, nashkenazy! It's been so long since we'd last talked."
   },
   { text: "I was thinking about making you my best man for a wedding I've been planning." },
@@ -282,13 +320,8 @@ let story = [
     text: "(Done with skit) It takes a bit more work to get the choices done, but it should work out in the end.",
     jumpTo: "features"
   },
-  {
-    routeBegins: "leave",
-    sprite: bh,
-    spriteEffect: "shake",
-    text: "Thank you for trying out the demo.",
-    jumpTo: "title-screen"
-  }
+  */
+
 ];
 
 // The code below is to set undefined properties to the last defined property.
