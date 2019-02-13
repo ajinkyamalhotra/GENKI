@@ -3,16 +3,23 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/Login.css';
+import SignUp from './SignUp';
 
 class Login extends Component{
-  render(){
+
+    routeChange(){
+    let path = `./SignUp`;
+    }
+
+  render(){ 
     return(
-      //Container for full page
-      <div className='page'>
-        <br/> <br/>
+        <Router>
+             
+      <div className='page'> {
         <Grid  padded='vertically'>
-            <Grid.Row verticalAlign='middle' column={3}>
-                <Grid.Column className='loginForm'>
+            <Grid.Row><br/></Grid.Row>
+            <Grid.Row verticalAlign='middle' centered>
+                <Grid.Column className='loginForm' widht={5}>
                     <Grid.Row><br/></Grid.Row>
                     <Grid.Row>
                         <Header as='h1' inverted color='orange'>GENKI</Header>
@@ -36,14 +43,19 @@ class Login extends Component{
                         <Button fluid size='huge' color='orange'
                         type='Login'>Login</Button>
                         <Divider />
+                        <Link to='/SignUp'>
                         <Button fluid size='huge' color='orange'
-                        type='Signup'>Signup</Button>
+                        type='Signup' onClick={this.routeChange}>Signup</Button>
+                        </Link>
                     </Form>
                     <Grid.Row><br/></Grid.Row>
                 </Grid.Column>
             </Grid.Row>
         </Grid>
+        }
+        <Route path='/SignUp' exact component={SignUp} />
       </div>
+      </Router>
     )
   }
 }

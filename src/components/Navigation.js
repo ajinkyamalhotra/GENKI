@@ -5,6 +5,7 @@ import HomePage from './HomePage';
 import Game from '../Game';
 import Login from './Login';
 import Profile from './Profile';
+import Progress from './Progress';
 import '../styles/Navigation.css';
 const logo= require('../images/logo.png');
 
@@ -87,12 +88,20 @@ class Navigation extends Component {
                                 <Icon inverted name='game'/>
                                 Game</Menu.Item>
                             </Link>
+
+                            <Link to='/Progress'>
+                                <Menu.Item name = 'Progress'
+                                active={activeItem === 'Progress'}
+                                onClick={this.handleItemClick}>
+                                <Icon inverted name='shipping fast'/>
+                                Progress</Menu.Item>
+                            </Link>
                             
                             <Link to='/Login'>
                                 <Menu.Item name = 'login'
                                 active={activeItem === 'login'}
                                 onClick={this.handleItemClick}>
-                                <Icon inverted name='power off'/>
+                                <Icon inverted name='sign out alternate'/>
                                 Logout</Menu.Item>
                             </Link>
                         
@@ -110,6 +119,7 @@ class Navigation extends Component {
         <Route path='/Game' component={Game} />
         <Route path='/Login' component={Login} />
         <Route path='/Profile' component={Profile} />
+        <Route path='/Progress' component={Progress} />
 
       </div>
     </Router>

@@ -1,10 +1,10 @@
-.loginForm{
+.signUpForm{
   margin-left: 75vh;
   margin-right: 75vh;
   border-style: solid;
   background-color: black;
 }
 .page{
-    height: 95vh;
+    height: 92.5vh;
     background-color: orange;
 }
