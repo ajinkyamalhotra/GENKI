@@ -1,0 +1,10 @@
+.confirmationForm{
+    margin: auto;
+    max-width: 50%;
+    padding: 15px;
+    background-color: black;
+}
+.page{
+    height: 95vh;
+    background-color: orange;
+}
