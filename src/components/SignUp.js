@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 import { Button, Header, Form, Grid, Input, Dropdown} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/SignUp.css';
@@ -12,6 +12,11 @@ const options = [
 ]
 
 class SignUp extends Component{
+
+    handleClick = () => {
+        this.props.history.push('/SignUpConfirmation');
+    };
+
   render(){
     return(
         <Router>
@@ -77,7 +82,8 @@ class SignUp extends Component{
                                 </Form.Field>
                                 <Grid.Row><br/></Grid.Row>
                                 <Button fluid size='huge' color='orange'
-                                type='Signup'>Signup</Button>
+                                type='Signup' onClick={this.handleClick}>
+                                    Signup</Button>
                             </Form>
                         <Grid.Row><br/></Grid.Row>
                     </Grid.Column>

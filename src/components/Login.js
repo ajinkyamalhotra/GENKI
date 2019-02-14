@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import { BrowserRouter as Redirect, browserHistory} from 'react-router-dom';
-import {withRouter} from "react-router-dom";
+import { BrowserRouter as Router} from 'react-router-dom';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/Login.css';
-import SignUp from './SignUp';
 
 class Login extends Component{
 
@@ -15,7 +12,7 @@ class Login extends Component{
 
   render(){
     return(
-        <Router> 
+        <Router>
             <div className='page'> {
             <Grid  padded='vertically'>
                 <Grid.Row><br/></Grid.Row>
@@ -26,7 +23,7 @@ class Login extends Component{
                             <Header as='h1' inverted color='orange'>
                             GENKI</Header>
                         </Grid.Row>
-                        <Divider /> 
+                        <Divider />
                         <Form inverted>
                             <Form.Field>
                                 <label size='huge'><Icon color='orange'
@@ -55,7 +52,7 @@ class Login extends Component{
             </Grid.Row>
         </Grid>
         }
-        
+
       </div>
       </Router>
     )
