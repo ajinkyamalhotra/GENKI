@@ -5,6 +5,9 @@
   background-color: black;
 }
 .page{
-    height: 92.5vh;
+    height: 95vh;
     background-color: orange;
+}
+.dropdown{
+    width: 1px;
 }

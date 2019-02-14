@@ -6,6 +6,7 @@ import Game from '../Game';
 import Login from './Login';
 import Profile from './Profile';
 import Progress from './Progress';
+import SignUp from './SignUp';
 import '../styles/Navigation.css';
 const logo= require('../images/logo.png');
 
@@ -120,7 +121,7 @@ class Navigation extends Component {
         <Route path='/Login' component={Login} />
         <Route path='/Profile' component={Profile} />
         <Route path='/Progress' component={Progress} />
-
+        <Route path='/SignUp' component={SignUp} />
       </div>
     </Router>
     )
