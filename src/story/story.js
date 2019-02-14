@@ -1,5 +1,5 @@
 // bg
-const microphone = require("./bg/Genki school.png");
+const microphone = require("./bg/Genki school (Scaled).png");
 const entrance = require("./bg/entrance.jpeg");
 // bgm
 const take = require("./bgm/take.mp3");
