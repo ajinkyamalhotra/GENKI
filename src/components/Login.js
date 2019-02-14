@@ -19,8 +19,8 @@ class Login extends Component{
             <div className='page'> {
             <Grid  padded='vertically'>
                 <Grid.Row><br/></Grid.Row>
-                <Grid.Row verticalAlign='middle' centered>
-                    <Grid.Column className='loginForm' widht={5}>
+                <Grid.Row>
+                    <Grid.Column className='loginForm'>
                         <Grid.Row><br/></Grid.Row>
                         <Grid.Row>
                             <Header as='h1' inverted color='orange'>

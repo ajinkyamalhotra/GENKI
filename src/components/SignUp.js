@@ -5,9 +5,10 @@ import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/SignUp.css';
 
 const options = [
-  { key: 1, text: 'Student', value: 1 },
-  { key: 2, text: 'Teacher', value: 2 },
-  { key: 3, text: 'Admin', value: 3 },
+    { key: 0, text: '', value: 0},
+    { key: 1, text: 'Student', value: 1 },
+    { key: 2, text: 'Teacher', value: 2 },
+    { key: 3, text: 'Admin', value: 3 },
 ]
 
 class SignUp extends Component{
@@ -17,8 +18,8 @@ class SignUp extends Component{
             <div className='page'>
                 <Grid  padded='vertically'>
                     <Grid.Row><br/></Grid.Row>
-                    <Grid.Row verticalAlign='middle' centered>
-                        <Grid.Column className='signUpForm' widht={5}>
+                    <Grid.Row>
+                        <Grid.Column className='signUpForm'>
                             <Grid.Row><br/></Grid.Row>
                             <Grid.Row>
                                 <Header as='h1' inverted color='orange'>
