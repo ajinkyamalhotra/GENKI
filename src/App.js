@@ -13,7 +13,7 @@ class App extends Component {
     return (
       // Render the Navigation component
       <div className="App">
-        <NavigationHome />
+        <Navigation />
       </div>
     );
   }
