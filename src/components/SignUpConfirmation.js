@@ -4,13 +4,6 @@ import { Button, Header, Form, Grid} from 'semantic-ui-react';
 import { Divider} from 'semantic-ui-react';
 import '../styles/SignUpConfirmation.css';
 
-const options = [
-    { key: 0, text: '', value: 0},
-    { key: 1, text: 'Student', value: 1 },
-    { key: 2, text: 'Teacher', value: 2 },
-    { key: 3, text: 'Admin', value: 3 },
-]
-
 class SignUpConfirmation extends Component{
 
     handleClick = () => {
@@ -24,27 +17,25 @@ class SignUpConfirmation extends Component{
                     <Grid  padded='vertically'>
                         <Grid.Row><br/></Grid.Row>
                         <Grid.Row>
-                            <Grid.Column className='confirmationForm'>
+                            <Grid.Column width={4} className='confirmationForm'>
                                 <Grid.Row><br/></Grid.Row>
                                 <Grid.Row>
                                     <Header as='h1' inverted color='orange'>
                                         GENKI</Header>
                                 </Grid.Row>
                                 <Divider />
-                                <Form inverted>
-                                    <Header as='h1' inverted> Congratulations!
+                                <Form inverted className='loginButtonAlignment'>
+                                    <Header as='h2' inverted> Congratulations!
                                         You have successfully signed up on
                                         for an account.
                                     </Header>
                                     <Grid.Row><br/></Grid.Row>
                                     <Grid.Row><br/></Grid.Row>
-                                    <Button fluid size='huge' color='orange'
-                                            type='Login' compact
+                                    <Button size='big' compact color='orange'
+                                             type='Login'
                                             onClick={this.handleClick}>
                                         Login</Button>
-
                                 </Form>
-                                <Grid.Row><br/></Grid.Row>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>

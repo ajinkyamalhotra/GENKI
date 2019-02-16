@@ -17,7 +17,7 @@ class Login extends Component{
             <Grid  padded='vertically'>
                 <Grid.Row><br/></Grid.Row>
                 <Grid.Row>
-                    <Grid.Column className='loginForm'>
+                    <Grid.Column width={4} className='loginForm'>
                         <Grid.Row><br/></Grid.Row>
                         <Grid.Row>
                             <Header as='h1' inverted color='orange'>
@@ -25,29 +25,25 @@ class Login extends Component{
                         </Grid.Row>
                         <Divider />
                         <Form inverted>
-                            <Form.Field>
+                            <Form.Field >
                                 <label size='huge'><Icon color='orange'
                                 name='user circle' />Username</label>
-                                <Input fluid size='huge' icon='user circle'
-                                color='orange' placeholder='Username'/>
+                                <Input  placeholder='Username' />
                             </Form.Field>
                             <Grid.Row><br/></Grid.Row>
                             <Form.Field>
                                 <label><Icon color='orange'
                                 name='lock circle' />Password</label>
-                                <Input fluid size='huge' icon='key'
-                                color='orange' placeholder='Password'/>
+                                <Input placeholder='Password'/>
                             </Form.Field>
                             <Grid.Row><br/></Grid.Row>
-                            <Button fluid size='huge' color='orange'
+                            <Button size='big' compact color='orange'
                             type='Login'>Login</Button>
-                            <Divider />
-                            <Button fluid size='huge'
+                            <Button size='big' compact floated='right'
                             color='orange' type='Signup'
                             onClick={this.handleClick}>Signup
                             </Button>
                         </Form>
-                    <Grid.Row><br/></Grid.Row>
                 </Grid.Column>
             </Grid.Row>
         </Grid>

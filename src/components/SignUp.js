@@ -5,87 +5,102 @@ import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/SignUp.css';
 
 const options = [
-    { key: 0, text: '', value: 0},
-    { key: 1, text: 'Student', value: 1 },
-    { key: 2, text: 'Teacher', value: 2 },
-    { key: 3, text: 'Admin', value: 3 },
+    { key: 1, text: 'Student', value: 'student' },
+    { key: 2, text: 'Teacher', value: 'teacher' },
+    { key: 3, text: 'Admin', value: 'admin' },
 ]
 
 class SignUp extends Component{
+
+    state = {}
 
     handleClick = () => {
         this.props.history.push('/SignUpConfirmation');
     };
 
+    handleChange = (e, { value }) => this.setState({ value })
+
   render(){
+       const { value } = this.state
     return(
         <Router>
             <div className='page'>
                 <Grid  padded='vertically'>
                     <Grid.Row><br/></Grid.Row>
                     <Grid.Row>
-                        <Grid.Column className='signUpForm'>
+                        <Grid.Column width={4} className='signUpForm'>
                             <Grid.Row><br/></Grid.Row>
                             <Grid.Row>
                                 <Header as='h1' inverted color='orange'>
                                 GENKI</Header>
                             </Grid.Row>
                             <Divider /> 
-                            <Form inverted>
-                                <Form.Field>
-                                    <label size='huge'><Icon color='orange'
-                                    name='user' />User Type</label>
-                                    <Dropdown verticalAlign='middle' clearable
-                                    compact selection fluid options={options}
-                                    selection />
-                                </Form.Field>
+                            <Form inverted classname='signUpButtonAlignment'>
+                                <Form.Group inline>
+                                    <label>User Type</label>
+                                    <Form.Radio
+                                        label='Student'
+                                        value='student'
+                                        checked={value === 'student'}
+                                        onChange={this.handleChange}
+                                    />
+                                    <Form.Radio
+                                        label='Teacher'
+                                        value='teacher'
+                                        checked={value === 'teacher'}
+                                        onChange={this.handleChange}
+                                    />
+                                    <Form.Radio
+                                        label='Admin'
+                                        value='admin'
+                                        checked={value === 'admin'}
+                                        onChange={this.handleChange}
+                                    />
+                                </Form.Group>
+                                <Grid.Row><br/></Grid.Row>
+                                <Form.Group widths='equal'>
+                                    <Form.Input fluid label='First name'
+                                                placeholder='First name' />
+                                    <Form.Input fluid label='Last name'
+                                                placeholder='Last name' />
+                                </Form.Group>
                                 <Grid.Row><br/></Grid.Row>
                                 <Form.Field>
                                     <label size='huge'><Icon color='orange'
-                                    name='user secret' />Class Secret ID (Only 
+                                    name='user secret' />Class Secret ID (Only
                                     required if you want to be registered
                                      in a class)
                                     </label>
-                                    <Input compact fluid size='huge' icon='user
-                                     secret' color='orange'
+                                    <Input icon='user secret'
                                      placeholder='Class Secret ID'/>
                                 </Form.Field>
                                 <Grid.Row><br/></Grid.Row>
                                 <Form.Field>
                                     <label size='huge'><Icon color='orange'
                                     name='mail' />Email</label>
-                                    <Input fluid size='huge' icon='mail'
-                                    color='orange' placeholder='Email'/>
+                                    <Input icon='mail' placeholder='Email'/>
                                 </Form.Field>
                                 <Grid.Row><br/></Grid.Row>
                                 <Form.Field>
                                     <label size='huge'><Icon color='orange'
                                     name='user circle' />Username</label>
-                                    <Input fluid size='huge' icon='user circle'
-                                    color='orange' placeholder='Username'/>
+                                    <Input icon='user circle'
+                                    placeholder='Username'/>
                                 </Form.Field>
                                 <Grid.Row><br/></Grid.Row>
-                                <Form.Field>
-                                    <label><Icon color='orange'
-                                    name='lock circle' />Password</label>
-                                    <Input fluid size='huge' icon='key'
-                                    color='orange' placeholder='Password'/>
-                                </Form.Field>
+                                <Form.Group widths='equal'>
+                                    <Form.Input fluid label='Password'
+                                                icon='key'
+                                                placeholder='Password' />
+                                    <Form.Input fluid label='Confirm Password'
+                                                icon='key'
+                                                placeholder='Confirm Password'/>
+                                </Form.Group>
                                 <Grid.Row><br/></Grid.Row>
-                                <Form.Field>
-                                    <label><Icon color='orange'
-                                    name='lock circle' />Confirm Password
-                                    </label>
-                                    <Input fluid size='huge' icon='key'
-                                    color='orange' placeholder='Confirm
-                                    Password'/>
-                                </Form.Field>
-                                <Grid.Row><br/></Grid.Row>
-                                <Button fluid size='huge' color='orange'
+                                <Button size='big' compact fluid color='orange'
                                 type='Signup' onClick={this.handleClick}>
                                     Signup</Button>
                             </Form>
-                        <Grid.Row><br/></Grid.Row>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

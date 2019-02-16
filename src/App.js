@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation';
-import TitleBar from './components/TitleBar';
+import NavigationHome from './components/NavigationHome';
 import './App.css';
 
 
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       // Render the Navigation component
       <div className="App">
-        <Navigation />
+        <NavigationHome />
       </div>
     );
   }
