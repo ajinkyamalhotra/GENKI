@@ -1,45 +1,56 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Button, Form, Container, Header, Segment, Input, Label, Icon, Divider, Image} from 'semantic-ui-react';
+import { BrowserRouter as Router} from 'react-router-dom';
+import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
+import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/Login.css';
 
 class Login extends Component{
+
+    handleClick = () => {
+        this.props.history.push('/SignUp');
+    };
+
   render(){
     return(
-      <div className='page'>
-      <br />
-      <div className='loginForm'>
-        <Segment inverted>
-            <Header as='h2' attached='top' size='massive' inverted color='orange'> GENKI </Header>
-            <Divider clearing />
-            
-            <br />
-
-            <Label> <Icon name='user' /> Username </Label>
-
-            <br /> <br />    
-
-            <Input size='massive' focus placeholder='Username' compact color='orange' />
-
-            <br /> <br /> <br /> <br />
-
-            <Label> <Icon name='key' /> Password </Label>
-
-            <br /> <br />   
-
-            <Input size='massive' focus placeholder='Password' compact />
-
-            <br /> <br /> <br />
-
-            <Button color='orange' floated='left' size='massive' compact >    Log in    </Button>
-            <Button inverted color='orange' floated='right' size='massive' compact>Sign Up</Button>
-
-            <br /> <br /> <br />
-
-        </Segment>
+        <Router>
+            <div className='page'> {
+            <Grid  padded='vertically'>
+                <Grid.Row><br/></Grid.Row>
+                <Grid.Row>
+                    <Grid.Column width={4} className='loginForm'>
+                        <Grid.Row><br/></Grid.Row>
+                        <Grid.Row>
+                            <Header as='h1' inverted color='orange'>
+                            GENKI</Header>
+                        </Grid.Row>
+                        <Divider />
+                        <Form inverted>
+                            <Form.Field >
+                                <label size='huge'><Icon color='orange'
+                                name='user circle' />Username</label>
+                                <Input  placeholder='Username' />
+                            </Form.Field>
+                            <Grid.Row><br/></Grid.Row>
+                            <Form.Field>
+                                <label><Icon color='orange'
+                                name='lock circle' />Password</label>
+                                <Input placeholder='Password'/>
+                            </Form.Field>
+                            <Grid.Row><br/></Grid.Row>
+                            <Button size='big' compact color='orange'
+                            type='Login'>Login</Button>
+                            <Button size='big' compact floated='right'
+                            color='orange' type='Signup'
+                            onClick={this.handleClick}>Signup
+                            </Button>
+                        </Form>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
+        }
 
       </div>
-      </div>
+      </Router>
     )
   }
 }
