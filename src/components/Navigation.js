@@ -117,13 +117,13 @@ class Navigation extends Component {
         </Table>
         }
 
-        <Route path='/' exact component={HomePage} />
-        <Route path='/Game' component={Game} />
-        <Route path='/Login' component={Login} />
-        <Route path='/Profile' component={Profile} />
-        <Route path='/Progress' component={Progress} />
-        <Route path='/SignUp' component={SignUp} />
-        <Route path='/SignUpConfirmation' component={SignUpConfirmation} />
+        <Route exact path='/' exact component={HomePage} />
+        <Route exact path='/Game' component={Game} />
+        <Route exact path='/Login' component={Login} />
+        <Route exact path='/Profile' component={Profile} />
+        <Route exact path='/Progress' component={Progress} />
+        <Route exact path='/SignUp' component={SignUp} />
+        <Route exact path='/SignUpConfirmation' component={SignUpConfirmation} />
       </div>
     </Router>
     )
