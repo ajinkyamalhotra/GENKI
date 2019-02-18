@@ -106,6 +106,7 @@ class Login extends Component{
         <Input      value={stateField}
                     name={props.label}
                     onChange={this.handleChange}
+                    type={props.type}
                     placeholder={props.placeholder}/>
       </Form.Field>
     )
@@ -183,6 +184,7 @@ class Login extends Component{
                               color='orange'
                               name='user circle'
                               label='Username'
+                              type='text'
                               placeholder='Username'
                             />
                             <Divider />
@@ -190,6 +192,7 @@ class Login extends Component{
                               color='orange'
                               name='lock circle'
                               label='Password'
+                              type='password'
                               placeholder='Password'
                             />
                             <Divider />
