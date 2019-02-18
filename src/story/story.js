@@ -1,21 +1,35 @@
 // bg
-const microphone = require("./bg/Genki school (Scaled).png");
+const school = require("./bg/Genki school (Scaled).png");
 const entrance = require("./bg/entrance.jpeg");
+const bedroom = require("./bg/Bedroom (Scaled).png");
+const restaurant = require("./bg/Restaurant (Scaled).jpg");
+const restaurantBedroom = require("./bg/Restaurant-Bedroom.png");
 // bgm
 const take = require("./bgm/take.mp3");
+
 // speakers
-const takeshi = "たけし";
-const mary = "メアリー";
+// Tutorial Characters
+/*const takeshi = "たけし";
+/const mary = "メアリー";*/
+const john = "ジョン";
+const manager = "店長";
+const yamashita = "山下先生";
+
 // sprites
-const tn = require("./sprites/Takeshi-neutral.png");
+// Tutorial Images
+/*const tn = require("./sprites/Takeshi-neutral.png");
 const bh = require("./sprites/block-happy.png");
 const bp = require("./sprites/block-pout.png");
-
-const mn = require("./sprites/Mary-neutral.png")
+const mn = require("./sprites/Mary-neutral.png");*/
+const johnStudying = require("./sprites/John-studying.png");
+const johnWaiter = require("./sprites/John-waiter.png");
+const managerNeutral = require("./sprites/Manager-neutral.png");
+const yamashitaNeutral = require("./sprites/Yamashita-neutral.png");
 
 let story = [
+  /* Tutorial for Home Menu
   {
-    bg: microphone,
+    bg: school,
     bgm: take,
     sprite: tn,
     speaker: takeshi,
@@ -51,8 +65,6 @@ let story = [
     speaker: mary,
     text: "Sure! Let's get you ready for Genki VN!"
   },
-
-
   //end of game
   {
     routeBegins: "leave",
@@ -64,6 +76,7 @@ let story = [
     text: "Thank you for playing Genki Tutorial. You are now ready to play!",
     jumpTo: "title-screen"
   }
+  */
 
   /*
   {
@@ -109,7 +122,6 @@ let story = [
     text:
       "Before I grow back, one thing to note is that the sprite can stay in its altered state if the effect is continuously set."
   },
-
   { spriteEffect: "shrink", text: "A drawback is that when the sprite changes..." },
   { spriteEffect: "shrink", sprite: tn, text: "It reanimates." },
   {
@@ -121,7 +133,6 @@ let story = [
     text: 'So in this case, when `spriteEffect` is being set to "shrunk" instead of "shrink"...'
   },
   { sprite: bh, spriteEffect: "shrunk", text: "It doesn't reanimate." },
-
   {
     spriteEffect: "shrunk",
     sprite: tn,
@@ -133,7 +144,6 @@ let story = [
     sprite: tn,
     text: "Anyway, `spriteLeft` and `spriteRight` also have their own effect functions."
   },
-
   { text: "For example..." },
   {
     speaker: "",
@@ -172,7 +182,7 @@ let story = [
   { bg: entrance },
   {
     bgTransition: "scene-change",
-    bg: microphone,
+    bg: school,
     text: "And here's the default sprite enter transition..."
   },
   { sprite: tn },
@@ -225,7 +235,6 @@ let story = [
       'spriteRightTransition: "move-left-far", spriteLeftTransition: "move-left-far", spriteRight: "", spriteLeft: require("./sprites/sprite.png"),'
   },
   { speaker: takeshi, text: "That's about it for now.", jumpTo: "features" },
-
   // Storing choices
   {
     spriteLeft: "",
@@ -242,7 +251,7 @@ let story = [
   { text: "Let's see it in application." },
   {
     sprite: bp,
-    text: "Hey, can you help me carry the microphone."
+    text: "Hey, can you help me carry the school."
   },
   { choicesExist: true, text: "Help? (Refer to choices.js to see the properties.)" },
   {
@@ -322,6 +331,187 @@ let story = [
   },
   */
 
+  //Scene 1, john calls Little Asia
+  {
+    bg: restaurantBedroom,
+    bgm: take,
+    speaker: "Scene 1",
+    text: "John calls Little Asia."
+  },
+  {
+    speaker: manager,
+    spriteLeft: managerNeutral,
+    text: "はい、「リトル・アジア」です。"
+  },
+  /*{
+    text: "Yes, this is Little Asia."
+  },*/
+  {
+    speaker: john,
+    spriteRight: johnStudying,
+    text: "私、ジョン・ワンと申します。アルバイト募集の広告を見たんです。"
+  },
+  /*{
+    text: "My name is John Wang. I saw your classified ad."
+  },*/
+  {
+    speaker: manager,
+    text: "そうですか。じゃあ、会って、話しましょうか。今日店に来られますか。"
+  },
+  /*{
+    text: "I see. Well, shall we meet and talk? Can you come to the store today?"
+  },*/
+
+  {
+    speaker: john,
+    text: "今日はちょっと行けないんですが、あしたならいけると思います。"
+  },
+  /*{
+    text: "I cannot come today, but if it's tomorrow, I think I can come."
+  },*/
+
+  {
+    speaker: manager,
+    text: "そうですか。今日はだめですか。じゃあ、あしたの一時ごろはどうですか。"
+  },
+  /*{
+    text: "I see. Today is no good...All right, how about one o' clock tomorrow?
+  "},*/
+
+  {
+    speaker: john,
+    text: "一時ですね。わかりました。"
+  },
+  /*{
+    text: "One o' clock. Okay, I've got it."
+  },*/
+
+  //Scene 2, John arrives for interview at Little Asia
+  {
+    bg: restaurant,
+    bgm: take,
+    speaker: "Scene 2",
+    spriteLeft: "",
+    spriteRight: "",
+    text: "John arrives for interview at Little Asia"
+  },
+  {
+    speaker: manager,
+    spriteLeft: managerNeutral,
+    text: "ワンさんはどうしてこのアルバイトに興味があるんですか。"
+  },
+  /*{
+    text: "Mr. Wang, why are you interested in this job?"
+  },*/
+  {
+    speaker: john,
+    spriteRight: johnWaiter,
+    text: "おもしろそうですから。いろいろな人に会えるし、日本語も使えるし。"
+  },
+  /*{
+    text: "It seems interesting. I can meet various people; I can also use Japanese... "
+  },*/
+  {
+    speaker: manager,
+    text: "レストランで働いたことがありますか。"
+  },
+  /*{
+    text: "Have you worked at a restaurant before?"
+  },*/
+
+  {
+    speaker: john,
+    text: "はい。ウェイターならしたことがあります。"
+  },
+  /*{
+    text: "Yes. As a waiter, I have."
+  },*/
+
+  {
+    speaker: manager,
+    text: "あしたから始められますか。"
+  },
+  /*{
+    text: "Can you start tomorrow?"
+  },*/
+
+  {
+    speaker: john,
+    text: "はい。よろしくお願います。"
+  },
+  /*{
+    text: "Yes. I'll do my best."
+  },*/
+  {
+    speaker: manager,
+    text: "がんばってください。"
+  },
+  /*{
+    text: "Good luck."
+  },*/
+
+  //Scene 3, John is on the job at the restaurant
+  {
+    bg: restaurant,
+    bgm: take,
+    speaker: "Scene 3",
+    spriteLeft: "",
+    spriteRight: "",
+    text: "Professor Yamashita comes to Little Asia"
+  },
+  {
+    bg: restaurant,
+    bgm: take,
+    speaker: john,
+    spriteRight: johnWaiter,
+    text: "いらっしゃいませ。あ、山下先生。"
+  },
+  /*{
+    text: "Oh, Professor Yamashita."
+  },*/
+  {
+    speaker: yamashita,
+    spriteLeft: yamashitaNeutral,
+    spriteRight: johnWaiter,
+    text: "ジョンさん。ここでアルバイトをしているんですか。"
+  },
+  /*{
+    text: "John, do you work here."
+  },*/
+  {
+    speaker: john,
+    text: "ええ。一週間に三日働いています。"
+  },
+  /*{
+    text: "Yes, I work three days a week."
+  },*/
+
+  {
+    speaker: yamashita,
+    text: "そうですか。どれがおいしいですか。"
+  },
+  /*{
+    text: "I see. Which one is good?"
+  },*/
+
+  {
+    speaker: john,
+    text: "このカレーが一番人気がありますよ。"
+  },
+  /*{
+    text: "This curry is the most popular one.
+  },*/
+
+  {
+    speaker: yamashita,
+    text: "おいしそうですね。じゃあ、食べてみます。",
+    jumpTo: "title-screen"
+  }
+  /*{
+    text: "It looks good. Well, I will try this one."
+  },*/
+
+  //end of game
 ];
 
 // The code below is to set undefined properties to the last defined property.
