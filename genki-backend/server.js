@@ -1,22 +1,42 @@
 const express = require('express');
 const path = require('path');
-
+const bodyParser = require('body-parser');
 const app = express();
 
-// Serve the static files from the React app
-// app.use(express.static(path.join(__dirname, 'client/build')));
+/**
+ * Custom Node function used to verify a user.
+ */
+const loginVerification = require('./loginVerification');
 
-// An api endpoint that returns a short list of items
-app.get('/api/getList', (req,res) => {
-    var list = ["item1", "item2", "item3"];
-    res.json(list);
-    console.log('Sent list of items');
-});
+// Needed in order to parse the body of a request.
+app.use(bodyParser.json());
 
-// Handles any requests that don't match the ones above
-/*app.get('*', (req,res) =>{
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});*/
+/**
+ * Function that handles POST requests to /login.
+ * This functino will verify a user's credentials and return 200 if valid,
+ * and 401 if not.
+ */
+app.post('/login', (req, res) => {
+    console.log('received post');
+    // Access the username and password from the request
+    let username = req.body.Username;
+    let password = req.body.Password;
+    // Create a user object
+    const user = {
+        username: username,
+        password: password
+    };
+    // Verify whether or not a user is valid
+    const verified = loginVerification.verify(user);
+    if (verified) {
+        console.log(JSON.stringify(verified));
+        res.status(200).send("Authenticated");
+    } else {
+        console.log('No Such User');
+        res.status(401).send("Could not find user");
+    }
+})
+
 
 const port = process.env.PORT || 5000;
 app.listen(port);
