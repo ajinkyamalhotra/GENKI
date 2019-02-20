@@ -35,17 +35,16 @@ class Navigation extends Component {
    * https://react.semantic-ui.com/collections/menu/
    */
    render() {
-      const { activeItem } = this.state
+    const { activeItem } = this.state
     return (
-      <Router>
       <div className="navigation-bar"> {
         <Table color='black' inverted attached >
             <Table.Header>
                 <Table.Row rowSpan='1'>
-                    
+
                     {/*Cell add's padding to the left side of the nav bar*/}
-                    <Table.HeaderCell></Table.HeaderCell> 
-                    
+                    <Table.HeaderCell></Table.HeaderCell>
+
                     {/*Cell to store the GENKI logo*/}
                     <Table.HeaderCell rowSpan='2' collapsing
                     style={{padding: '0'}}>
@@ -54,7 +53,7 @@ class Navigation extends Component {
                             onClick={this.handleClickOnGENKI}/>
                         </Link>
                     </Table.HeaderCell>
-                    
+
                     {/*Cell to store the GENKI label header*/}
                     <Table.HeaderCell  textAlign='left' collapsing>
                         <Link to='/'>
@@ -62,11 +61,11 @@ class Navigation extends Component {
                         onClick={this.handleClickOnGENKI}>
                         GENKI </Header> </Link>
                     </Table.HeaderCell>
-                
+
                     {/*Cell to store the Menu-Items*/}
                     <Table.HeaderCell inverted>
                         <Menu inverted pointing secondary floated='right'>
-                            
+
                             <Link to='/'>
                                 <Menu.Item id='HomeButton' name = 'home'
                                 active={activeItem === 'home'}
@@ -74,7 +73,7 @@ class Navigation extends Component {
                                 <Icon inverted name='home'/>
                                 Home</Menu.Item>
                             </Link>
-                            
+
                             <Link to='/Profile'>
                                 <Menu.Item name = 'profile'
                                 active={activeItem === 'profile'}
@@ -82,7 +81,7 @@ class Navigation extends Component {
                                 <Icon inverted name='user circle'/>
                                 Profile</Menu.Item>
                             </Link>
-                            
+
                             <Link to='/Game'>
                                 <Menu.Item name = 'game'
                                 active={activeItem === 'game'}
@@ -98,7 +97,7 @@ class Navigation extends Component {
                                 <Icon inverted name='shipping fast'/>
                                 Progress</Menu.Item>
                             </Link>
-                            
+
                             <Link to='/Login'>
                                 <Menu.Item name = 'login'
                                 active={activeItem === 'login'}
@@ -106,26 +105,17 @@ class Navigation extends Component {
                                 <Icon inverted name='sign out alternate'/>
                                 Logout</Menu.Item>
                             </Link>
-                        
+
                         </Menu>
                     </Table.HeaderCell>
-                    
+
                     {/*Adding padding to the right side of the nav bar*/}
                     <Table.HeaderCell></Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
         </Table>
         }
-
-        <Route exact path='/' exact component={HomePage} />
-        <Route exact path='/Game' component={Game} />
-        <Route exact path='/Login' component={Login} />
-        <Route exact path='/Profile' component={Profile} />
-        <Route exact path='/Progress' component={Progress} />
-        <Route exact path='/SignUp' component={SignUp} />
-        <Route exact path='/SignUpConfirmation' component={SignUpConfirmation} />
       </div>
-    </Router>
     )
   }
 }
