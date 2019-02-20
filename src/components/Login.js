@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router} from 'react-router-dom';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/Login.css';

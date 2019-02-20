@@ -1,13 +1,6 @@
-import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import {Table, Image, Menu, Header, Icon} from 'semantic-ui-react';
-import HomePage from './HomePage';
-import Game from '../Game';
-import Login from './Login';
-import Profile from './Profile';
-import Progress from './Progress';
-import SignUp from './SignUp';
-import SignUpConfirmation from './SignUpConfirmation';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Table, Image, Menu, Header, Icon } from 'semantic-ui-react';
 import '../styles/Navigation.css';
 const logo= require('../images/logo.png');
 

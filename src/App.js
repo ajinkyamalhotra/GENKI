@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation';
-//import NavigationHome from './components/NavigationHome';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
