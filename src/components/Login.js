@@ -76,7 +76,6 @@ class Login extends Component{
         .then(response => {
             if (response.status === 200) {
                 alert('Logged In!');
-                this.props.onLogin(username);
             } else if (response.status === 401) {
                 alert('No Such User');
             }
@@ -167,6 +166,7 @@ class Login extends Component{
 
   render(){
     return(
+        <Router>
             <div className='page'> {
             <Grid  padded='vertically'>
                 <Divider />
@@ -203,6 +203,7 @@ class Login extends Component{
         }
 
       </div>
+      </Router>
     )
   }
 }
