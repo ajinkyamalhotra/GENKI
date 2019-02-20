@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
-import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
+import { Button, Header, Form, Grid, Input, Dropdown} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/SignUp.css';
 
@@ -34,7 +34,7 @@ class SignUp extends Component{
                                 <Header as='h1' inverted color='orange'>
                                 GENKI</Header>
                             </Grid.Row>
-                            <Divider />
+                            <Divider /> 
                             <Form inverted classname='signUpButtonAlignment'>
                                 <Form.Group inline>
                                     <label>User Type</label>
