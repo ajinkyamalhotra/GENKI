@@ -46,7 +46,7 @@ class App extends Component {
           <Route
             exact
             path='/Login'
-            render={() => (<Login onLogin={this.handleLogin}/>)} />
+            render={(props) => (<Login {...props} onLogin={this.handleLogin}/>)} />
 
           <Route exact path='/Profile' component={Profile} />
           <Route exact path='/Progress' component={Progress} />

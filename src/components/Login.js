@@ -27,6 +27,7 @@ class Login extends Component{
    * Deletes any entry into the text fields when component is unmounted.
    */
   componentWillUnmount() {
+    console.log('Unmounting');
     this.setState({
       Username: '',
       Password: ''
