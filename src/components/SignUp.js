@@ -1,102 +1,168 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
-import { Button, Header, Form, Grid, Input, Dropdown} from 'semantic-ui-react';
+import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/SignUp.css';
 
-const options = [
-    { key: 1, text: 'Student', value: 'student' },
-    { key: 2, text: 'Teacher', value: 'teacher' },
-    { key: 3, text: 'Admin', value: 'admin' },
-]
-
 class SignUp extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmedPassword: '',
+      userType: '',
+      secretID: ''
+    }
 
-    state = {}
+    this.handleChange = this.handleChange.bind(this);
+    this.RadioButtons = this.RadioButtons.bind(this);
+    this.NameInput = this.NameInput.bind(this);
+    this.SecretIDInput = this.SecretIDInput.bind(this);
+    this.EmailInput = this.EmailInput.bind(this);
+    this.PasswordInput = this.PasswordInput.bind(this);
+  }
 
-    handleClick = () => {
-        this.props.history.push('/SignUpConfirmation');
-    };
+  handleClick = () => {
+      this.props.history.push('/SignUpConfirmation');
+  };
 
-    handleChange = (e, { value }) => this.setState({ value })
+  handleChange = (e, data) => {
+    console.log(data.name);
+    console.log(data.value);
+    const key = data.name;
+    this.setState({ [key]: data.value });
+  }
+
+  RadioButtons() {
+    return(
+      <Form.Group inline>
+          <label>User Type</label>
+          <Form.Radio
+              label='Student'
+              value='student'
+              name='userType'
+              checked={this.state.userType === 'student'}
+              onChange={this.handleChange}
+          />
+          <Form.Radio
+              label='Teacher'
+              value='teacher'
+              name='userType'
+              checked={this.state.userType === 'teacher'}
+              onChange={this.handleChange}
+          />
+          <Form.Radio
+              label='Admin'
+              value='admin'
+              name='userType'
+              checked={this.state.userType === 'admin'}
+              onChange={this.handleChange}
+          />
+      </Form.Group>
+    )
+  }
+
+  NameInput() {
+    return (
+      <Form.Group widths='equal'>
+          <Form.Input fluid label='First name'
+                      placeholder='First name'
+                      name='firstName'
+                      value={this.state.firstName}
+                      onChange={this.handleChange}/>
+          <Form.Input fluid label='Last name'
+                      placeholder='Last name'
+                      name='lastName'
+                      value={this.state.lastName}
+                      onChange={this.handleChange}/>
+      </Form.Group>
+    )
+  }
+
+  SecretIDInput() {
+    const text =
+      "Class Secret ID (Only required if you want to be registered in a class)";
+
+    return (
+      <Form.Field>
+          <label size='huge'>
+            <Icon color='orange' name='user secret' />
+            {text}
+          </label>
+          <Input  icon='user secret'
+                  placeholder='Class Secret ID'
+                  name='secretID'
+                  value={this.state.secretID}
+                  onChange={this.handleChange}/>
+      </Form.Field>
+    )
+  }
+
+  EmailInput() {
+    return (
+      <Form.Field>
+          <label size='huge'>
+            <Icon color='orange' name='mail' />
+            Email
+          </label>
+          <Input  icon='mail'
+                  placeholder='Email'
+                  name='email'
+                  value={this.state.email}
+                  onChange={this.handleChange}/>
+      </Form.Field>
+    )
+  }
+
+  PasswordInput() {
+    return (
+      <Form.Group widths='equal'>
+          <Form.Input fluid label='Password'
+                      icon='key'
+                      placeholder='Password'
+                      type='password'
+                      name='password'
+                      value={this.state.password}
+                      onChange={this.handleChange}/>
+          <Form.Input fluid label='Confirm Password'
+                      icon='key'
+                      placeholder='Confirm Password'
+                      type='password'
+                      name='confirmedPassword'
+                      value={this.state.confirmedPassword}
+                      onChange={this.handleChange}/>
+      </Form.Group>
+    )
+  }
 
   render(){
-       const { value } = this.state
     return(
         <Router>
             <div className='page'>
                 <Grid  padded='vertically'>
-                    <Grid.Row><br/></Grid.Row>
+                    <Divider />
                     <Grid.Row>
                         <Grid.Column width={4} className='signUpForm'>
-                            <Grid.Row><br/></Grid.Row>
+                            <Divider />
                             <Grid.Row>
                                 <Header as='h1' inverted color='orange'>
                                 GENKI</Header>
                             </Grid.Row>
-                            <Divider /> 
+                            <Divider />
                             <Form inverted classname='signUpButtonAlignment'>
-                                <Form.Group inline>
-                                    <label>User Type</label>
-                                    <Form.Radio
-                                        label='Student'
-                                        value='student'
-                                        checked={value === 'student'}
-                                        onChange={this.handleChange}
-                                    />
-                                    <Form.Radio
-                                        label='Teacher'
-                                        value='teacher'
-                                        checked={value === 'teacher'}
-                                        onChange={this.handleChange}
-                                    />
-                                    <Form.Radio
-                                        label='Admin'
-                                        value='admin'
-                                        checked={value === 'admin'}
-                                        onChange={this.handleChange}
-                                    />
-                                </Form.Group>
-                                <Grid.Row><br/></Grid.Row>
-                                <Form.Group widths='equal'>
-                                    <Form.Input fluid label='First name'
-                                                placeholder='First name' />
-                                    <Form.Input fluid label='Last name'
-                                                placeholder='Last name' />
-                                </Form.Group>
-                                <Grid.Row><br/></Grid.Row>
-                                <Form.Field>
-                                    <label size='huge'><Icon color='orange'
-                                    name='user secret' />Class Secret ID (Only
-                                    required if you want to be registered
-                                     in a class)
-                                    </label>
-                                    <Input icon='user secret'
-                                     placeholder='Class Secret ID'/>
-                                </Form.Field>
-                                <Grid.Row><br/></Grid.Row>
-                                <Form.Field>
-                                    <label size='huge'><Icon color='orange'
-                                    name='mail' />Email</label>
-                                    <Input icon='mail' placeholder='Email'/>
-                                </Form.Field>
-                                <Grid.Row><br/></Grid.Row>
-                                <Form.Field>
-                                    <label size='huge'><Icon color='orange'
-                                    name='user circle' />Username</label>
-                                    <Input icon='user circle'
-                                    placeholder='Username'/>
-                                </Form.Field>
-                                <Grid.Row><br/></Grid.Row>
-                                <Form.Group widths='equal'>
-                                    <Form.Input fluid label='Password'
-                                                icon='key'
-                                                placeholder='Password' />
-                                    <Form.Input fluid label='Confirm Password'
-                                                icon='key'
-                                                placeholder='Confirm Password'/>
-                                </Form.Group>
-                                <Grid.Row><br/></Grid.Row>
+                                <this.RadioButtons />
+                                <Divider />
+                                <this.NameInput />
+                                <Divider />
+                                <this.SecretIDInput />
+                                <Divider />
+                                <this.EmailInput />
+                                <Divider />
+                                <this.PasswordInput />
+                                <Divider />
                                 <Button size='big' compact fluid color='orange'
                                 type='Signup' onClick={this.handleClick}>
                                     Signup</Button>
