@@ -13,27 +13,47 @@ class SignUp extends Component{
       email: '',
       password: '',
       confirmedPassword: '',
+      passwordsMatch: false,
       userType: '',
       secretID: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.RadioButtons = this.RadioButtons.bind(this);
     this.NameInput = this.NameInput.bind(this);
     this.SecretIDInput = this.SecretIDInput.bind(this);
     this.EmailInput = this.EmailInput.bind(this);
     this.PasswordInput = this.PasswordInput.bind(this);
+    this.SignUpButton = this.SignUpButton.bind(this);
   }
 
-  handleClick = () => {
-      this.props.history.push('/SignUpConfirmation');
+  handleClick = (event) => {
+    console.log(this.state.passwordsMatch);
+    if (!(this.state.passwordsMatch)) {
+      alert('passwords do not match');
+    }
+    //this.props.history.push('/SignUpConfirmation');
+
+    event.preventDefault();
   };
 
   handleChange = (e, data) => {
     console.log(data.name);
     console.log(data.value);
     const key = data.name;
-    this.setState({ [key]: data.value });
+    if (data.name === 'password' || data.name === 'confirmedPassword') {
+      const unchangedElement = (key === 'password') ?
+                      this.state.confirmedPassword : this.state.password;
+      const isMatch = data.value === unchangedElement;
+      this.setState({
+        passwordsMatch: isMatch,
+        [key]: data.value
+      });
+    } else {
+      this.setState({ [key]: data.value });
+    }
+    console.log("passwords match " + this.state.passwordsMatch);
   }
 
   RadioButtons() {
@@ -138,6 +158,24 @@ class SignUp extends Component{
     )
   }
 
+  SignUpButton() {
+    const {email, userType, passwordsMatch} = this.state;
+    const isEnabled = (email.length>0) && userType && passwordsMatch;
+    console.log("email= " + (email.length > 0));
+    console.log("isEnabled = " + isEnabled);
+    return(
+      <Button size='big'
+              compact fluid
+              color='orange'
+              type='Signup'
+              disabled={!isEnabled}
+              onClick={this.handleClick}
+              >
+              Signup
+      </Button>
+    )
+  }
+
   render(){
     return(
         <Router>
@@ -163,9 +201,7 @@ class SignUp extends Component{
                                 <Divider />
                                 <this.PasswordInput />
                                 <Divider />
-                                <Button size='big' compact fluid color='orange'
-                                type='Signup' onClick={this.handleClick}>
-                                    Signup</Button>
+                                <this.SignUpButton />
                             </Form>
                     </Grid.Column>
                 </Grid.Row>
