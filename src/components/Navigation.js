@@ -50,7 +50,7 @@ class Navigation extends Component {
                     {/*Cell to store the GENKI label header*/}
                     <Table.HeaderCell  textAlign='left' collapsing>
                         <Link to='/'>
-                        <Header as='h1' class='header' color='orange'
+                        <Header as='h1' className='header' color='orange'
                         onClick={this.handleClickOnGENKI}>
                         GENKI </Header> </Link>
                     </Table.HeaderCell>

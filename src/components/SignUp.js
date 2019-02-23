@@ -4,6 +4,11 @@ import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import '../styles/SignUp.css';
 
+/**
+ * SignUp form to become a member of the GenkiVN website.
+ * The form's submit button is disabled until all necessary portions of the
+ * form have been filled in.
+ */
 class SignUp extends Component{
   constructor(props) {
     super(props);
@@ -13,7 +18,7 @@ class SignUp extends Component{
       email: '',
       password: '',
       confirmedPassword: '',
-      passwordsMatch: false,
+      passwordsMatch: true,
       userType: '',
       secretID: ''
     }
@@ -28,21 +33,28 @@ class SignUp extends Component{
     this.SignUpButton = this.SignUpButton.bind(this);
   }
 
+  /**
+   * Handle the submission of the form.
+   * Pre-Req: All necessary portions of the form are filled in and validated.
+   * @param event           The submission event
+   */
   handleClick = (event) => {
-    console.log(this.state.passwordsMatch);
-    if (!(this.state.passwordsMatch)) {
-      alert('passwords do not match');
-    }
-    //this.props.history.push('/SignUpConfirmation');
-
+    this.props.history.push('/SignUpConfirmation');
     event.preventDefault();
   };
 
+  /**
+   * Function that handles all changes to the form.
+   * @param e           Event
+   * @param data        Data sent from the
+   */
   handleChange = (e, data) => {
+    // Some debugging logging
     console.log(data.name);
     console.log(data.value);
     const key = data.name;
-    if (data.name === 'password' || data.name === 'confirmedPassword') {
+    // If one of the password inputs have changed do check to see if they match
+    if (key === 'password' || key === 'confirmedPassword') {
       const unchangedElement = (key === 'password') ?
                       this.state.confirmedPassword : this.state.password;
       const isMatch = data.value === unchangedElement;
@@ -51,11 +63,33 @@ class SignUp extends Component{
         [key]: data.value
       });
     } else {
+      // Set any other part of the state other than the passwords
       this.setState({ [key]: data.value });
     }
-    console.log("passwords match " + this.state.passwordsMatch);
   }
 
+  /**
+   * Function that validates email using regular expression.
+   * @param email           Email(String) to validate
+   */
+  validateEmail(email) {
+    const re = new RegExp([
+      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@/,
+      /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+/,
+      /(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/
+    ].map(r => r.source).join(''));
+    return re.test(email);
+  }
+
+  /***************************************************************************
+    Below are components designed specifically for the rendering of the SignUp
+    form.  Those that include the this keyword need to be bound in the
+    constructor of this class.
+   **************************************************************************/
+
+  /**
+   * Returns a group of three radio buttons, one for each user type.
+   */
   RadioButtons() {
     return(
       <Form.Group inline>
@@ -85,6 +119,9 @@ class SignUp extends Component{
     )
   }
 
+  /**
+   * Returns the inputs for First and Last name.
+   */
   NameInput() {
     return (
       <Form.Group widths='equal'>
@@ -102,9 +139,12 @@ class SignUp extends Component{
     )
   }
 
+  /**
+   * Returns the input for the class secret ID.
+   */
   SecretIDInput() {
     const text =
-      "Class Secret ID (Only required if you want to be registered in a class)";
+      "Class Secret ID (Only required for some students)";
 
     return (
       <Form.Field>
@@ -115,13 +155,18 @@ class SignUp extends Component{
           <Input  icon='user secret'
                   placeholder='Class Secret ID'
                   name='secretID'
+                  disabled={!(this.state.userType === 'student')}
                   value={this.state.secretID}
                   onChange={this.handleChange}/>
       </Form.Field>
     )
   }
 
+  /**
+   * Returns the input for email.
+   */
   EmailInput() {
+    const email = this.state.email;
     return (
       <Form.Field>
           <label size='huge'>
@@ -137,6 +182,9 @@ class SignUp extends Component{
     )
   }
 
+  /**
+   * Returns the input for the password and for the password confirmation.
+   */
   PasswordInput() {
     return (
       <Form.Group widths='equal'>
@@ -150,6 +198,7 @@ class SignUp extends Component{
           <Form.Input fluid label='Confirm Password'
                       icon='key'
                       placeholder='Confirm Password'
+                      error={!this.state.passwordsMatch}
                       type='password'
                       name='confirmedPassword'
                       value={this.state.confirmedPassword}
@@ -158,10 +207,15 @@ class SignUp extends Component{
     )
   }
 
+  /**
+   * Returns the submission button.
+   * This button is disabled until all of the necessary inputs have been
+   * given.
+   */
   SignUpButton() {
     const {email, userType, passwordsMatch} = this.state;
-    const isEnabled = (email.length>0) && userType && passwordsMatch;
-    console.log("email= " + (email.length > 0));
+    const isEnabled = this.validateEmail(email) && userType && passwordsMatch;
+    console.log("email= " + this.validateEmail(email));
     console.log("isEnabled = " + isEnabled);
     return(
       <Button size='big'
@@ -169,45 +223,43 @@ class SignUp extends Component{
               color='orange'
               type='Signup'
               disabled={!isEnabled}
-              onClick={this.handleClick}
-              >
-              Signup
+              onClick={this.handleClick}>
+        Signup
       </Button>
     )
   }
 
   render(){
     return(
-        <Router>
-            <div className='page'>
-                <Grid  padded='vertically'>
-                    <Divider />
-                    <Grid.Row>
-                        <Grid.Column width={4} className='signUpForm'>
-                            <Divider />
-                            <Grid.Row>
-                                <Header as='h1' inverted color='orange'>
-                                GENKI</Header>
-                            </Grid.Row>
-                            <Divider />
-                            <Form inverted classname='signUpButtonAlignment'>
-                                <this.RadioButtons />
-                                <Divider />
-                                <this.NameInput />
-                                <Divider />
-                                <this.SecretIDInput />
-                                <Divider />
-                                <this.EmailInput />
-                                <Divider />
-                                <this.PasswordInput />
-                                <Divider />
-                                <this.SignUpButton />
-                            </Form>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-        </div>
-      </Router>
+      <div className='page'>
+        <Grid  padded='vertically'>
+          <Divider />
+          <Grid.Row>
+            <Grid.Column width={4} className='signUpForm'>
+              <Divider />
+              <Grid.Row>
+                <Header as='h1' inverted color='orange'>
+                  GENKI
+                </Header>
+              </Grid.Row>
+              <Divider />
+              <Form inverted className='signUpButtonAlignment'>
+                <this.RadioButtons />
+                <Divider />
+                <this.NameInput />
+                <Divider />
+                <this.SecretIDInput />
+                <Divider />
+                <this.EmailInput />
+                <Divider />
+                <this.PasswordInput />
+                <Divider />
+                <this.SignUpButton />
+              </Form>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     )
   }
 }
