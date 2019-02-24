@@ -66,6 +66,7 @@ class Login extends Component{
         // the username and password typed in.
         // It chains together the fetch with .then to determine the appropriate
         // action based on the response.
+
         fetch('/login', {
             method: 'POST',
             body: JSON.stringify({

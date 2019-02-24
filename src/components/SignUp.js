@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
+import axios from 'axios';
 import '../styles/SignUp.css';
+
+const path = require('path');
 
 /**
  * SignUp form to become a member of the GenkiVN website.
@@ -39,6 +42,14 @@ class SignUp extends Component{
    * @param event           The submission event
    */
   handleClick = (event) => {
+    fetch('/signup', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {"Content-Type": "application/json"}
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
     this.props.history.push('/SignUpConfirmation');
     event.preventDefault();
   };
@@ -213,8 +224,11 @@ class SignUp extends Component{
    * given.
    */
   SignUpButton() {
-    const {email, userType, passwordsMatch} = this.state;
-    const isEnabled = this.validateEmail(email) && userType && passwordsMatch;
+    const {email, userType, password, passwordsMatch} = this.state;
+    const isEnabled = this.validateEmail(email)
+                      && userType
+                      && password.length>0
+                      && passwordsMatch;
     console.log("email= " + this.validateEmail(email));
     console.log("isEnabled = " + isEnabled);
     return(
