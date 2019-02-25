@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AWS from 'aws-sdk';
 import Navigation from './components/Navigation';
 //import NavigationHome from './components/NavigationHome';
 import './App.css';
@@ -10,6 +11,8 @@ import Profile from './components/Profile';
 import Progress from './components/Progress';
 import SignUp from './components/SignUp';
 import SignUpConfirmation from './components/SignUpConfirmation';
+import SendEmail from './components/email';
+
 
 const URL = 'http://localhost:5000';
 
@@ -30,6 +33,7 @@ class App extends Component {
 
   handleLogin(username) {
     this.setState({isUser: true, username});
+
   }
 
   render() {
