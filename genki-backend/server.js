@@ -8,7 +8,7 @@ const app = express();
  * Custom Node function used to verify a user.
  */
 const loginVerification = require('./loginVerification');
-
+const email = require('./email');
 // Needed in order to parse the body of a request.
 app.use(bodyParser.json());
 
@@ -41,7 +41,7 @@ app.post('/login', (req, res) => {
 app.post('/signup', (req, res) => {
   console.log('received signup');
   console.log(req.body);
-  SendEmail();
+  email.SendEmail();
 })
 
 

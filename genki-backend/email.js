@@ -1,7 +1,7 @@
-import AWS from 'aws-sdk';
+const AWS = require('aws-sdk');
 
 module.exports = {
-  function: SendEmail(){
+  SendEmail: function(){
     var params = {
     Destination: { /* required */
     CcAddresses: [
