@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -40,6 +41,7 @@ app.post('/login', (req, res) => {
 app.post('/signup', (req, res) => {
   console.log('received signup');
   console.log(req.body);
+  SendEmail();
 })
 
 
