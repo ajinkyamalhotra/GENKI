@@ -4,16 +4,23 @@ const entrance = require("./bg/entrance.jpeg");
 const bedroom = require("./bg/Bedroom (Scaled).png");
 const restaurant = require("./bg/Restaurant (Scaled).jpg");
 const restaurantBedroom = require("./bg/Restaurant-Bedroom.png");
+const park = require("./bg/Park.jpg");
+const takeshiHouse = require("./bg/Takeshi-House.jpg");
+const street = require("./bg/Street.png");
 // bgm
 const take = require("./bgm/take.mp3");
 
 // speakers
 // Tutorial Characters
 /*const takeshi = "たけし";
-/const mary = "メアリー";*/
+const mary = "メアリー";*/
 const john = "ジョン";
 const manager = "店長";
 const yamashita = "山下先生";
+const michiko = "みちこ";
+const takeshi = "たけし";
+const mary = "メアリー";
+const infoAgent = "案内所の人";
 
 // sprites
 // Tutorial Images
@@ -25,6 +32,12 @@ const johnStudying = require("./sprites/John-studying.png");
 const johnWaiter = require("./sprites/John-waiter.png");
 const managerNeutral = require("./sprites/Manager-neutral.png");
 const yamashitaNeutral = require("./sprites/Yamashita-neutral.png");
+const maryNeutral = require("./sprites/Mary-neutral.png");
+const michikoNeutral = require("./sprites/Michiko-neutral.png");
+const takeshiSweater = require("./sprites/Takeshi-sweater.png");
+const marySitting = require("./sprites/Mary-sitting.png");
+const johnNeutral = require("./sprites/John-neautral.png");
+const takeshiInSweater = require("./sprites/Takeshi-in-sweater.png");
 
 let story = [
   /* Tutorial for Home Menu
@@ -331,6 +344,7 @@ let story = [
   },
   */
 
+  //////////////////////////Chapter 13//////////////////////////////////////////
   //Scene 1, john calls Little Asia
   {
     bg: restaurantBedroom,
@@ -349,7 +363,7 @@ let story = [
   {
     speaker: john,
     spriteRight: johnStudying,
-    text: "私、ジョン・ワンと申します。アルバイト募集の広告を見たんです。"
+    text: "私、ジョン・ワンと申します。アルバイト募集の広告を見たんですが。"
   },
   /*{
     text: "My name is John Wang. I saw your classified ad."
@@ -364,7 +378,7 @@ let story = [
 
   {
     speaker: john,
-    text: "今日はちょっと行けないんですが、あしたならいけると思います。"
+    text: "今日はちょっと行けないんですが、あしたなら行けると思います。"
   },
   /*{
     text: "I cannot come today, but if it's tomorrow, I think I can come."
@@ -437,7 +451,7 @@ let story = [
 
   {
     speaker: john,
-    text: "はい。よろしくお願います。"
+    text: "はい。よろしくお願いします。"
   },
   /*{
     text: "Yes. I'll do my best."
@@ -505,10 +519,334 @@ let story = [
   {
     speaker: yamashita,
     text: "おいしそうですね。じゃあ、食べてみます。",
+  },
+  /*{
+    text: "It looks good. Well, I will try this one."
+  },*/
+
+  //////////////////////////Chapter 14//////////////////////////////////////////
+
+  //Scene 4
+  {
+    speaker: "Scene 4",
+    bg: park,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "A month before Valentine's Day."
+  },
+  {
+    bgm: take,
+    speaker: mary,
+    spriteLeft: maryNeutral,
+    text: "バレンタインのプレゼントは何がいいと思いますか。"
+  },
+  /*{
+    text: "What do you think is for a Valentine’s present?"
+  },*/
+  {
+    speaker: michiko,
+    spriteRight: michikoNeutral,
+    text:
+      "そうですね。たけしさんはいつも同じセーターを着ているから、セーターをあげたらどうですか。"
+  },
+  /*{
+    text: "Well, Takeshi always the same sweater, so why don’t you give him a sweater?"
+  },*/
+  {
+    speaker: mary,
+    text: "それはいいかもしれませんね。"
+  },
+  /*{
+    text: "That might be a good idea."
+  },*/
+
+  //Scene 5
+  {
+    speaker: "Scene 5",
+    bg: takeshiHouse,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "On Valentine's Day at Takeshi's house."
+  },
+  {
+    bgm: take,
+    speaker: mary,
+    spriteRight: marySitting,
+    text: "たけしくん、はい、これ。"
+  },
+  /*{
+    text: "Takeshi, this is for you."
+  },*/
+  {
+    speaker: takeshi,
+    spriteLeft: takeshiSweater,
+    text: "えっ、ぼくに？どうもありがとう。開けてもいい？"
+  },
+  /*{
+    text: "For me? Thank you. May I open it?"
+  },*/
+  {
+    speaker: mary,
+    text: "うん。"
+  },
+  /*{
+    text: "Yes."
+  },*/
+
+  {
+    speaker: takeshi,
+    text:
+      "わあ、いいね、このセーター。こんなのがほしかったんだ。メアリーが編んだの？"
+  },
+  /*{
+    text: "Wow, this is a nice sweater! I’ve wanted one like this.  Did you knit it Mary?"
+  },*/
+
+  {
+    speaker: mary,
+    text: "うん、小さいかもしれないから着てみて。"
+  },
+  /*{
+    text: "Yes. It may be small, so please try it on."
+  },*/
+
+  {
+    speaker: takeshi,
+    text: "ちょうどいいよ。ありがとう。"
+  },
+  /*{
+    text: "It fits perfectly. Thank you."
+  },*/
+
+  //Scene 6
+  {
+    speaker: "Scene 6",
+    bg: street,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "The next day."
+  },
+  {
+    bgm: take,
+    speaker: john,
+    spriteLeft: johnNeutral,
+    text: "暖かそうなセーターですね。"
+  },
+  /*{
+    text: "Your sweater looks warm."
+  },*/
+  {
+    speaker: takeshi,
+    spriteRight: takeshiInSweater,
+    text: "これ、メアリーがくれたんです。"
+  },
+  /*{
+    text: "Mary gave me this."
+  },*/
+  {
+    speaker: john,
+    text:
+      "よく似合っていますよ。ぼくも彼女がほしいなあ。ロバートさんはチョコレートを十個ももらったんですよ。"
+  },
+  /*{
+    text: "It looks good on you. I want a girlfriend, too. You know, Robert got as many as ten chocolates."
+  },*/
+  {
+    speaker: takeshi,
+    text: "へえ、すごいですね。ジョンさんは？"
+  },
+  /*{
+    text: "Hah, that’s incredible. How about you John?"
+  },*/
+
+  {
+    speaker: john,
+    text: "ぼくは一個しかもらえませんでした。大家さんから。さびしいなあ。"
+  },
+  /*{
+    text: "Yes. I only got one. From my landlady. How sad?"
+  },*/
+
+  {
+    speaker: takeshi,
+    text: "でも、ロバートさんはホワイトデーが大変ですよ。"
+  },
+  /*{
+    text: "But Robert will probably have a tough day on White Day."
+  },*/
+  {
+    speaker: john,
+    text: "ホワイトデー？"
+  },
+  /*{
+    text: "White Day?"
+  },*/
+
+  {
+    speaker: takeshi,
+    text: "ええ、男の人は三月十四日にお返しをしなきゃいけないんですよ。"
+  },
+  /*{
+    text: "Yes, boys have to return the favor on March 14th."
+  },*/
+
+  ////////////////////Chapter 15 below//////////////////////////////////////
+
+  {
+    speaker: "Scene 7",
+    bg: school,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "Before the vaction"
+  },
+  {
+    bgm: take,
+    speaker: mary,
+    text: "たけしくん、今度の休み、予定ある？"
+  },
+  /*{
+    text: "Takeshi, do you have any plans for the holidays?"
+  },*/
+  {
+    speaker: takeshi,
+    text: "ううん。別に。どうして？"
+  },
+  /*{
+    text: "Not really. Why?"
+  },*/
+  {
+    speaker: mary,
+    text: "みちこさんの長野のうちに行こうと思ってるんだけど、一緒に行かない？"
+  },
+  /*{
+    text: "I am thinking of going to Michiko’s home in Nagano. Do you want to go?"
+  },*/
+  {
+    speaker: takeshi,
+    text: "いいの？"
+  },
+  /*{
+    text: "Is it okay?"
+  },*/
+
+  {
+    speaker: mary,
+    text: "うん。みちこさんが、「たけしくんも誘って」と言ってたから。"
+  },
+  /*{
+    text: "Yes, Michiko told me to invite you."
+  },*/
+
+  {
+    speaker: takeshi,
+    text: "じゃあ、行く。電車の時間、調べておくよ。"
+  },
+  /*{
+    text: "Then, I will go. I will check the train schedule."
+  },*/
+  {
+    speaker: mary,
+    text: "ありがとう。じゃあ、私、みちこさんに電話しておく。"
+  },
+  /*{
+    text: "Thanks. I will call Michiko."
+  },*/
+
+  {
+    speaker: "",
+    bg: restaurant,
+    text: "Scene 8:　At Nagano Station."
+  },
+  {
+    bg: restaurant,
+    bgm: take,
+    speaker: takeshi,
+    text: "早く着いたから、ちょっと観光しない？"
+  },
+  /*{
+    text: "Since we got here early, do you want to do a little sightseeing?"
+  },*/
+  {
+    speaker: mary,
+    text: "うん。どこに行く？"
+  },
+  /*{
+    text: "Yes. Where shall we go?"
+  },*/
+  {
+    speaker: takeshi,
+    text: "善光寺はどう？有名なお寺だよ。"
+  },
+  /*{
+    text: "How about Zenkoji Temple? It’s a famous temple."
+  },*/
+  {
+    speaker: mary,
+    text: "そうだね。昼ご飯は何にする？"
+  },
+  /*{
+    text: "Sounds good. What shall we eat for lunch?"
+  },*/
+
+  {
+    speaker: takeshi,
+    text: "長野はそばがおいしいから、そばを食べようよ。"
+  },
+  /*{
+    text: "Soba noodles in Nagano are delicious, so let’s eat soba."
+  },*/
+
+  {
+    speaker: "",
+    bg: restaurant,
+    text: "Scene 9:　At the Travel Information Office."
+  },
+  {
+    bg: restaurant,
+    bgm: take,
+    speaker: takeshi,
+    text: "すみません、善光寺に行くバスはどれですか。"
+  },
+  /*{
+    text: "Excuse me, which bus goes to Zenkoji Temple?"
+  },*/
+  {
+    speaker: infoAgent,
+    text: "善光寺なら、十一番のバスですよ。"
+  },
+  /*{
+    text: "For Zenkoji, it’s bus number 11."
+  },*/
+  {
+    speaker: takeshi,
+    text: "ありがとうございます。この地図、もらってもいいですか。"
+  },
+  /*{
+    text: "Thank you very much. Can I have this map? "
+  },*/
+  {
+    speaker: infoAgent,
+    text:
+      "ええ、どうぞ。それから、これ、美術館の割引券ですが、よかったらどうぞ。"
+  },
+  /*{
+    text: "Yes, And these are discount tickets for the museum. Please take them, if you like."
+  },*/
+
+  {
+    speaker: mary,
+    text: "これ、東山魁夷の絵がある美術館ですね。あした行く予定なんです。"
+  },
+  /*{
+    text: "This is the museum that has paintings of Higashiyama Kaii, isn’t it? We are planning to go tomorrow. Thank you."
+  },*/
+  {
+    speaker: infoAgent,
+    text: "気をつけて。",
     jumpTo: "title-screen"
   }
   /*{
-    text: "It looks good. Well, I will try this one."
+    text: "Have a safe trip."
   },*/
 
   //end of game
