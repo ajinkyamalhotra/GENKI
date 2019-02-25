@@ -33,7 +33,7 @@ class App extends Component {
 
   handleLogin(username) {
     this.setState({isUser: true, username});
-
+    SendEmail();
   }
 
   render() {
