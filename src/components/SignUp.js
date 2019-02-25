@@ -46,8 +46,7 @@ class SignUp extends Component{
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {"Content-Type": "application/json"}
-    })
-      .then(response => response.json())
+    }).then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));
     this.props.history.push('/SignUpConfirmation');
