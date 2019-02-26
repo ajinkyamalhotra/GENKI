@@ -3,12 +3,14 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
+const fs = require('fs');
 
 /**
  * Custom Node function used to verify a user.
  */
 const loginVerification = require('./loginVerification');
 const email = require('./email');
+//const pending = require('./pending');
 // Needed in order to parse the body of a request.
 app.use(bodyParser.json());
 
@@ -41,9 +43,23 @@ app.post('/login', (req, res) => {
 app.post('/signup', (req, res) => {
   console.log('received signup');
   console.log(req.body);
-  email.SendEmail(req.body.firstName, req.body.lastName, req.body.email, req.body.userType, 'signup');
-})
-
+  //email.SendEmail(req.body.firstName, req.body.lastName, req.body.email, req.body.userType, 'signup');
+  var newUser = {
+      FirstName : req.body.firstName,
+      LastName : req.body.lastName,
+      Email : req.body.email,
+      UserType : req.body.userType,
+      SecretID : req.body.secretID,
+      Password : req.body.password
+  };
+  var newUserString = JSON.stringify(newUser);
+  var fileName = path.join(__dirname, 'pendingUsers',
+        req.body.firstName + req.body.lastName + '.json');
+  fs.writeFile(fileName,newUserString, (err) => {
+      if (err) throw err;
+      console.log('The file has been saved!');
+    });
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port);
