@@ -41,7 +41,7 @@ app.post('/login', (req, res) => {
 app.post('/signup', (req, res) => {
   console.log('received signup');
   console.log(req.body);
-  email.SendEmail();
+  email.SendEmail(req.body.firstName, req.body.lastName, req.body.email, req.body.userType, 'signup');
 })
 
 
