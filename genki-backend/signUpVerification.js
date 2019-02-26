@@ -7,14 +7,21 @@ const path = require('path');
 module.exports = {
     /**
      * Function which verifies whether or not a user is valid.  It looks up
-     * the user by the username and password combination
-     * @param user          The username and password combo`
+     * the user by the email and password combination
+     * @param user          The email and password combo
      */
     verify: function(user) {
         const email = user.email;
         const password = user.password;
 
         let filename = './users/' + email + password + '.json';
+
+        //Checking if a file with exact same name exists
+        if (fs.existsSync(path.join(__dirname, filename))){
+            console.log('Same file already exists.');
+            //if a file with same name exists return false
+            return false;
+        }
 
         //Try to create a file if in process error occurs return false
         fs.writeFile(path.join(__dirname, filename), JSON.stringify(user),
