@@ -11,7 +11,7 @@ class Login extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      Email: '',
+      Username: '',
       Password: ''
     };
 
@@ -28,14 +28,14 @@ class Login extends Component{
   componentWillUnmount() {
     console.log('Unmounting');
     this.setState({
-      Email: '',
+      Username: '',
       Password: ''
     });
   }
 
   /**
    * Used to make the form a controlled component.
-   * Will be called when the user types in the Email or password textbox.
+   * Will be called when the user types in the username or password textbox.
    * @param event           Represents the change coming from the form.
    */
   handleChange = (event) => {
@@ -60,17 +60,17 @@ class Login extends Component{
         this.props.history.push('/SignUp');
     } else {
         console.log('login clicked');
-        let Email = this.state.Email;
+        let username = this.state.Username;
         let password = this.state.Password;
         // The fetch function is built in and queries the backend by sending
-        // the Email and password typed in.
+        // the username and password typed in.
         // It chains together the fetch with .then to determine the appropriate
         // action based on the response.
 
         fetch('/login', {
             method: 'POST',
             body: JSON.stringify({
-                Email: Email,
+                Username: username,
                 Password: password
             }),
             headers: {"Content-Type": "application/json"}
@@ -78,7 +78,7 @@ class Login extends Component{
         .then(response => {
             if (response.status === 200) {
                 alert('Logged In!');
-                this.props.onLogin(Email);
+                this.props.onLogin(username);
             } else if (response.status === 401) {
                 alert('No Such User');
             }
@@ -97,8 +97,8 @@ class Login extends Component{
    * @param props       Includes the color, name, and label for the field.
    */
   FormField(props) {
-    const stateField = (props.label === 'Email') ?
-                                    this.state.Email : this.state.Password;
+    const stateField = (props.label === 'Username') ?
+                                    this.state.Username : this.state.Password;
     return (
       <Form.Field>
         <this.Label color={props.color}
@@ -184,9 +184,9 @@ class Login extends Component{
                             <this.FormField
                               color='orange'
                               name='user circle'
-                              label='Email'
+                              label='Username'
                               type='text'
-                              placeholder='Email'
+                              placeholder='Username'
                             />
                             <Divider />
                             <this.FormField

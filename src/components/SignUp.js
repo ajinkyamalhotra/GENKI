@@ -42,15 +42,38 @@ class SignUp extends Component{
    * @param event           The submission event
    */
   handleClick = (event) => {
-    fetch('/signup', {
+    console.log('login clicked');
+    let firstName = this.state.firstName;
+    let lastName = this.state.lastName;
+    let email = this.state.email;
+    let password = this.state.password;
+    let userType = this.state.userType;
+    let secretID = this.state.secretID;
+
+    // The fetch function is built in and queries the backend by sending
+    // all the paremters that were typed in the form.
+    // It chains together the fetch with .then to determine the appropriate
+    // action based on the response.
+    fetch('/signUp', {
       method: 'POST',
-      body: JSON.stringify(this.state),
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        userType: userType,
+        secretID: secretID
+      }),
       headers: {"Content-Type": "application/json"}
     })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));
-    this.props.history.push('/SignUpConfirmation');
+      .then(response => {
+        if (response.status === 200) {
+          this.props.history.push('/SignUpConfirmation');
+        } else if (response.status === 401) {
+          alert('Not able to register new user. Please try a different ' +
+              'username/password combination');
+        }
+      })
     event.preventDefault();
   };
 

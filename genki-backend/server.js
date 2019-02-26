@@ -7,6 +7,7 @@ const app = express();
  * Custom Node function used to verify a user.
  */
 const loginVerification = require('./loginVerification');
+const signUpVerification = require('./signUpVerification');
 
 // Needed in order to parse the body of a request.
 app.use(bodyParser.json());
@@ -37,9 +38,36 @@ app.post('/login', (req, res) => {
   }
 })
 
-app.post('/signup', (req, res) => {
-  console.log('received signup');
-  console.log(req.body);
+app.post('/signUp', (req, res) => {
+  console.log('received signUp');
+  // Access all the parameters from the request
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let email = req.body.email;
+  let password = req.body.password;
+  let userType = req.body.userType;
+  let secretID = req.body.secretID;
+
+  // Create a user object
+  const user = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    password: password,
+    userType: userType,
+    secretID: secretID
+  };
+
+  // Try to create a new user by calling signUpVerification.verify() method
+  let verified = signUpVerification.verify(user);
+  if (verified) {
+    console.log('Successfully created for new user.');
+    res.status(200).send("New User registered successfully");
+  } else {
+    //logging for this portion done in signUpVerification.js
+    res.status(401).send("Could not create a new user");
+  }
+  console.log(JSON.stringify(user));
 })
 
 
