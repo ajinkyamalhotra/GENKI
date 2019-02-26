@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class HomePage extends Component {
+  componentDidMount() {
+    fetch('/pending')
+      .then(response => response.JSON())
+      .then(data => console.log(data));
+  }
   render() {
     return (
       <div>
