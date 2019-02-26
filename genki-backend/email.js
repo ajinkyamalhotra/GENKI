@@ -4,9 +4,9 @@ AWS.config.update({region: 'us-west-2'});
 
 module.exports = {
   SendEmail: function(firstName, lastName, emailName, userType, purpose){
-    var emailBodyHTML;
-    var emailBodyText;
-    var emailSubject;
+    var emailBodyHTML='test';
+    var emailBodyText='test';
+    var emailSubject='test';
     if(purpose=='signup'){
       if(userType=='teacher'){
         emailBodyText=`New instructor ${firstName} ${lastName} is attempting to
