@@ -7,6 +7,9 @@
   background: #eee
     /*url(https://subtlepatterns.com/patterns/extra_clean_paper.png);*/
     url(https://i.pinimg.com/originals/fc/db/a6/fcdba644c6627897a9e28b332b19d87d.png);
+
+    width: 100%;
+    height: 100%;
 }
 
 #title-screen-header {
@@ -19,7 +22,7 @@
 #logo {
   width: 100%;
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Comic Sans MS", sans-serif;
   color: rgb(255, 115, 55);
   text-decoration: none;
   text-transform: uppercase;

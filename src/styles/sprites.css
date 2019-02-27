@@ -17,7 +17,7 @@
 
 .left {
 	top: 55%;
-	left: -58%;
+	left: -57%;
 	right: 350px;
 }
 .right {
@@ -25,3 +25,16 @@
 	left: 57%;
 	right: -350px;
 }
+
+/* Positions for Tutorial */
+/*
+.left {
+	top: 55%;
+	left: -58%;
+	right: 350px;
+}
+.right {
+	top: 55%;
+	left: 57%;
+	right: -350px;
+}*/
