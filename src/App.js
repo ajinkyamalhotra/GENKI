@@ -11,6 +11,7 @@ import Progress from './components/Progress';
 import SignUp from './components/SignUp';
 import SignUpConfirmation from './components/SignUpConfirmation';
 
+
 const URL = 'http://localhost:5000';
 
 

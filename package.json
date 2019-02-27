@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.409.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "chromedriver": "^2.46.0",
@@ -23,6 +24,7 @@
     "selenium-webdriver": "^4.0.0-alpha.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0",
+    "uuid": "^3.3.2",
     "wheel-react": "^1.0.3"
   },
   "scripts": {
