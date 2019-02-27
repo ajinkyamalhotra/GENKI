@@ -29,7 +29,9 @@ const bh = require("./sprites/block-happy.png");
 const bp = require("./sprites/block-pout.png");
 const mn = require("./sprites/Mary-neutral.png");*/
 const johnStudying = require("./sprites/John-studying.png");
+const johnStudyingGif = require("./sprites/John-studying-gif.gif");
 const johnWaiter = require("./sprites/John-waiter.png");
+const managerNeutralGif = require("./sprites/Manager-neutral-gif.gif");
 const managerNeutral = require("./sprites/Manager-neutral.png");
 const yamashitaNeutral = require("./sprites/Yamashita-neutral.png");
 const maryNeutral = require("./sprites/Mary-neutral.png");
@@ -354,7 +356,7 @@ let story = [
   },
   {
     speaker: manager,
-    spriteLeft: managerNeutral,
+    spriteLeft: managerNeutralGif,
     text: "はい、「リトル・アジア」です。"
   },
   /*{
@@ -362,7 +364,8 @@ let story = [
   },*/
   {
     speaker: john,
-    spriteRight: johnStudying,
+    spriteRight: johnStudyingGif,
+    spriteLeft: managerNeutral,
     text: "私、ジョン・ワンと申します。アルバイト募集の広告を見たんですが。"
   },
   /*{
@@ -370,6 +373,8 @@ let story = [
   },*/
   {
     speaker: manager,
+    spriteLeft: managerNeutralGif,
+    spriteRight: johnStudying,
     text: "そうですか。じゃあ、会って、話しましょうか。今日店に来られますか。"
   },
   /*{
@@ -378,6 +383,8 @@ let story = [
 
   {
     speaker: john,
+    spriteRight: johnStudyingGif,
+    spriteLeft: managerNeutral,
     text: "今日はちょっと行けないんですが、あしたなら行けると思います。"
   },
   /*{
@@ -386,6 +393,8 @@ let story = [
 
   {
     speaker: manager,
+    spriteLeft: managerNeutralGif,
+    spriteRight: johnStudying,
     text: "そうですか。今日はだめですか。じゃあ、あしたの一時ごろはどうですか。"
   },
   /*{
@@ -394,6 +403,8 @@ let story = [
 
   {
     speaker: john,
+    spriteRight: johnStudyingGif,
+    spriteLeft: managerNeutral,
     text: "一時ですね。わかりました。"
   },
   /*{
