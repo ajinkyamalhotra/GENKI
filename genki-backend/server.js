@@ -8,6 +8,9 @@ const app = express();
  */
 const loginVerification = require('./loginVerification');
 const signUpVerification = require('./signUpVerification');
+const deleteUser = require('./deleteUser');
+const copyUser = require('./copyUser');
+const moveUser = require('./moveUser');
 
 // Needed in order to parse the body of a request.
 app.use(bodyParser.json());
@@ -68,7 +71,7 @@ app.post('/signUp', (req, res) => {
     res.status(401).send("Could not create a new user");
   }
   console.log(JSON.stringify(user));
-})
+});
 
 
 const port = process.env.PORT || 5000;
