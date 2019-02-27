@@ -10,6 +10,10 @@ const fs = require('fs');
  */
 const loginVerification = require('./loginVerification');
 const email = require('./email');
+const signUpVerification = require('./signUpVerification');
+const deleteUser = require('./deleteUser');
+const copyUser = require('./copyUser');
+const moveUser = require('./moveUser');
 
 // Needed in order to parse the body of a request.
 app.use(bodyParser.json());
@@ -40,112 +44,36 @@ app.post('/login', (req, res) => {
   }
 })
 
-app.post('/signup', (req, res) => {
-  console.log('received signup');
-  console.log(req.body);
-  //email.SendEmail(req.body.firstName, req.body.lastName, req.body.email, req.body.userType, 'signup');
-  var newUser = {
-      FirstName : req.body.firstName,
-      LastName : req.body.lastName,
-      Email : req.body.email,
-      UserType : req.body.userType,
-      SecretID : req.body.secretID,
-      Password : req.body.password
-  };
-  var newUserString = JSON.stringify(newUser);
-  var fileName = path.join(__dirname, 'pendingUsers',
-        req.body.firstName + req.body.lastName + '.json');
-  if(req.body.userType == "student"){
-    fs.writeFile(fileName,newUserString, (err) => {
-        if (err) throw err;
-        console.log('The file has been saved!');
-      });
-  }
-  if(req.body.userType == "teacher"){
-    fileName = path.join(__dirname, 'pendingTeachers',
-        req.body.firstName + req.body.lastName + '.json');
-        fs.writeFile(fileName,newUserString, (err) => {
-            if (err) throw err;
-            console.log('The file has been saved!');
-          });
-  }
-});
+app.post('/signUp', (req, res) => {
+  console.log('received signUp');
+  // Access all the parameters from the request
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let email = req.body.email;
+  let password = req.body.password;
+  let userType = req.body.userType;
+  let secretID = req.body.secretID;
 
-app.get('/pending', (req,res) => {
-  var dirPath = path.join(__dirname, 'pendingTeachers');
-  // make Promise version of fs.readdir()
-  fs.readdirAsync = function(dirPath) {
-      return new Promise(function(resolve, reject) {
-          fs.readdir(dirPath, function(err, filenames){
-              if (err)
-                  reject(err);
-              else
-                  resolve(filenames);
-          });
-      });
+  // Create a user object
+  const user = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    password: password,
+    userType: userType,
+    secretID: secretID
   };
 
-  // make Promise version of fs.readFile()
-  fs.readFileAsync = function(filename, enc) {
-      return new Promise(function(resolve, reject) {
-          fs.readFile(filename, enc, function(err, data){
-              if (err)
-                  reject(err);
-              else
-                  resolve(data);
-          });
-      });
-  };
-
-  // utility function, return Promise
-  function getFile(filename) {
-      return fs.readFileAsync(filename, 'utf8');
+  // Try to create a new user by calling signUpVerification.verify() method
+  let verified = signUpVerification.verify(user);
+  if (verified) {
+    console.log('Successfully created for new user.');
+    res.status(200).send("New User registered successfully");
+  } else {
+    //logging for this portion done in signUpVerification.js
+    res.status(401).send("Could not create a new user");
   }
-
-  // example of using promised version of getFile
-  // getFile('./fish1.json', 'utf8').then(function (data){
-  // console.log(data);
-  // });
-
-
-  // a function specific to my project to filter out the files I need to read and process, you can pretty much ignore or write your own filter function.
-  function isDataFile(filename) {
-    return (filename.split('.')[1] == 'json'
-            && filename.split('.')[0] != 'pendingTeachers')
-  }
-  var newFileName = path.join(__dirname, 'pendingTeachers', 'pendingTeachers.json');
-  // start a blank fishes.json file
-  fs.writeFile(newFileName, '', function(){console.log('done')});
-
-
-  // read all json files in the directory, filter out those needed to process, and using Promise.all to time when all async readFiles has completed.
-  fs.readdirAsync(dirPath).then(function (filenames){
-      filenames = filenames.filter(isDataFile);
-      console.log(filenames);
-      for(var i=0; i < filenames.length; i++){
-        filenames[i]=path.join(__dirname, 'pendingTeachers', filenames[i]);
-      }
-      return Promise.all(filenames.map(getFile));
-  }).then(function (files){
-      var summaryFiles = [];
-      files.forEach(function(file) {
-        var json_file = JSON.parse(file);
-        summaryFiles.push({ "FirstName": json_file["FirstName"],
-                            "LastName": json_file["LastName"],
-                            "Email": json_file["Email"],
-                            "UserType" : json_file["UserType"]
-                        });
-      });
-      fs.appendFile(newFileName, JSON.stringify(summaryFiles), function(err) {
-          if(err) {
-            return console.log(err);
-          }
-          console.log("The file was appended!");
-      });
-  });
-  var response = fs.readFileAsync(newFileName, 'utf8');
-  //var jsonResponse = JSON.parse(response);
-  res.send(JSON.stringify(response));
+  console.log(JSON.stringify(user));
 });
 
 
