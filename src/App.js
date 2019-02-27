@@ -11,6 +11,7 @@ import Progress from './components/Progress';
 import SignUp from './components/SignUp';
 import SignUpConfirmation from './components/SignUpConfirmation';
 
+const URL = 'http://localhost:5000';
 
 
 /**
@@ -40,7 +41,8 @@ class App extends Component {
       <div className="App">
         <Navigation />
         <div>
-          {this.state.isUser ? 'Logged In as ' + this.state.username:'Not Logged in'}
+          {this.state.isUser ?
+            'Logged In as ' + this.state.username : 'Not Logged in'}
         </div>
         <Switch>
           <Route exact path='/' component={HomePage} />
@@ -49,12 +51,17 @@ class App extends Component {
           <Route
             exact
             path='/Login'
-            render={(props) => (<Login {...props} onLogin={this.handleLogin}/>)} />
+            render={(props) => (
+              <Login {...props} onLogin={this.handleLogin}/>)} />
 
           <Route exact path='/Profile' component={Profile} />
           <Route exact path='/Progress' component={Progress} />
-          <Route exact path='/SignUp' component={SignUp} />
-          <Route exact path='/SignUpConfirmation' component={SignUpConfirmation} />
+          <Route
+            exact
+            path='/SignUp'
+            render={(props) => (<SignUp {...props} serverUrl={URL}/>)} />
+          <Route  exact path='/SignUpConfirmation'
+                  component={SignUpConfirmation} />
         </Switch>
       </div>
     );

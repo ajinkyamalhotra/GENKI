@@ -17,24 +17,29 @@ app.use(bodyParser.json());
  * and 401 if not.
  */
 app.post('/login', (req, res) => {
-    console.log('received post');
-    // Access the username and password from the request
-    let username = req.body.Username;
-    let password = req.body.Password;
-    // Create a user object
-    const user = {
-        username: username,
-        password: password
-    };
-    // Verify whether or not a user is valid
-    const verified = loginVerification.verify(user);
-    if (verified) {
-        console.log(JSON.stringify(verified));
-        res.status(200).send("Authenticated");
-    } else {
-        console.log('No Such User');
-        res.status(401).send("Could not find user");
-    }
+  console.log('received login');
+  // Access the username and password from the request
+  let username = req.body.Username;
+  let password = req.body.Password;
+  // Create a user object
+  const user = {
+    username: username,
+    password: password
+  };
+  // Verify whether or not a user is valid
+  const verified = loginVerification.verify(user);
+  if (verified) {
+    console.log(JSON.stringify(verified));
+    res.status(200).send("Authenticated");
+  } else {
+    console.log('No Such User');
+    res.status(401).send("Could not find user");
+  }
+})
+
+app.post('/signup', (req, res) => {
+  console.log('received signup');
+  console.log(req.body);
 })
 
 

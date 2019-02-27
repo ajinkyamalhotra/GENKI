@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import {Table, Image, Menu, Header, Icon} from 'semantic-ui-react';
-import HomePage from './HomePage';
-import Game from '../Game';
-import Login from './Login';
-import Profile from './Profile';
-import Progress from './Progress';
-import SignUp from './SignUp';
-import SignUpConfirmation from './SignUpConfirmation';
 import '../styles/Navigation.css';
 
 const logo= require('../images/logo with title.png');
@@ -59,7 +52,7 @@ class Navigation extends Component {
 
                     {/*<Table.HeaderCell  textAlign='left' collapsing>
                         <Link to='/'>
-                        <Header as='h1' class='header' color='orange'
+                        <Header as='h1' className='header' color='orange'
                         onClick={this.handleClickOnGENKI}>
                         GENKI </Header> </Link>
                     </Table.HeaderCell>*/}
