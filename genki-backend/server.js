@@ -145,7 +145,7 @@ app.get('/pending', (req,res) => {
   });
   var response = fs.readFileAsync(newFileName, 'utf8');
   //var jsonResponse = JSON.parse(response);
-  res.send(response);
+  res.send(JSON.stringify(response));
 });
 
 
