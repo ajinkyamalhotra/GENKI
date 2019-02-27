@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 
 class HomePage extends Component {
-  componentDidMount() {
-    console.log('component mounted, fetching');
-    fetch('/pending')
-      .then(response => {
-        console.log('got a response');
-        return response.JSON();
-        })
-      .then(data => console.log(data));
+
+  constructor(props) {
+    super(props);
+
+    this.getPendingTeachers();
   }
+
+  getPendingTeachers() {
+    var pendingTeachers;
+    console.log('fetching pending teachers');
+    fetch('/pending')
+      .then(response => response.json())
+      .then(response => console.log(response));
+  }
+
   render() {
     return (
       <div>

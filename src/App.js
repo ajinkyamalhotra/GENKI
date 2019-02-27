@@ -25,25 +25,33 @@ class App extends Component {
     super(props);
     this.state = {
       isUser: false,
-      username: ''
+      name: '',
+      userType: ''
     }
 
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin(username) {
-    this.setState({isUser: true, username});
+  handleLogin(userPromise) {
+    userPromise.then(user => {
+      console.log(user);
+      let name = user.firstName;
+      let userType = user.userType;
+      console.log('name= ' + name + ' userTyep= ' + userType);
+      this.setState({isUser: true, name, userType});
+    });
   }
 
 
   render() {
+    const userType = this.state.userType;
     return (
       // Render the Navigation component
       <div className="App">
         <Navigation />
         <div>
           {this.state.isUser ?
-            'Logged In as ' + this.state.username : 'Not Logged in'}
+            'Logged In as ' + this.state.userType  : 'Not Logged in'}
         </div>
         <Switch>
           <Route exact path='/' component={HomePage} />
@@ -55,7 +63,11 @@ class App extends Component {
             render={(props) => (
               <Login {...props} onLogin={this.handleLogin}/>)} />
 
-          <Route exact path='/Profile' component={Profile} />
+          <Route
+            exact
+            path='/Profile'
+            render={(userType) => (
+              <Profile userType={userType} />)} />
           <Route exact path='/Progress' component={Progress} />
           <Route
             exact
