@@ -9,6 +9,7 @@ import Progress from './Progress';
 import SignUp from './SignUp';
 import SignUpConfirmation from './SignUpConfirmation';
 import '../styles/Navigation.css';
+
 const logo= require('../images/logo with title.png');
 
 /**
@@ -35,9 +36,8 @@ class Navigation extends Component {
    * https://react.semantic-ui.com/collections/menu/
    */
    render() {
-      const { activeItem } = this.state
+    const { activeItem } = this.state
     return (
-      <Router>
       <div className="navigation-bar"> {
         <Table color='black' inverted attached >
             <Table.Header>
@@ -56,6 +56,7 @@ class Navigation extends Component {
                     </Table.HeaderCell>
 
                     {/*Cell to store the GENKI label header*/}
+
                     {/*<Table.HeaderCell  textAlign='left' collapsing>
                         <Link to='/'>
                         <Header as='h1' class='header' color='orange'
@@ -116,16 +117,7 @@ class Navigation extends Component {
             </Table.Header>
         </Table>
         }
-
-        <Route exact path='/' exact component={HomePage} />
-        <Route exact path='/Game' component={Game} />
-        <Route exact path='/Login' component={Login} />
-        <Route exact path='/Profile' component={Profile} />
-        <Route exact path='/Progress' component={Progress} />
-        <Route exact path='/SignUp' component={SignUp} />
-        <Route exact path='/SignUpConfirmation' component={SignUpConfirmation} />
       </div>
-    </Router>
     )
   }
 }
