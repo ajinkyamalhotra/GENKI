@@ -14,11 +14,13 @@ import SignUpConfirmation from './components/SignUpConfirmation';
 
 const URL = 'http://localhost:5000';
 
+
 /**
  * The base component of the Genki VN application.  It renders the Navigation
  * component only.
  */
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +34,7 @@ class App extends Component {
   handleLogin(username) {
     this.setState({isUser: true, username});
   }
+
 
   render() {
     return (

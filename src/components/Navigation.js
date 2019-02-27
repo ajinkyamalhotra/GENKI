@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { Link} from 'react-router-dom';
 import {Table, Image, Menu, Header, Icon} from 'semantic-ui-react';
 import '../styles/Navigation.css';
-const logo= require('../images/logo.png');
+
+const logo= require('../images/logo with title.png');
 
 /**
  * Component which contains all routing logic for the Genki VN application.
@@ -38,22 +39,23 @@ class Navigation extends Component {
                     {/*Cell add's padding to the left side of the nav bar*/}
                     <Table.HeaderCell></Table.HeaderCell>
 
-                    {/*Cell to store the GENKI logo*/}
+                    {/*Cell to store the GENKI logo with title*/}
                     <Table.HeaderCell rowSpan='2' collapsing
                     style={{padding: '0'}}>
                         <Link to='/'>
-                            <Image size='tiny' src={logo}
+                            <Image size='small' src={logo}
                             onClick={this.handleClickOnGENKI}/>
                         </Link>
                     </Table.HeaderCell>
 
                     {/*Cell to store the GENKI label header*/}
-                    <Table.HeaderCell  textAlign='left' collapsing>
+
+                    {/*<Table.HeaderCell  textAlign='left' collapsing>
                         <Link to='/'>
                         <Header as='h1' className='header' color='orange'
                         onClick={this.handleClickOnGENKI}>
                         GENKI </Header> </Link>
-                    </Table.HeaderCell>
+                    </Table.HeaderCell>*/}
 
                     {/*Cell to store the Menu-Items*/}
                     <Table.HeaderCell inverted>
