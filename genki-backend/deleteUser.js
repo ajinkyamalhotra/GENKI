@@ -10,14 +10,14 @@ module.exports = {
      * @param directory in which user object resides
      * @param user object
      */
-    verify: function(user, directory) {
+    verify: function(directory, user) {
         const email = user.email;
         const password = user.password;
 
-        let filename = './' + directory + '/' + email + password + '.json';
+        let filename = path.join(directory, email + password + '.json');
 
         //Checking if a file with exact same name exists
-        if (!fs.existsSync(path.join(__dirname, filename))){
+        if (!fs.existsSync(filename)){
 
             console.error('No file with the name ' + filename + ' exists.');
 
@@ -27,9 +27,10 @@ module.exports = {
 
         //If file exists then delete the file
         else {
-            fs.unlink(path.join(__dirname, filename), (err) => {
+            fs.unlink(filename, (err) => {
                 if (err){
                     console.error('Error while deleting '+ filename);
+                    console.error(err);
                     return false;
                 }
                 console.log('Successfully deleted '+ filename);

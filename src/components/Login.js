@@ -81,6 +81,10 @@ class Login extends Component{
           } else if (response.status === 401) {
               alert('No Such User');
           }
+          this.setState({
+            Username: '',
+            Password: ''
+          });
         }); // End fetch('/login')
     } // End else
   } // End handleClick

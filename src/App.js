@@ -37,7 +37,6 @@ class App extends Component {
       console.log(user);
       let name = user.firstName;
       let userType = user.userType;
-      console.log('name= ' + name + ' userTyep= ' + userType);
       this.setState({isUser: true, name, userType});
     });
   }
@@ -54,7 +53,11 @@ class App extends Component {
             'Logged In as ' + this.state.userType  : 'Not Logged in'}
         </div>
         <Switch>
-          <Route exact path='/' component={HomePage} />
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <HomePage userType={this.state.userType} />)} />
           <Route exact path='/Game' component={Game} />
 
           <Route
