@@ -16,12 +16,9 @@ class HomePage extends Component {
     this.PendingCards = this.PendingCards.bind(this);
     this.ApproveDeclineButtons = this.ApproveDeclineButtons.bind(this);
     this.handleApproval = this.handleApproval.bind(this);
+    this.handleDecline = this.handleDecline.bind(this);
     this.updatePending = this.updatePending.bind(this);
     this.getUser = this.getUser.bind(this);
-  }
-
-  componentDidMount() {
-    //console.log(this.props.userType);
   }
 
   getPendingTeachers() {
@@ -45,11 +42,8 @@ class HomePage extends Component {
   }
 
   handleApproval(event) {
-    console.log('event recorded');
-    console.log(event.target.id);
     const email = event.target.id;
     let approvedUser = this.getUser(email);
-    console.log(approvedUser);
     fetch('/accept', {
       method: 'POST',
       body: JSON.stringify(approvedUser),
@@ -62,7 +56,25 @@ class HomePage extends Component {
       } else if (response.status === 401) {
         alert(approvedUser.firstName + ' could not be approved.');
       }
+    });
+  }
+
+  handleDecline(event) {
+    const email = event.target.id;
+    let declinedUser = this.getUser(email);
+    fetch('/decline', {
+      method: 'POST',
+      body: JSON.stringify(declinedUser),
+      headers: {"Content-Type": "application/json"}
     })
+    .then(response => {
+      if (response.status === 200) {
+        alert(declinedUser.firstName + ' declined successfully!');
+        this.updatePending(email);
+      } else if (response.status === 401) {
+        alert(declinedUser.firstName + ' could not be declined.');
+      }
+    });
   }
 
   ApproveDeclineButtons(props) {
@@ -72,7 +84,7 @@ class HomePage extends Component {
         <Button basic color='green' id={email} onClick={this.handleApproval}>
           Approve
         </Button>
-        <Button basic color='red'>
+        <Button basic color='red' id={email} onClick={this.handleDecline}>
           Decline
         </Button>
       </div>
@@ -115,7 +127,6 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        This is the Home Page!
         <this.PendingCards userList={this.state.pendingTeachers} />
       </div>
     )

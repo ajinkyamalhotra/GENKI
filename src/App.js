@@ -37,7 +37,6 @@ class App extends Component {
       console.log(user);
       let name = user.firstName;
       let userType = user.userType;
-      console.log('name= ' + name + ' userTyep= ' + userType);
       this.setState({isUser: true, name, userType});
     });
   }
