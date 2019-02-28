@@ -6,32 +6,44 @@ module.exports = {
     var success;
     let dirPath = path.join(__dirname, 'pendingTeachers');
     // make Promise version of fs.readdir()
-    fs.readdirAsync = function(dirPath) {
+    readdirAsync = function(dirPath) {
       return new Promise(function(resolve, reject) {
-        fs.readdir(dirPath, function(err, filenames){
-          if (err)
-            reject(err);
-          else
-            resolve(filenames);
-        });
-      });
-    };
+        try{
+          fs.readdir(dirPath, function(err, filenames){
+            if (err)
+              reject(err);
+            else
+              resolve(filenames);
+          });
+        }catch (err){
+          console.error;
+        }
+      })
+    }
 
     // make Promise version of fs.readFile()
-    fs.readFileAsync = function(filename, enc) {
+    readFileAsync = function(filename, enc) {
       return new Promise(function(resolve, reject) {
-        fs.readFile(filename, enc, function(err, data){
-          if (err)
-            reject(err);
-          else
-            resolve(data);
-        });
-      });
-    };
+        try{
+          fs.readFile(filename, enc, function(err, data){
+            if (err) {
+              console.log(err);
+              reject(err);
+            }
+            else {
+              resolve(data);
+            }
+          });
+          }catch (err){
+            console.error;
+        }
+      })
+    }
+
 
     // utility function, return Promise
     function getFile(filename) {
-      return fs.readFileAsync(filename, 'utf8');
+      return readFileAsync(filename, 'utf8');
     }
 
     // example of using promised version of getFile
@@ -51,7 +63,7 @@ module.exports = {
 
 
     // read all json files in the directory, filter out those needed to process, and using Promise.all to time when all async readFiles has completed.
-    fs.readdirAsync(dirPath).then(function (filenames){
+    readdirAsync(dirPath).then(function (filenames){
       filenames = filenames.filter(isDataFile);
       console.log(filenames);
       for(let i=0; i < filenames.length; i++){
