@@ -15,14 +15,13 @@ module.exports = {
         const email = user.email;
         const password = user.password;
 
-        let filenamefrom = './' + fromDir + '/' + email + password + '.json';
-        let filenameto = './' + toDir + '/' + email + password + '.json';
+        let filenamefrom = path.join(fromDir, email + password + '.json');
+        let filenameto = path.join(toDir, email + password + '.json');
 
         //If the file exists and was successfully copied then delete the file
         //from old directory
         try{
-            fs.copyFileSync((path.join(__dirname, filenamefrom)),
-                (path.join(__dirname, filenameto)));
+            fs.copyFileSync(filenamefrom, filenameto);
 
             console.log(filenamefrom+' was successfully copied to '+toDir);
         }
@@ -32,6 +31,7 @@ module.exports = {
         catch(err){
             if (err){
                 console.error('Was not able to copy the file '+ filenamefrom);
+                console.error(err)
                 return false;
             }
         }

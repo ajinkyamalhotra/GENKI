@@ -113,12 +113,12 @@ app.get('/pending', (req,res) => {
 }) // End app.get('/pending')
 
 //moves teachers who are accepted by admin from pendingTeachers to pendingUsers
-app.post('accept', (req, res) => {
+app.post('/accept', (req, res) => {
   // Access all the parameters from the request
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
   let email = req.body.email;
-  let password = req.body.password;
+  let password = 'test';
   let userType = req.body.userType;
   let secretID = req.body.secretID;
 
@@ -152,7 +152,7 @@ app.post('declined', (req, res) => {
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
   let email = req.body.email;
-  let password = req.body.password;
+  let password = 'test';
   let userType = req.body.userType;
   let secretID = req.body.secretID;
 

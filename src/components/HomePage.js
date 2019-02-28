@@ -14,6 +14,10 @@ class HomePage extends Component {
     }
     this.getPendingTeachers = this.getPendingTeachers.bind(this);
     this.PendingCards = this.PendingCards.bind(this);
+    this.ApproveDeclineButtons = this.ApproveDeclineButtons.bind(this);
+    this.handleApproval = this.handleApproval.bind(this);
+    this.updatePending = this.updatePending.bind(this);
+    this.getUser = this.getUser.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +33,52 @@ class HomePage extends Component {
       });
   }
 
+  updatePending(email) {
+    let newPending = this.state.pendingTeachers
+                                        .filter((user) => user.email !== email);
+    this.setState({pendingTeachers: newPending});
+  }
+
+  getUser(email) {
+    let user = this.state.pendingTeachers.filter((user) => user.email===email);
+    return user[0]
+  }
+
+  handleApproval(event) {
+    console.log('event recorded');
+    console.log(event.target.id);
+    const email = event.target.id;
+    let approvedUser = this.getUser(email);
+    console.log(approvedUser);
+    fetch('/accept', {
+      method: 'POST',
+      body: JSON.stringify(approvedUser),
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(response => {
+      if (response.status === 200) {
+        alert(approvedUser.firstName + ' approved successfully!');
+        this.updatePending(email);
+      } else if (response.status === 401) {
+        alert(approvedUser.firstName + ' could not be approved.');
+      }
+    })
+  }
+
+  ApproveDeclineButtons(props) {
+    const email = props.user;
+    return(
+      <div className='ui two buttons'>
+        <Button basic color='green' id={email} onClick={this.handleApproval}>
+          Approve
+        </Button>
+        <Button basic color='red'>
+          Decline
+        </Button>
+      </div>
+    )
+  }
+
   PendingTeacherCard(user) {
     return(
       <Card key={user.email} color='orange'>
@@ -42,14 +92,7 @@ class HomePage extends Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <div className='ui two buttons'>
-            <Button basic color='green'>
-              Approve
-            </Button>
-            <Button basic color='red'>
-              Decline
-            </Button>
-          </div>
+          <this.ApproveDeclineButtons user={user.email} />
         </Card.Content>
       </Card>
     );
