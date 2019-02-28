@@ -54,7 +54,11 @@ class App extends Component {
             'Logged In as ' + this.state.userType  : 'Not Logged in'}
         </div>
         <Switch>
-          <Route exact path='/' component={HomePage} />
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <HomePage userType={this.state.userType} />)} />
           <Route exact path='/Game' component={Game} />
 
           <Route

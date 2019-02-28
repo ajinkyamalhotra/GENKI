@@ -17,7 +17,7 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state);
+    //console.log(this.props.userType);
   }
 
   getPendingTeachers() {
@@ -31,9 +31,11 @@ class HomePage extends Component {
 
   PendingTeacherCard(user) {
     return(
-      <Card key={user.email}>
+      <Card key={user.email} color='orange'>
         <Card.Content>
-          <Card.Header>{ user.firstName + ' ' + user.lastName }</Card.Header>
+          <Card.Header textAlign='left' className='cardHeader'>
+            {user.firstName + ' ' + user.lastName}
+          </Card.Header>
           <Card.Meta>New Instructor</Card.Meta>
           <Card.Description>
             {user.firstName + ' wants to be added as a new Instructor.'}
@@ -57,7 +59,7 @@ class HomePage extends Component {
     if (this.state.userType === 'admin') {
       var cards = props.userList.map((user) => this.PendingTeacherCard(user));
       return (
-        <Card.Group>
+        <Card.Group centered>
           {cards}
         </Card.Group>
       )
