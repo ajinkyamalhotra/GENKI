@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { Button, Card } from 'semantic-ui-react'
 
+/**
+ * This is the HomePage of the Genki VN App.
+ */
 class HomePage extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       userType: props.userType,
       pendingTeachers: []
     }
+    // If the user is an admin, get the pending teachers to approve
     if (props.userType === 'admin') {
       this.getPendingTeachers();
     }
+
     this.getPendingTeachers = this.getPendingTeachers.bind(this);
     this.PendingCards = this.PendingCards.bind(this);
     this.ApproveDeclineButtons = this.ApproveDeclineButtons.bind(this);
@@ -21,6 +25,10 @@ class HomePage extends Component {
     this.getUser = this.getUser.bind(this);
   }
 
+  /**
+   * Function that fetches the pending teachers from the server.
+   * They arrive as a JSON in the format pendingTeachers: []
+   */
   getPendingTeachers() {
     console.log('fetching pending teachers');
     fetch('/pending')
@@ -30,20 +38,35 @@ class HomePage extends Component {
       });
   }
 
+  /**
+   * One of the teachers should be removed from the pending list.
+   * @param  email          The email of the pending teacher to be removed
+   */
   updatePending(email) {
+    // Find all of the teachers who are NOT the teacher to be removed
     let newPending = this.state.pendingTeachers
                                         .filter((user) => user.email !== email);
+    // Update the state with the new list
     this.setState({pendingTeachers: newPending});
   }
 
+  /**
+   * Get the user information from the pendingTeachers list.
+   * @param  email          Email of the teacher to find
+   */
   getUser(email) {
     let user = this.state.pendingTeachers.filter((user) => user.email===email);
-    return user[0]
+    return user[0];
   }
 
+  /**
+   * Handle an approval event.
+   * @param  event          Event target.id holds user email
+   */
   handleApproval(event) {
     const email = event.target.id;
     let approvedUser = this.getUser(email);
+    // Approve the user
     fetch('/accept', {
       method: 'POST',
       body: JSON.stringify(approvedUser),
@@ -59,9 +82,14 @@ class HomePage extends Component {
     });
   }
 
+  /**
+   * Handle a decline event.
+   * @param  event          Declined user's email in target.id
+   */
   handleDecline(event) {
     const email = event.target.id;
     let declinedUser = this.getUser(email);
+    // Decline the user
     fetch('/decline', {
       method: 'POST',
       body: JSON.stringify(declinedUser),
@@ -77,6 +105,16 @@ class HomePage extends Component {
     });
   }
 
+  /***************************************************************************
+    Below are components designed specifically for the rendering of the
+    HomePage.  Those that include the this keyword need to be bound in the
+    constructor of this class.
+   **************************************************************************/
+
+  /**
+   * Button configuration for approval or denial.
+   * @param props       Contains the email of the user, used as id
+   */
   ApproveDeclineButtons(props) {
     const email = props.user;
     return(
@@ -91,6 +129,10 @@ class HomePage extends Component {
     )
   }
 
+  /**
+   * Pending teacher card, one for each pendingTeacher
+   * @param user      The user, contains all user info
+   */
   PendingTeacherCard(user) {
     return(
       <Card key={user.email} color='orange'>
@@ -110,8 +152,14 @@ class HomePage extends Component {
     );
   }
 
+  /**
+   * Creates the cards for all pendingTeachers.
+   * @param props         Contains the list of all pendingTeachers
+   */
   PendingCards(props) {
+    // Only generate cards if user is admin
     if (this.state.userType === 'admin') {
+      // Map each user to a card
       var cards = props.userList.map((user) => this.PendingTeacherCard(user));
       return (
         <Card.Group centered>
@@ -121,7 +169,6 @@ class HomePage extends Component {
     } else {
       return null;
     }
-
   }
 
   render() {
