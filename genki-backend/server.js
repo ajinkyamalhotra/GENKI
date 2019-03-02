@@ -81,22 +81,26 @@ app.get('/pending', (req,res) => {
   //creat file to hold all pending teachers
   let newFileName = path.join(__dirname, 'pendingTeachers', 'pendingTeachers.json');
   // TODO: Get pending.createPending() to work synchronously with the rest of this.
-  //let success = pending.createPending();
+  let success = pending.createPending();
   // make Promise version of fs.readFile()
-  fs.readFileAsync = function(filename, enc) {
+  readFileAsync = function(filename, enc) {
     return new Promise(function(resolve, reject) {
-      fs.readFile(filename, enc, function(err, data){
-        if (err) {
-          console.log(err);
-          reject(err);
-        }
-        else {
-          resolve(data);
-        }
-      });
+      try{
+        fs.readFile(filename, enc, function(err, data){
+          if (err) {
+            console.log(err);
+            reject(err);
+          }
+          else {
+            resolve(data);
+          }
+        });
+      }catch (err){
+        console.error;
+      }
     });
   };
-  let response = fs.readFileAsync(newFileName, 'utf8');
+  let response = readFileAsync(newFileName, 'utf8');
   //returns true if file was created successfully, false otherwise
 
   response.then(data => {
@@ -109,7 +113,7 @@ app.get('/pending', (req,res) => {
       console.log('There was a problem');
       res.status(401).send("File failed to create correctly.")
     }
-  })
+  }).catch(console.error)
 }) // End app.get('/pending')
 
 //moves teachers who are accepted by admin from pendingTeachers to pendingUsers
