@@ -29,7 +29,6 @@ class SignUp extends Component{
 
     this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.RadioButtons = this.RadioButtons.bind(this);
     this.NameInput = this.NameInput.bind(this);
     this.SecretIDInput = this.SecretIDInput.bind(this);
@@ -57,9 +56,7 @@ class SignUp extends Component{
           family_name: this.state.lastName
         }
       });
-      this.setState({
-        newUser
-      });
+      console.log(newUser);
     } catch (e) {
       alert(e.message);
     }

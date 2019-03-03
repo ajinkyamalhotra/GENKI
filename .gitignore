@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 /genki-backend/node_modules
+jspm_packages
+.serverless
 
 # testing
 /coverage

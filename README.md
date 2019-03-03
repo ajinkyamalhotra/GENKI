@@ -22,6 +22,8 @@ This project is now based in the AWS ecosystem.  In order to proceed, please do 
     * Region: `us-west-2`
     * Then use your Access Key and Secret Key as needed.  All other defaults are fine.
 
+*Note:* You will likely be unable to use Windows PowerShell to deploy this code and will instead need to use just a command prompt.
+
 
 ## Usage
 
