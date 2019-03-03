@@ -117,12 +117,12 @@ app.get('/pending', (req,res) => {
 }) // End app.get('/pending')
 
 //moves teachers who are accepted by admin from pendingTeachers to pendingUsers
-app.post('accept', (req, res) => {
+app.post('/accept', (req, res) => {
   // Access all the parameters from the request
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
   let email = req.body.email;
-  let password = req.body.password;
+  let password = 'test';
   let userType = req.body.userType;
   let secretID = req.body.secretID;
 
@@ -151,12 +151,12 @@ app.post('accept', (req, res) => {
 })
 
 //deletes teacher who the admin declines verification
-app.post('declined', (req, res) => {
+app.post('/decline', (req, res) => {
   // Access all the parameters from the request
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
   let email = req.body.email;
-  let password = req.body.password;
+  let password = 'test';
   let userType = req.body.userType;
   let secretID = req.body.secretID;
 
@@ -171,7 +171,7 @@ app.post('declined', (req, res) => {
   };
 
   let dirPath = path.join(__dirname, 'pendingTeachers');
-  let verified = deleteUser.verify(user, dirPath);
+  let verified = deleteUser.verify(dirPath, user);
   if (verified) {
     console.log('Successfully declined teacher');
     res.status(200).send("Teacher declined successfully");
