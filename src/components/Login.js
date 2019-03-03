@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
-<<<<<<< HEAD
-
-=======
 import { Auth } from "aws-amplify";
->>>>>>> JoshuaMessaging
 import '../styles/Login.css';
 
 /**
@@ -57,44 +53,8 @@ class Login extends Component{
    */
   handleSignup = (event) => {
     // If the SignUp button was clicked, switch to the SignUp component
-<<<<<<< HEAD
-    if (event.target.id === 'signup') {
-        console.log('signup clicked');
-        this.props.history.push('/SignUp');
-    } else {
-        console.log('login clicked');
-        let username = this.state.Username;
-        let password = this.state.Password;
-
-        // The fetch function is built in and queries the backend by sending
-        // the username and password typed in.
-        // It chains together the fetch with .then to determine the appropriate
-        // action based on the response.
-        fetch('/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                Username: username,
-                Password: password
-            }),
-            headers: {"Content-Type": "application/json"}
-        })
-        .then(response => {
-          if (response.status === 200) {
-              alert('Logged In!');
-              this.props.onLogin(response.json());
-          } else if (response.status === 401) {
-              alert('No Such User');
-          }
-          this.setState({
-            Username: '',
-            Password: ''
-          });
-        }); // End fetch('/login')
-    } // End else
-=======
     console.log('signup clicked');
     this.props.history.push('/SignUp');
->>>>>>> JoshuaMessaging
   } // End handleClick
   
 
