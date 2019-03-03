@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
+
 import '../styles/Login.css';
 
 /**
@@ -26,7 +27,6 @@ class Login extends Component{
    * Deletes any entry into the text fields when component is unmounted.
    */
   componentWillUnmount() {
-    console.log('Unmounting');
     this.setState({
       Username: '',
       Password: ''
@@ -62,11 +62,11 @@ class Login extends Component{
         console.log('login clicked');
         let username = this.state.Username;
         let password = this.state.Password;
+
         // The fetch function is built in and queries the backend by sending
         // the username and password typed in.
         // It chains together the fetch with .then to determine the appropriate
         // action based on the response.
-
         fetch('/login', {
             method: 'POST',
             body: JSON.stringify({
@@ -76,15 +76,19 @@ class Login extends Component{
             headers: {"Content-Type": "application/json"}
         })
         .then(response => {
-            if (response.status === 200) {
-                alert('Logged In!');
-                this.props.onLogin(username);
-            } else if (response.status === 401) {
-                alert('No Such User');
-            }
-        });
-    }
-  };
+          if (response.status === 200) {
+              alert('Logged In!');
+              this.props.onLogin(response.json());
+          } else if (response.status === 401) {
+              alert('No Such User');
+          }
+          this.setState({
+            Username: '',
+            Password: ''
+          });
+        }); // End fetch('/login')
+    } // End else
+  } // End handleClick
 
   /***************************************************************************
     Below are components designed specifically for the rendering of the login
@@ -210,4 +214,3 @@ class Login extends Component{
 }
 
 export default Login;
-

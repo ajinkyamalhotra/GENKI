@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
   createPending : function(){
+    var success;
     let dirPath = path.join(__dirname, 'pendingTeachers');
     // make Promise version of fs.readdir()
     fs.readdirAsync = function(dirPath) {
@@ -58,10 +59,12 @@ module.exports = {
       }
         return Promise.all(filenames.map(getFile));
     }).then(function (files){
-        let summaryFiles = [];
+        let summaryFiles = {
+          pendingTeachers: []
+        };
         files.forEach(function(file) {
           let json_file = JSON.parse(file);
-          summaryFiles.push({ "firstName": json_file["firstName"],
+          summaryFiles.pendingTeachers.push({ "firstName": json_file["firstName"],
                               "lastName": json_file["lastName"],
                               "email": json_file["email"],
                               "userType" : json_file["userType"]
@@ -69,12 +72,13 @@ module.exports = {
         });
         fs.appendFile(newFileName, JSON.stringify(summaryFiles), function(err) {
           if(err) {
-            return console.log(err);
-            return false;
+            console.log(err);
+            success = false;
           }
           console.log("The file was appended!");
-          return true;
+          success = true;
         });
     });
+    return success;
   }
 }

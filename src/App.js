@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation';
-//import NavigationHome from './components/NavigationHome';
-import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import Game from './Game';
@@ -11,8 +9,7 @@ import Progress from './components/Progress';
 import SignUp from './components/SignUp';
 import SignUpConfirmation from './components/SignUpConfirmation';
 
-
-const URL = 'http://localhost:5000';
+import './App.css';
 
 
 /**
@@ -25,28 +22,45 @@ class App extends Component {
     super(props);
     this.state = {
       isUser: false,
-      username: ''
+      name: '',
+      userType: ''
     }
 
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin(username) {
-    this.setState({isUser: true, username});
+  /**
+   * Function passed to the login component meant to handle a login event.
+   * @param  userPromise          The login component passes back a Promise
+   */
+   handleLogin(userPromise) {
+    userPromise.then(user => {
+      console.log(user);
+      let name = user.firstName;
+      let userType = user.userType;
+      this.setState({isUser: true, name, userType});
+    });
   }
 
 
   render() {
+    const userType = this.state.userType;
     return (
       // Render the Navigation component
       <div className="App">
         <Navigation />
         <div>
           {this.state.isUser ?
-            'Logged In as ' + this.state.username : 'Not Logged in'}
+            'Logged In as ' + this.state.userType  : 'Not Logged in'}
         </div>
+
         <Switch>
-          <Route exact path='/' component={HomePage} />
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <HomePage userType={this.state.userType} />)} />
+
           <Route exact path='/Game' component={Game} />
 
           <Route
@@ -55,14 +69,25 @@ class App extends Component {
             render={(props) => (
               <Login {...props} onLogin={this.handleLogin}/>)} />
 
-          <Route exact path='/Profile' component={Profile} />
+          <Route
+            exact
+            path='/Profile'
+            render={(userType) => (
+              <Profile userType={userType} />)} />
+
           <Route exact path='/Progress' component={Progress} />
+
           <Route
             exact
             path='/SignUp'
-            render={(props) => (<SignUp {...props} serverUrl={URL}/>)} />
-          <Route  exact path='/SignUpConfirmation'
-                  component={SignUpConfirmation} />
+            render={(props) => (
+              <SignUp {...props}/>)} />
+
+          <Route
+            exact
+            path='/SignUpConfirmation'
+            component={SignUpConfirmation} />
+
         </Switch>
       </div>
     );

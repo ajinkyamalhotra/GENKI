@@ -37,7 +37,7 @@ app.post('/login', (req, res) => {
   const verified = loginVerification.verify(user);
   if (verified) {
     console.log(JSON.stringify(verified));
-    res.status(200).send("Authenticated");
+    res.status(200).json(verified);
   } else {
     console.log('No Such User');
     res.status(401).send("Could not find user");
@@ -77,37 +77,48 @@ app.post('/signUp', (req, res) => {
 })
 
 app.get('/pending', (req,res) => {
+  console.log('received pending get');
   //creat file to hold all pending teachers
   let newFileName = path.join(__dirname, 'pendingTeachers', 'pendingTeachers.json');
+  // TODO: Get pending.createPending() to work synchronously with the rest of this.
+  //let success = pending.createPending();
   // make Promise version of fs.readFile()
   fs.readFileAsync = function(filename, enc) {
     return new Promise(function(resolve, reject) {
       fs.readFile(filename, enc, function(err, data){
-        if (err)
+        if (err) {
+          console.log(err);
           reject(err);
-        else
+        }
+        else {
           resolve(data);
+        }
       });
     });
   };
   let response = fs.readFileAsync(newFileName, 'utf8');
   //returns true if file was created successfully, false otherwise
-  let success = pending.createPending();
-  if(success){
-    console.log('File successfully created');
-    res.status(200).send(JSON.stringify(response));
-  } else {
-    res.status(401).send("File failed to create correctly.")
-  }
-})
+
+  response.then(data => {
+    data = JSON.parse(data);
+    console.log(data);
+    if(data){
+      console.log('File successfully created');
+      res.status(200).json(data);
+    } else {
+      console.log('There was a problem');
+      res.status(401).send("File failed to create correctly.")
+    }
+  })
+}) // End app.get('/pending')
 
 //moves teachers who are accepted by admin from pendingTeachers to pendingUsers
-app.post('accept', (req, res) => {
+app.post('/accept', (req, res) => {
   // Access all the parameters from the request
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
   let email = req.body.email;
-  let password = req.body.password;
+  let password = 'test';
   let userType = req.body.userType;
   let secretID = req.body.secretID;
 
@@ -136,12 +147,12 @@ app.post('accept', (req, res) => {
 })
 
 //deletes teacher who the admin declines verification
-app.post('declined', (req, res) => {
+app.post('/decline', (req, res) => {
   // Access all the parameters from the request
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
   let email = req.body.email;
-  let password = req.body.password;
+  let password = 'test';
   let userType = req.body.userType;
   let secretID = req.body.secretID;
 
@@ -156,7 +167,7 @@ app.post('declined', (req, res) => {
   };
 
   let dirPath = path.join(__dirname, 'pendingTeachers');
-  let verified = deleteUser.verify(user, dirPath);
+  let verified = deleteUser.verify(dirPath, user);
   if (verified) {
     console.log('Successfully declined teacher');
     res.status(200).send("Teacher declined successfully");

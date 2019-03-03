@@ -31,6 +31,8 @@
     "start": "concurrently \"react-scripts start\" \"cd genki-backend && npm start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://genki-vn-beta --delete",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
