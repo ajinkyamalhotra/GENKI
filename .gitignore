@@ -2,5 +2,33 @@
 node_modules
 jspm_packages
 
+<<<<<<< HEAD
 # Serverless directories
 .serverless
+=======
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+/genki-backend/node_modules
+jspm_packages
+.serverless
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+>>>>>>> 54336bf03e4dd7b086298956bf7e4289260c499e

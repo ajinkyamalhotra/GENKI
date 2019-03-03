@@ -29,7 +29,6 @@ class SignUp extends Component{
 
     this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.RadioButtons = this.RadioButtons.bind(this);
     this.NameInput = this.NameInput.bind(this);
     this.SecretIDInput = this.SecretIDInput.bind(this);
@@ -50,11 +49,14 @@ class SignUp extends Component{
     try {
       const newUser = await Auth.signUp({
         username: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        attributes: {
+          email: this.state.email,
+          name: this.state.firstName,
+          family_name: this.state.lastName
+        }
       });
-      this.setState({
-        newUser
-      });
+      console.log(newUser);
     } catch (e) {
       alert(e.message);
     }

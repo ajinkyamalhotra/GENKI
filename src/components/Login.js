@@ -20,6 +20,8 @@ class Login extends Component{
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
     this.FormField = this.FormField.bind(this);
     this.ButtonOptions = this.ButtonOptions.bind(this);
   }
@@ -51,6 +53,7 @@ class Login extends Component{
    * @param event           The Button click.
    */
   handleSignup = (event) => {
+    event.preventDefault();
     // If the SignUp button was clicked, switch to the SignUp component
     console.log('signup clicked');
     this.props.history.push('/SignUp');
@@ -60,13 +63,13 @@ class Login extends Component{
   handleLogin = async event => {
   event.preventDefault();
 
-  try {
-    await Auth.signIn(this.state.email, this.state.password);
-    alert("Logged in");
-  } catch (e) {
-    alert(e.message);
+    try {
+      await Auth.signIn(this.state.email, this.state.password);
+      alert("Logged in");
+    } catch (e) {
+      alert(e.message);
+    }
   }
-}
 
   /***************************************************************************
     Below are components designed specifically for the rendering of the login
