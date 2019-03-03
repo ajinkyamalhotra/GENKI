@@ -50,7 +50,12 @@ class SignUp extends Component{
     try {
       const newUser = await Auth.signUp({
         username: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        attributes: {
+          email: this.state.email,
+          name: this.state.firstName,
+          family_name: this.state.lastName
+        }
       });
       this.setState({
         newUser

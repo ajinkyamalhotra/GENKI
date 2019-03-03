@@ -32,7 +32,7 @@ All testing can be done locally assuming you have your AWS credentials set up.
 
 ##### Deployment
 Scripts for deployment are already present in the `package.json`.
-1.  Simply run `npm run build`.
+1.  Simply run `npm run deploy`.
 1.  Verify changes by navigating to http://genki-vn-beta.s3-website-us-west-2.amazonaws.com
 
 ## Project Structure
