@@ -1,0 +1,10 @@
+.virtualClassForm{
+    margin: auto;
+    min-width: 20%;
+    padding: 15px;
+    background-color: black;
+}
+.page{
+    height: 95vh;
+    background-color: orange;
+}

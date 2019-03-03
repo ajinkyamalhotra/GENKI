@@ -20,7 +20,6 @@ class Login extends Component{
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.FormField = this.FormField.bind(this);
     this.ButtonOptions = this.ButtonOptions.bind(this);
   }
@@ -56,7 +55,7 @@ class Login extends Component{
     console.log('signup clicked');
     this.props.history.push('/SignUp');
   } // End handleClick
-  
+
 
   handleLogin = async event => {
   event.preventDefault();
@@ -120,13 +119,13 @@ class Login extends Component{
           <this.GenkiButton color='orange'
                             type='Submit'
                             id='submit'
-                            onClick={this.handleClick}/>
+                            onClick={this.handleLogin}/>
 
           <this.GenkiButton floated='right'
                             color='orange'
                             type='Signup'
                             id='signup'
-                            onClick={this.handleClick}/>
+                            onClick={this.handleSignup}/>
         </div>
       )
   }
