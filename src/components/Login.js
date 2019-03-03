@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
-
+import { Auth } from "aws-amplify";
 import '../styles/Login.css';
 
 /**
@@ -17,8 +17,11 @@ class Login extends Component{
     };
 
     // Binding of functions to be able to access this
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
     this.FormField = this.FormField.bind(this);
     this.ButtonOptions = this.ButtonOptions.bind(this);
   }
@@ -46,49 +49,27 @@ class Login extends Component{
   }
 
   /**
-   * Handles the click from either the SignUp button or the Login button.
-   * If it is a Login button, it uses the builtin fetch function to query
-   * the backend.
-   *
-   * Read more about fetch here (https://github.github.io/fetch/)
+   * Handles the click from the SignUp button.
    * @param event           The Button click.
    */
-  handleClick = (event) => {
+  handleSignup = (event) => {
+    event.preventDefault();
     // If the SignUp button was clicked, switch to the SignUp component
-    if (event.target.id === 'signup') {
-        console.log('signup clicked');
-        this.props.history.push('/SignUp');
-    } else {
-        console.log('login clicked');
-        let username = this.state.Username;
-        let password = this.state.Password;
-
-        // The fetch function is built in and queries the backend by sending
-        // the username and password typed in.
-        // It chains together the fetch with .then to determine the appropriate
-        // action based on the response.
-        fetch('/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                Username: username,
-                Password: password
-            }),
-            headers: {"Content-Type": "application/json"}
-        })
-        .then(response => {
-          if (response.status === 200) {
-              alert('Logged In!');
-              this.props.onLogin(response.json());
-          } else if (response.status === 401) {
-              alert('No Such User');
-          }
-          this.setState({
-            Username: '',
-            Password: ''
-          });
-        }); // End fetch('/login')
-    } // End else
+    console.log('signup clicked');
+    this.props.history.push('/SignUp');
   } // End handleClick
+
+
+  handleLogin = async event => {
+  event.preventDefault();
+
+    try {
+      await Auth.signIn(this.state.email, this.state.password);
+      alert("Logged in");
+    } catch (e) {
+      alert(e.message);
+    }
+  }
 
   /***************************************************************************
     Below are components designed specifically for the rendering of the login
@@ -141,13 +122,13 @@ class Login extends Component{
           <this.GenkiButton color='orange'
                             type='Submit'
                             id='submit'
-                            onClick={this.handleClick}/>
+                            onClick={this.handleLogin}/>
 
           <this.GenkiButton floated='right'
                             color='orange'
                             type='Signup'
                             id='signup'
-                            onClick={this.handleClick}/>
+                            onClick={this.handleSignup}/>
         </div>
       )
   }

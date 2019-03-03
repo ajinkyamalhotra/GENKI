@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "aws-amplify": "^1.1.19",
+    "aws-sdk": "^2.409.0",
+>>>>>>> 54336bf03e4dd7b086298956bf7e4289260c499e
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "chromedriver": "^2.46.0",
@@ -30,6 +35,8 @@
     "start": "concurrently \"react-scripts start\" \"cd genki-backend && npm start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://genki-vn-beta --delete",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

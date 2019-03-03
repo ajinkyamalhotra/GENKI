@@ -1,0 +1,29 @@
+service: genki-vn-api
+
+# Use the serverless-webpack plugin to transpile ES6
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+# serverless-webpack configuration
+# Enable auto-packing of external modules
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: prod
+  region: us-west-2
+
+functions:
+  addUserToGroup:
+    handler: addUserToGroup.main
+    events:
+      - http:
+          path: group
+          method: post
+          cors: true
+          authorizer: aws_iam

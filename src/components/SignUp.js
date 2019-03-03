@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
+import { Auth } from "aws-amplify";
 import axios from 'axios';
 import '../styles/SignUp.css';
 
@@ -26,8 +27,8 @@ class SignUp extends Component{
       secretID: ''
     }
 
+    this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.RadioButtons = this.RadioButtons.bind(this);
     this.NameInput = this.NameInput.bind(this);
     this.SecretIDInput = this.SecretIDInput.bind(this);
@@ -41,42 +42,42 @@ class SignUp extends Component{
    * Pre-Req: All necessary portions of the form are filled in and validated.
    * @param event           The submission event
    */
-  handleClick = (event) => {
-    console.log('login clicked');
-    let firstName = this.state.firstName;
-    let lastName = this.state.lastName;
-    let email = this.state.email;
-    let password = this.state.password;
-    let userType = this.state.userType;
-    let secretID = this.state.secretID;
 
-    // The fetch function is built in and queries the backend by sending
-    // all the paremters that were typed in the form.
-    // It chains together the fetch with .then to determine the appropriate
-    // action based on the response.
-    fetch('/signUp', {
-      method: 'POST',
-      body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        userType: userType,
-        secretID: secretID
-      }),
-      headers: {"Content-Type": "application/json"}
-    })
-      .then(response => {
-        if (response.status === 200) {
-          this.props.history.push('/SignUpConfirmation');
-        } else if (response.status === 401) {
-          alert('Not able to register new user. Please try a different ' +
-              'username/password combination');
-        }
-      })
+  handleSignup = async event => {
     event.preventDefault();
-  };
 
+    try {
+      const newUser = await Auth.signUp({
+        username: this.state.email,
+        password: this.state.password,
+        attributes: {
+          email: this.state.email,
+          name: this.state.firstName,
+          family_name: this.state.lastName
+        }
+      });
+      console.log(newUser);
+    } catch (e) {
+      alert(e.message);
+    }
+
+  }
+/*
+  handleConfirmationSubmit = async event => {
+    event.preventDefault();
+
+
+    try {
+      await Auth.confirmSignUp(this.state.email, this.state.confirmationCode);
+      await Auth.signIn(this.state.email, this.state.password);
+
+      this.props.userHasAuthenticated(true);
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e.message);
+    }
+  }
+*/
   /**
    * Function that handles all changes to the form.
    * @param e           Event
@@ -260,7 +261,7 @@ class SignUp extends Component{
               color='orange'
               type='Signup'
               disabled={!isEnabled}
-              onClick={this.handleClick}>
+              onClick={this.handleSignup}>
         Signup
       </Button>
     )
