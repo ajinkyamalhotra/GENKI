@@ -9,7 +9,9 @@ class VirtualClassForm extends Component{
     super(props);
     this.state = {
       ClassName: '',
-      Section: ''
+      Section: '',
+      Teacher: '',
+      ClassID: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +23,9 @@ class VirtualClassForm extends Component{
   componentWillUnmount() {
     this.setState = {
       ClassName: '',
-      Section: ''
+      Section: '',
+      Teacher: '',
+      ClassID: ''
     }
   }
 
@@ -38,7 +42,16 @@ class VirtualClassForm extends Component{
   }
 
   handleSubmit = (event) => {
+    let className = this.state.className;
+    let section = this.state.section;
 
+    let teacher = ;
+    this.setState={
+      ClassName: className,
+      Section: section,
+      ClassID: '',
+      Teacher: teacher
+    }
   }
   /**
    * Returns a Form.Field Semantic UI component.
