@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link} from 'react-router-dom';
-import {Table, Image, Menu, Header, Icon} from 'semantic-ui-react';
+import {Table, Image, Menu, Icon} from 'semantic-ui-react';
 import '../styles/Navigation.css';
 
 const logo= require('../images/logo with title.png');
