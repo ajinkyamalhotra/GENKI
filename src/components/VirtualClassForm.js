@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
+import { API } from 'aws-amplify';
 
 import '../styles/VirtualClassForm.css';
 
@@ -10,22 +11,21 @@ class VirtualClassForm extends Component{
     this.state = {
       ClassName: '',
       Section: '',
-      Teacher: '',
-      ClassID: ''
+      Teacher: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.FormField = this.FormField.bind(this);
     this.ButtonOptions = this.ButtonOptions.bind(this);
+    this.createClass = this.createClass.bind(this);
   }
 
   componentWillUnmount() {
     this.setState = {
       ClassName: '',
       Section: '',
-      Teacher: '',
-      ClassID: ''
+      Teacher: ''
     }
   }
 
@@ -41,17 +41,26 @@ class VirtualClassForm extends Component{
     this.setState({[key]: event.target.value});
   }
 
-  handleSubmit = (event) => {
-    let className = this.state.className;
-    let section = this.state.section;
-
-    let teacher = ;
-    this.setState={
-      ClassName: className,
-      Section: section,
-      ClassID: '',
+  async handleSubmit = (event) => {
+    event.preventDefault();
+    //TODO: get teacher firstName and lastName
+    let teacher = firstName + ' ' + lastName;
+    let data = {
+      ClassName: this.state.className,
+      Section: this.state.section,
       Teacher: teacher
     }
+    try {
+      await this.createClass(data);
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e);
+    }
+
+  }
+
+  createClass(data){
+    return (API.post('genki-vn-beta', '/createVirtualClass', data));
   }
   /**
    * Returns a Form.Field Semantic UI component.

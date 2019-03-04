@@ -27,7 +27,22 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
-
+  createVirtualClass:
+    handler: createVirtualClass.main
+    events:
+      - http:
+          path: createVirtualClass
+          method: post
+          cors: true
+          authorizer: aws_iam
+  announcement:
+    handler: announcement.main
+    events:
+      - http:
+          path: announcement
+          method: post
+          cors: true
+          authroize: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
   # API Gateway Errors
