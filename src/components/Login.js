@@ -4,6 +4,8 @@ import { Icon, Divider} from 'semantic-ui-react';
 import { Auth } from "aws-amplify";
 import '../styles/Login.css';
 
+var jwt = require('jsonwebtoken');
+
 /**
  * Login component of Genki VN.  Communicates with backend server to verify
  * users.  Also includes routing to a signup page.
@@ -12,8 +14,8 @@ class Login extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      Username: '',
-      Password: ''
+      email: '',
+      password: ''
     };
 
     // Binding of functions to be able to access this
@@ -31,8 +33,8 @@ class Login extends Component{
    */
   componentWillUnmount() {
     this.setState({
-      Username: '',
-      Password: ''
+      email: '',
+      password: ''
     });
   }
 
@@ -62,10 +64,15 @@ class Login extends Component{
 
   handleLogin = async event => {
   event.preventDefault();
-
     try {
       await Auth.signIn(this.state.email, this.state.password);
-      alert("Logged in");
+      let user = await Auth.currentAuthenticatedUser();
+      const { attributes } = user;
+      console.log(user);
+      console.log(attributes);
+      var decoded = jwt.decode(user.signInUserSession.accessToken.jwtToken);
+      console.log(decoded);
+      this.props.onLogin(attributes);
     } catch (e) {
       alert(e.message);
     }
@@ -82,8 +89,8 @@ class Login extends Component{
    * @param props       Includes the color, name, and label for the field.
    */
   FormField(props) {
-    const stateField = (props.label === 'Username') ?
-                                    this.state.Username : this.state.Password;
+    const stateField = (props.label === 'email') ?
+                                    this.state.email : this.state.password;
     return (
       <Form.Field>
         <this.Label color={props.color}
@@ -169,15 +176,15 @@ class Login extends Component{
                             <this.FormField
                               color='orange'
                               name='user circle'
-                              label='Username'
+                              label='email'
                               type='text'
-                              placeholder='Username'
+                              placeholder='Email'
                             />
                             <Divider />
                             <this.FormField
                               color='orange'
                               name='lock circle'
-                              label='Password'
+                              label='password'
                               type='password'
                               placeholder='Password'
                             />

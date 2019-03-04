@@ -59,7 +59,9 @@ class SignUp extends Component{
         }
       });
       console.log(newUser);
-
+      let username = newUser.userSub;
+      console.log(username);
+      this.setState({ username: username });
     } catch (e) {
       console.log(e);
     }
@@ -72,7 +74,7 @@ class SignUp extends Component{
     let path = '/group';
     let params = {
       body: {
-        email: this.state.Email,
+        username: this.state.username,
         userType: this.state.userType,
         userPoolId: config.cognito.USER_POOL_ID
       }
@@ -128,7 +130,7 @@ class SignUp extends Component{
     const re = new RegExp([
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@/,
       /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+/,
-      /(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/
+      /(?:[A-Z]{2}|edu|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/
     ].map(r => r.source).join(''));
     return re.test(email);
   }
