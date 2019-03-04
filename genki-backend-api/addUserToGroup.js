@@ -17,10 +17,11 @@ export function main (event, context, callback) {
       UserPoolId: data.userPoolId,
       Username: data.username
     };
-    if (params.GroupName === 'student') {
-      params.GroupName = 'students';
-    } else if (params.GroupName === 'teacher') {
-      params.GroupName = 'pendingTeachers';
+    if (params.GroupName === 'admin') {
+      throw new Error('IllegalArgument: Cannot signup as type \'admin\'.');
+    }
+    if (params.GroupName === 'teacher') {
+      params.GroupName = 'pendingTeacher';
     }
     if (params.GroupName) {
       console.log(params);

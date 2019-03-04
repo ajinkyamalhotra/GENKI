@@ -31,15 +31,15 @@ class App extends Component {
    * Function passed to the login component meant to handle a login event.
    * @param  userPromise          The login component passes back a Promise
    */
-   handleLogin(userAttributes) {
-     let username = userAttributes.sub;
-     let email = userAttributes.email;
-     let firstName = userAttributes.name;
-     let lastName = userAttributes.family_name;
+  handleLogin(userAttributes, userType) {
+    let username = userAttributes.sub;
+    let email = userAttributes.email;
+    let firstName = userAttributes.name;
+    let lastName = userAttributes.family_name;
 
-     this.setState({ isUser: true, username, email, firstName, lastName });
-     console.log(username + ' ' + email + ' ' + firstName + ' ' + lastName);
-   }
+    this.setState({ isUser: true, username, email, firstName, lastName, userType });
+    console.log(username + ' ' + email + ' ' + firstName + ' ' + lastName + ' ' + userType);
+  }
 
 
    render() {

@@ -70,9 +70,9 @@ class Login extends Component{
       const { attributes } = user;
       console.log(user);
       console.log(attributes);
-      var decoded = jwt.decode(user.signInUserSession.accessToken.jwtToken);
-      console.log(decoded);
-      this.props.onLogin(attributes);
+      let decoded = jwt.decode(user.signInUserSession.accessToken.jwtToken);
+      let userType = decoded['cognito:groups'];
+      this.props.onLogin(attributes, userType[0]);
     } catch (e) {
       alert(e.message);
     }
