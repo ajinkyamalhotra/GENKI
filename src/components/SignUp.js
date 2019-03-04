@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router} from 'react-router-dom';
 import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
-import { Auth } from "aws-amplify";
-import axios from 'axios';
+import { Auth, API } from "aws-amplify";
+import config from '../config';
 import '../styles/SignUp.css';
-
-const path = require('path');
 
 /**
  * SignUp form to become a member of the GenkiVN website.
@@ -24,7 +21,9 @@ class SignUp extends Component{
       confirmedPassword: '',
       passwordsMatch: true,
       userType: '',
-      secretID: ''
+      secretID: '',
+      isSigningUp: false,
+      confirmationCode: ''
     }
 
     this.handleSignup = this.handleSignup.bind(this);
@@ -35,6 +34,9 @@ class SignUp extends Component{
     this.EmailInput = this.EmailInput.bind(this);
     this.PasswordInput = this.PasswordInput.bind(this);
     this.SignUpButton = this.SignUpButton.bind(this);
+    this.handleConfirmationSubmit = this.handleConfirmationSubmit.bind(this);
+    this.ConfirmationCodeInput = this.ConfirmationCodeInput.bind(this);
+    this.SignUpForm = this.SignUpForm.bind(this);
   }
 
   /**
@@ -43,9 +45,9 @@ class SignUp extends Component{
    * @param event           The submission event
    */
 
-  handleSignup = async event => {
+  async handleSignup(event) {
     event.preventDefault();
-
+    this.setState({ isSigningUp: true });
     try {
       const newUser = await Auth.signUp({
         username: this.state.email,
@@ -57,27 +59,42 @@ class SignUp extends Component{
         }
       });
       console.log(newUser);
+
     } catch (e) {
-      alert(e.message);
+      console.log(e);
     }
 
   }
-/*
-  handleConfirmationSubmit = async event => {
+
+  moveUserToGroup() {
+    console.log('Moving User To Group');
+    let apiName = 'genki-vn-beta';
+    let path = '/group';
+    let params = {
+      body: {
+        email: this.state.Email,
+        userType: this.state.userType,
+        userPoolId: config.cognito.USER_POOL_ID
+      }
+    }
+    return API.post(apiName, path, params);
+  }
+
+  async handleConfirmationSubmit(event) {
     event.preventDefault();
-
-
     try {
+      console.log('Confirming Signup');
       await Auth.confirmSignUp(this.state.email, this.state.confirmationCode);
+      console.log('Signing in');
       await Auth.signIn(this.state.email, this.state.password);
-
-      this.props.userHasAuthenticated(true);
+      console.log('Moving user to appropriate group');
+      await this.moveUserToGroup();
       this.props.history.push("/");
     } catch (e) {
-      alert(e.message);
+      alert(e);
     }
   }
-*/
+
   /**
    * Function that handles all changes to the form.
    * @param e           Event
@@ -115,6 +132,8 @@ class SignUp extends Component{
     ].map(r => r.source).join(''));
     return re.test(email);
   }
+
+
 
   /***************************************************************************
     Below are components designed specifically for the rendering of the SignUp
@@ -201,7 +220,6 @@ class SignUp extends Component{
    * Returns the input for email.
    */
   EmailInput() {
-    const email = this.state.email;
     return (
       <Form.Field>
           <label size='huge'>
@@ -267,7 +285,46 @@ class SignUp extends Component{
     )
   }
 
+  SignUpForm() {
+    return (
+      <Form inverted className='signUpButtonAlignment'>
+        <this.RadioButtons />
+        <Divider />
+        <this.NameInput />
+        <Divider />
+        <this.SecretIDInput />
+        <Divider />
+        <this.EmailInput />
+        <Divider />
+        <this.PasswordInput />
+        <Divider />
+        <this.SignUpButton />
+      </Form>
+    )
+  }
+
+  ConfirmationCodeInput() {
+    return (
+      <Form inverted>
+        <Form.Input fluid label='Confirmation'
+                    icon='key'
+                    placeholder='Confirmation Code'
+                    name='confirmationCode'
+                    value={this.state.confirmationCode}
+                    onChange={this.handleChange}/>
+        <Button size='big'
+                compact fluid
+                color='orange'
+                type='submit'
+                onClick={this.handleConfirmationSubmit}>
+          Submit
+        </Button>
+      </Form>
+    )
+  }
+
   render(){
+    const isSigningUp = this.state.isSigningUp;
     return(
       <div className='page'>
         <Grid  padded='vertically'>
@@ -281,19 +338,8 @@ class SignUp extends Component{
                 </Header>
               </Grid.Row>
               <Divider />
-              <Form inverted className='signUpButtonAlignment'>
-                <this.RadioButtons />
-                <Divider />
-                <this.NameInput />
-                <Divider />
-                <this.SecretIDInput />
-                <Divider />
-                <this.EmailInput />
-                <Divider />
-                <this.PasswordInput />
-                <Divider />
-                <this.SignUpButton />
-              </Form>
+              {!isSigningUp ? (<this.SignUpForm />)
+                            : (<this.ConfirmationCodeInput />)}
             </Grid.Column>
           </Grid.Row>
         </Grid>
