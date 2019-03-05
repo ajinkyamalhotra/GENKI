@@ -6,6 +6,7 @@ import Fullscreen from "react-full-screen";
 import WheelReact from "wheel-react";
 // API
 import story from "./story/story";
+import engTranslation from "./story/engTranslation";
 import choices from "./story/choices";
 // Components
 import TitleScreen from "./components/TitleScreen";
@@ -51,11 +52,17 @@ const INITIAL_STATE = {
   isSkipping: false
 };
 
+/*These 2 variables keep track of which dialogue should display,
+the story or the translation*/
+var english = 0;
+var japanese = 0;
+
 class Game extends Component {
   constructor() {
     super();
     this.setFrame = this.setFrame.bind(this);
     this.toggleBacklog = this.toggleBacklog.bind(this);
+    this.transFunction = this.transFunction.bind(this);
     this.state = INITIAL_STATE;
 
     WheelReact.config({
@@ -74,8 +81,41 @@ class Game extends Component {
     });
   }
 
+  //added an event listener to track keyboard presses
   componentDidMount() {
-    window.addEventListener("beforeunload", e => (e.returnValue = "Unsaved changes will be lost."));
+    window.addEventListener(
+      "beforeunload",
+      e => (e.returnValue = "Unsaved changes will be lost.")
+    );
+    document.addEventListener("keydown", this.transFunction, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.transFunction, false);
+  }
+
+  /*This function receives the keyboard press from the user and displays the
+  corresponding story/translation in the dialogue box
+  keyCode 32 is the spacebar key*/
+
+  /*If english and japanese have the same value, then we transition from
+  story dialogue to the translation, increase the value of english and exit the
+  function. When the spacebar is clicked for a second time, it will enter the
+  second if() condition, which will revert the dialogue back to the original
+  story and reset the english and japanese values to be equal to each other.*/
+  transFunction(event) {
+    const currentIndex = this.state.index;
+    var currentText = story[currentIndex].text.toString();
+    var currentEng = engTranslation[currentIndex].text.toString();
+    if (event.keyCode === 32 && english === japanese) {
+      this.setState({ text: currentEng, textBoxShown: false });
+      english++;
+      return;
+    }
+    if (event.keyCode === 32) {
+      this.setState({ text: currentText, textBoxShown: false });
+      english = japanese;
+    }
   }
 
   setFrameFromChoice(choice, routeBegins) {
@@ -90,6 +130,9 @@ class Game extends Component {
     this.setState({ choicesStore });
   }
 
+  /*We set the english and japanese variables to be equal to each other When
+  switching to the next frame so that only one click of the space bar is needed
+  to swap dialogue to the translation and not two.*/
   setNextFrame() {
     const currentIndex = this.state.index;
     const jumpToBecauseStore = story[currentIndex].jumpToBecauseStore;
@@ -98,7 +141,8 @@ class Game extends Component {
         if (story[i].receiveJumpBecauseStore) {
           if (
             jumpToBecauseStore === story[i].receiveJumpBecauseStore[0] &&
-            this.state.choicesStore[jumpToBecauseStore] === story[i].receiveJumpBecauseStore[1]
+            this.state.choicesStore[jumpToBecauseStore] ===
+              story[i].receiveJumpBecauseStore[1]
           ) {
             this.setFrame(i);
             return;
@@ -128,6 +172,7 @@ class Game extends Component {
     ) {
       this.setFrame(currentIndex + 1);
     }
+    english = japanese;
   }
 
   setFrame(index) {
@@ -214,7 +259,10 @@ class Game extends Component {
 
   renderChoiceMenu() {
     return (
-      <ChoiceMenu choiceOptions={this.state.choiceOptions} onChoiceSelected={this.handleChoiceSelected.bind(this)} />
+      <ChoiceMenu
+        choiceOptions={this.state.choiceOptions}
+        onChoiceSelected={this.handleChoiceSelected.bind(this)}
+      />
     );
   }
 
@@ -285,12 +333,18 @@ class Game extends Component {
   }
 
   startSkip() {
-    const intervalTime = prompt("How many milliseconds per frame would you like?", "75");
+    const intervalTime = prompt(
+      "How many milliseconds per frame would you like?",
+      "75"
+    );
     if (intervalTime > 0) {
       this.setState({
         isSkipping: true
       });
-      this.textSkipper = setInterval(this.setNextFrame.bind(this), intervalTime);
+      this.textSkipper = setInterval(
+        this.setNextFrame.bind(this),
+        intervalTime
+      );
     }
   }
 
@@ -315,7 +369,10 @@ class Game extends Component {
       ("0" + d.getMinutes()).slice(-2);
 
     localStorage.setItem("time" + number, datestring); // saves the current time to the save slot
-    localStorage.setItem(number, JSON.stringify(this.state, (k, v) => (v === undefined ? null : v)));
+    localStorage.setItem(
+      number,
+      JSON.stringify(this.state, (k, v) => (v === undefined ? null : v))
+    );
     this.setState(this.state);
   }
 
@@ -340,7 +397,12 @@ class Game extends Component {
   }
 
   titleScreen() {
-    return <TitleScreen beginStory={this.beginStory.bind(this)} toggleLoadMenu={this.toggleLoadMenu.bind(this)} />;
+    return (
+      <TitleScreen
+        beginStory={this.beginStory.bind(this)}
+        toggleLoadMenu={this.toggleLoadMenu.bind(this)}
+      />
+    );
   }
 
   configMenu() {
@@ -352,7 +414,9 @@ class Game extends Component {
         soundEffectVolume={this.state.soundEffectVolume}
         voiceVolume={this.state.voiceVolume}
         bgmVolumeChange={value => this.setState({ bgmVolume: value })}
-        soundEffectVolumeChange={value => this.setState({ soundEffectVolume: value })}
+        soundEffectVolumeChange={value =>
+          this.setState({ soundEffectVolume: value })
+        }
         voiceVolumeChange={value => this.setState({ voiceVolume: value })}
         toggleConfigMenu={this.toggleConfigMenu.bind(this)}
       />
@@ -429,9 +493,15 @@ class Game extends Component {
         choicesHistory={this.state.choicesHistory}
         choicesIndexHistory={this.state.choicesIndexHistory}
         indexHistory={this.state.indexHistory}
-        setChoicesHistory={choicesHistory => this.setState({ choicesHistory: choicesHistory })}
-        setIndexHistory={indexHistory => this.setState({ indexHistory: indexHistory })}
-        setChoicesStore={choicesStore => this.setState({ choicesStore: choicesStore })}
+        setChoicesHistory={choicesHistory =>
+          this.setState({ choicesHistory: choicesHistory })
+        }
+        setIndexHistory={indexHistory =>
+          this.setState({ indexHistory: indexHistory })
+        }
+        setChoicesStore={choicesStore =>
+          this.setState({ choicesStore: choicesStore })
+        }
       />
     );
   }
@@ -440,35 +510,61 @@ class Game extends Component {
     if (prevState.index < this.state.index) {
       this.setState({
         choicesHistory: [...this.state.choicesHistory, prevState.choicesStore],
-        choicesIndexHistory: [...this.state.choicesIndexHistory, prevState.choicesIndex],
+        choicesIndexHistory: [
+          ...this.state.choicesIndexHistory,
+          prevState.choicesIndex
+        ],
         indexHistory: [...this.state.indexHistory, prevState.index]
       });
     }
   }
 
   playBGM() {
-    return <Sound url={this.state.bgm} volume={this.state.bgmVolume} playStatus={Sound.status.PLAYING} loop={true} />;
+    return (
+      <Sound
+        url={this.state.bgm}
+        volume={this.state.bgmVolume}
+        playStatus={Sound.status.PLAYING}
+        loop={true}
+      />
+    );
   }
   playSoundEffect() {
     return (
-      <Sound url={this.state.soundEffect} volume={this.state.soundEffectVolume} playStatus={Sound.status.PLAYING} />
+      <Sound
+        url={this.state.soundEffect}
+        volume={this.state.soundEffectVolume}
+        playStatus={Sound.status.PLAYING}
+      />
     );
   }
   playVoice() {
-    return <Sound url={this.state.voice} volume={this.state.voiceVolume} playStatus={Sound.status.PLAYING} />;
+    return (
+      <Sound
+        url={this.state.voice}
+        volume={this.state.voiceVolume}
+        playStatus={Sound.status.PLAYING}
+      />
+    );
   }
 
   render() {
     let zoomMultiplier = 0;
-    if (window.innerWidth * 1 / window.innerHeight <= 1280 * 1 / 720) {
-      zoomMultiplier = window.innerWidth * 1 / 1280;
+    if ((window.innerWidth * 1) / window.innerHeight <= (1280 * 1) / 720) {
+      zoomMultiplier = (window.innerWidth * 1) / 1280;
     } else {
-      zoomMultiplier = window.innerHeight * 1 / 720;
+      zoomMultiplier = (window.innerHeight * 1) / 720;
     }
 
     return (
-      <div {...WheelReact.events} style={this.state.isFull ? { zoom: zoomMultiplier } : null}>
-        <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({ isFull })}>
+      <div
+        {...WheelReact.events}
+        style={this.state.isFull ? { zoom: zoomMultiplier } : null}
+      >
+        <Fullscreen
+          enabled={this.state.isFull}
+          onChange={isFull => this.setState({ isFull })}
+        >
           <ReactCSSTransitionGroup
             className="container"
             component="div"
