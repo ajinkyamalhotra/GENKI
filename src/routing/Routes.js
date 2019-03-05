@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import AppliedRoute from './AppliedRoute';
 import HomePage from '../components/HomePage';
 import Game from '../Game';

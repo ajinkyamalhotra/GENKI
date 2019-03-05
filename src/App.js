@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation';
-import { Switch, Route } from 'react-router-dom';
 import Routes from './routing/Routes';
-import HomePage from './components/HomePage';
-import Game from './Game';
-import Login from './components/Login';
-import Profile from './components/Profile';
-import Progress from './components/Progress';
-import SignUp from './components/SignUp';
-import SignUpConfirmation from './components/SignUpConfirmation';
 
 import './App.css';
 
@@ -49,16 +41,17 @@ class App extends Component {
   render() {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
-      userHasAuthenticated: this.userHasAuthenticated,
+      handleLogin: this.handleLogin,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
       userType: this.state.userType
     };
+    
     return (
         // Render the Navigation component
         <div className="App">
-          <Navigation />
+          <Navigation {...childProps}/>
           <div>
             {this.state.isUser ?
               'Logged In as ' + this.state.userType  : 'Not Logged in'}
