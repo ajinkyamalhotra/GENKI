@@ -60,6 +60,7 @@ class Login extends Component{
 
 
   handleLogin = async event => {
+<<<<<<< HEAD
   event.preventDefault();
 <<<<<<< HEAD
 
@@ -69,6 +70,9 @@ class Login extends Component{
   } catch (e) {
     alert(e.message);
 =======
+=======
+    event.preventDefault();
+>>>>>>> JoeAWSMigration
     try {
       await Auth.signIn(this.state.email, this.state.password);
       let user = await Auth.currentAuthenticatedUser();
@@ -77,7 +81,8 @@ class Login extends Component{
       console.log(attributes);
       let decoded = jwt.decode(user.signInUserSession.accessToken.jwtToken);
       let userType = decoded['cognito:groups'];
-      this.props.onLogin(attributes, userType[0]);
+      this.props.handleLogin(attributes, userType[0]);
+      this.props.history.push("/");
     } catch (e) {
       alert(e.message);
     }

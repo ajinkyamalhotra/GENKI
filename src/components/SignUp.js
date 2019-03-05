@@ -44,11 +44,12 @@ class SignUp extends Component{
    * Pre-Req: All necessary portions of the form are filled in and validated.
    * @param event           The submission event
    */
-
   async handleSignup(event) {
     event.preventDefault();
+    // Change the state so that the Confirmation Code form appears
     this.setState({ isSigningUp: true });
     try {
+      // Authenticate using Amplify and Cognito
       const newUser = await Auth.signUp({
         username: this.state.email,
         password: this.state.password,
@@ -59,15 +60,19 @@ class SignUp extends Component{
         }
       });
       console.log(newUser);
+      // The username assigned by Cognito
       let username = newUser.userSub;
       console.log(username);
       this.setState({ username: username });
     } catch (e) {
       console.log(e);
     }
-
   }
 
+  /**
+   * Function which invokes the addUserToGroup API to move the new user to
+   * the appropriate Cognito group.
+   */
   moveUserToGroup() {
     console.log('Moving User To Group');
     let apiName = 'genki-vn-beta';
@@ -82,6 +87,10 @@ class SignUp extends Component{
     return API.post(apiName, path, params);
   }
 
+  /**
+   * Handle the event that the user submits their confirmation code.
+   * @param  event            Confirmation event
+   */
   async handleConfirmationSubmit(event) {
     event.preventDefault();
     try {
@@ -90,7 +99,17 @@ class SignUp extends Component{
       console.log('Signing in');
       await Auth.signIn(this.state.email, this.state.password);
       console.log('Moving user to appropriate group');
+      // Now that the user is confirmed, move to appropriate group
       await this.moveUserToGroup();
+      let attributes = {
+        sub: this.state.username,
+        email: this.state.email,
+        name: this.state.firstName,
+        family_name: this.state.lastName
+      }
+      // Pass attributes to the App
+      this.props.handleLogin(attributes, this.state.userType);
+      // Display the HomePage
       this.props.history.push("/");
     } catch (e) {
       alert(e);
@@ -287,6 +306,9 @@ class SignUp extends Component{
     )
   }
 
+  /**
+   * The signUp form itself.
+   */
   SignUpForm() {
     return (
       <Form inverted className='signUpButtonAlignment'>
@@ -305,6 +327,9 @@ class SignUp extends Component{
     )
   }
 
+  /**
+   * Form for inputing the confirmation code.
+   */
   ConfirmationCodeInput() {
     return (
       <Form inverted>
@@ -340,6 +365,7 @@ class SignUp extends Component{
                 </Header>
               </Grid.Row>
               <Divider />
+              {/* Switch display after user submits form. */}
               {!isSigningUp ? (<this.SignUpForm />)
                             : (<this.ConfirmationCodeInput />)}
             </Grid.Column>

@@ -7,12 +7,12 @@ Genki Visual Novel is a React powered online visual novel for Japanese language 
 ##### Node Installation
 
 1. Install [NodeJS](https://nodejs.org/en/)
-    * Verify proper installation by opening a terminal and typing 'node -v' and 'npm -v'
+    * Verify proper installation by opening a terminal and typing `node -v` and `npm -v`
 1. Install [Git](https://git-scm.com/downloads)
 1. Clone this repository into a local directory
     * You can follow [these instructions](https://help.github.com/articles/cloning-a-repository/)
 1. Navigate to the root directory of the project then:
-    * Run 'npm install'
+    * Run `npm install`
 
 ##### AWS
 
