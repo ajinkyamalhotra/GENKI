@@ -52,10 +52,11 @@ const INITIAL_STATE = {
   isSkipping: false
 };
 
-/*These 2 variables keep track of which dialogue should display,
+/*These 2 boolean variables keep track of which dialogue should display,
 the story or the translation*/
-var english = 0;
-var japanese = 0;
+const spacebar = 32;
+var english = true;
+var japanese = false;
 
 class Game extends Component {
   constructor() {
@@ -94,28 +95,29 @@ class Game extends Component {
     document.removeEventListener("keydown", this.transFunction, false);
   }
 
-  /*This function receives the keyboard press from the user and displays the
-  corresponding story/translation in the dialogue box
-  keyCode 32 is the spacebar key*/
-
-  /*If english and japanese have the same value, then we transition from
-  story dialogue to the translation, increase the value of english and exit the
-  function. When the spacebar is clicked for a second time, it will enter the
-  second if() condition, which will revert the dialogue back to the original
-  story and reset the english and japanese values to be equal to each other.*/
+  /**This function receives the keyboard press from the user and displays the
+   *corresponding story/translation in the dialogue box
+   *keyCode 32 is the spacebar key
+   *
+   *After receiving the spacebar key input, if english is true, then display the
+   *english translation textbox, if japanese is true, revert to original
+   *japanese story.
+   */
   transFunction(event) {
     const currentIndex = this.state.index;
     var currentText = story[currentIndex].text.toString();
     var currentEng = engTranslation[currentIndex].text.toString();
-    if (event.keyCode === 32 && english === japanese) {
+    if (event.keyCode === spacebar && english) {
       this.setState({ text: currentEng, textBoxShown: false });
-      english++;
-      return;
+      english = !english;
+      console.log(english);
     }
-    if (event.keyCode === 32) {
+    if (event.keyCode === spacebar && japanese) {
       this.setState({ text: currentText, textBoxShown: false });
-      english = japanese;
+      english = !english;
+      console.log(english);
     }
+    japanese = !japanese;
   }
 
   setFrameFromChoice(choice, routeBegins) {
@@ -130,9 +132,6 @@ class Game extends Component {
     this.setState({ choicesStore });
   }
 
-  /*We set the english and japanese variables to be equal to each other When
-  switching to the next frame so that only one click of the space bar is needed
-  to swap dialogue to the translation and not two.*/
   setNextFrame() {
     const currentIndex = this.state.index;
     const jumpToBecauseStore = story[currentIndex].jumpToBecauseStore;
@@ -172,7 +171,9 @@ class Game extends Component {
     ) {
       this.setFrame(currentIndex + 1);
     }
-    english = japanese;
+    //reset values when switching pages in the VN
+    english = true;
+    japanese = false;
   }
 
   setFrame(index) {
