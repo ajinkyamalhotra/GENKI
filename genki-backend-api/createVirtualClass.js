@@ -6,10 +6,12 @@ export function main (event, context, callback) {
   let docClient = new AWS.DynamoDB.DocumentClient();
   let table = "Virtual_Class";
   let teacher = data.Teacher;
-  let classID =
-    crypto.createHash('md5').update(data.ClassName + data.Section + data.Teacher).digest('hex');
+  let semester = data.Semester;
+  let classTime = data.ClassTime;
   let className = data.ClassName;
   let section = data.Section;
+  let classID =
+    crypto.createHash('md5').update(className + teacher + semester + section + classTime).digest('hex');
   let params = {
     TableName:table,
     Item:{
@@ -17,17 +19,18 @@ export function main (event, context, callback) {
       "ClassID": classID,
       "ClassName": className,
       "Section": section,
-      "Announcement": ''
+      "Semester": semester,
+      "ClassTime": classTime
     }
   }
   console.log("Adding new virtual class");
   console.log(data);
 
-  docClient.put(params, function(err, data){
+  docClient.put(params, function(err, result){
     if(err){
       console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-      console.log("Added item:", JSON.stringify(data, null, 2));
+      console.log("Added item:", JSON.stringify(result, null, 2));
     }
   })
   callback(null, null);

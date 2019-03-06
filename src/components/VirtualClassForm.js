@@ -11,7 +11,9 @@ class VirtualClassForm extends Component{
     this.state = {
       ClassName: '',
       Section: '',
-      Teacher: ''
+      Teacher: '',
+      Semester: '',
+      ClassTime: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +27,9 @@ class VirtualClassForm extends Component{
     this.setState = {
       ClassName: '',
       Section: '',
-      Teacher: ''
+      Teacher: '',
+      Semester: '',
+      ClassTime: ''
     }
   }
 
@@ -41,14 +45,20 @@ class VirtualClassForm extends Component{
     this.setState({[key]: event.target.value});
   }
 
-  async handleSubmit = (event) => {
+  handleSubmit = async event => {
     event.preventDefault();
-    //TODO: get teacher firstName and lastName
-    let teacher = firstName + ' ' + lastName;
+    let teacher = this.props.firstName + ' ' + this.props.lastName;
+    this.setState({Teacher: teacher});
+    let className = this.state.ClassName;
+    let section = this.state.Section;
+    let classTime = this.state.ClassTime;
+    let semester = this.state.Semester;
     let data = {
-      ClassName: this.state.className,
-      Section: this.state.section,
-      Teacher: teacher
+      ClassName: className,
+      Section: section,
+      Teacher: teacher,
+      ClassTime: classTime,
+      Semester: semester
     }
     try {
       await this.createClass(data);

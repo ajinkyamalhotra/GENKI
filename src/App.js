@@ -24,20 +24,6 @@ class App extends Component {
     this.setState({ isAuthenticated: authenticated });
   }
 
-  /**
-   * Function passed to the login component meant to handle a login event.
-   * @param  userPromise          The login component passes back a Promise
-   */
-<<<<<<< HEAD
-   handleLogin(userPromise) {
-    userPromise.then(user => {
-      console.log(user);
-      let name = user.firstName;
-      let userType = user.userType;
-      let email = user.email;
-      this.setState({isUser: true, name, userType, email});
-    });
-=======
   handleLogin(userAttributes, userType) {
     let username = userAttributes.sub;
     let email = userAttributes.email;
@@ -46,7 +32,6 @@ class App extends Component {
 
     this.setState({ isAuthenticated: true, username, email, firstName, lastName, userType });
     console.log(username + ' ' + email + ' ' + firstName + ' ' + lastName + ' ' + userType);
->>>>>>> origin/JoeAWSMigration
   }
 
   render() {
@@ -58,7 +43,7 @@ class App extends Component {
       email: this.state.email,
       userType: this.state.userType
     };
-    
+
     return (
         // Render the Navigation component
         <div className="App">

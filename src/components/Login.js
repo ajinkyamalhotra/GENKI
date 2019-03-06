@@ -60,19 +60,7 @@ class Login extends Component{
 
 
   handleLogin = async event => {
-<<<<<<< HEAD
-  event.preventDefault();
-<<<<<<< HEAD
-
-  try {
-    await Auth.signIn(this.state.email, this.state.password);
-    alert("Logged in");
-  } catch (e) {
-    alert(e.message);
-=======
-=======
     event.preventDefault();
->>>>>>> JoeAWSMigration
     try {
       await Auth.signIn(this.state.email, this.state.password);
       let user = await Auth.currentAuthenticatedUser();
@@ -86,9 +74,7 @@ class Login extends Component{
     } catch (e) {
       alert(e.message);
     }
->>>>>>> origin/JoeAWSMigration
   }
-}
 
   /***************************************************************************
     Below are components designed specifically for the rendering of the login
