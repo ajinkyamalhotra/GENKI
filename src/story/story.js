@@ -7,6 +7,10 @@ const restaurantBedroom = require("./bg/Restaurant-Bedroom.png");
 const park = require("./bg/Park.jpg");
 const takeshiHouse = require("./bg/Takeshi-House.jpg");
 const street = require("./bg/Street.png");
+const naganoStation = require("./bg/Nagano Station.jpg");
+const travelOffice = require("./bg/Travel Office.jpg");
+
+
 // bgm
 const take = require("./bgm/take.mp3");
 
@@ -35,11 +39,16 @@ const managerNeutralGif = require("./sprites/Manager-neutral-gif.gif");
 const managerNeutral = require("./sprites/Manager-neutral.png");
 const yamashitaNeutral = require("./sprites/Yamashita-neutral.png");
 const maryNeutral = require("./sprites/Mary-neutral.png");
+const maryTalking = require("./sprites/Mary-talking.png");
 const michikoNeutral = require("./sprites/Michiko-neutral.png");
 const takeshiSweater = require("./sprites/Takeshi-sweater.png");
+const takeshiTalking = require("./sprites/Takeshi-talking.png");
+const takeshiTemple = require("./sprites/Takeshi-temple.png");
+const takeshiSoba = require("./sprites/Takeshi-soba.png");
 const marySitting = require("./sprites/Mary-sitting.png");
 const johnNeutral = require("./sprites/John-neautral.png");
 const takeshiInSweater = require("./sprites/Takeshi-in-sweater.png");
+const infoAgentNeutral = require("./sprites/Info-Agent-neutral.png");
 
 let story = [
   /* Tutorial for Home Menu
@@ -703,16 +712,18 @@ let story = [
 
   ////////////////////Chapter 15 below//////////////////////////////////////
 
+  //Scene 7
   {
     speaker: "Scene 7",
     bg: school,
     spriteLeft: "",
     spriteRight: "",
-    text: "Before the vaction"
+    text: "Before the vacation"
   },
   {
     bgm: take,
     speaker: mary,
+    spriteLeft: maryTalking,
     text: "たけしくん、今度の休み、予定ある？"
   },
   /*{
@@ -720,6 +731,7 @@ let story = [
   },*/
   {
     speaker: takeshi,
+    spriteRight: takeshiTalking,
     text: "ううん。別に。どうして？"
   },
   /*{
@@ -763,15 +775,18 @@ let story = [
     text: "Thanks. I will call Michiko."
   },*/
 
+  //Scene 8
   {
-    speaker: "",
-    bg: restaurant,
-    text: "Scene 8:　At Nagano Station."
+    speaker: "Scene 8",
+    bg: naganoStation,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "At Nagano Station."
   },
   {
-    bg: restaurant,
     bgm: take,
     speaker: takeshi,
+    spriteRight: takeshiTalking,
     text: "早く着いたから、ちょっと観光しない？"
   },
   /*{
@@ -779,6 +794,7 @@ let story = [
   },*/
   {
     speaker: mary,
+    spriteLeft: maryTalking,
     text: "うん。どこに行く？"
   },
   /*{
@@ -786,6 +802,8 @@ let story = [
   },*/
   {
     speaker: takeshi,
+    spriteRight: takeshiTalking,
+    sprite: takeshiTemple,
     text: "善光寺はどう？有名なお寺だよ。"
   },
   /*{
@@ -801,21 +819,27 @@ let story = [
 
   {
     speaker: takeshi,
+    sprite: takeshiSoba,
     text: "長野はそばがおいしいから、そばを食べようよ。"
   },
   /*{
     text: "Soba noodles in Nagano are delicious, so let’s eat soba."
   },*/
 
+  //Scene 9
   {
-    speaker: "",
-    bg: restaurant,
-    text: "Scene 9:　At the Travel Information Office."
+    speaker: "Scene 9",
+    bg: travelOffice,
+    spriteLeft: "",
+    spriteRight: "",
+    sprite: "",
+    text: "At the Travel Information Office."
   },
   {
-    bg: restaurant,
     bgm: take,
     speaker: takeshi,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalking,
     text: "すみません、善光寺に行くバスはどれですか。"
   },
   /*{
@@ -823,6 +847,7 @@ let story = [
   },*/
   {
     speaker: infoAgent,
+    sprite: infoAgentNeutral,
     text: "善光寺なら、十一番のバスですよ。"
   },
   /*{
