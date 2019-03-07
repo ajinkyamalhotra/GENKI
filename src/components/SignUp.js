@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router} from 'react-router-dom';
 import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
-import axios from 'axios';
+import { Auth, API } from "aws-amplify";
+import config from '../config';
 import '../styles/SignUp.css';
-
-const path = require('path');
 
 /**
  * SignUp form to become a member of the GenkiVN website.
@@ -23,17 +21,22 @@ class SignUp extends Component{
       confirmedPassword: '',
       passwordsMatch: true,
       userType: '',
-      secretID: ''
+      secretID: '',
+      isSigningUp: false,
+      confirmationCode: ''
     }
 
+    this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.RadioButtons = this.RadioButtons.bind(this);
     this.NameInput = this.NameInput.bind(this);
     this.SecretIDInput = this.SecretIDInput.bind(this);
     this.EmailInput = this.EmailInput.bind(this);
     this.PasswordInput = this.PasswordInput.bind(this);
     this.SignUpButton = this.SignUpButton.bind(this);
+    this.handleConfirmationSubmit = this.handleConfirmationSubmit.bind(this);
+    this.ConfirmationCodeInput = this.ConfirmationCodeInput.bind(this);
+    this.SignUpForm = this.SignUpForm.bind(this);
   }
 
   /**
@@ -41,41 +44,77 @@ class SignUp extends Component{
    * Pre-Req: All necessary portions of the form are filled in and validated.
    * @param event           The submission event
    */
-  handleClick = (event) => {
-    console.log('login clicked');
-    let firstName = this.state.firstName;
-    let lastName = this.state.lastName;
-    let email = this.state.email;
-    let password = this.state.password;
-    let userType = this.state.userType;
-    let secretID = this.state.secretID;
-
-    // The fetch function is built in and queries the backend by sending
-    // all the paremters that were typed in the form.
-    // It chains together the fetch with .then to determine the appropriate
-    // action based on the response.
-    fetch('/signUp', {
-      method: 'POST',
-      body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        userType: userType,
-        secretID: secretID
-      }),
-      headers: {"Content-Type": "application/json"}
-    })
-      .then(response => {
-        if (response.status === 200) {
-          this.props.history.push('/SignUpConfirmation');
-        } else if (response.status === 401) {
-          alert('Not able to register new user. Please try a different ' +
-              'username/password combination');
-        }
-      })
+  async handleSignup(event) {
     event.preventDefault();
-  };
+    // Change the state so that the Confirmation Code form appears
+    this.setState({ isSigningUp: true });
+    try {
+      // Authenticate using Amplify and Cognito
+      const newUser = await Auth.signUp({
+        username: this.state.email,
+        password: this.state.password,
+        attributes: {
+          email: this.state.email,
+          name: this.state.firstName,
+          family_name: this.state.lastName
+        }
+      });
+      console.log(newUser);
+      // The username assigned by Cognito
+      let username = newUser.userSub;
+      console.log(username);
+      this.setState({ username: username });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  /**
+   * Function which invokes the addUserToGroup API to move the new user to
+   * the appropriate Cognito group.
+   */
+  moveUserToGroup() {
+    console.log('Moving User To Group');
+    let apiName = 'genki-vn-beta';
+    let path = '/group';
+    let params = {
+      body: {
+        username: this.state.username,
+        userType: this.state.userType,
+        userPoolId: config.cognito.USER_POOL_ID
+      }
+    }
+    return API.post(apiName, path, params);
+  }
+
+  /**
+   * Handle the event that the user submits their confirmation code.
+   * @param  event            Confirmation event
+   */
+  async handleConfirmationSubmit(event) {
+    event.preventDefault();
+    try {
+      console.log('Confirming Signup');
+      await Auth.confirmSignUp(this.state.email, this.state.confirmationCode);
+      console.log('Signing in');
+      await Auth.signIn(this.state.email, this.state.password);
+      console.log('Moving user to appropriate group');
+      // Now that the user is confirmed, move to appropriate group
+      await this.moveUserToGroup();
+      let attributes = {
+        sub: this.state.username,
+        email: this.state.email,
+        name: this.state.firstName,
+        family_name: this.state.lastName
+      }
+      // Pass attributes to the App
+      this.props.handleLogin(attributes, this.state.userType);
+      // Display the HomePage
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e);
+    }
+  }
 
   /**
    * Function that handles all changes to the form.
@@ -110,10 +149,12 @@ class SignUp extends Component{
     const re = new RegExp([
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@/,
       /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+/,
-      /(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/
+      /(?:[A-Z]{2}|edu|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/
     ].map(r => r.source).join(''));
     return re.test(email);
   }
+
+
 
   /***************************************************************************
     Below are components designed specifically for the rendering of the SignUp
@@ -200,7 +241,6 @@ class SignUp extends Component{
    * Returns the input for email.
    */
   EmailInput() {
-    const email = this.state.email;
     return (
       <Form.Field>
           <label size='huge'>
@@ -260,13 +300,58 @@ class SignUp extends Component{
               color='orange'
               type='Signup'
               disabled={!isEnabled}
-              onClick={this.handleClick}>
+              onClick={this.handleSignup}>
         Signup
       </Button>
     )
   }
 
+  /**
+   * The signUp form itself.
+   */
+  SignUpForm() {
+    return (
+      <Form inverted className='signUpButtonAlignment'>
+        <this.RadioButtons />
+        <Divider />
+        <this.NameInput />
+        <Divider />
+        <this.SecretIDInput />
+        <Divider />
+        <this.EmailInput />
+        <Divider />
+        <this.PasswordInput />
+        <Divider />
+        <this.SignUpButton />
+      </Form>
+    )
+  }
+
+  /**
+   * Form for inputing the confirmation code.
+   */
+  ConfirmationCodeInput() {
+    return (
+      <Form inverted>
+        <Form.Input fluid label='Confirmation'
+                    icon='key'
+                    placeholder='Confirmation Code'
+                    name='confirmationCode'
+                    value={this.state.confirmationCode}
+                    onChange={this.handleChange}/>
+        <Button size='big'
+                compact fluid
+                color='orange'
+                type='submit'
+                onClick={this.handleConfirmationSubmit}>
+          Submit
+        </Button>
+      </Form>
+    )
+  }
+
   render(){
+    const isSigningUp = this.state.isSigningUp;
     return(
       <div className='page'>
         <Grid  padded='vertically'>
@@ -280,19 +365,9 @@ class SignUp extends Component{
                 </Header>
               </Grid.Row>
               <Divider />
-              <Form inverted className='signUpButtonAlignment'>
-                <this.RadioButtons />
-                <Divider />
-                <this.NameInput />
-                <Divider />
-                <this.SecretIDInput />
-                <Divider />
-                <this.EmailInput />
-                <Divider />
-                <this.PasswordInput />
-                <Divider />
-                <this.SignUpButton />
-              </Form>
+              {/* Switch display after user submits form. */}
+              {!isSigningUp ? (<this.SignUpForm />)
+                            : (<this.ConfirmationCodeInput />)}
             </Grid.Column>
           </Grid.Row>
         </Grid>

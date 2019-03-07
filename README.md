@@ -7,12 +7,12 @@ Genki Visual Novel is a React powered online visual novel for Japanese language 
 ##### Node Installation
 
 1. Install [NodeJS](https://nodejs.org/en/)
-    * Verify proper installation by opening a terminal and typing 'node -v' and 'npm -v'
+    * Verify proper installation by opening a terminal and typing `node -v` and `npm -v`
 1. Install [Git](https://git-scm.com/downloads)
 1. Clone this repository into a local directory
     * You can follow [these instructions](https://help.github.com/articles/cloning-a-repository/)
 1. Navigate to the root directory of the project then:
-    * Run 'npm install'
+    * Run `npm install`
 
 ##### AWS
 
@@ -21,6 +21,8 @@ This project is now based in the AWS ecosystem.  In order to proceed, please do 
 1. Then from the command line run `aws configure`
     * Region: `us-west-2`
     * Then use your Access Key and Secret Key as needed.  All other defaults are fine.
+
+*Note:* You will likely be unable to use Windows PowerShell to deploy this code and will instead need to use just a command prompt.
 
 
 ## Usage
@@ -32,7 +34,7 @@ All testing can be done locally assuming you have your AWS credentials set up.
 
 ##### Deployment
 Scripts for deployment are already present in the `package.json`.
-1.  Simply run `npm run build`.
+1.  Simply run `npm run deploy`.
 1.  Verify changes by navigating to http://genki-vn-beta.s3-website-us-west-2.amazonaws.com
 
 ## Project Structure
