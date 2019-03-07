@@ -110,12 +110,10 @@ class Game extends Component {
     if (event.keyCode === spacebar && english) {
       this.setState({ text: currentEng, textBoxShown: false });
       english = !english;
-      console.log(english);
     }
     if (event.keyCode === spacebar && japanese) {
       this.setState({ text: currentText, textBoxShown: false });
       english = !english;
-      console.log(english);
     }
     japanese = !japanese;
   }
