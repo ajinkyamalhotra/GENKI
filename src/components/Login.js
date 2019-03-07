@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
+import { Auth } from "aws-amplify";
 import '../styles/Login.css';
+
+var jwt = require('jsonwebtoken');
 
 /**
  * Login component of Genki VN.  Communicates with backend server to verify
@@ -11,13 +14,16 @@ class Login extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      Username: '',
-      Password: ''
+      email: '',
+      password: ''
     };
 
     // Binding of functions to be able to access this
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
     this.FormField = this.FormField.bind(this);
     this.ButtonOptions = this.ButtonOptions.bind(this);
   }
@@ -26,10 +32,9 @@ class Login extends Component{
    * Deletes any entry into the text fields when component is unmounted.
    */
   componentWillUnmount() {
-    console.log('Unmounting');
     this.setState({
-      Username: '',
-      Password: ''
+      email: '',
+      password: ''
     });
   }
 
@@ -46,45 +51,33 @@ class Login extends Component{
   }
 
   /**
-   * Handles the click from either the SignUp button or the Login button.
-   * If it is a Login button, it uses the builtin fetch function to query
-   * the backend.
-   *
-   * Read more about fetch here (https://github.github.io/fetch/)
+   * Handles the click from the SignUp button.
    * @param event           The Button click.
    */
-  handleClick = (event) => {
+  handleSignup = (event) => {
+    event.preventDefault();
     // If the SignUp button was clicked, switch to the SignUp component
-    if (event.target.id === 'signup') {
-        console.log('signup clicked');
-        this.props.history.push('/SignUp');
-    } else {
-        console.log('login clicked');
-        let username = this.state.Username;
-        let password = this.state.Password;
-        // The fetch function is built in and queries the backend by sending
-        // the username and password typed in.
-        // It chains together the fetch with .then to determine the appropriate
-        // action based on the response.
+    console.log('signup clicked');
+    this.props.history.push('/SignUp');
+  } // End handleClick
 
-        fetch('/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                Username: username,
-                Password: password
-            }),
-            headers: {"Content-Type": "application/json"}
-        })
-        .then(response => {
-            if (response.status === 200) {
-                alert('Logged In!');
-                this.props.onLogin(username);
-            } else if (response.status === 401) {
-                alert('No Such User');
-            }
-        });
+
+  handleLogin = async event => {
+    event.preventDefault();
+    try {
+      await Auth.signIn(this.state.email, this.state.password);
+      let user = await Auth.currentAuthenticatedUser();
+      const { attributes } = user;
+      console.log(user);
+      console.log(attributes);
+      let decoded = jwt.decode(user.signInUserSession.accessToken.jwtToken);
+      let userType = decoded['cognito:groups'];
+      this.props.handleLogin(attributes, userType[0]);
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e.message);
     }
-  };
+  }
 
   /***************************************************************************
     Below are components designed specifically for the rendering of the login
@@ -97,8 +90,8 @@ class Login extends Component{
    * @param props       Includes the color, name, and label for the field.
    */
   FormField(props) {
-    const stateField = (props.label === 'Username') ?
-                                    this.state.Username : this.state.Password;
+    const stateField = (props.label === 'email') ?
+                                    this.state.email : this.state.password;
     return (
       <Form.Field>
         <this.Label color={props.color}
@@ -137,13 +130,13 @@ class Login extends Component{
           <this.GenkiButton color='orange'
                             type='Submit'
                             id='submit'
-                            onClick={this.handleClick}/>
+                            onClick={this.handleLogin}/>
 
           <this.GenkiButton floated='right'
                             color='orange'
                             type='Signup'
                             id='signup'
-                            onClick={this.handleClick}/>
+                            onClick={this.handleSignup}/>
         </div>
       )
   }
@@ -184,15 +177,15 @@ class Login extends Component{
                             <this.FormField
                               color='orange'
                               name='user circle'
-                              label='Username'
+                              label='email'
                               type='text'
-                              placeholder='Username'
+                              placeholder='Email'
                             />
                             <Divider />
                             <this.FormField
                               color='orange'
                               name='lock circle'
-                              label='Password'
+                              label='password'
                               type='password'
                               placeholder='Password'
                             />
@@ -210,4 +203,3 @@ class Login extends Component{
 }
 
 export default Login;
-
