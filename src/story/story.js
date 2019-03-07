@@ -7,6 +7,10 @@ const restaurantBedroom = require("./bg/Restaurant-Bedroom.png");
 const park = require("./bg/Park.jpg");
 const takeshiHouse = require("./bg/Takeshi-House.jpg");
 const street = require("./bg/Street.png");
+const naganoStation = require("./bg/Nagano Station.jpg");
+const travelOffice = require("./bg/Travel Office.jpg");
+
+
 // bgm
 const take = require("./bgm/take.mp3");
 
@@ -35,11 +39,16 @@ const managerNeutralGif = require("./sprites/Manager-neutral-gif.gif");
 const managerNeutral = require("./sprites/Manager-neutral.png");
 const yamashitaNeutral = require("./sprites/Yamashita-neutral.png");
 const maryNeutral = require("./sprites/Mary-neutral.png");
+const maryTalking = require("./sprites/Mary-talking.png");
 const michikoNeutral = require("./sprites/Michiko-neutral.png");
 const takeshiSweater = require("./sprites/Takeshi-sweater.png");
+const takeshiTalking = require("./sprites/Takeshi-talking.png");
+const takeshiTemple = require("./sprites/Takeshi-temple.png");
+const takeshiSoba = require("./sprites/Takeshi-soba.png");
 const marySitting = require("./sprites/Mary-sitting.png");
 const johnNeutral = require("./sprites/John-neautral.png");
 const takeshiInSweater = require("./sprites/Takeshi-in-sweater.png");
+const infoAgentNeutral = require("./sprites/Info-Agent-neutral.png");
 
 let story = [
   //////////////////////////Chapter 13//////////////////////////////////////////
@@ -571,27 +580,36 @@ let story = [
     text:
       "Since this application uses ReactCSSTransitionGroup, it is taking advantage of the leave and enter animations to make it work."
   },
-  { text: "Anyway, let's continue." },
+
+  /*{
+    text: "Yes, boys have to return the favor on March 14th."
+  },*/
+
+  ////////////////////Chapter 15 below//////////////////////////////////////
+
+  //Scene 7
   {
-    speaker: "",
-    spriteRightTransition: "from-right-leave-left",
-    spriteRight: tn,
-    text: 'spriteRightTransition: "from-right-leave-left"'
+    speaker: "Scene 7",
+    bg: school,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "Before the vacation"
   },
   {
-    spriteRightTransition: "move-left-far",
-    spriteRight: "",
-    spriteLeftTransition: "move-left-far",
-    spriteLeft: bh,
-    text:
-      'spriteRightTransition: "move-left-far", spriteLeftTransition: "move-left-far", spriteRight: "", spriteLeft: require("./sprites/sprite.png"),'
+    bgm: take,
+    speaker: mary,
+    spriteLeft: maryTalking,
+    text: "たけしくん、今度の休み、予定ある？"
+
   },
   { speaker: takeshi, text: "That's about it for now.", jumpTo: "features" },
   // Storing choices
   {
-    spriteLeft: "",
-    routeBegins: "showStoringChoices",
-    text: "The user is jumped to a specific index depending on what choice is clicked on."
+
+    speaker: takeshi,
+    spriteRight: takeshiTalking,
+    text: "ううん。別に。どうして？"
+  
   },
   { text: "For some projects, that is enough." },
   {
@@ -622,27 +640,42 @@ let story = [
     speaker: "nashkenazy",
     text: "Nah, I'm good."
   },
+
+  /*{
+    text: "Thanks. I will call Michiko."
+  },*/
+
+  //Scene 8
   {
-    speaker: "",
-    sprite: "",
-    text: "The block trips and falls.",
-    jumpTo: "blockHelp"
+    speaker: "Scene 8",
+    bg: naganoStation,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "At Nagano Station."
   },
   {
-    receiveJump: "blockHelp",
-    text: "(Back to common route) Some weeks pass."
+    bgm: take,
+    speaker: takeshi,
+    spriteRight: takeshiTalking,
+    text: "早く着いたから、ちょっと観光しない？"
+
   },
   { text: "Block asked me to hang out at his place." },
   { text: "Did I accept?", choicesExist: true },
   {
-    routeBegins: "hangOutWithBlock",
-    text: "It was fun. We ate some pizza and watched a movie.",
-    jumpTo: "blockHangOut"
+
+    speaker: mary,
+    spriteLeft: maryTalking,
+    text: "うん。どこに行く？"
+
   },
   {
-    routeBegins: "noHangOutWithBlock",
-    text: "I said I was busy, but I just didn't feel like it.",
-    jumpTo: "blockHangOut"
+
+    speaker: takeshi,
+    spriteRight: takeshiTalking,
+    sprite: takeshiTemple,
+    text: "善光寺はどう？有名なお寺だよ。"
+
   },
   {
     receiveJump: "blockHangOut",
@@ -651,23 +684,39 @@ let story = [
   { text: "I text him to see how he's doing.", jumpToBecauseStore: "blockAffection" },
   // Goes to next index if the user's choices do not fulfill any `receiveJumpBecauseStore` requirements.
   {
-    text: "I put my phone down and continue with life."
-  },
-  { text: "He never texted back." },
-  { text: "blockAffection score: 0. (Technically anything not 1 or 2)", jumpTo: "skitDone" },
-  {
-    receiveJumpBecauseStore: ["blockAffection", 1],
-    text: "A few hours later, he texts back."
-  },
-  {
+
     speaker: takeshi,
-    text: "Sorry, I've been a bit busy organizing my wedding."
+    sprite: takeshiSoba,
+    text: "長野はそばがおいしいから、そばを食べようよ。"
+  },
+  /*{
+    text: "Soba noodles in Nagano are delicious, so let’s eat soba."
+  },*/
+
+  //Scene 9
+  {
+    speaker: "Scene 9",
+    bg: travelOffice,
+    spriteLeft: "",
+    spriteRight: "",
+    sprite: "",
+    text: "At the Travel Information Office."
+  },
+  {
+    bgm: take,
+    speaker: takeshi,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalking,
+    text: "すみません、善光寺に行くバスはどれですか。"
   },
   { text: "I forgot to send you a letter, but would you like to come?" },
   { speaker: "", text: "blockAffection score: 1.", jumpTo: "skitDone" },
   {
-    receiveJumpBecauseStore: ["blockAffection", 2],
-    text: "He texts back immediately."
+
+    speaker: infoAgent,
+    sprite: infoAgentNeutral,
+    text: "善光寺なら、十一番のバスですよ。"
+
   },
   {
     speaker: takeshi,
