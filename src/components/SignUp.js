@@ -178,9 +178,9 @@ class SignUp extends Component{
           />
           <Form.Radio
               label='Teacher'
-              value='teacher'
+              value='pendingTeacher'
               name='userType'
-              checked={this.state.userType === 'teacher'}
+              checked={this.state.userType === 'pendingTeacher'}
               onChange={this.handleChange}
           />
           <Form.Radio
