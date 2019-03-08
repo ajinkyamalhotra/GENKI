@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk';
 
 const USER_POOL_ID = 'us-west-2_WV9ZxGPoJ';
-const
+const USER_LOAD_LIMIT = 50;
 const cognito = new AWS.CognitoIdentityServiceProvider({apiVersion: '2016-04-18'});
 
 export function main (event, context, callback) {
@@ -11,22 +11,40 @@ export function main (event, context, callback) {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true
   };
-  console.log('received POST');
+  console.log('received get');
+  console.log(event.pathParameters);
   try {
     data = JSON.parse(event.body);
     var params = {
-      GroupName: data.userType,
-      UserPoolId: USER_POOL_ID, /* required */
-      Limit: 0,
-      NextToken: 'STRING_VALUE'
+      GroupName: event.pathParameters.groupName,
+      UserPoolId: USER_POOL_ID,
+      Limit: USER_LOAD_LIMIT,
+      NextToken: ''
     };
     cognito.listUsersInGroup(params, function(err, data) {
-      if (err) console.log(err, err.stack); // an error occurred
-      else     console.log(data);           // successful response
+      if (err) throw err; // an error occurred
+      else { // successful response
+        console.log(data);
+        // Create a list of users with only username and attributes
+        let userList = data.Users.map((user) => {
+          let { Username, Attributes } = user;
+          let filteredUser = {
+            Username: Username,
+            Attributes: Attributes
+          }
+          return filteredUser;
+        });
+        // Return status code 200 and the newly created item
+        const response = {
+          statusCode: 200,
+          headers: headers,
+          body: JSON.stringify(userList)
+        };
+        callback(null, response);
+      }
     });
-  } catch (e) { // Error occured during parsing
-    console.log('Issue with parsing');
-    console.log(e);
+  } catch (e) { // Error occured
+    console.log(e, e.stack);
     const response = {
       statusCode: 500,
       headers: headers,

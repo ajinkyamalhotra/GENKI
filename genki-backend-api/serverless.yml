@@ -34,22 +34,15 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
-  createVirtualClass:
-    handler: createVirtualClass.main
+  listGroup:
+    role: CognitoAccessRole
+    handler: listGroup.main
     events:
       - http:
-          path: createVirtualClass
-          method: post
+          path: listGroup/{groupName}
+          method: get
           cors: true
           authorizer: aws_iam
-  announcement:
-    handler: announcement.main
-    events:
-      - http:
-          path: announcement
-          method: post
-          cors: true
-          authroize: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
   - ${file(resources/cognito-group-policy.yml)}
