@@ -10,7 +10,7 @@ class HomePage extends Component {
     this.state = {
       userType: props.userType,
       pendingTeachers: []
-    }
+    };
     // If the user is an admin, get the pending teachers to approve
     if (props.userType === 'admin') {
       this.getPendingTeachers();
@@ -174,6 +174,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
+        <h1>This is HomePage</h1>
         <this.PendingCards userList={this.state.pendingTeachers} />
       </div>
     )
