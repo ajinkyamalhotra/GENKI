@@ -554,10 +554,10 @@ class Game extends Component {
 
   render() {
     let zoomMultiplier = 0;
-    if ((window.innerWidth * 1) / window.innerHeight <= (1280 * 1) / 720) {
-      zoomMultiplier = (window.innerWidth * 1) / 1280;
+    if (window.innerWidth / window.innerHeight <= 1280 / 720) {
+      zoomMultiplier = window.innerWidth / 1280;
     } else {
-      zoomMultiplier = (window.innerHeight * 1) / 720;
+      zoomMultiplier = window.innerHeight / 720;
     }
 
     return (
