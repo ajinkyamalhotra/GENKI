@@ -52,8 +52,7 @@ const INITIAL_STATE = {
   isSkipping: false
 };
 
-/*These 2 boolean variables keep track of which dialogue should display,
-the story or the translation*/
+//This boolean controls which dialogue shows on screen
 const spacebar = 32;
 var english = true;
 
