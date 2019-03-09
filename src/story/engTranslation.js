@@ -77,6 +77,148 @@ let engTranslation = [
   },
   {
     text: "It looks good. Well, I will try this one."
+  },
+
+  //Scene 4 - From here on will be finished by end of sprint
+  {
+    text: "A month before Valentine's Day."
+  },
+  {
+    text: "What do you think is for a Valentine’s present?"
+  },
+  {
+    text:
+      "Well, Takeshi always the same sweater, so why don’t you give him a sweater?"
+  },
+  {
+    text: "That might be a good idea."
+  },
+
+  //Scene 5
+  {
+    text: "On Valentine's Day at Takeshi's house."
+  },
+  {
+    text: "Takeshi, this is for you."
+  },
+  {
+    text: "For me? Thank you. May I open it?"
+  },
+  {
+    text: "Yes."
+  },
+  {
+    text:
+      "Wow, this is a nice sweater! I’ve wanted one like this.  Did you knit it Mary?"
+  },
+  {
+    text: "Yes. It may be small, so please try it on."
+  },
+  {
+    text: "It fits perfectly. Thank you."
+  },
+
+  //Scene 6
+  {
+    text: "The next day."
+  },
+  {
+    text: "Your sweater looks warm."
+  },
+  {
+    text: "Mary gave me this."
+  },
+  {
+    text:
+      "It looks good on you. I want a girlfriend, too. You know, Robert got as many as ten chocolates."
+  },
+  {
+    text: "Hah, that’s incredible. How about you John?"
+  },
+  {
+    text: "Yes. I only got one. From my landlady. How sad?"
+  },
+  {
+    text: "But Robert will probably have a tough day on White Day."
+  },
+  {
+    text: "White Day?"
+  },
+  {
+    text: "Yes, boys have to return the favor on March 14th."
+  },
+
+  ////////////////////Chapter 15 below//////////////////////////////////////
+  //Scene 7
+  {
+    text: "Before the vacation"
+  },
+  {
+    text: "Takeshi, do you have any plans for the holidays?"
+  },
+  {
+    text: "Not really. Why?"
+  },
+  {
+    text:
+      "I am thinking of going to Michiko’s home in Nagano. Do you want to go?"
+  },
+  {
+    text: "Is it okay?"
+  },
+  {
+    text: "Yes, Michiko told me to invite you."
+  },
+  {
+    text: "Then, I will go. I will check the train schedule."
+  },
+  {
+    text: "Thanks. I will call Michiko."
+  },
+
+  //Scene 8
+  {
+    text: "At Nagano Station."
+  },
+  {
+    text: "Since we got here early, do you want to do a little sightseeing?"
+  },
+  {
+    text: "Yes. Where shall we go?"
+  },
+  {
+    text: "How about Zenkoji Temple? It’s a famous temple."
+  },
+  {
+    text: "Sounds good. What shall we eat for lunch?"
+  },
+  {
+    text: "Soba noodles in Nagano are delicious, so let’s eat soba."
+  },
+
+  //Scene 9
+  {
+    text: "At the Travel Information Office."
+  },
+  {
+    text: "Excuse me, which bus goes to Zenkoji Temple?"
+  },
+  {
+    text: "For Zenkoji, it’s bus number 11."
+  },
+  {
+    text: "Thank you very much. Can I have this map? "
+  },
+  {
+    text:
+      "Yes, And these are discount tickets for the museum. Please take them, if you like."
+  },
+  {
+    text:
+      "This is the museum that has paintings of Higashiyama Kaii, isn’t it? We are planning to go tomorrow. Thank you."
+  },
+  {
+    text: "Have a safe trip."
   }
 ];
 

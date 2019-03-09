@@ -56,7 +56,6 @@ const INITIAL_STATE = {
 the story or the translation*/
 const spacebar = 32;
 var english = true;
-var japanese = false;
 
 class Game extends Component {
   constructor() {
@@ -89,6 +88,10 @@ class Game extends Component {
       e => (e.returnValue = "Unsaved changes will be lost.")
     );
     document.addEventListener("keydown", this.transFunction, false);
+    //Prevents screen from scrolling down on spacebar press
+    window.onkeydown = function(e) {
+      return !(e.keyCode == spacebar);
+    };
   }
 
   componentWillUnmount() {
@@ -100,22 +103,25 @@ class Game extends Component {
    *keyCode 32 is the spacebar key
    *
    *After receiving the spacebar key input, if english is true, then display the
-   *english translation textbox, if japanese is true, revert to original
+   *english translation textbox, if english is false, revert to original
    *japanese story.
+   *
+   *Added Unedited Ch. 14 + 15 dialogue to prevent crashes when attempting to
+   *translate those portions.
    */
   transFunction(event) {
     const currentIndex = this.state.index;
     var currentText = story[currentIndex].text.toString();
     var currentEng = engTranslation[currentIndex].text.toString();
-    if (event.keyCode === spacebar && english) {
-      this.setState({ text: currentEng, textBoxShown: false });
-      english = !english;
+    if (event.keyCode === spacebar) {
+      if (english === true) {
+        this.setState({ text: currentEng, textBoxShown: false });
+      }
+      if (english == false) {
+        this.setState({ text: currentText, textBoxShown: false });
+      }
     }
-    if (event.keyCode === spacebar && japanese) {
-      this.setState({ text: currentText, textBoxShown: false });
-      english = !english;
-    }
-    japanese = !japanese;
+    english = !english;
   }
 
   setFrameFromChoice(choice, routeBegins) {
@@ -169,9 +175,8 @@ class Game extends Component {
     ) {
       this.setFrame(currentIndex + 1);
     }
-    //reset values when switching pages in the VN
+    //reset value when switching pages in the VN
     english = true;
-    japanese = false;
   }
 
   setFrame(index) {
