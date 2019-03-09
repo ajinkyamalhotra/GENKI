@@ -26,6 +26,7 @@ provider:
 
 functions:
   addUserToGroup:
+    role: CognitoAccessRole
     handler: addUserToGroup.main
     events:
       - http:
@@ -51,5 +52,6 @@ functions:
           authroize: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
+  - ${file(resources/cognito-group-policy.yml)}
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}
