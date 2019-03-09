@@ -77,8 +77,17 @@ class VirtualClassForm extends Component{
    * @param props       Includes the color, name, and label for the field.
    */
   FormField(props) {
-    const stateField = (props.label === 'Class Name') ?
-                                    this.state.ClassName : this.state.Section;
+    let stateField;
+
+    if(props.label == 'Class Name'){
+      stateField=this.state.className;
+    }else if(props.label == 'Section'){
+      stateField=this.state.section;
+    }else if(props.label == 'Semester'){
+      stateField=this.state.semester;
+    }else{
+      stateField=this.state.classTime;
+    }
     return (
       <Form.Field>
         <this.Label color={props.color}
@@ -151,13 +160,12 @@ class VirtualClassForm extends Component{
                     <Divider />
                     <Grid.Row>
                         <Header as='h1' inverted color='orange'>
-                        GENKI</Header>
+                        Create Class</Header>
                     </Grid.Row>
                     <Divider />
                     <Form inverted>
                         <this.FormField
                           color='orange'
-                          name='user circle'
                           label='Class Name'
                           type='text'
                           placeholder='Class Name'
@@ -165,10 +173,23 @@ class VirtualClassForm extends Component{
                         <Divider />
                         <this.FormField
                           color='orange'
-                          name='lock circle'
                           label='Section'
                           type='text'
                           placeholder='Section'
+                        />
+                        <Divider />
+                        <this.FormField
+                          color='orange'
+                          label='Semester'
+                          type='text'
+                          placeholder='Semester'
+                        />
+                        <Divider />
+                        <this.FormField
+                          color='orange'
+                          label='Class Time'
+                          type='text'
+                          placeholder='Class Time'
                         />
                         <Divider />
                         <this.ButtonOptions/>

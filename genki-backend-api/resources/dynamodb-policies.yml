@@ -24,12 +24,4 @@ Resources:
                   - dynamodb:DeleteItem
                   - dynamodb:GetItem
                   - dynamodb:BatchGetItem
-                Resource:
-                  - 'Fn::Join':
-                    - ':'
-                    -
-                      - 'arn:aws:dynamodb'
-                      - Ref: 'AWS::Region'
-                      - Ref: 'AWS::AccountId'
-                      - 'log-group:/aws/lambda/*:*:*/table/*'
-              
+                Resource: "arn:aws:dynamodb:us-west-2:132323314018:table/*"
