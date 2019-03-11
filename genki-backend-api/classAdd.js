@@ -4,8 +4,8 @@ export function main(event, context, callback){
   const data = JSON.parse(event.body);
   let docClient = AWS.DynamoDB.DocumentClient();
   let username = data.username;
-  let classID = data.classID;
-  let table = "Student";
+  let classIDObj = {ClassID: data.classID};
+  let table = "Users_Classes";
   let params = {
     TableName: table,
     Key: {
@@ -13,7 +13,7 @@ export function main(event, context, callback){
     },
     UpdateExpression: "Set Classes = list_append(Classes, :classID)",
     ExpressionAttributeValues: {
-      ":classID": classID
+      ":classID": classIDObj
     },
     ReturnValues: "UPDATED_NEW"
   };
@@ -27,12 +27,14 @@ export function main(event, context, callback){
         statusCode: 500,
         body: JSON.stringify({ status: false })
       };
+      callback(null, response);
       console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
     } else {
       const response = {
         statusCode: 200,
         body: JSON.stringify({ status: true })
       };
+      callback(null, response);
       console.log("Updated item:", JSON.stringify(result, null, 2));
     }
   })
