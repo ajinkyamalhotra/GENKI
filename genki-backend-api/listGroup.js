@@ -4,6 +4,13 @@ const USER_POOL_ID = 'us-west-2_WV9ZxGPoJ';
 const USER_LOAD_LIMIT = 50;
 const cognito = new AWS.CognitoIdentityServiceProvider({apiVersion: '2016-04-18'});
 
+/**
+ * This Lambda function is designed to fetch all users from a particular
+ * Cognito group for Genki-VN.
+ * @param  event                The GET event contains the groupName in URL
+ * @param  context              Typical Lambda Context
+ * @param  callback             Callback function
+ */
 export function main (event, context, callback) {
   var data;
   // Set response headers to enable CORS (Cross-Origin Resource Sharing)
@@ -15,12 +22,14 @@ export function main (event, context, callback) {
   console.log(event.pathParameters);
   try {
     data = JSON.parse(event.body);
+    // Setup the parameters for the listUsersInGroup function
     var params = {
       GroupName: event.pathParameters.groupName,
       UserPoolId: USER_POOL_ID,
       Limit: USER_LOAD_LIMIT,
       NextToken: ''
     };
+    // Get the users from Cognito
     cognito.listUsersInGroup(params, function(err, data) {
       if (err) throw err; // an error occurred
       else { // successful response

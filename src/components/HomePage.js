@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card } from 'semantic-ui-react';
 import { API } from "aws-amplify";
 
 
@@ -34,6 +34,7 @@ class HomePage extends Component {
     console.log('fetching pending teachers');
     let apiName = 'genki-vn-beta';
     let groupName = 'pendingTeacher';
+    // Funny symbol to setup URL parameters
     let path = `/listGroup/${groupName}`;
     try {
       let pendingTeachers = await API.get(apiName, path);
