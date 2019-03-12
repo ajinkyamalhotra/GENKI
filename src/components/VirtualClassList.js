@@ -16,6 +16,7 @@ class VirtualClassList extends Component {
     try {
       let classList = await API.get(apiName, path);
       console.log(classList);
+      this.setState({ classList: classList });
     } catch (e) {
       console.log(e, e.stack);
     }

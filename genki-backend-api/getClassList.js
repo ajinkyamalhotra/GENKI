@@ -57,7 +57,7 @@ function getClasses(classList, callback){
       const response = {
         statusCode: 200,
         headers: headers,
-        body: JSON.stringify(result);
+        body: JSON.stringify(result)
       };
       callback(null, response);
     }
