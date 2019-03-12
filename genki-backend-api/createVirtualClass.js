@@ -28,10 +28,19 @@ export function main (event, context, callback) {
 
   docClient.put(params, function(err, result){
     if(err){
-      console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+      const response = {
+        statusCode: 500,
+        body: JSON.stringify({ status: false })
+      };
+      callback(null, response);
+      console.error("Unable to get items. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-      console.log("Added item:", JSON.stringify(result, null, 2));
+      const response = {
+        statusCode: 200,
+        body: JSON.stringify({ status: true })
+      };
+      callback(null, response);
+      console.log("Got items:", JSON.stringify(result, null, 2));
     }
   })
-  callback(null, null);
 }
