@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link} from 'react-router-dom';
-import {Table, Image, Menu, Icon, Button, ButtonGroup} from 'semantic-ui-react';
+import {Table, Image, Menu, Icon, Button, ButtonGroup,} from 'semantic-ui-react';
+import Greetings from "./Greetings";
 import '../styles/Navigation.css';
 
 const logo= require('../images/logo with title.png');
@@ -158,6 +159,13 @@ class Navigation extends Component {
             </Table.Header>
         </Table>
         }
+        {/*
+        {this.isLoggedIn ? (
+          console.log("User already logged dont show greetings msg")
+          ):(
+        <Greetings />
+          )}
+          */}
       </div>
     )
   }
