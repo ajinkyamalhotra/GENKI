@@ -285,7 +285,8 @@ class Game extends Component {
   }
 
   startSkip() {
-    const intervalTime = prompt("How many milliseconds per frame would you like?", "75");
+    const intervalTimeSec = prompt("How many seconds per frame would you like?", "3");
+    const intervalTime = intervalTimeSec * 1000;
     if (intervalTime > 0) {
       this.setState({
         isSkipping: true
@@ -317,6 +318,7 @@ class Game extends Component {
     localStorage.setItem("time" + number, datestring); // saves the current time to the save slot
     localStorage.setItem(number, JSON.stringify(this.state, (k, v) => (v === undefined ? null : v)));
     this.setState(this.state);
+    
   }
 
   loadSlot(number) {
@@ -460,11 +462,11 @@ class Game extends Component {
 
   render() {
     let zoomMultiplier = 0;
-    if (window.innerWidth * 1 / window.innerHeight <= 1280 * 1 / 720) {
+    /*if (window.innerWidth * 1 / window.innerHeight <= 1280 * 1 / 720) {
       zoomMultiplier = window.innerWidth * 1 / 1280;
     } else {
       zoomMultiplier = window.innerHeight * 1 / 720;
-    }
+    }*/
 
     return (
       <div {...WheelReact.events} style={this.state.isFull ? { zoom: zoomMultiplier } : null}>
