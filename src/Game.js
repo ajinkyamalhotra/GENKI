@@ -112,7 +112,9 @@ class Game extends Component {
     const currentIndex = this.state.index;
     var currentText = story[currentIndex].text.toString();
     var currentEng = engTranslation[currentIndex].text.toString();
-    if (event.keyCode === spacebar) {
+    //2nd condition prevents 1st text box from disappearing if spacebar is
+    //pressed anytime other than during the game
+    if (event.keyCode === spacebar && this.state.frameIsRendering === true) {
       if (english === true) {
         this.setState({ text: currentEng, textBoxShown: false });
       }
