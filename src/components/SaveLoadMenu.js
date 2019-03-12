@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Auth, API } from "aws-amplify";
+import config from '../config';
 
 class SaveLoadMenu extends Component {
   constructor() {
@@ -9,12 +11,28 @@ class SaveLoadMenu extends Component {
     };
   }
 
+  /**
+   * Function which invokes the saveGame API to saves game progress
+   */
+  saveGameData() {
+    console.log('Saving game progress');
+    let apiName = 'genki-vn-beta';
+    let path = '/save';
+    let params = {
+      body: {
+        saveString: this.state.saveString,
+        createdAt: Date.now()
+      }
+    }
+    return API.post(apiName, path, params);
+  }
+
   swapSlotButtons() {
     let buttonCache = [];
     for (let i = 1; i < 21; i++) {
       let style = {};
       if (this.state.slotNumber === i) {
-        style["background-color"] = "darkGreen";
+        style["background-color"] = "rgb(250, 110, 50)";
       } else if (!JSON.parse(localStorage.getItem(i))) {
         style["background-color"] = "gray";
       }
