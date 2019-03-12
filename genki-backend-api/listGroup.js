@@ -26,8 +26,7 @@ export function main (event, context, callback) {
     var params = {
       GroupName: event.pathParameters.groupName,
       UserPoolId: USER_POOL_ID,
-      Limit: USER_LOAD_LIMIT,
-      NextToken: ''
+      Limit: USER_LOAD_LIMIT
     };
     // Get the users from Cognito
     cognito.listUsersInGroup(params, function(err, data) {

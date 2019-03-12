@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card } from 'semantic-ui-react';
-import { API } from "aws-amplify";
+import { API } from 'aws-amplify';
+import VirtualClassList from './VirtualClassList';
 
 
 /**
@@ -195,6 +196,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
+        {this.props.isAuthenticated ? <VirtualClassList {...this.props} /> : null}
         <this.PendingCards userList={this.state.pendingTeachers} />
       </div>
     )
