@@ -4,6 +4,7 @@ import { Icon, Divider} from 'semantic-ui-react';
 import { Auth, API } from "aws-amplify";
 import config from '../config';
 import '../styles/SignUp.css';
+import handlePasswordValidation from './HandlePasswordValidation';
 
 /**
  * SignUp form to become a member of the GenkiVN website.
@@ -20,6 +21,8 @@ class SignUp extends Component{
       password: '',
       confirmedPassword: '',
       passwordsMatch: true,
+      passwordValid: false,
+      passwordErrors: {},
       userType: '',
       secretID: '',
       isSigningUp: false,
@@ -127,12 +130,16 @@ class SignUp extends Component{
     console.log(data.value);
     const key = data.name;
     // If one of the password inputs have changed do check to see if they match
-    if (key === 'password' || key === 'confirmedPassword') {
+    if ((key === 'password' || key === 'confirmedPassword')) {
       const unchangedElement = (key === 'password') ?
                       this.state.confirmedPassword : this.state.password;
       const isMatch = data.value === unchangedElement;
+
+      this.setState({passwordErrors: handlePasswordValidation(e, data)});
+      const isValid = this.state.passwordErrors.valid;
       this.setState({
         passwordsMatch: isMatch,
+        passwordValid: isValid,
         [key]: data.value
       });
     } else {
@@ -277,6 +284,20 @@ class SignUp extends Component{
                       name='confirmedPassword'
                       value={this.state.confirmedPassword}
                       onChange={this.handleChange}/>
+          {this.state.passwordErrors.min ?
+            "Password needs to be at least 8 characters." : null};
+          {this.state.passwordErrors.max ?
+            "Password needs to be less than 24 characters." : null};
+          {this.state.passwordErrors.lowercase ?
+            "Password needs to have at least 1 lowercase letter." : null};
+          {this.state.passwordErrors.uppercase ?
+            "Password needs to have at least 1 uppercase letter." : null};
+          {this.state.passwordErrors.digits ?
+            "Password needs to have at least 1 number 0-9." : null};
+          {this.state.passwordErrors.symbols ?
+            "Password needs to have at least 1 special symbol." : null};
+          {this.state.passwordErrors.lowercase ?
+            "Password cannot contain spaces." : null};
       </Form.Group>
     )
   }
@@ -287,10 +308,10 @@ class SignUp extends Component{
    * given.
    */
   SignUpButton() {
-    const {email, userType, password, passwordsMatch} = this.state;
+    const {email, userType, passwordValid, passwordsMatch} = this.state;
     const isEnabled = this.validateEmail(email)
                       && userType
-                      && password.length>0
+                      && passwordValid
                       && passwordsMatch;
     console.log("email= " + this.validateEmail(email));
     console.log("isEnabled = " + isEnabled);
