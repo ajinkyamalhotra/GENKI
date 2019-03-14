@@ -1,10 +1,14 @@
 import AWS from 'aws-sdk';
-const crypto = require('crypto');
+const crypt = require('crypto');
 
 export function main (event, context, callback) {
   const data = JSON.parse(event.body);
-  console.log(event);
   let docClient = new AWS.DynamoDB.DocumentClient();
+  // Set response headers to enable CORS (Cross-Origin Resource Sharing)
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true
+  };
   let table = "Virtual_Class";
   let teacher = data.Teacher;
   let semester = data.Semester;
@@ -31,6 +35,7 @@ export function main (event, context, callback) {
     if(err){
       const response = {
         statusCode: 500,
+        headers: headers,
         body: JSON.stringify({ status: false })
       };
       callback(null, response);
@@ -38,6 +43,7 @@ export function main (event, context, callback) {
     } else {
       const response = {
         statusCode: 200,
+        headers: headers,
         body: JSON.stringify({ status: true })
       };
       callback(null, response);
