@@ -1,8 +1,9 @@
 import AWS from 'aws-sdk';
-const crypt = require('crypto');
+const crypto = require('crypto');
 
 export function main (event, context, callback) {
   const data = JSON.parse(event.body);
+  console.log(event);
   let docClient = new AWS.DynamoDB.DocumentClient();
   let table = "Virtual_Class";
   let teacher = data.Teacher;

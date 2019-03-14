@@ -2,7 +2,7 @@ import AWS from 'aws-sdk';
 
 export function main(event, context, callback){
   const data = JSON.parse(event.body);
-  let docClient = AWS.DynamoDB.DocumentClient();
+  let docClient = new AWS.DynamoDB.DocumentClient();
   let username = data.username;
   let classIDObj = {ClassID: data.classID};
   let table = "Users_Classes";
