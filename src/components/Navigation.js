@@ -130,25 +130,25 @@ class Navigation extends Component {
 
                         </Menu>
                       ) : (
-                        <ButtonGroup floated='right'>
-                          <Link to='/Login'>
-                            <Button
-                              size='large'
-                              name='Login'
-                              compact
-                              color='orange'
-                              id='login'>Login</Button>
-                          </Link>
-                          <Button.Or text='or' />
-                          <Link to='/SignUp'>
-                            <Button
-                              size='large'
-                              name='SignUp'
-                              compact
-                              color='orange'
-                              id='signup'>SignUp</Button>
-                          </Link>
-                        </ButtonGroup>
+                        <Menu inverted pointing secondary floated='right'>
+
+                        <Link to='/Login'>
+                        <Menu.Item id='HomeButton' name = 'Login'
+                        active={activeItem === 'Login'}
+                        onClick={this.handleItemClick}>
+                        <Icon inverted name='sign-in alternate'/>
+                        Login</Menu.Item>
+                        </Link>
+
+                        <Link to='/SignUp'>
+                        <Menu.Item name = 'SignUp'
+                        active={activeItem === 'SignUp'}
+                        onClick={this.handleItemClick}>
+                        <Icon inverted name='user plus'/>
+                        SignUp</Menu.Item>
+                        </Link>
+
+                        </Menu>
                       )}
 
                     </Table.HeaderCell>
