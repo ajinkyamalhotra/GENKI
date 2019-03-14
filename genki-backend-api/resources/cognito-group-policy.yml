@@ -34,4 +34,5 @@ Resources:
                 Action:
                   - cognito-idp:AdminAddUserToGroup
                   - cognito-idp:AdminRemoveUserFromGroup
+                  - cognito-idp:ListUsersInGroup
                 Resource: 'arn:aws:cognito-idp:us-west-2:132323314018:userpool/us-west-2_WV9ZxGPoJ'

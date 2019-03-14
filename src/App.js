@@ -41,7 +41,8 @@ class App extends Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
-      userType: this.state.userType
+      userType: this.state.userType,
+      username: this.state.username
     };
 
     return (

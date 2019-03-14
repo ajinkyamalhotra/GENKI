@@ -34,24 +34,45 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+  listGroup:
+    role: CognitoAccessRole
+    handler: listGroup.main
+    events:
+      - http:
+          path: listGroup/{groupName}
+          method: get
+          cors: true
+          authorizer: aws_iam
+  getClassList:
+    role: DynamoDBAccessRole
+    handler: getClassList.main
+    events:
+      - http:
+          path: classList/{Username}
+          method: get
+          cors: true
+          authorizer: aws_iam
   createVirtualClass:
+    role: DynamoDBAccessRole
     handler: createVirtualClass.main
     events:
       - http:
-          path: createVirtualClass
+          path: createClass
           method: post
           cors: true
           authorizer: aws_iam
-  announcement:
-    handler: announcement.main
+  classAdd:
+    role: DynamoDBAccessRole
+    handler: classAdd.main
     events:
       - http:
-          path: announcement
+          path: classAdd
           method: post
           cors: true
-          authroize: aws_iam
+          authorizer: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
   - ${file(resources/cognito-group-policy.yml)}
+  - ${file(resources/dynamodb-policies.yml)}
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}

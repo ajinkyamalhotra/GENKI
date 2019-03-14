@@ -79,11 +79,11 @@ class VirtualClassForm extends Component{
   FormField(props) {
     let stateField;
 
-    if(props.label == 'Class Name'){
+    if(props.label === 'Class Name'){
       stateField=this.state.className;
-    }else if(props.label == 'Section'){
+    }else if(props.label === 'Section'){
       stateField=this.state.section;
-    }else if(props.label == 'Semester'){
+    }else if(props.label === 'Semester'){
       stateField=this.state.semester;
     }else{
       stateField=this.state.classTime;

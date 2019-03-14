@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card } from 'semantic-ui-react';
+import { API } from 'aws-amplify';
+import VirtualClassList from './VirtualClassList';
+
 
 /**
  * This is the HomePage of the Genki VN App.
@@ -27,15 +30,34 @@ class HomePage extends Component {
 
   /**
    * Function that fetches the pending teachers from the server.
-   * They arrive as a JSON in the format pendingTeachers: []
    */
-  getPendingTeachers() {
+  async getPendingTeachers() {
     console.log('fetching pending teachers');
-    fetch('/pending')
-      .then(response => response.json())
-      .then(response => {
-        this.setState({pendingTeachers: response.pendingTeachers})
-      });
+    let apiName = 'genki-vn-beta';
+    let groupName = 'pendingTeacher';
+    // Funny symbol to setup URL parameters
+    let path = `/listGroup/${groupName}`;
+    try {
+      let pendingTeachers = await API.get(apiName, path);
+      // Create a new array with only information we need
+      pendingTeachers = pendingTeachers.map((user) => {
+        let attributes = user.Attributes.reduce((accumulator, attribute) => ({
+          ...accumulator,
+          [attribute.Name]: attribute.Value
+        }), {}); // End attributes object creation
+        return {
+          email: attributes.email,
+          firstName: attributes.name,
+          lastName: attributes.family_name,
+          username: attributes.sub
+        };
+      }); // End pendingTeachers creation
+      console.log(pendingTeachers);
+      this.setState({ pendingTeachers: pendingTeachers });
+    } catch (e) {
+      console.log('Issue fetching pending teachers');
+      console.log(e, e.stack);
+    }
   }
 
   /**
@@ -174,6 +196,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
+        {this.props.isAuthenticated ? <VirtualClassList {...this.props} /> : null}
         <this.PendingCards userList={this.state.pendingTeachers} />
       </div>
     )
