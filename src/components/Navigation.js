@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
-import { Link} from 'react-router-dom';
-import {Table, Image, Menu, Icon, Button, ButtonGroup,} from 'semantic-ui-react';
-import Greetings from "./Greetings";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Table, Image, Menu, Icon } from 'semantic-ui-react';
 import '../styles/Navigation.css';
 
 const logo= require('../images/logo with title.png');
@@ -44,7 +43,10 @@ class Navigation extends Component {
   state = { activeItem: extractActiveMenuItem() };
 
   //To change active item to the selected menu-item when a menu-item is clicked
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+    window.location.assign(name);
+  };
 
   //To change the active item to home when GENKI logo or label is clicked
   handleClickOnGENKILoggedIn = () => this.setState({ activeItem: 'Home' });
@@ -69,88 +71,90 @@ class Navigation extends Component {
                     {/*Cell to store the GENKI logo with title*/}
                     <Table.HeaderCell rowSpan='2' collapsing
                     style={{padding: '0', marginLeft:'50px'}}>
+
                       {this.isLoggedIn ? (
                         <Link to='/Home'>
                             <Image size='small' src={logo}
                             onClick={this.handleClickOnGENKILoggedIn}/>
                         </Link>
+
                         ) : (
+
                         <Link to='/'>
                           <Image size='small' src={logo}
                                  onClick={this.handleClickOnGENKINotLoggedIn}/>
                         </Link>
                         )}
+
                     </Table.HeaderCell>
 
                     {/*Cell to store the Menu-Items or button*/}
-                    <Table.HeaderCell inverted id={"navButtons"}>
+                    <Table.HeaderCell id={"navButtons"}>
 
                       {this.isLoggedIn ? (
-                        <Menu inverted pointing secondary floated='right'>
 
-                          <Link to='/Home'>
+                        <Menu inverted pointing secondary floated='right'>
                             <Menu.Item id='HomeButton' name = 'Home'
                                        active={activeItem === 'Home'}
                                        onClick={this.handleItemClick}>
                               <Icon inverted name='home'/>
-                              Home</Menu.Item>
-                          </Link>
+                              Home
+                            </Menu.Item>
 
-                          <Link to='/Profile'>
-                            <Menu.Item name = 'Profile'
+                            <Menu.Item id='ProfileButton'
+                                       name = 'Profile'
                                        active={activeItem === 'Profile'}
                                        onClick={this.handleItemClick}>
                               <Icon inverted name='user circle'/>
-                              Profile</Menu.Item>
-                          </Link>
+                              Profile
+                            </Menu.Item>
 
-                          <Link to='/Game'>
-                            <Menu.Item name = 'Game'
+                            <Menu.Item id='GameButton'
+                                       name = 'Game'
                                        active={activeItem === 'Game'}
                                        onClick={this.handleItemClick}>
                               <Icon inverted name='game'/>
-                              Game</Menu.Item>
-                          </Link>
+                              Game
+                            </Menu.Item>
 
-                          <Link to='/Progress'>
-                            <Menu.Item name = 'Progress'
+                            <Menu.Item id='ProgressButton'
+                                       name = 'Progress'
                                        active={activeItem === 'Progress'}
                                        onClick={this.handleItemClick}>
                               <Icon inverted name='shipping fast'/>
-                              Progress</Menu.Item>
-                          </Link>
+                              Progress
+                            </Menu.Item>
 
-                          <Link to='/Login'>
-                            <Menu.Item name = 'Login'
+                            <Menu.Item id='SignOutButton'
+                                       name = 'Login'
                                        active={activeItem === 'Login'}
                                        onClick={this.handleItemClick}>
                               <Icon inverted name='sign out alternate'/>
-                              Logout</Menu.Item>
-                          </Link>
-
+                              Logout
+                            </Menu.Item>
                         </Menu>
+
                       ) : (
+
                         <Menu inverted pointing secondary floated='right'>
+                        <Menu.Item id='LoginButton'
+                                   name = 'Login'
+                                   active={activeItem === 'Login'}
+                                   onClick={this.handleItemClick}>
+                          <Icon inverted name='sign-in alternate'/>
+                          Login
+                        </Menu.Item>
 
-                        <Link to='/Login'>
-                        <Menu.Item id='HomeButton' name = 'Login'
-                        active={activeItem === 'Login'}
-                        onClick={this.handleItemClick}>
-                        <Icon inverted name='sign-in alternate'/>
-                        Login</Menu.Item>
-                        </Link>
-
-                        <Link to='/SignUp'>
-                        <Menu.Item name = 'SignUp'
-                        active={activeItem === 'SignUp'}
-                        onClick={this.handleItemClick}>
-                        <Icon inverted name='user plus'/>
-                        SignUp</Menu.Item>
-                        </Link>
-
+                        <Menu.Item id='SignUpButton'
+                                   name = 'SignUp'
+                                   active={activeItem === 'SignUp'}
+                                   onClick={this.handleItemClick}>
+                          <Icon inverted name='user plus'/>
+                          SignUp
+                        </Menu.Item>
                         </Menu>
-                      )}
 
+                      )}
                     </Table.HeaderCell>
 
                     {/*Adding padding to the right side of the nav bar*/}

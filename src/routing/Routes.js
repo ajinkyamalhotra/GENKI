@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, Switch} from "react-router-dom";
+import { Switch } from "react-router-dom";
 import AppliedRoute from './AppliedRoute';
 import HomePage from '../components/HomePage';
 import Game from '../Game';
@@ -8,9 +8,6 @@ import Profile from '../components/Profile';
 import Progress from '../components/Progress';
 import SignUp from '../components/SignUp';
 import SignUpConfirmation from '../components/SignUpConfirmation';
-import {Menu} from "semantic-ui-react/dist/commonjs/collections/Menu";
-import {Button, ButtonGroup, Icon} from "semantic-ui-react";
-import {Table} from "semantic-ui-react/dist/commonjs/collections/Table";
 
 /**
  * This change prevents the non-logged in user to have access to profile, game,
