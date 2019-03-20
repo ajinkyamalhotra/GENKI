@@ -15,7 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       isAuthenticated: false,
-    }
+    };
 
     this.handleLogin = this.handleLogin.bind(this);
   }
@@ -48,7 +48,7 @@ class App extends Component {
     return (
         // Render the Navigation component
         <div className="App">
-          <Navigation {...childProps}/>
+          <Navigation childProps={childProps}/>
           <div>
             {this.state.isUser ?
               'Logged In as ' + this.state.userType  : 'Not Logged in'}

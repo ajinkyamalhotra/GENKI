@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { API } from "aws-amplify";
 
 class SaveLoadMenu extends Component {
   constructor() {
@@ -9,12 +10,28 @@ class SaveLoadMenu extends Component {
     };
   }
 
+  /**
+   * Function which invokes the saveGame API to saves game progress
+   */
+  saveGameData() {
+    console.log('Saving game progress');
+    let apiName = 'genki-vn-beta';
+    let path = '/save';
+    let params = {
+      body: {
+        saveString: this.state.saveString,
+        createdAt: Date.now()
+      }
+    };
+    return API.post(apiName, path, params);
+  }
+
   swapSlotButtons() {
     let buttonCache = [];
     for (let i = 1; i < 21; i++) {
       let style = {};
       if (this.state.slotNumber === i) {
-        style["background-color"] = "darkGreen";
+        style["background-color"] = "rgb(250, 110, 50)";
       } else if (!JSON.parse(localStorage.getItem(i))) {
         style["background-color"] = "gray";
       }
@@ -55,23 +72,26 @@ class SaveLoadMenu extends Component {
           }}
         >
           {JSON.parse(localStorage.getItem(this.state.slotNumber)).choicesExist ? this.renderChoiceMenu() : null}
-          <a>
             <img
+              alt="image4"
               draggable="false"
               className="slot-bg"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg}
             />
             <img
+              alt="image5"
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft}
               className="sprite left"
             />
             <img
+              alt="image6"
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite}
               className="sprite"
             />
             <img
+              alt="image7"
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight}
               className="sprite right"
@@ -89,7 +109,6 @@ class SaveLoadMenu extends Component {
                 <div className="text">{JSON.parse(localStorage.getItem(this.state.slotNumber)).text}</div>
               </div>
             ) : null}
-          </a>
         </div>
       );
     } else {
@@ -102,10 +121,10 @@ class SaveLoadMenu extends Component {
       <div className="overlay overlay-save-load">
         <ul className="header">
           <li>
-            <a>{this.props.menuType}</a>
+            <h1>{this.props.menuType}</h1>
           </li>
           <li className="exit-button" onClick={this.props.toggleMenu}>
-            <a>&times;</a>
+            <h1 style={{paddingRight: "10px"}}>X</h1>
           </li>
         </ul>
         {this.menuSlot(this.state.slotNumber)}
