@@ -11,12 +11,7 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userType: props.userType,
       pendingTeachers: []
-    }
-    // If the user is an admin, get the pending teachers to approve
-    if (props.userType === 'admin') {
-      this.getPendingTeachers();
     }
 
     this.getPendingTeachers = this.getPendingTeachers.bind(this);
@@ -26,6 +21,13 @@ class HomePage extends Component {
     this.handleDecline = this.handleDecline.bind(this);
     this.updatePending = this.updatePending.bind(this);
     this.getUser = this.getUser.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    // If the user is an admin, get the pending teachers to approve
+    if (this.props !== prevProps && this.props.userType === 'admin') {
+      this.getPendingTeachers();
+    }
   }
 
   /**
@@ -52,6 +54,7 @@ class HomePage extends Component {
           username: attributes.sub
         };
       }); // End pendingTeachers creation
+      console.log('Pending Teachers: ');
       console.log(pendingTeachers);
       this.setState({ pendingTeachers: pendingTeachers });
     } catch (e) {
@@ -180,7 +183,7 @@ class HomePage extends Component {
    */
   PendingCards(props) {
     // Only generate cards if user is admin
-    if (this.state.userType === 'admin') {
+    if (this.props.userType === 'admin') {
       // Map each user to a card
       var cards = props.userList.map((user) => this.PendingTeacherCard(user));
       return (
@@ -196,8 +199,10 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        {this.props.isAuthenticated ? <VirtualClassList {...this.props} /> : null}
-        <this.PendingCards userList={this.state.pendingTeachers} />
+        {this.props.isAuthenticated && this.props.userType !== 'admin' ?
+                      <VirtualClassList {...this.props} /> : null}
+        {this.props.userType === 'admin' ?
+            <this.PendingCards userList={this.state.pendingTeachers} /> : null}
       </div>
     )
   }
