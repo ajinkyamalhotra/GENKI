@@ -36,14 +36,20 @@ function extractActiveMenuItem() {
  */
 class Navigation extends Component {
 
-  //Flag to indicate whether user is logged in or not
-  isLoggedIn = this.props.childProps.isAuthenticated;
+  constructor(props) {
+    super(props);
+    //Get the active Item by extracting the current active item from the URL
+    this.state = {
+      activeItem: extractActiveMenuItem()
+    }
+  }
 
-  //Get the active Item by extracting the current active item from the URL
-  state = { activeItem: extractActiveMenuItem() };
+
 
   //To change active item to the selected menu-item when a menu-item is clicked
   handleItemClick = (e, { name }) => {
+    e.preventDefault();
+    console.log(e);
     this.setState({ activeItem: name });
     window.location.assign(name);
   };
@@ -57,7 +63,9 @@ class Navigation extends Component {
   /** Semantic-UI menu used
    * https://react.semantic-ui.com/collections/menu/
    */
-   render() {
+  render() {
+    //Flag to indicate whether user is logged in or not
+    const isLoggedIn = this.props.childProps.isAuthenticated;
     const { activeItem } = this.state;
     return (
       <div className="navigation-bar"> {
@@ -72,7 +80,7 @@ class Navigation extends Component {
                     <Table.HeaderCell rowSpan='2' collapsing
                     style={{padding: '0', marginLeft:'50px'}}>
 
-                      {this.isLoggedIn ? (
+                      {isLoggedIn ? (
                         <Link to='/Home'>
                             <Image size='small' src={logo}
                             onClick={this.handleClickOnGENKILoggedIn}/>
@@ -91,7 +99,7 @@ class Navigation extends Component {
                     {/*Cell to store the Menu-Items or button*/}
                     <Table.HeaderCell id={"navButtons"}>
 
-                      {this.isLoggedIn ? (
+                      {isLoggedIn ? (
 
                         <Menu inverted pointing secondary floated='right'>
                             <Menu.Item id='HomeButton' name = 'Home'

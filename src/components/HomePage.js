@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card } from 'semantic-ui-react';
+import { API } from 'aws-amplify';
+import VirtualClassList from './VirtualClassList';
+
 
 /**
  * This is the HomePage of the Genki VN App.
@@ -8,12 +11,7 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userType: props.userType,
       pendingTeachers: []
-    };
-    // If the user is an admin, get the pending teachers to approve
-    if (props.userType === 'admin') {
-      this.getPendingTeachers();
     }
 
     this.getPendingTeachers = this.getPendingTeachers.bind(this);
@@ -25,17 +23,44 @@ class HomePage extends Component {
     this.getUser = this.getUser.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    // If the user is an admin, get the pending teachers to approve
+    if (this.props !== prevProps && this.props.userType === 'admin') {
+      this.getPendingTeachers();
+    }
+  }
+
   /**
    * Function that fetches the pending teachers from the server.
-   * They arrive as a JSON in the format pendingTeachers: []
    */
-  getPendingTeachers() {
+  async getPendingTeachers() {
     console.log('fetching pending teachers');
-    fetch('/pending')
-      .then(response => response.json())
-      .then(response => {
-        this.setState({pendingTeachers: response.pendingTeachers})
-      });
+    let apiName = 'genki-vn-beta';
+    let groupName = 'pendingTeacher';
+    // Funny symbol to setup URL parameters
+    let path = `/listGroup/${groupName}`;
+    try {
+      let pendingTeachers = await API.get(apiName, path);
+      // Create a new array with only information we need
+      pendingTeachers = pendingTeachers.map((user) => {
+        let attributes = user.Attributes.reduce((accumulator, attribute) => ({
+          ...accumulator,
+          [attribute.Name]: attribute.Value
+        }), {}); // End attributes object creation
+        return {
+          email: attributes.email,
+          firstName: attributes.name,
+          lastName: attributes.family_name,
+          username: attributes.sub
+        };
+      }); // End pendingTeachers creation
+      console.log('Pending Teachers: ');
+      console.log(pendingTeachers);
+      this.setState({ pendingTeachers: pendingTeachers });
+    } catch (e) {
+      console.log('Issue fetching pending teachers');
+      console.log(e, e.stack);
+    }
   }
 
   /**
@@ -158,7 +183,7 @@ class HomePage extends Component {
    */
   PendingCards(props) {
     // Only generate cards if user is admin
-    if (this.state.userType === 'admin') {
+    if (this.props.userType === 'admin') {
       // Map each user to a card
       var cards = props.userList.map((user) => this.PendingTeacherCard(user));
       return (
@@ -174,8 +199,10 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <h1>This is HomePage</h1>
-        <this.PendingCards userList={this.state.pendingTeachers} />
+        {this.props.isAuthenticated && this.props.userType !== 'admin' ?
+                      <VirtualClassList {...this.props} /> : null}
+        {this.props.userType === 'admin' ?
+            <this.PendingCards userList={this.state.pendingTeachers} /> : null}
       </div>
     )
   }

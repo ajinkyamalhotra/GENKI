@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation';
 import Routes from './routing/Routes';
+import { Auth } from 'aws-amplify';
 
 import './App.css';
 
+var jwt = require('jsonwebtoken');
 
 /**
  * The base component of the Genki VN application.  It renders the Navigation
@@ -15,23 +17,53 @@ class App extends Component {
     super(props);
     this.state = {
       isAuthenticated: false,
+      isAuthenticating: true
     };
 
     this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  async componentDidMount() {
+    try {
+      await Auth.currentSession();
+      console.log('Session found');
+      this.userHasAuthenticated(true);
+      this.handleLogin();
+    }
+    catch(e) {
+      console.log(e);
+      if (e !== 'No current user') {
+        alert(e);
+      }
+    }
+
+    this.setState({ isAuthenticating: false });
   }
 
   userHasAuthenticated(authenticated) {
     this.setState({ isAuthenticated: authenticated });
   }
 
-  handleLogin(userAttributes, userType) {
-    let username = userAttributes.sub;
-    let email = userAttributes.email;
-    let firstName = userAttributes.name;
-    let lastName = userAttributes.family_name;
+  async handleLogin() {
+    try {
+      let user = await Auth.currentAuthenticatedUser();
+      const { attributes } = user;
+      console.log(user);
+      console.log(attributes);
+      let decoded = jwt.decode(user.signInUserSession.accessToken.jwtToken);
+      let userType = decoded['cognito:groups'];
+      userType = userType[0];
+      let username = attributes.sub;
+      let email = attributes.email;
+      let firstName = attributes.name;
+      let lastName = attributes.family_name;
 
-    this.setState({ isAuthenticated: true, username, email, firstName, lastName, userType });
-    console.log(username + ' ' + email + ' ' + firstName + ' ' + lastName + ' ' + userType);
+      this.setState({ username, email, firstName, lastName, userType });
+      console.log(username + ' ' + email + ' ' + firstName + ' ' + lastName + ' ' + userType);
+    } catch (e) {
+      console.log(e);
+    }
+
   }
 
   render() {
@@ -50,7 +82,7 @@ class App extends Component {
         <div className="App">
           <Navigation childProps={childProps}/>
           <div>
-            {this.state.isUser ?
+            {this.state.isAuthenticated ?
               'Logged In as ' + this.state.userType  : 'Not Logged in'}
           </div>
           <Routes childProps={childProps}/>
