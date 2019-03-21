@@ -70,7 +70,7 @@ class Login extends Component{
       let decoded = jwt.decode(user.signInUserSession.accessToken.jwtToken);
       let userType = decoded['cognito:groups'];
       this.props.handleLogin(attributes, userType[0]);
-      this.props.history.push("/");
+      this.props.history.push("/Home");
     } catch (e) {
       alert(e.message);
     }
@@ -173,7 +173,7 @@ class Login extends Component{
                         <Form inverted>
                             <this.FormField
                               color='orange'
-                              name='user circle'
+                              name='user'
                               label='email'
                               type='text'
                               placeholder='Email'
@@ -181,7 +181,7 @@ class Login extends Component{
                             <Divider />
                             <this.FormField
                               color='orange'
-                              name='lock circle'
+                              name='lock'
                               label='password'
                               type='password'
                               placeholder='Password'

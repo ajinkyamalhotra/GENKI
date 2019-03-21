@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card } from 'semantic-ui-react';
-import { API } from 'aws-amplify';
-import VirtualClassList from './VirtualClassList';
-
+import { Button, Card } from 'semantic-ui-react'
 
 /**
  * This is the HomePage of the Genki VN App.
@@ -13,7 +10,7 @@ class HomePage extends Component {
     this.state = {
       userType: props.userType,
       pendingTeachers: []
-    }
+    };
     // If the user is an admin, get the pending teachers to approve
     if (props.userType === 'admin') {
       this.getPendingTeachers();
@@ -30,34 +27,15 @@ class HomePage extends Component {
 
   /**
    * Function that fetches the pending teachers from the server.
+   * They arrive as a JSON in the format pendingTeachers: []
    */
-  async getPendingTeachers() {
+  getPendingTeachers() {
     console.log('fetching pending teachers');
-    let apiName = 'genki-vn-beta';
-    let groupName = 'pendingTeacher';
-    // Funny symbol to setup URL parameters
-    let path = `/listGroup/${groupName}`;
-    try {
-      let pendingTeachers = await API.get(apiName, path);
-      // Create a new array with only information we need
-      pendingTeachers = pendingTeachers.map((user) => {
-        let attributes = user.Attributes.reduce((accumulator, attribute) => ({
-          ...accumulator,
-          [attribute.Name]: attribute.Value
-        }), {}); // End attributes object creation
-        return {
-          email: attributes.email,
-          firstName: attributes.name,
-          lastName: attributes.family_name,
-          username: attributes.sub
-        };
-      }); // End pendingTeachers creation
-      console.log(pendingTeachers);
-      this.setState({ pendingTeachers: pendingTeachers });
-    } catch (e) {
-      console.log('Issue fetching pending teachers');
-      console.log(e, e.stack);
-    }
+    fetch('/pending')
+      .then(response => response.json())
+      .then(response => {
+        this.setState({pendingTeachers: response.pendingTeachers})
+      });
   }
 
   /**
@@ -196,7 +174,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        {this.props.isAuthenticated ? <VirtualClassList {...this.props} /> : null}
+        <h1>This is HomePage</h1>
         <this.PendingCards userList={this.state.pendingTeachers} />
       </div>
     )
