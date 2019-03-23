@@ -7,14 +7,23 @@ class SaveLoadMenu extends Component {
     super(); //constructor init
 
     this.state = {
-      slotNumber: 1
+      slotNumber: 1,
+
+      Username: '',
+      DateCreated: '',
+      SlotNumber: 1,
+      SaveString: ''
     };
+
+    this.saveGameData = this.saveGameData.bind(this);
+    this.loadGameData = this.loadGameData.bind(this);
   }
 
   /**
    * Function which invokes the saveGame API to saves game progress
    */
-  saveGameData() {
+
+  /*saveGameData() {
     console.log('Saving game progress');
     let apiName = 'genki-vn-beta';
     let path = '/save';
@@ -25,6 +34,48 @@ class SaveLoadMenu extends Component {
       }
     }
     return API.post(apiName, path, params);
+  }*/
+
+  /* Saving game progress onto AWS servers */
+async saveGameData(datestring, number, saveStringify) {
+  //event.preventDefault();
+
+  let username = this.props.Username;
+  this.setState({Username: username});
+  let dateCreated = datestring; //this.state.DateCreated;
+  let saveSlotNumber = number; //this.state.SlotNumber;
+  let saveString = saveStringify; //this.state.SaveString;
+
+  let data = {
+    Username: username,
+    DateCreated: dateCreated,
+    SlotNumber: saveSlotNumber,
+    SaveString: saveString
+  }
+  try {
+    await this.savePost(data);
+    this.props.history.push("/");
+  } catch (e) {
+    alert(e);
+  }
+
+}
+
+  savePost(data){
+    return (API.post('genki-vn-beta', '/save', data));
+  }
+
+  async loadGameData(number) {
+    let apiName = 'genki-vn-beta';
+    let username = this.props.username;
+    let path = `/save/${username}`;
+    try {
+      let save = await API.get(apiName, path);
+      console.log(save);
+      this.setState({ save: save });
+    } catch (e) {
+      console.log(e, e.stack);
+    }
   }
 
   swapSlotButtons() {
@@ -33,7 +84,7 @@ class SaveLoadMenu extends Component {
       let style = {};
       if (this.state.slotNumber === i) {
         style["background-color"] = "rgb(250, 110, 50)";
-      } else if (!JSON.parse(localStorage.getItem(i))) {
+      } else if (!JSON.parse(this.loadGameData(i))) {
         style["background-color"] = "gray";
       }
       buttonCache.push(
@@ -49,7 +100,7 @@ class SaveLoadMenu extends Component {
   renderChoiceMenu() {
     return (
       <div className="overlay-choices overlay-choices-slot">
-        {JSON.parse(localStorage.getItem(this.state.slotNumber)).choiceOptions.map(key => (
+        {JSON.parse(this.loadGameData(this.state.slotNumber)).choiceOptions.map(key => (
           <button className="choice-button">{key.content}</button>
         ))}
       </div>
@@ -57,13 +108,13 @@ class SaveLoadMenu extends Component {
   }
 
   menuSlot(number) {
-    if (JSON.parse(localStorage.getItem(this.state.slotNumber))) {
+    if (JSON.parse(this.loadGameData(this.state.slotNumber))) {
       return (
         <div
           className="save-load-slot"
           onClick={() => {
             if (
-              JSON.parse(localStorage.getItem(this.state.slotNumber)) &&
+              JSON.parse(this.loadGameData(this.state.slotNumber)) &&
               window.confirm(this.props.confirmationMessage)
             ) {
               this.props.executeSlot(this.state.slotNumber);
@@ -72,39 +123,39 @@ class SaveLoadMenu extends Component {
             }*/
           }}
         >
-          {JSON.parse(localStorage.getItem(this.state.slotNumber)).choicesExist ? this.renderChoiceMenu() : null}
+          {JSON.parse(this.loadGameData(this.state.slotNumber)).choicesExist ? this.renderChoiceMenu() : null}
           <a>
             <img
               draggable="false"
               className="slot-bg"
-              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg}
+              src={JSON.parse(this.loadGameData(this.state.slotNumber)).bg}
             />
             <img
               draggable="false"
-              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft}
+              src={JSON.parse(this.loadGameData(this.state.slotNumber)).spriteLeft}
               className="sprite left"
             />
             <img
               draggable="false"
-              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite}
+              src={JSON.parse(this.loadGameData(this.state.slotNumber)).sprite}
               className="sprite"
             />
             <img
               draggable="false"
-              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight}
+              src={JSON.parse(this.loadGameData(this.state.slotNumber)).spriteRight}
               className="sprite right"
             />
-            {JSON.parse(localStorage.getItem(this.state.slotNumber)).text && this.props.textBoxShown ? (
+            {JSON.parse(this.loadGameData(this.state.slotNumber)).text && this.props.textBoxShown ? (
               <div
                 className="text-box"
                 style={{
-                  fontFamily: JSON.parse(localStorage.getItem(this.state.slotNumber)).font
+                  fontFamily: JSON.parse(this.loadGameData(this.state.slotNumber)).font
                 }}
               >
-                {JSON.parse(localStorage.getItem(this.state.slotNumber)).speaker ? (
-                  <div className="speaker">{JSON.parse(localStorage.getItem(this.state.slotNumber)).speaker}</div>
+                {JSON.parse(this.loadGameData(this.state.slotNumber)).speaker ? (
+                  <div className="speaker">{JSON.parse(this.loadGameData(this.state.slotNumber)).speaker}</div>
                 ) : null}
-                <div className="text">{JSON.parse(localStorage.getItem(this.state.slotNumber)).text}</div>
+                <div className="text">{JSON.parse(this.loadGameData(this.state.slotNumber)).text}</div>
               </div>
             ) : null}
           </a>
@@ -127,7 +178,7 @@ class SaveLoadMenu extends Component {
           </li>
         </ul>
         {this.menuSlot(this.state.slotNumber)}
-        <div className="slot-date">{localStorage.getItem("time" + this.state.slotNumber)}</div>
+        <div className="slot-date">{this.loadGameData("time" + this.state.slotNumber)}</div>
         {this.swapSlotButtons()}
       </div>
     );
