@@ -8,6 +8,7 @@ import WheelReact from "wheel-react";
 import story from "./story/story";
 import engTranslation from "./story/engTranslation";
 import choices from "./story/choices";
+import { Auth, API } from "aws-amplify";
 // Components
 import TitleScreen from "./components/TitleScreen";
 import Backlog from "./components/Backlog";
@@ -49,7 +50,12 @@ const INITIAL_STATE = {
   textBoxShown: true,
   saveMenuShown: false,
   loadMenuShown: false,
-  isSkipping: false
+  isSkipping: false,
+
+  Username: '',
+  DateCreated: '',
+  SlotNumber: 1,
+  SaveString: ''
 };
 
 //This boolean controls which dialogue shows on screen
@@ -63,6 +69,9 @@ class Game extends Component {
     this.toggleBacklog = this.toggleBacklog.bind(this);
     this.transFunction = this.transFunction.bind(this);
     this.state = INITIAL_STATE;
+
+    this.saveGameData = this.saveGameData.bind(this);
+    this.loadGameData = this.loadGameData.bind(this);
 
     WheelReact.config({
       down: () => {
@@ -340,7 +349,7 @@ class Game extends Component {
     const intervalTimeSec = prompt("How many seconds per frame would you like?", "3");
     const intervalTime = intervalTimeSec * 1000;
 
-    if (intervalTime > 0) {
+    if (intervalTime > 999) {
       this.setState({
         isSkipping: true
       });
@@ -358,6 +367,35 @@ class Game extends Component {
     });
   }
 
+  /* Saving game progress onto AWS servers */
+async saveGameData(datestring, number, saveStringify) {
+  //event.preventDefault();
+
+  let username = this.props.Username;
+  this.setState({Username: username});
+  let dateCreated = datestring; //this.state.DateCreated;
+  let saveSlotNumber = number; //this.state.SlotNumber;
+  let saveString = saveStringify; //this.state.SaveString;
+
+  let data = {
+    Username: username,
+    DateCreated: dateCreated,
+    SlotNumber: saveSlotNumber,
+    SaveString: saveString
+  }
+  try {
+    await this.savePost(data);
+    this.props.history.push("/");
+  } catch (e) {
+    alert(e);
+  }
+
+}
+
+  savePost(data){
+    return (API.post('genki-vn-beta', '/save', data));
+  }
+
   saveSlot(number) {
     var d = new Date();
     var datestring =
@@ -371,17 +409,33 @@ class Game extends Component {
       ":" +
       ("0" + d.getMinutes()).slice(-2);
 
-    localStorage.setItem("time" + number, datestring); // saves the current time to the save slot
-    localStorage.setItem(
-      number,
-      JSON.stringify(this.state, (k, v) => (v === undefined ? null : v))
-    );
+    //localStorage.setItem("time" + number, datestring); // saves the current time to the save slot
+    //localStorage.setItem(
+      //number,
+      //JSON.stringify(this.state, (k, v) => (v === undefined ? null : v))
+    //);
     this.setState(this.state);
-    
+
+    const saveStringify = JSON.stringify(this.state, (k, v) => (v === undefined ? null : v));
+    this.saveGameData(datestring, number, saveStringify);
+
+  }
+
+  async loadGameData(number) {
+    let apiName = 'genki-vn-beta';
+    let username = this.props.username;
+    let path = `/save/${username}`;
+    try {
+      let save = await API.get(apiName, path);
+      console.log(save);
+      this.setState({ save: save });
+    } catch (e) {
+      console.log(e, e.stack);
+    }
   }
 
   loadSlot(number) {
-    this.setState(JSON.parse(localStorage.getItem(number)));
+    this.setState(JSON.parse(this.loadGameData(number))); //localStorage.getItem(number)
     this.setState({
       saveMenuShown: false
     }); // save menu to false and not load because save is true when saving
