@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-
 import '../styles/VirtualClassForm.css';
+const crypto = require('crypto');
 
 class VirtualClassForm extends Component{
   constructor(props){
@@ -13,14 +13,14 @@ class VirtualClassForm extends Component{
       Section: '',
       Teacher: '',
       Semester: '',
-      ClassTime: ''
+      ClassTime: '',
+      ClassID: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.FormField = this.FormField.bind(this);
     this.ButtonOptions = this.ButtonOptions.bind(this);
-    this.createClass = this.createClass.bind(this);
   }
 
   componentWillUnmount() {
@@ -29,7 +29,8 @@ class VirtualClassForm extends Component{
       Section: '',
       Teacher: '',
       Semester: '',
-      ClassTime: ''
+      ClassTime: '',
+      ClassID: ''
     }
   }
 
@@ -53,20 +54,36 @@ class VirtualClassForm extends Component{
     let section = this.state.Section;
     let classTime = this.state.ClassTime;
     let semester = this.state.Semester;
+    let classID =
+      crypto.createHash('md5').update(className + teacher + semester + section + classTime).digest('hex');
     let data = {
       ClassName: className,
       Section: section,
       Teacher: teacher,
       ClassTime: classTime,
-      Semester: semester
+      Semester: semester,
+      ClassID: classID
+    }
+    let userData = {
+      username: this.props.username,
+      classID: classID
     }
     try {
+      await this.addClass(userData);
+    } catch (e) {
+      alert(e);
+    }try {
       await this.createClass(data);
       this.props.history.push("/");
     } catch (e) {
       alert(e);
     }
 
+
+  }
+
+  addClass(userData){
+    return (API.post('genki-vn-beta', '/classAdd', userData));
   }
 
   createClass(data){
@@ -117,35 +134,23 @@ class VirtualClassForm extends Component{
   }
 
   /**
-   * Only one button options for this form, which will use
-   * handleSubmit function.
+   * Returns the submission button.
+   * This button is disabled until all of the necessary inputs have been
+   * given.
    */
-  ButtonOptions() {
-      return(
-        <div>
-          <this.GenkiButton color='orange'
-                            type='Submit'
-                            id='submit'
-                            onClick={this.handleSubmit}/>
-        </div>
-      )
-  }
+  SubmitButton() {
+    const {className, section, semester, classTime} = this.state;
+    const isEnabled = className;
+    console.log(className);
 
-  /**
-   * Buttons specifically for this page.
-   * @param props           Color, floated, type, id, and onClick function.
-   */
-  GenkiButton(props) {
-    return (
-      <Button
-        size='big'
-        compact
-        color={props.color}
-        floated={props.floated}
-        type={props.type}
-        id={props.id}
-        onClick={props.onClick}>
-          {props.type}
+    return(
+      <Button size='big'
+              compact fluid
+              color='orange'
+              type='Submit'
+              disabled={!isEnabled}
+              onClick={this.handleSubmit}>
+        Submit
       </Button>
     )
   }
@@ -192,7 +197,7 @@ class VirtualClassForm extends Component{
                           placeholder='Class Time'
                         />
                         <Divider />
-                        <this.ButtonOptions/>
+                        <this.SubmitButton/>
                     </Form>
             </Grid.Column>
         </Grid.Row>

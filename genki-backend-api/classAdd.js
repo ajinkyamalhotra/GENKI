@@ -3,8 +3,12 @@ import AWS from 'aws-sdk';
 export function main(event, context, callback){
   const data = JSON.parse(event.body);
   let docClient = new AWS.DynamoDB.DocumentClient();
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true
+  };
   let username = data.username;
-  let classIDObj = {ClassID: data.classID};
+  let classIDObj = [{ClassID: data.classID}];
   let table = "Users_Classes";
   let params = {
     TableName: table,
@@ -25,6 +29,7 @@ export function main(event, context, callback){
     if(err){
       const response = {
         statusCode: 500,
+        headers: headers,
         body: JSON.stringify({ status: false })
       };
       callback(null, response);
@@ -32,6 +37,7 @@ export function main(event, context, callback){
     } else {
       const response = {
         statusCode: 200,
+        headers: headers,
         body: JSON.stringify({ status: true })
       };
       callback(null, response);

@@ -1,5 +1,4 @@
 import AWS from 'aws-sdk';
-const crypt = require('crypto');
 
 export function main (event, context, callback) {
   const data = JSON.parse(event.body);
@@ -15,8 +14,7 @@ export function main (event, context, callback) {
   let classTime = data.ClassTime;
   let className = data.ClassName;
   let section = data.Section;
-  let classID =
-    crypto.createHash('md5').update(className + teacher + semester + section + classTime).digest('hex');
+  let classID = data.classID;
   let params = {
     TableName:table,
     Item:{

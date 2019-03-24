@@ -1,4 +1,4 @@
-import passwordValidator from 'password-validator';
+let passwordValidator = require('password-validator');
 
 function handlePasswordValidation(e, data){
   // Password validation schema. 8-24 characters, lowercase and uppercase,

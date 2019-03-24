@@ -40,6 +40,7 @@ class SignUp extends Component{
     this.handleConfirmationSubmit = this.handleConfirmationSubmit.bind(this);
     this.ConfirmationCodeInput = this.ConfirmationCodeInput.bind(this);
     this.SignUpForm = this.SignUpForm.bind(this);
+
   }
 
   /**
@@ -91,6 +92,22 @@ class SignUp extends Component{
   }
 
   /**
+   * Function which invokes the classAdd API to create the User if they used
+   * a secret id in sign up
+   */
+  addUserClass(){
+    console.log('Adding class to user');
+    let apiName = 'genki-vn-beta';
+    let path ='/classAdd';
+    let params = {
+      body: {
+        username: this.state.username,
+        classID: this.state.secretID
+      }
+    }
+    return API.post(apiName, path, params);
+  }
+  /**
    * Handle the event that the user submits their confirmation code.
    * @param  event            Confirmation event
    */
@@ -110,6 +127,8 @@ class SignUp extends Component{
         name: this.state.firstName,
         family_name: this.state.lastName
       }
+      // Create the user and add class if classID was centered
+      await this.addUserClass();
       // Pass attributes to the App
       this.props.handleLogin(attributes, this.state.userType);
       // Display the HomePage
