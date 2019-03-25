@@ -7,11 +7,14 @@ const headers = {
   'Access-Control-Allow-Credentials': true
 };
 
+const USERS_CLASSES_TABLENAME = 'Users_Classes';
+const VIRTUAL_CLASS_TABLENAME = 'Virtual_Class';
+
 export function main(event, context, callback){
   console.log('Received get');
   console.log(event.pathParameters);
   let username = event.pathParameters.Username;
-  let table = "Users_Classes";
+  let table = USERS_CLASSES_TABLENAME;
   let params = {
     TableName: table,
     Key: {'Username': username},
@@ -36,7 +39,7 @@ export function main(event, context, callback){
 function getClasses(classList, callback){
   console.log('Received Classlist:');
   console.log(classList);
-  let table = "Virtual_Class";
+  let table = VIRTUAL_CLASS_TABLENAME;
   let params = {
     RequestItems: {
       [table]: {
@@ -54,10 +57,12 @@ function getClasses(classList, callback){
       callback(null, response);
     } else {
       console.log("Got items:", JSON.stringify(result, null, 2));
+      let classList = result.Responses[VIRTUAL_CLASS_TABLENAME];
+      console.log('The classes: ' + classList);
       const response = {
         statusCode: 200,
         headers: headers,
-        body: JSON.stringify(result)
+        body: JSON.stringify(classList)
       };
       callback(null, response);
     }
