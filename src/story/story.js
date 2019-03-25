@@ -1,4 +1,5 @@
 // bg
+const clouds = require("./bg/Clouds.png");
 const school = require("./bg/Genki school (Scaled).png");
 const entrance = require("./bg/entrance.jpeg");
 const bedroom = require("./bg/Bedroom (Scaled).png");
@@ -26,6 +27,7 @@ const mary = "メアリー";
 const infoAgent = "案内所の人";
 
 // sprites
+const logo = require("./sprites/logo.png");
 // Tutorial Images
 /*const tn = require("./sprites/Takeshi-neutral.png");
 const bh = require("./sprites/block-happy.png");
@@ -366,8 +368,21 @@ let story = [
   */
 
   //////////////////////////Chapter 13//////////////////////////////////////////
+  {
+    routeBegins: "chapter13Route",
+    speaker: "Chapter 13",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: take,
+    text: "Please press \"Enter\" to begin",
+    jumpTo: "chapter13"
+  },
+
   //Scene 1, john calls Little Asia
   {
+    receiveJump: "chapter13",
     bg: restaurantBedroom,
     bgm: take,
     speaker: "Scene 1",
@@ -508,9 +523,21 @@ let story = [
   },
 
   //////////////////////////Chapter 14//////////////////////////////////////////
+  {
+    routeBegins: "chapter14Route",
+    speaker: "Chapter 14",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: take,
+    text: "Please press \"Enter\" to begin",
+    jumpTo: "chapter14"
+  },
 
   //Scene 4
   {
+    receiveJump: "chapter14",
     speaker: "Scene 4",
     bg: park,
     spriteLeft: "",
@@ -645,9 +672,21 @@ let story = [
   },
 
   ////////////////////Chapter 15 below//////////////////////////////////////
+  {
+    routeBegins: "chapter15Route",
+    speaker: "Chapter 15",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: take,
+    text: "Please press \"Enter\" to begin",
+    jumpTo: "chapter15"
+  },
 
   //Scene 7
   {
+    receiveJump: "chapter15",
     speaker: "Scene 7",
     bg: school,
     spriteLeft: "",
@@ -791,10 +830,46 @@ let story = [
     spriteLeft: maryTalking,
     sprite: infoAgentNeutralGif,
     text: "気をつけて。",
+  },
+  {
+    bg: clouds,
+    bgm: "",
+    speaker: infoAgent,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: infoAgentNeutralGif,
+    text: "Thank You For Playing!",
     jumpTo: "title-screen"
-  }
+  },
 
   //end of game
+
+
+  //Title Screen Confirmation
+  {
+    routeBegins: "titleScreenConfirmation",
+    speaker: "",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: "",
+    text: "please press \"Enter\" to return to Title Screen",
+    jumpTo: "title-screen"
+  },
+
+  //Chapter Selection
+  {
+    //receiveJump: "chapterSelection", //Possible choice at end chapters
+    speaker: "",
+    spriteLeft: "",
+    spriteRight: "",
+    sprite: "",
+
+    choicesExist: true,
+    text: ""
+    //jumpTo: "chapterSelection"
+  },
 ];
 
 // The code below is to set undefined properties to the last defined property.
