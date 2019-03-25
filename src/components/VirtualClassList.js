@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { API } from 'aws-amplify';
 import { Card } from 'semantic-ui-react';
 
@@ -6,8 +6,12 @@ import { Card } from 'semantic-ui-react';
 class VirtualClassList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      classList: []
+    }
 
     this.getClassList = this.getClassList.bind(this);
+    this.CardGroup = this.CardGroup.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -32,19 +36,40 @@ class VirtualClassList extends Component {
     }
   }
 
-  VirtualClassCard(class) {
+  VirtualClassCard(clazz) {
     return(
-      <Card key={class.ClassID} color='orange'>
+      <Card key={clazz.ClassID} color='orange'>
         <Card.Content>
           <Card.Header textAlign='left' className='cardHeader'>
+            {clazz.ClassName + ' Section: ' + clazz.Section}
           </Card.Header>
+          <Card.Meta>
+            {clazz.Teacher + '\n' + clazz.Semester}
+          </Card.Meta>
         </Card.Content>
       </Card>
     )
   }
 
+  CardGroup() {
+    let classes = this.state.classList;
+    console.log('In CardGroup: ' + Array.isArray(classes));
+    var cards = classes.map((clazz) => this.VirtualClassCard(clazz));
+    return (
+      <Card.Group centered>
+        {cards}
+      </Card.Group>
+    )
+  }
+
   render() {
-    return null;
+    return (
+      <div>
+      {(this.state.classList.length > 0) &&
+          <this.CardGroup />
+      }
+      </div>
+    );
   }
 }
 
