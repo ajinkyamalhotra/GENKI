@@ -10,15 +10,21 @@ function TitleScreen(props) {
             <span onClick={props.beginStory}>Play</span>
           </li>
           <li>
+            <span onClick={props.chapterSelection}>GENKI II Chapters</span>
+          </li>
+          {/*}<li>
+            <span onClick={props.chapter3}>Chapter 3</span>
+          </li>*/}
+          <li>
             <span onClick={props.toggleLoadMenu}>Continue</span>
           </li>
-          <li>
-        {/*  <span>
+          {/*<li>
+          <span>
              <a href="https://github.com/nashkenazy/generic-vn" target="_blank" rel="noopener noreferrer">
                Github
              </a>
-            </span> */}
-          </li>
+            </span>
+          </li> */}
           <li />
         </ul>
       </div>
