@@ -47,7 +47,7 @@
 #menu li {
   cursor: pointer;
   display: inline-block;
-  width: 303px;
+  width: 30%;
   margin: -15px 10px 0px;
   position: relative;
   -webkit-transform: skewy(-3deg);
@@ -89,7 +89,7 @@
     0 0 20px -5px rgba(0, 0, 0, 0.4), 0 0 0px 3px #fff inset;
 }
 #menu li:hover {
-  width: 320px;
+  width: 30%;
 }
 #menu span:hover {
   color: rgb(255, 115, 55);
@@ -137,7 +137,7 @@
     width: 30%;
   }
   #menu li:hover {
-    width: 32%;
+    width: 30%;
   }
 
   #menu li span {
