@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { API } from 'aws-amplify';
 import { Card } from 'semantic-ui-react';
 
-
+/**
+ * This Component renders a card group of classes for a particular student
+ * or teacher.  Each card is clickable and will send the class information
+ * back to the StudentTeacherHome.
+ */
 class VirtualClassList extends Component {
   constructor(props) {
     super(props);
@@ -14,13 +18,25 @@ class VirtualClassList extends Component {
     this.CardGroup = this.CardGroup.bind(this);
   }
 
+  /**
+   * When this component is initially rendered, the username may not have
+   * propogated, so we need to wait until it actually gets here.
+   * @param prevProps  The previous props before update
+   */
   componentDidUpdate(prevProps) {
-    if (this.props !== prevProps && typeof this.props.username !== 'undefined') {
+    // If the new props are different from the old props and the username is
+    // not undefined (The username is undefined prior to propogation of props).
+    if (this.props !== prevProps
+                            && typeof this.props.username !== 'undefined') {
       console.log(this.props.username);
       this.getClassList();
     }
   }
 
+  /**
+   * This function fetches the classList corresponding to a given username
+   * and adds it to the state of this component.
+   */
   async getClassList() {
     let apiName = 'genki-vn-beta';
     let username = this.props.username;
@@ -36,15 +52,15 @@ class VirtualClassList extends Component {
     }
   }
 
-  handleClick(event) {
-    console.log(event);
-  }
-
+  /**
+   * This component is the actual card for the class.
+   * The classSelect function comes from the StudentTeacherHome component.
+   * @param clazz   The class information
+   */
   VirtualClassCard(clazz) {
     return(
       <Card key={clazz.ClassID}
-            classProps={clazz}
-            onClick={this.handleClick}
+            onClick={(e) => this.props.classSelect(clazz, e)}
             color='orange'>
         <Card.Content>
           <Card.Header textAlign='left' className='cardHeader'>
@@ -58,9 +74,11 @@ class VirtualClassList extends Component {
     )
   }
 
+  /**
+   * Creates a card group using all of the classes.
+   */
   CardGroup() {
     let classes = this.state.classList;
-    console.log('In CardGroup: ' + Array.isArray(classes));
     var cards = classes.map((clazz) => this.VirtualClassCard(clazz));
     return (
       <Card.Group centered>
@@ -71,11 +89,11 @@ class VirtualClassList extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
       {(this.state.classList.length > 0) &&
           <this.CardGroup />
       }
-      </div>
+      </React.Fragment>
     );
   }
 }
