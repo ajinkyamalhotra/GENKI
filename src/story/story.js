@@ -385,6 +385,7 @@ let story = [
     receiveJump: "chapter13",
     bg: restaurantBedroom,
     bgm: take,
+    sprite: "",
     speaker: "Scene 1",
     text: "John calls Little Asia."
   },
@@ -540,6 +541,7 @@ let story = [
     receiveJump: "chapter14",
     speaker: "Scene 4",
     bg: park,
+    sprite: "",
     spriteLeft: "",
     spriteRight: "",
     text: "A month before Valentine's Day."
@@ -689,6 +691,7 @@ let story = [
     receiveJump: "chapter15",
     speaker: "Scene 7",
     bg: school,
+    sprite: "",
     spriteLeft: "",
     spriteRight: "",
     text: "Before the vacation"
