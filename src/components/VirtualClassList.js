@@ -23,7 +23,6 @@ class VirtualClassList extends Component {
   }
 
   render() {
-    this.getClassList();
     return null;
   }
 }
