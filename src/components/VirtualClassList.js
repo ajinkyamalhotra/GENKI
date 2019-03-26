@@ -36,9 +36,16 @@ class VirtualClassList extends Component {
     }
   }
 
+  handleClick(event) {
+    console.log(event);
+  }
+
   VirtualClassCard(clazz) {
     return(
-      <Card key={clazz.ClassID} color='orange'>
+      <Card key={clazz.ClassID}
+            classProps={clazz}
+            onClick={this.handleClick}
+            color='orange'>
         <Card.Content>
           <Card.Header textAlign='left' className='cardHeader'>
             {clazz.ClassName + ' Section: ' + clazz.Section}
