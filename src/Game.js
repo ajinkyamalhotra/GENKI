@@ -443,12 +443,14 @@ class Game extends Component {
   }*/
 
   chapterSelection() {
+    let lastIndex = story.length - 1;
     this.stopSkip();
     this.setState({
       titleScreenShown: false,
       frameIsRendering: true
     });
-    this.setFrame(100); //This will always jump to Chapter Selection Frame
+
+    this.setFrame(lastIndex); //This will always jump to Chapter Selection Frame
     this.setState({
       choicesIndex: 0,
       choiceOptions: choices[0].choices
