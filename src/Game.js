@@ -355,8 +355,9 @@ class Game extends Component {
 
     const intervalTimeSec = prompt("How many seconds per frame would you like?", "3");
     const intervalTime = intervalTimeSec * 1000;
+    const lessThanSecond = 999;
 
-    if (intervalTime > 999) {
+    if (intervalTime > lessThanSecond) {
       this.setState({
         isSkipping: true
       });
