@@ -15,16 +15,17 @@ let engTranslation = [
   },
   {
     text:
-      "〜と申します: my name is... [Expression]｜募集(ぼしゅう)：recruitment [noun]｜広告(こうこく)：advertisement [noun]"
+      "〜と申します(〜ともうします)：my name is... [Other Expression] | " +
+      "募集(ぼしゅう)：recruitment [Noun] | 広告(こうこく)：advertisement [Noun]"
   },
   {
-    text: "店(みせ)：store [noun]"
+    text: "店(みせ)：store [Noun]"
   },
   {
     text: "I cannot come today, but if it's tomorrow, I think I can come."
   },
   {
-    text: "だめ(な)：no good [な - adjective]"
+    text: "だめ(な)：no good [な - Adjective]"
   },
   {
     text: "One o' clock. Okay, I've got it."
@@ -38,13 +39,13 @@ let engTranslation = [
     text: "Mr. Wang, why are you interested in this job?"
   },
   {
-    text: "いろいろ(な)：various; different kinds of [な - adjective] "
+    text: "いろいろ(な)：various; different kinds of [な - Adjective] "
   },
   {
     text: "Have you worked at a restaurant before?"
   },
   {
-    text: "ウェイター：waiter [noun]"
+    text: "ウェイター：waiter [Noun]"
   },
   {
     text: "Can you start tomorrow?"
@@ -53,7 +54,7 @@ let engTranslation = [
     text: "Yes. I'll do my best."
   },
   {
-    text: "がんばる：to do one's best; to try hard [U - adjective]"
+    text: "がんばる：to do one's best; to try hard [U - Verb]"
   },
 
   //Scene 3, John is on the job at the restaurant
@@ -61,19 +62,20 @@ let engTranslation = [
     text: "Professor Yamashita comes to Little Asia"
   },
   {
-    text: "いらっしゃいます: (someone honorable) is present / home [Expression]"
+    text:
+      "いらっしゃいます：(someone honorable) is present / home [Other Expression]"
   },
   {
     text: "John, do you work here."
   },
   {
-    text: "三日(みっか)： [Numbers]"
+    text: "三日(みっか)：three days [Numbers]"
   },
   {
     text: "I see. Which one is good?"
   },
   {
-    text: "カレー：curry [noun]"
+    text: "カレー：curry [Noun]"
   },
   {
     text: "It looks good. Well, I will try this one."
@@ -84,11 +86,11 @@ let engTranslation = [
     text: "A month before Valentine's Day."
   },
   {
-    text: "What do you think is for a Valentine’s present?"
+    text: "バレンタインデー：Valentine's Day [Noun]"
   },
   {
     text:
-      "Well, Takeshi always the same sweater, so why don’t you give him a sweater?"
+      "同じ(おなじ)：same [Adverb] | あげる：to give (to others) (person に thing を) [RU - Verb]"
   },
   {
     text: "That might be a good idea."
@@ -99,7 +101,7 @@ let engTranslation = [
     text: "On Valentine's Day at Takeshi's house."
   },
   {
-    text: "Takeshi, this is for you."
+    text: "〜くん：Mr/Ms...(casual) [Other Expression]"
   },
   {
     text: "For me? Thank you. May I open it?"
@@ -109,13 +111,14 @@ let engTranslation = [
   },
   {
     text:
-      "Wow, this is a nice sweater! I’ve wanted one like this.  Did you knit it Mary?"
+      "こんな：...like this, this kind of...[Other Expression] | " +
+      "ほしい：to want (thing が)[い - Adjective] | 編む(あむ) to knit [U -Verb]"
   },
   {
     text: "Yes. It may be small, so please try it on."
   },
   {
-    text: "It fits perfectly. Thank you."
+    text: "ちょうど： exactly [Adverb]"
   },
 
   //Scene 6
@@ -126,20 +129,21 @@ let engTranslation = [
     text: "Your sweater looks warm."
   },
   {
-    text: "Mary gave me this."
+    text: "くれる：to give (me) (person に thing を) [RU - Verb]"
   },
   {
     text:
-      "It looks good on you. I want a girlfriend, too. You know, Robert got as many as ten chocolates."
+      "よく：well [Adverb] | 似合う(にあう)：to look good (on somebody) (thing が) [U - Verb] |" +
+      "チョコレート：chocolate [Noun] | 〜個(〜こ)：generic counter for small things [Counters]"
   },
   {
     text: "Hah, that’s incredible. How about you John?"
   },
   {
-    text: "Yes. I only got one. From my landlady. How sad?"
+    text: "大家さん(おおやさん)：landlord/landlady [Noun]"
   },
   {
-    text: "But Robert will probably have a tough day on White Day."
+    text: "ホワイトデー：White Day (Yet another gift-giving day) [Noun]"
   },
   {
     text: "White Day?"
@@ -154,23 +158,22 @@ let engTranslation = [
     text: "Before the vacation"
   },
   {
-    text: "Takeshi, do you have any plans for the holidays?"
+    text: "予定(よてい)：schedule; plan [Noun]"
   },
   {
     text: "Not really. Why?"
   },
   {
-    text:
-      "I am thinking of going to Michiko’s home in Nagano. Do you want to go?"
+    text: "〜けど：...,but; ...,so [Other Expression]"
   },
   {
     text: "Is it okay?"
   },
   {
-    text: "Yes, Michiko told me to invite you."
+    text: "誘う(さそう)：to invite (〜を) [U - Verb]"
   },
   {
-    text: "Then, I will go. I will check the train schedule."
+    text: "調べる(しらべる)：to look into (a matter) (matter を) [RU - Verb]"
   },
   {
     text: "Thanks. I will call Michiko."
@@ -181,7 +184,9 @@ let engTranslation = [
     text: "At Nagano Station."
   },
   {
-    text: "Since we got here early, do you want to do a little sightseeing?"
+    text:
+      "着く(つく)：to arrive (place に) [U - Verb] | " +
+      "観光する(かんこうする)：to do sightseeing [Irregular - Verb]"
   },
   {
     text: "Yes. Where shall we go?"
@@ -190,10 +195,10 @@ let engTranslation = [
     text: "How about Zenkoji Temple? It’s a famous temple."
   },
   {
-    text: "Sounds good. What shall we eat for lunch?"
+    text: "する：to decide on (an item) (item に) [Irregular Verb]"
   },
   {
-    text: "Soba noodles in Nagano are delicious, so let’s eat soba."
+    text: "そば：soba; Japanese Buckwheat Noodles [Noun]"
   },
 
   //Scene 9
@@ -204,21 +209,19 @@ let engTranslation = [
     text: "Excuse me, which bus goes to Zenkoji Temple?"
   },
   {
-    text: "For Zenkoji, it’s bus number 11."
+    text: "〜番(〜ばん)：number...[Other Expression]"
   },
   {
-    text: "Thank you very much. Can I have this map? "
+    text: "地図(ちず)：map [Noun]"
   },
   {
-    text:
-      "Yes, And these are discount tickets for the museum. Please take them, if you like."
+    text: "割引券(わりびきけん)：discount coupon [Noun]"
   },
   {
-    text:
-      "This is the museum that has paintings of Higashiyama Kaii, isn’t it? We are planning to go tomorrow. Thank you."
+    text: "絵(え)：painting; picture; drawing [Noun]"
   },
   {
-    text: "Have a safe trip."
+    text: "気をつける(きをつける)：To be careful/cautious (〜に) [RU - Verb]"
   }
 ];
 
