@@ -78,6 +78,15 @@ functions:
           method: post #REST_METHOD
           cors: true
           authorizer: aws_iam
+  announcement:
+    role: DynamoDBAccessRole
+    handler: announcement.main
+    events:
+      - http:
+          path: announcement
+          method: post
+          cors: true
+          authorizer: aws_iam
 
 # Create our resources with separate CloudFormation templates
 resources:
