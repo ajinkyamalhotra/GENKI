@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Container, Menu, Grid} from 'semantic-ui-react';
+import VirtualClassForm from './VirtualClassForm';
+import StudentAddClassForm from './StudentAddClassForm';
 
 // Tell Webpack this JS file uses this image
 import logo from '../images/logo.png';
@@ -45,6 +47,8 @@ export default class Profile extends Component {
           <img src={logo} alt="Logo" style={{ width: '80%', margin: 'auto',
           marginLeft: '25%'}}/>
           <h1 style={{ margin: 'auto', marginLeft: '57%'}}>Team GENKI</h1>
+          <VirtualClassForm />
+          <StudentAddClassForm />
         </Container>
       </Grid>
     )

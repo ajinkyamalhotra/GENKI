@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import { API } from 'aws-amplify';
+import config from '../config';
 import '../styles/AddClassForm.css';
 
 class StudentAddClassForm extends Component {
@@ -14,7 +15,6 @@ class StudentAddClassForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.FormField = this.FormField.bind(this);
-    this.ButtonOptions = this.ButtonOptions.bind(this);
   }
 
   componentWillUnmount(){
@@ -102,9 +102,9 @@ class StudentAddClassForm extends Component {
    * given.
    */
   SubmitButton() {
-    const {className, section, semester, classTime} = this.state;
-    const isEnabled = className;
-    console.log(className);
+    const {classID} = this.state;
+    const isEnabled = classID;
+    console.log(classID);
 
     return(
       <Button size='big'
@@ -151,3 +151,4 @@ class StudentAddClassForm extends Component {
   }
 
 }
+export default StudentAddClassForm;

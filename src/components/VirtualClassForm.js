@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import { API } from 'aws-amplify';
+import config from '../config';
 import '../styles/VirtualClassForm.css';
 const crypto = require('crypto');
 
@@ -20,7 +21,6 @@ class VirtualClassForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.FormField = this.FormField.bind(this);
-    this.ButtonOptions = this.ButtonOptions.bind(this);
   }
 
   componentWillUnmount() {
