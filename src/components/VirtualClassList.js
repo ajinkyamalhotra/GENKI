@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { API } from 'aws-amplify';
-import { Card } from 'semantic-ui-react';
+import { Card, Loader } from 'semantic-ui-react';
 
 /**
  * This Component renders a card group of classes for a particular student
@@ -11,7 +11,8 @@ class VirtualClassList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classList: []
+      classList: [],
+      isLoading: true
     }
 
     this.getClassList = this.getClassList.bind(this);
@@ -45,7 +46,7 @@ class VirtualClassList extends Component {
     try {
       let classList = await API.get(apiName, path);
       console.log('class list' + JSON.stringify(classList));
-      this.setState({ classList: classList });
+      this.setState({ classList: classList, isLoading: false });
     } catch (e) {
       console.log('problem getting class list');
       console.log(e, e.stack);
@@ -90,7 +91,7 @@ class VirtualClassList extends Component {
   render() {
     return (
       <React.Fragment>
-      {(this.state.classList.length > 0) &&
+      {this.state.isLoading ? <Loader active /> :
           <this.CardGroup />
       }
       </React.Fragment>
