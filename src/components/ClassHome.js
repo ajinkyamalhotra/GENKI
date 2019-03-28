@@ -33,25 +33,25 @@ class ClassHome extends Component {
     return (
       <Tab.Pane>
         <List>
-          <List.Item as='a'>
+          <List.Item>
             <List.Content>
               <List.Header>Class Name</List.Header>
               <List.Description>{className}</List.Description>
             </List.Content>
           </List.Item>
-          <List.Item as='a'>
+          <List.Item>
             <List.Content>
               <List.Header>Class Term</List.Header>
               <List.Description>{semester}</List.Description>
             </List.Content>
           </List.Item>
-          <List.Item as='a'>
+          <List.Item>
             <List.Content>
               <List.Header>Section</List.Header>
               <List.Description>{section}</List.Description>
             </List.Content>
           </List.Item>
-          <List.Item as='a'>
+          <List.Item>
             <List.Content>
               <List.Header>Instructor</List.Header>
               <List.Description>{teacher}</List.Description>
