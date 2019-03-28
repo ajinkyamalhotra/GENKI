@@ -30,6 +30,7 @@ class StudentAddClassForm extends Component {
    * @param event           Represents the change coming from the form.
    */
   handleChange = (event) => {
+    console.log(event.target.value);
     // Getting the name of the state variable which is changing.
     // Corresponds to the name property of the field.
     const key = event.target.name;
@@ -65,18 +66,13 @@ class StudentAddClassForm extends Component {
    * @param props       Includes the color, name, and label for the field.
    */
   FormField(props) {
-    let stateField;
-
-    if(props.label === 'Class ID'){
-      stateField=this.state.classID;
-    }
     return (
       <Form.Field>
         <this.Label color={props.color}
                     name={props.name}
                     label={props.label}/>
 
-        <Input      value={stateField}
+        <Input      value={this.state.classID}
                     name={props.label}
                     onChange={this.handleChange}
                     type={props.type}
@@ -135,7 +131,7 @@ class StudentAddClassForm extends Component {
                     <Form inverted>
                         <this.FormField
                           color='orange'
-                          label='Class ID'
+                          label='classID'
                           type='text'
                           placeholder='Class ID'
                         />
