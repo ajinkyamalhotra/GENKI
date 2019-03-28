@@ -21,10 +21,8 @@ class VirtualClassForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.FormField = this.FormField.bind(this);
-    this.addClass = this.addClass.bind(this);
     this.createClass = this.createClass.bind(this);
     this.SubmitButton = this.SubmitButton.bind(this);
-    this.Label = this.Label.bind(this);
   }
 
   componentWillUnmount() {
@@ -130,7 +128,6 @@ class VirtualClassForm extends Component{
    */
   SubmitButton() {
     const {className, section, semester, classTime} = this.state;
-    const isEnabled = className;
     console.log(className);
 
     return(
@@ -138,7 +135,6 @@ class VirtualClassForm extends Component{
               compact fluid
               color='orange'
               type='Submit'
-              disabled={!isEnabled}
               onClick={this.handleSubmit}>
         Submit
       </Button>
