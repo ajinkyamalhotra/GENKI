@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+const crypto = require('crypto');
 
 export function main (event, context, callback) {
   const data = JSON.parse(event.body);
@@ -9,12 +10,14 @@ export function main (event, context, callback) {
     'Access-Control-Allow-Credentials': true
   };
   let table = "Virtual_Class";
+  let username = data.username;
   let teacher = data.Teacher;
   let semester = data.Semester;
   let classTime = data.ClassTime;
   let className = data.ClassName;
   let section = data.Section;
-  let classID = data.classID;
+  let classID =
+    crypto.createHash('md5').update(className + teacher + semester + section + classTime).digest('hex');
   let params = {
     TableName:table,
     Item:{
@@ -39,12 +42,11 @@ export function main (event, context, callback) {
       callback(null, response);
       console.error("Unable to get items. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-      const response = {
-        statusCode: 200,
-        headers: headers,
-        body: JSON.stringify({ status: true })
-      };
-      callback(null, response);
+      let userData = {
+        classID: classID,
+        username: username
+      }
+      classAdd(userData, callback);
       console.log("Got items:", JSON.stringify(result, null, 2));
     }
   })

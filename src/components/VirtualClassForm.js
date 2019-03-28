@@ -4,7 +4,7 @@ import { Icon, Divider} from 'semantic-ui-react';
 import { API } from 'aws-amplify';
 import config from '../config';
 import '../styles/VirtualClassForm.css';
-const crypto = require('crypto');
+
 
 class VirtualClassForm extends Component{
   constructor(props){
@@ -15,12 +15,14 @@ class VirtualClassForm extends Component{
       Teacher: '',
       Semester: '',
       ClassTime: '',
-      ClassID: ''
+      Username: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.FormField = this.FormField.bind(this);
+    this.createClass = this.createClass.bind(this);
+    this.SubmitButton = this.SubmitButton.bind(this);
   }
 
   componentWillUnmount() {
@@ -30,7 +32,7 @@ class VirtualClassForm extends Component{
       Teacher: '',
       Semester: '',
       ClassTime: '',
-      ClassID: ''
+      Username: ''
     }
   }
 
@@ -54,25 +56,15 @@ class VirtualClassForm extends Component{
     let section = this.state.Section;
     let classTime = this.state.ClassTime;
     let semester = this.state.Semester;
-    let classID =
-      crypto.createHash('md5').update(className + teacher + semester + section + classTime).digest('hex');
     let data = {
       ClassName: className,
       Section: section,
       Teacher: teacher,
       ClassTime: classTime,
       Semester: semester,
-      ClassID: classID
-    }
-    let userData = {
-      username: this.props.username,
-      classID: classID
+      Username: this.props.username
     }
     try {
-      await this.addClass(userData);
-    } catch (e) {
-      alert(e);
-    }try {
       await this.createClass(data);
       this.props.history.push("/");
     } catch (e) {
@@ -80,10 +72,6 @@ class VirtualClassForm extends Component{
     }
 
 
-  }
-
-  addClass(userData){
-    return (API.post('genki-vn-beta', '/classAdd', userData));
   }
 
   createClass(data){
@@ -140,7 +128,6 @@ class VirtualClassForm extends Component{
    */
   SubmitButton() {
     const {className, section, semester, classTime} = this.state;
-    const isEnabled = className;
     console.log(className);
 
     return(
@@ -148,7 +135,6 @@ class VirtualClassForm extends Component{
               compact fluid
               color='orange'
               type='Submit'
-              disabled={!isEnabled}
               onClick={this.handleSubmit}>
         Submit
       </Button>
