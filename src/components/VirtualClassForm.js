@@ -52,30 +52,33 @@ class VirtualClassForm extends Component{
     event.preventDefault();
     let teacher = this.props.firstName + ' ' + this.props.lastName;
     this.setState({Teacher: teacher});
-    let className = this.state.ClassName;
-    let section = this.state.Section;
-    let classTime = this.state.ClassTime;
-    let semester = this.state.Semester;
-    let data = {
-      ClassName: className,
-      Section: section,
-      Teacher: teacher,
-      ClassTime: classTime,
-      Semester: semester,
-      Username: this.props.username
-    }
     try {
-      await this.createClass(data);
+      await this.createClass();
       this.props.history.push("/");
     } catch (e) {
       alert(e);
     }
-
-
   }
 
-  createClass(data){
-    return (API.post('genki-vn-beta', '/createVirtualClass', data));
+  createClass(){
+    let className = this.state.ClassName;
+    let section = this.state.Section;
+    let classTime = this.state.ClassTime;
+    let semester = this.state.Semester;
+    let teacher = this.state.Teacher;
+    let apiName = 'genki-vn-beta';
+    let path = '/createClass';
+    let params = {
+      body: {
+        ClassName: className,
+        Section: section,
+        Teacher: teacher,
+        ClassTime: classTime,
+        Semester: semester,
+        Username: this.props.username
+      }
+    }
+    return (API.post(apiName, path, params));
   }
   /**
    * Returns a Form.Field Semantic UI component.
