@@ -3,7 +3,7 @@ const crypto = require('crypto');
 
 export function main (event, context, callback) {
   const data = JSON.parse(event.body);
-  let docClient = new AWS.DynamoDB.DocumentClient();
+  let docClient = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
   // Set response headers to enable CORS (Cross-Origin Resource Sharing)
   const headers = {
     'Access-Control-Allow-Origin': '*',

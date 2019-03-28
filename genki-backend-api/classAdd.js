@@ -2,7 +2,7 @@ import AWS from 'aws-sdk';
 
 export function main(event, context, callback){
   const data = JSON.parse(event.body);
-  let docClient = new AWS.DynamoDB.DocumentClient();
+  let docClient = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true

@@ -3,6 +3,8 @@ import { Button, Card } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
 import VirtualClassList from './VirtualClassList';
 import StudentTeacherHome from './StudentTeacherHome';
+import VirtualClassForm from './VirtualClassForm';
+
 
 
 /**
@@ -200,6 +202,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
+        <VirtualClassForm />
         {this.props.isAuthenticated && this.props.userType !== 'admin' ?
                       <StudentTeacherHome {...this.props} /> : null}
         {this.props.userType === 'admin' ?
