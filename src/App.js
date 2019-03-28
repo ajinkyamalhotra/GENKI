@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './components/Navigation';
 import Routes from './routing/Routes';
 import { Auth } from 'aws-amplify';
+import { Loader } from 'semantic-ui-react';
 
 import './App.css';
 
@@ -76,16 +77,18 @@ class App extends Component {
       userType: this.state.userType,
       username: this.state.username
     };
-
     return (
         // Render the Navigation component
         <div className="App">
-          <Navigation childProps={childProps}/>
-          <div>
-            {this.state.isAuthenticated ?
-              'Logged In as ' + this.state.userType  : 'Not Logged in'}
-          </div>
-          <Routes childProps={childProps}/>
+          {this.state.isAuthenticating ? <Loader active />
+            : ( <React.Fragment>
+                  <Navigation childProps={childProps} />
+                  <div>
+                    {this.state.isAuthenticated ?
+                      'Logged In as ' + this.state.userType  : 'Not Logged in'}
+                  </div>
+                  <Routes childProps={childProps} />
+                </React.Fragment>)}
         </div>
       );
   }

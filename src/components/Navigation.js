@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Table, Image, Menu, Icon } from 'semantic-ui-react';
 import '../styles/Navigation.css';
 
-const logo= require('../images/logo with title.png');
+import logo from '../images/logo with title.png';
 
 /**
  * Function to extract current Active Item
@@ -67,6 +67,7 @@ class Navigation extends Component {
     //Flag to indicate whether user is logged in or not
     const isLoggedIn = this.props.childProps.isAuthenticated;
     const { activeItem } = this.state;
+
     return (
       <div className="navigation-bar"> {
         <Table color='black' inverted attached >
