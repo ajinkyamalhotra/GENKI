@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { List, Tab, Loader } from 'semantic-ui-react';
+import AnnouncementPane from './AnnouncementPane';
 
 class ClassHome extends Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class ClassHome extends Component {
   ClassHomeTabs() {
     const panes = [
       { menuItem: 'Class Information', render: this.ClassInformation },
-      { menuItem: 'Class Announcements', render: null}
+      { menuItem: 'Class Announcements', render: () => <Tab.Pane><AnnouncementPane {...this.props} /></Tab.Pane>}
     ]
     return (
       <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
