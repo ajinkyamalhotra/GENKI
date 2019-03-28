@@ -17,7 +17,7 @@ export function main (event, context, callback) {
   };
 
   console.log("Creating Announcement");
-  docClient.update(params, function(err, result){
+  docClient.put(params, function(err, result){
     if(err){
       const response = {
         statusCode: 500,
