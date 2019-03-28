@@ -1,9 +1,10 @@
 import AWS from 'aws-sdk';
 const crypto = require('crypto');
+let lambda = new AWS.lambda();
 
 export function main (event, context, callback) {
   const data = JSON.parse(event.body);
-  let docClient = new AWS.DynamoDB.DocumentClient();
+  let docClient = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
   // Set response headers to enable CORS (Cross-Origin Resource Sharing)
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -31,6 +32,12 @@ export function main (event, context, callback) {
   }
   console.log("Adding new virtual class");
   console.log(data);
+  let lambdaParams = {
+    FunctionName: 'classAdd',
+    InvocationType: 'Post',
+    LogType: 'Tail',
+    Payload: '{ "classID" : "classID" }'
+  }
 
   docClient.put(params, function(err, result){
     if(err){
@@ -46,7 +53,13 @@ export function main (event, context, callback) {
         classID: classID,
         username: username
       }
-      classAdd(userData, callback);
+      lambda.invoke(lambdaParams, function(err, data){
+        if(err){
+          context.fail(err);
+        } else {
+          context.succeed('Class added');
+        }
+      })
       console.log("Got items:", JSON.stringify(result, null, 2));
     }
   })

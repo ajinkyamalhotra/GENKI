@@ -15,6 +15,8 @@ class StudentAddClassForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.FormField = this.FormField.bind(this);
+    this.SubmitButton = this.SubmitButton.bind(this);
+    this.addUserClass = this.addUserClass.bind(this);
   }
 
   componentWillUnmount(){
@@ -90,7 +92,6 @@ class StudentAddClassForm extends Component {
   Label(props) {
     return (
       <label size='huge'>
-        <Icon color={props.color} name={props.name} />
           {props.label}
       </label>
     )
