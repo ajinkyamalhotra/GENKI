@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Image, Menu, Icon } from 'semantic-ui-react';
 import '../styles/Navigation.css';
-
 import logo from '../images/logo with title.png';
+import Game from '../Game';
 
 /**
  * Function to extract current Active Item
@@ -44,15 +44,8 @@ class Navigation extends Component {
     }
   }
 
-
-
   //To change active item to the selected menu-item when a menu-item is clicked
-  handleItemClick = (e, { name }) => {
-    e.preventDefault();
-    console.log(e);
-    this.setState({ activeItem: name });
-    window.location.assign(name);
-  };
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   //To change the active item to home when GENKI logo or label is clicked
   handleClickOnGENKILoggedIn = () => this.setState({ activeItem: 'Home' });
@@ -67,6 +60,9 @@ class Navigation extends Component {
     //Flag to indicate whether user is logged in or not
     const isLoggedIn = this.props.childProps.isAuthenticated;
     const { activeItem } = this.state;
+
+    //Can be used to suppress the errors
+    //console.error = () => {};
 
     return (
       <div className="navigation-bar"> {
@@ -103,21 +99,26 @@ class Navigation extends Component {
                       {isLoggedIn ? (
 
                         <Menu inverted pointing secondary floated='right'>
+                          <Link to='/Home'>
                             <Menu.Item id='HomeButton' name = 'Home'
                                        active={activeItem === 'Home'}
                                        onClick={this.handleItemClick}>
                               <Icon inverted name='home'/>
                               Home
                             </Menu.Item>
+                          </Link>
 
+                          <Link to='/Profile'>
                             <Menu.Item id='ProfileButton'
                                        name = 'Profile'
                                        active={activeItem === 'Profile'}
                                        onClick={this.handleItemClick}>
-                              <Icon inverted name='user circle'/>
+                              <Icon inverted name='user'/>
                               Profile
                             </Menu.Item>
+                          </Link>
 
+                          <Link to='/Game'>
                             <Menu.Item id='GameButton'
                                        name = 'Game'
                                        active={activeItem === 'Game'}
@@ -125,7 +126,9 @@ class Navigation extends Component {
                               <Icon inverted name='game'/>
                               Game
                             </Menu.Item>
+                          </Link>
 
+                          <Link to='/Progress'>
                             <Menu.Item id='ProgressButton'
                                        name = 'Progress'
                                        active={activeItem === 'Progress'}
@@ -133,7 +136,9 @@ class Navigation extends Component {
                               <Icon inverted name='shipping fast'/>
                               Progress
                             </Menu.Item>
+                          </Link>
 
+                          <Link to='/Login'>
                             <Menu.Item id='SignOutButton'
                                        name = 'Login'
                                        active={activeItem === 'Login'}
@@ -141,6 +146,7 @@ class Navigation extends Component {
                               <Icon inverted name='sign out alternate'/>
                               Logout
                             </Menu.Item>
+                          </Link>
                         </Menu>
 
                       ) : (
@@ -165,7 +171,6 @@ class Navigation extends Component {
 
                       )}
                     </Table.HeaderCell>
-
                     {/*Adding padding to the right side of the nav bar*/}
                     <Table.HeaderCell></Table.HeaderCell>
                 </Table.Row>
