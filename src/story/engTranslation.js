@@ -6,6 +6,9 @@
  */
 let engTranslation = [
   //////////////////////////Chapter 13//////////////////////////////////////////
+  {
+    text: "Please press \"Enter\" to begin"
+  },
   //Scene 1, john calls Little Asia
   {
     text: "John calls Little Asia."
@@ -81,6 +84,10 @@ let engTranslation = [
     text: "It looks good. Well, I will try this one."
   },
 
+    //////////////////////////Chapter 14//////////////////////////////////////////
+  {
+    text: "Please press \"Enter\" to begin"
+  },
   //Scene 4 - From here on will be finished by end of sprint
   {
     text: "A month before Valentine's Day."
@@ -153,6 +160,9 @@ let engTranslation = [
   },
 
   ////////////////////Chapter 15 below//////////////////////////////////////
+  {
+    text: "Please press \"Enter\" to begin"
+  },
   //Scene 7
   {
     text: "Before the vacation"
@@ -220,8 +230,24 @@ let engTranslation = [
   {
     text: "絵(え)：painting; picture; drawing [Noun]"
   },
+
   {
     text: "気をつける(きをつける)：To be careful/cautious (〜に) [RU - Verb]"
+  },
+  {
+    text:
+      "Thank You For Playing!"
+  },
+
+  //Title Screen Confirmation
+  {
+    text:
+      "Press \"Enter\" to return to Title Screen"
+  },
+  
+   //Chapter Selection
+  {
+    text: ""
   }
 ];
 
