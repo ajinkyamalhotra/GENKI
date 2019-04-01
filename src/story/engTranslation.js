@@ -233,7 +233,7 @@ let engTranslation = [
 
   {
     text: "気をつける(きをつける)：To be careful/cautious (〜に) [RU - Verb]"
-  }
+  },
   {
     text:
       "Thank You For Playing!"
