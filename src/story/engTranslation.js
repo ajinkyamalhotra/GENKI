@@ -233,7 +233,7 @@ let engTranslation = [
 
   {
     text: "気をつける(きをつける)：To be careful/cautious (〜に) [RU - Verb]"
-  }
+  },
   {
     text:
       "Thank You For Playing!"
@@ -244,7 +244,7 @@ let engTranslation = [
     text:
       "Press \"Enter\" to return to Title Screen"
   },
-  
+
    //Chapter Selection
   {
     text: ""
