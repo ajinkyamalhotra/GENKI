@@ -1,5 +1,5 @@
 .overlay-choices {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0); /*4th field in rgba is for dim scale*/
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -7,12 +7,13 @@
 
 .overlay .choice-button {
   font-size: 26px;
-  width: 750px;
-  margin: 30px auto;
+  width: 30%;
+  margin: 1% auto;
   border-radius: 25px;
-  background-color: #1d75a5;
+  background-color: rgb(255, 115, 55);
   border: none;
-  color: white;
+  box-shadow: 0px 4px 5px 1px black;
+  color: black;
   padding: 12px 0px;
   cursor: pointer;
   display: block;
@@ -28,9 +29,7 @@
 
 /* Add a background color on hover */
 .overlay-choices input:hover {
-  background-color: white;
-  color: #1d75a5;
+  background-color:  rgb(255, 115, 55);
+  color: white;
+  box-shadow: 0px 4px 5px 1px black;
 }
-
-
-
