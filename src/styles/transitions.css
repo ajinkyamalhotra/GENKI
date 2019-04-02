@@ -6,7 +6,7 @@
 
 .sprite-enter.sprite-enter-active {
   opacity: 1;
-  transition: opacity 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .sprite-leave {
@@ -15,12 +15,12 @@
 
 .sprite-leave.sprite-leave-active {
   opacity: 0;
-  transition: opacity 250ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: opacity 150ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 .move-left-enter {
   opacity: 0;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-out;
   transform: translate(350px, 0);
 }
 .move-left-enter-active {
@@ -30,7 +30,7 @@
 
 .move-left-leave {
   opacity: 1;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-in;
   transform: translate(0, 0);
 }
 .move-left-leave-active {
@@ -40,7 +40,7 @@
 
 .move-left-far-enter {
   opacity: 0;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-out;
   transform: translate(700px, 0);
 }
 .move-left-far-enter-active {
@@ -50,7 +50,7 @@
 
 .move-left-far-leave {
   opacity: 1;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-in;
   transform: translate(0, 0);
 }
 .move-left-far-leave-active {
@@ -60,7 +60,7 @@
 
 .move-right-enter {
   opacity: 0;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-out;
   transform: translate(-350px, 0);
 }
 .move-right-enter-active {
@@ -70,7 +70,7 @@
 
 .move-right-leave {
   opacity: 1;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-in;
   transform: translate(0, 0);
 }
 .move-right-leave-active {
@@ -80,7 +80,7 @@
 
 .move-right-far-enter {
   opacity: 0;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-out;
   transform: translate(-700px, 0);
 }
 .move-right-far-enter-active {
@@ -90,7 +90,7 @@
 
 .move-right-far-leave {
   opacity: 1;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-in;
   transform: translate(0, 0);
 }
 .move-right-far-leave-active {
@@ -100,7 +100,7 @@
 
 .from-left-leave-right-enter {
   opacity: 0;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-out;
   transform: translate(-200px, 0);
 }
 .from-left-leave-right-enter-active {
@@ -110,7 +110,7 @@
 
 .from-left-leave-right-leave {
   opacity: 1;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-in;
   transform: translate(0, 0);
 }
 .from-left-leave-right-leave-active {
@@ -120,7 +120,7 @@
 
 .from-right-leave-left-enter {
   opacity: 0;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-out;
   transform: translate(200px, 0);
 }
 .from-right-leave-left-enter-active {
@@ -130,7 +130,7 @@
 
 .from-right-leave-left-leave {
   opacity: 1;
-  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transition: transform 200ms ease-in-out, opacity 150ms ease-in;
   transform: translate(0, 0);
 }
 .from-right-leave-left-leave-active {
@@ -144,7 +144,7 @@
 
 .scene-change-enter.scene-change-enter-active {
   opacity: 1;
-  transition: opacity 2000ms ease-out;
+  transition: opacity 300ms ease-out;
 }
 
 .scene-change-leave {
@@ -153,7 +153,7 @@
 
 .scene-change-leave.scene-change-leave-active {
   opacity: 0;
-  transition: opacity 2000ms ease-in;
+  transition: opacity 300ms ease-in;
 }
 
 .menu-enter {
@@ -161,8 +161,8 @@
 }
 
 .menu-enter.menu-enter-active {
-  opacity: 1;
-  transition: opacity 400ms ease-out;
+  opacity: 0;
+  transition: opacity 100ms ease-out;
 }
 
 .menu-leave {
@@ -171,5 +171,5 @@
 
 .menu-leave.menu-leave-active {
   opacity: 0;
-  transition: opacity 400ms ease-in;
+  transition: opacity 100ms ease-in;
 }
