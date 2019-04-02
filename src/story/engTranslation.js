@@ -7,7 +7,7 @@
 let engTranslation = [
   //////////////////////////Chapter 13//////////////////////////////////////////
   {
-    text: "Please press \"Enter\" to begin"
+    text: "Click on the screen or press \"Enter\" to begin"
   },
   //Scene 1, john calls Little Asia
   {
@@ -86,7 +86,7 @@ let engTranslation = [
 
     //////////////////////////Chapter 14//////////////////////////////////////////
   {
-    text: "Please press \"Enter\" to begin"
+    text: "Click on the screen or press \"Enter\" to begin"
   },
   //Scene 4 - From here on will be finished by end of sprint
   {
@@ -161,7 +161,7 @@ let engTranslation = [
 
   ////////////////////Chapter 15 below//////////////////////////////////////
   {
-    text: "Please press \"Enter\" to begin"
+    text: "Click on the screen or press \"Enter\" to begin"
   },
   //Scene 7
   {
@@ -234,6 +234,140 @@ let engTranslation = [
   {
     text: "気をつける(きをつける)：To be careful/cautious (〜に) [RU - Verb]"
   },
+
+  ////////////////////Chapter 16 below//////////////////////////////////////
+  {
+    text: "Click on the screen or press \"Enter\" to begin"
+  },
+  //Scene 1
+  {
+    text: "At Professor Yamashita's Office"
+  },
+  {
+    text:
+      "失礼します(しつれいします)：Excuse me.; Sorry to interrupt you. [Other Expression] | 従業(じゅうぎょう)：Class [Noun]"
+  },
+  {
+    text:
+      "What happened?"
+  },
+  {
+    text:
+      "朝寝坊する(あさねぼうする)：to oversleep [Irregular Verb] | 乗り遅れる(のりおくれる)：to miss (a train, bus, etc.) (～に) [RU - Verb]"
+  },
+  {
+    text:
+      "目覚まし時計(めざましとけい)：Alarm Clock [Noun]"
+  },
+  {
+    text:
+      "入れる(いれる)：to put (something in) (thing を place に) [RU - Verb] | ファイル：file; portfolio [Noun]"
+  },
+  {
+    text:
+      "困る(こまる)：to have difficulty [U - Verb] | 見つかる(みつかる)：to be found (～が) [U - Verb]"
+  },
+
+  //Scene 2
+  {
+    text: "At the station"
+  },
+  {
+    text: "Excuse me, I have lost my file."
+  },
+  {
+    text: "What is the file like?"
+  },
+  {
+    text: "このぐらい：About this much (＝これぐらい/このくらい/これくらい) [Other Expression] | 大きさ(おおきさ)：size [noun]"
+  },
+  {
+    text: "ええと：well. . .; let me see. . . [Other Expression]"
+  },
+
+  //Scene 3
+  {
+    text: "At school the next day"
+  },
+  {
+    text: "John, did you find the file?"
+  },
+  {
+    text: "駅員さん(えきいんさん)：Station Attendant [Noun]"
+  },
+  {
+    text: "Good."
+  },
+  {
+    text: "This is the homework. I am sorry it is late."
+  },
+  {
+    text: "That’s okay. It’s well done."
+  },
+  {
+    text: "Yes, because the station attendant helped me."
+  },
+
+
+////////////////////Chapter 17 below//////////////////////////////////////
+  {
+    text: "Click on the screen or press \"Enter\" to begin"
+  },
+  //Scene 1
+  {
+    text: "Sue and Takeshi have just run into each other at the station"
+  },
+  {
+    text:
+      "旅行会社(りょこうがいしゃ)：Travel Agency [Noun] | 就職する(しゅうしょくする)：to get a job a full-time job (at. . .) (company に) [Irregular Verb] | おめでとうございます：Congratulations! [Other Expression]"
+  },
+  {
+    text: "Thank you."
+  },
+  {
+    text: "慣れる(なれる)：to get used to. . . (～に) [RU - Verb]"
+  },
+  {
+    text: "～に比べて(～にくらべて)：Compared with. . . [Other Expression] | 自分(じぶん)：Oneself [Adverb]"
+  },
+  {
+    text: "残業(ざんぎょう)：Overtime work [Noun]"
+  },
+  {
+    text: "うらやましい：envious [い - adjective] | 少ない(すくない)：a little; a few [い - adjective] | 給料(きゅうりょう)：Salary [Noun] | 最低(さいてい)：the lowest; the worst [noun]"
+  },
+  {
+    text: "前(まえ)：before. . .[Other Expression]"
+  },
+  {
+    text: "I thought that I could travel around when I got in a travel agency."
+  },
+
+  //Scene 2
+  {
+    text: "Ken and Sue have arranged to meet at the coffee shop"
+  },
+  {
+    text:
+      "I happened to meet Takeshi at the station this morning."
+  },
+  {
+    text: "I haven’t seen him since he graduated. How was he?"
+  },
+  {
+    text: "ずいぶん：very [Other Expression]"
+  },
+  {
+    text: "やっぱり：after all [Other Expression] | サラリーマン：salaryman; company employee [noun]"
+  },
+  {
+    text: "それに：moreover. . . [Other Expression]"
+  },
+  {
+    text: "そうか：”I see. (casual) [Other Expression] | 選ぶ(えらぶ)：to choose; to select [U - Verb] | ～かな(あ)：I wonder. . . (casual) [Other Expression]"
+  },
+
+  //After Playing the last Chapter in the Game
   {
     text:
       "Thank You For Playing!"
@@ -242,7 +376,7 @@ let engTranslation = [
   //Title Screen Confirmation
   {
     text:
-      "Press \"Enter\" to return to Title Screen"
+      "Click on the screen or press \"Enter\" to return to Title Screen"
   },
 
    //Chapter Selection
