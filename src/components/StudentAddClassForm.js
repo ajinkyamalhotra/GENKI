@@ -39,6 +39,8 @@ class StudentAddClassForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+    console.log(this.props.username);
+    console.log(this.state.classID);
     try {
       await this.addUserClass();
     } catch (e) {

@@ -10,11 +10,11 @@ class VirtualClassForm extends Component{
   constructor(props){
     super(props);
     this.state = {
-      ClassName: '',
+      Name: '',
       Section: '',
       Teacher: '',
       Semester: '',
-      ClassTime: '',
+      Time: '',
       Username: ''
     }
 
@@ -27,18 +27,18 @@ class VirtualClassForm extends Component{
 
   componentWillUnmount() {
     this.setState = {
-      ClassName: '',
+      Name: '',
       Section: '',
       Teacher: '',
       Semester: '',
-      ClassTime: '',
+      Time: '',
       Username: ''
     }
   }
 
   /**
    * Used to make the form a controlled component.
-   * Will be called when the user types in the username or password textbox.
+   * Will be called when the user types in the textbox.
    * @param event           Represents the change coming from the form.
    */
   handleChange = (event) => {
@@ -61,11 +61,17 @@ class VirtualClassForm extends Component{
   }
 
   createClass(){
-    let className = this.state.ClassName;
+    let className = this.state.Name;
     let section = this.state.Section;
-    let classTime = this.state.ClassTime;
+    let classTime = this.state.Time;
     let semester = this.state.Semester;
     let teacher = this.state.Teacher;
+    console.log(className);
+    console.log(section);
+    console.log(classTime);
+    console.log(semester);
+    console.log(teacher);
+    console.log(this.props.username);
     let apiName = 'genki-vn-beta';
     let path = '/createClass';
     let params = {
@@ -87,14 +93,14 @@ class VirtualClassForm extends Component{
   FormField(props) {
     let stateField;
 
-    if(props.label === 'Class Name'){
-      stateField=this.state.className;
+    if(props.label === 'Name'){
+      stateField=this.state.ClassName;
     }else if(props.label === 'Section'){
-      stateField=this.state.section;
+      stateField=this.state.Section;
     }else if(props.label === 'Semester'){
-      stateField=this.state.semester;
+      stateField=this.state.Semester;
     }else{
-      stateField=this.state.classTime;
+      stateField=this.state.ClassTime;
     }
     return (
       <Form.Field>
@@ -130,8 +136,7 @@ class VirtualClassForm extends Component{
    * given.
    */
   SubmitButton() {
-    const {className, section, semester, classTime} = this.state;
-    console.log(className);
+    //const {className, section, semester, classTime} = this.state;
 
     return(
       <Button size='big'
@@ -160,9 +165,9 @@ class VirtualClassForm extends Component{
                     <Form inverted>
                         <this.FormField
                           color='orange'
-                          label='Class Name'
+                          label='Name'
                           type='text'
-                          placeholder='Class Name'
+                          placeholder='Name'
                         />
                         <Divider />
                         <this.FormField
@@ -181,9 +186,9 @@ class VirtualClassForm extends Component{
                         <Divider />
                         <this.FormField
                           color='orange'
-                          label='Class Time'
+                          label='Time'
                           type='text'
-                          placeholder='Class Time'
+                          placeholder='Time'
                         />
                         <Divider />
                         <this.SubmitButton/>

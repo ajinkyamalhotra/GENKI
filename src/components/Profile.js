@@ -48,7 +48,7 @@ export default class Profile extends Component {
           marginLeft: '25%'}}/>
           <h1 style={{ margin: 'auto', marginLeft: '57%'}}>Team GENKI</h1>
         {/*<VirtualClassForm />*/}
-        <StudentAddClassForm />
+        <StudentAddClassForm {...this.props} />
         </Container>
       </Grid>
     )
