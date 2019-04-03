@@ -17,12 +17,11 @@ export function main (event, context, callback) {
       UserPoolId: data.userPoolId,
       Username: data.username
     };
+    // Don't allow people to sign up as admin
     if (params.GroupName === 'admin') {
       throw new Error('IllegalArgument: Cannot signup as type \'admin\'.');
     }
-    if (params.GroupName === 'teacher') {
-      params.GroupName = 'pendingTeacher';
-    }
+    // Just double checking for errors
     if (params.GroupName) {
       console.log(params);
       cognito.adminAddUserToGroup(params, function (err, data) {

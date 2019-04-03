@@ -92,10 +92,10 @@ class ConfigMenu extends Component {
       <div className="overlay" id="config-overlay" style={{ fontFamily: font }}>
         <ul className="header">
           <li>
-            <a>Config</a>
+            <h1>Config</h1>
           </li>
           <li className="exit-button" onClick={toggleConfigMenu}>
-            <a>&times;</a>
+            <h1 style={{paddingRight:"10px"}}>X</h1>
           </li>
         </ul>
         <ul>
