@@ -54,6 +54,8 @@ const INITIAL_STATE = {
 
 // Class constant for the shift key code
 const SHIFT = 16;
+const SPACEBAR = 32;
+const TITLE = 84;
 //This boolean controls which dialogue shows on screen
 var english = true;
 
@@ -117,6 +119,16 @@ class Game extends Component {
       }
     }
     english = !english;
+
+    if (event.keyCode === TITLE) {
+      this.setState(INITIAL_STATE);
+      return;
+    }
+
+    if (event.keyCode === SPACEBAR && this.state.frameIsRendering) {
+      this.setState({ textBoxShown: false });
+      english = !english;
+    }
   }
 
   setFrameFromChoice(choice, routeBegins) {
