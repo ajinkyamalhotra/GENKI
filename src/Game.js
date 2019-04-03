@@ -52,8 +52,8 @@ const INITIAL_STATE = {
   isSkipping: false
 };
 
-// Class constant for the spacebar key code
-const SPACEBAR = 32;
+// Class constant for the shift key code
+const SHIFT = 16;
 //This boolean controls which dialogue shows on screen
 var english = true;
 
@@ -88,10 +88,6 @@ class Game extends Component {
       e => (e.returnValue = "Unsaved changes will be lost.")
     );
     document.addEventListener("keydown", this.transFunction, false);
-    //Prevents screen from scrolling down on spacebar press
-    window.onkeydown = function(e) {
-      return !(e.keyCode == SPACEBAR);
-    };
   }
 
   componentWillUnmount() {
@@ -100,14 +96,12 @@ class Game extends Component {
 
   /**This function receives the keyboard press from the user and displays the
    *corresponding story/translation in the dialogue box
-   *keyCode 32 is the spacebar key
+   *keyCode 32 is the SHIFT key
    *
-   *After receiving the spacebar key input, if english is true, then display the
+   *After receiving the SHIFT key input, if english is true, then display the
    *english translation textbox, if english is false, revert to original
    *japanese story.
    *
-   *Added Unedited Ch. 14 + 15 dialogue to prevent crashes when attempting to
-   *translate those portions.
    */
   transFunction(event) {
     const currentIndex = this.state.index;
@@ -115,11 +109,11 @@ class Game extends Component {
     var currentEng = engTranslation[currentIndex].text.toString();
     //2nd condition prevents 1st text box from disappearing if spacebar is
     //pressed anytime other than during the game
-    if (event.keyCode === SPACEBAR && this.state.frameIsRendering) {
+    if (event.keyCode === SHIFT && this.state.frameIsRendering) {
       if (english) {
-        this.setState({ text: currentEng, textBoxShown: false });
+        this.setState({ text: currentEng, textBoxShown: true });
       } else {
-        this.setState({ text: currentText, textBoxShown: false });
+        this.setState({ text: currentText, textBoxShown: true });
       }
     }
     english = !english;
@@ -354,8 +348,10 @@ class Game extends Component {
   }
 
   startSkip() {
-
-    const intervalTimeSec = prompt("How many seconds per frame would you like?", "3");
+    const intervalTimeSec = prompt(
+      "How many seconds per frame would you like?",
+      "3"
+    );
     const intervalTime = intervalTimeSec * 1000;
     const lessThanSecond = 999;
 
@@ -396,7 +392,6 @@ class Game extends Component {
       JSON.stringify(this.state, (k, v) => (v === undefined ? null : v))
     );
     this.setState(this.state);
-
   }
 
   loadSlot(number) {
