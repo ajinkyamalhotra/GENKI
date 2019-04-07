@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-import VirtualClassList from './VirtualClassList';
 import StudentTeacherHome from './StudentTeacherHome';
 
 

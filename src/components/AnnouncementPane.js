@@ -1,6 +1,6 @@
-import {API} from 'aws-amplify';
 import React, {Component} from 'react';
-import { Button, Icon, Modal, Form, TextArea } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
+import AddAnnouncementModal from './AddAnnouncementModal';
 
 class AnnouncementPane extends Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class AnnouncementPane extends Component {
 
     this.showAddAnnouncementModal = this.showAddAnnouncementModal.bind(this);
     this.closeAddAnnouncementModal = this.closeAddAnnouncementModal.bind(this);
-    this.AddAnnouncementModal = this.AddAnnouncementModal.bind(this);
     this.AddAnnouncementButton = this.AddAnnouncementButton.bind(this);
   }
 
@@ -23,31 +22,6 @@ class AnnouncementPane extends Component {
     this.setState({ showModal: false });
   }
 
-  AddAnnouncementModal() {
-    return (
-
-      <Modal  open={this.state.showModal}
-              closeOnDimmerClick={false}
-              onClose={this.closeAddAnnouncementModal}>
-        <Modal.Header>
-          Add Announcement To {this.props.clazz.ClassName}-Section {this.props.clazz.Section}:
-        </Modal.Header>
-        <Modal.Content>
-          <Form>
-            <TextArea id='announcement' placeholder='Announcement' />
-          </Form>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button icon='delete' negative onClick={this.closeAddAnnouncementModal}>
-            Cancel
-          </Button>
-          <Button icon='checkmark' positive onClick={this.closeAddAnnouncementModal}>
-            Create Announcement
-          </Button>
-        </Modal.Actions>
-      </Modal>
-    )
-  }
 
   AddAnnouncementButton() {
     return(
@@ -62,7 +36,9 @@ class AnnouncementPane extends Component {
     return(
       <div>
         <this.AddAnnouncementButton />
-        <this.AddAnnouncementModal />
+        <AddAnnouncementModal showModal={this.state.showModal}
+                              close={this.closeAddAnnouncementModal}
+                              {...this.props}/>
       </div>
     )
   }
