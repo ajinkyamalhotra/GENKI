@@ -52,9 +52,8 @@ const INITIAL_STATE = {
   isSkipping: false
 };
 
-// Class constant for the spacebar key code
-const SPACEBAR = 32;
 //This boolean controls which dialogue shows on screen
+const spacebar = 32;
 var english = true;
 
 class Game extends Component {
@@ -90,7 +89,7 @@ class Game extends Component {
     document.addEventListener("keydown", this.transFunction, false);
     //Prevents screen from scrolling down on spacebar press
     window.onkeydown = function(e) {
-      return !(e.keyCode == SPACEBAR);
+      return !(e.keyCode === spacebar);
     };
   }
 
@@ -113,12 +112,11 @@ class Game extends Component {
     const currentIndex = this.state.index;
     var currentText = story[currentIndex].text.toString();
     var currentEng = engTranslation[currentIndex].text.toString();
-    //2nd condition prevents 1st text box from disappearing if spacebar is
-    //pressed anytime other than during the game
-    if (event.keyCode === SPACEBAR && this.state.frameIsRendering) {
-      if (english) {
+    if (event.keyCode === spacebar) {
+      if (english === true) {
         this.setState({ text: currentEng, textBoxShown: false });
-      } else {
+      }
+      if (english === false) {
         this.setState({ text: currentText, textBoxShown: false });
       }
     }

@@ -70,24 +70,15 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
-  saveGame:
-    handler: saveGame.main
-    events:
-      - http:
-          path: save #PATH_TO_YOUR_API
-          method: post #REST_METHOD
-          cors: true
-          authorizer: aws_iam
-  announcement:
+  addAnnouncement:
     role: DynamoDBAccessRole
-    handler: announcement.main
+    handler: addAnnouncement.main
     events:
       - http:
-          path: announcement
+          path: addAnnouncement
           method: post
           cors: true
           authorizer: aws_iam
-
 # Create our resources with separate CloudFormation templates
 resources:
   - ${file(resources/cognito-group-policy.yml)}

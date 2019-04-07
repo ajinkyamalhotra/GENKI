@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-import VirtualClassList from './VirtualClassList';
 import StudentTeacherHome from './StudentTeacherHome';
-import VirtualClassForm from './VirtualClassForm';
 
 
 /**
@@ -205,7 +203,6 @@ class HomePage extends Component {
                       <StudentTeacherHome {...this.props} /> : null}
         {this.props.userType === 'admin' ?
             <this.PendingCards userList={this.state.pendingTeachers} /> : null}
-        <VirtualClassForm {...this.props} />
       </div>
     )
   }

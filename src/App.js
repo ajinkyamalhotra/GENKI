@@ -61,6 +61,7 @@ class App extends Component {
 
       this.setState({ username, email, firstName, lastName, userType });
       console.log(username + ' ' + email + ' ' + firstName + ' ' + lastName + ' ' + userType);
+      this.props.history.push('/Home');
     } catch (e) {
       console.log(e);
     }
