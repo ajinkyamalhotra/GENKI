@@ -51,10 +51,12 @@ class VirtualClassForm extends Component{
   handleSubmit = async event => {
     event.preventDefault();
     let teacher = this.props.firstName + ' ' + this.props.lastName;
-    this.setState({Teacher: teacher});
+    console.log(teacher);
+    await this.setState({Teacher: teacher});
+    console.log(this.state.Teacher);
     try {
       await this.createClass();
-      this.props.history.push("/");
+      this.props.history.push("/Home");
     } catch (e) {
       alert(e);
     }

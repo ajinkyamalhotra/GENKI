@@ -15,17 +15,9 @@ export function main(event, context, callback){
     Key: {
       "Username": username
     },
-    UpdateExpression: "Set Classes = list_append(Classes, :classID)",
-    ExpressionAttributeValues: {
-      ":classID": classIDObj
-    },
-    ReturnValues: "UPDATED_NEW"
+    ProjectionExpression: "Classes"
   };
-
-  console.log("Adding student to class.");
-  console.log(data);
-
-  docClient.update(params, function(err, result){
+  docClient.get(params, function(err, result){
     if(err){
       const response = {
         statusCode: 500,
@@ -35,13 +27,43 @@ export function main(event, context, callback){
       callback(null, response);
       console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-      const response = {
-        statusCode: 200,
-        headers: headers,
-        body: JSON.stringify({ status: true })
+      result.Item.Classes.forEach(function(entry){
+        console.log(entry);
+      )};
+      let params = {
+        TableName: table,
+        Key: {
+          "Username": username
+        },
+        UpdateExpression: "Set Classes = list_append(Classes, :classID)",
+        ExpressionAttributeValues: {
+          ":classID": classIDObj
+        },
+        ReturnValues: "UPDATED_NEW"
       };
-      callback(null, response);
-      console.log("Updated item:", JSON.stringify(result, null, 2));
+
+      console.log("Adding student to class.");
+      console.log(data);
+
+      docClient.update(params, function(err, result){
+        if(err){
+          const response = {
+            statusCode: 500,
+            headers: headers,
+            body: JSON.stringify({ status: false })
+          };
+          callback(null, response);
+          console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+          const response = {
+            statusCode: 200,
+            headers: headers,
+            body: JSON.stringify({ status: true })
+          };
+          callback(null, response);
+          console.log("Updated item:", JSON.stringify(result, null, 2));
+        }
+      })
     }
   })
 }
