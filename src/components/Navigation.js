@@ -152,21 +152,25 @@ class Navigation extends Component {
                       ) : (
 
                         <Menu inverted pointing secondary floated='right'>
-                        <Menu.Item id='LoginButton'
-                                   name = 'Login'
-                                   active={activeItem === 'Login'}
-                                   onClick={this.handleItemClick}>
-                          <Icon inverted name='sign-in alternate'/>
-                          Login
-                        </Menu.Item>
+                          <Link to='/Login'>
+                            <Menu.Item id='LoginButton'
+                                       name = 'Login'
+                                       active={activeItem === 'Login'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='sign-in alternate'/>
+                              Login
+                            </Menu.Item>
+                          </Link>
 
-                        <Menu.Item id='SignUpButton'
-                                   name = 'SignUp'
-                                   active={activeItem === 'SignUp'}
-                                   onClick={this.handleItemClick}>
-                          <Icon inverted name='user plus'/>
-                          SignUp
-                        </Menu.Item>
+                          <Link to='/SignUp'>
+                            <Menu.Item id='SignUpButton'
+                                       name = 'SignUp'
+                                       active={activeItem === 'SignUp'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='user plus'/>
+                              SignUp
+                            </Menu.Item>
+                          </Link>
                         </Menu>
 
                       )}

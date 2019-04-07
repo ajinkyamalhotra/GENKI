@@ -52,6 +52,15 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+  addAnnouncement:
+    role: DynamoDBAccessRole
+    handler: addAnnouncement.main
+    events:
+      - http:
+          path: addAnnouncement
+          method: post
+          cors: true
+          authorizer: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
   - ${file(resources/cognito-group-policy.yml)}

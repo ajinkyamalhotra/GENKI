@@ -1,16 +1,19 @@
 import {API} from 'aws-amplify';
 import React, {Component} from 'react';
-import { Button, Modal, Form, TextArea } from 'semantic-ui-react';
+import { Label, Input, Button, Modal, Form, TextArea } from 'semantic-ui-react';
 
 class AddAnnouncementModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: ''
+      messageHeader: '',
+      message: '',
+      showWarnings: false
     }
 
     this.AddAnnouncementModal = this.AddAnnouncementModal.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -21,14 +24,40 @@ class AddAnnouncementModal extends Component {
     this.setState({ message: data.value });
   }
 
+  handleTitleChange(e, data) {
+    this.setState({ messageHeader: data.value });
+  }
+
   handleCancel() {
     this.setState({ message: '' });
     this.props.close();
   }
 
-  handleSubmit() {
-    this.setState({ message: '' });
-    this.props.close();
+  async handleSubmit() {
+    if (this.state.message.length === 0 || this.state.message.length === 0) {
+      this.setState({ showWarnings: true });
+    } else {
+      try {
+        console.log('Submitting Announcement');
+        let apiName = 'genki-vn-beta';
+        let path = '/addAnnouncement';
+        let date = new Date();
+        let params = {
+          body: {
+            ClassID: this.props.clazz.ClassID,
+            Date: date.toISOString(),
+            MessageHeader: this.state.messageHeader,
+            Message: this.state.message,
+            Author: this.props.username
+          }
+        }
+        await API.post(apiName, path, params);
+        this.setState({ message: '' });
+        this.props.close();
+      } catch(e) {
+        console.log(e);
+      }
+    }
   }
 
   AddAnnouncementModal() {
@@ -42,10 +71,23 @@ class AddAnnouncementModal extends Component {
         </Modal.Header>
         <Modal.Content>
           <Form>
-            <TextArea id='announcement'
+            {this.state.showWarnings
+              && this.state.messageHeader.length === 0
+              && <Label color='red'>Please enter a title</Label>}
+            <Form.Input  id='Title'
+                    label='Title'
+                    placeholder='Announcement Title'
+                    value={this.state.messageHeader}
+                    onChange={this.handleTitleChange} />
+            {this.state.showWarnings
+              && this.state.message.length === 0
+              && <Label color='red'>Please enter a message</Label>}
+            <Form.TextArea id='announcement'
+                      label='Announcement:'
                       placeholder='Announcement'
                       value={this.state.message}
                       onChange={this.handleMessageChange} />
+
           </Form>
         </Modal.Content>
         <Modal.Actions>
