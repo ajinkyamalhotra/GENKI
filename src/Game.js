@@ -182,16 +182,6 @@ class Game extends Component {
     //reset value when switching pages in the VN
     english = true;
 
-    /*if (story[currentIndex].jumpTo === "chapter-2") {
-      this.chapter2();
-      return;
-    }*/
-
-    /*if (story[currentIndex].jumpTo === "chapter-3") {
-      this.chapter3();
-      return;
-    }*/
-
     if (story[currentIndex].jumpTo === "chapter-selection") {
       this.chapterSelection();
       return;
@@ -421,32 +411,6 @@ class Game extends Component {
     });
   }
 
-  /*chapter2() {
-    this.stopSkip();
-    this.setState({
-      titleScreenShown: false,
-      frameIsRendering: true
-    });
-    this.setFrame(23);
-    this.setState({
-      choicesIndex: 0, //Sets the set of choices needed
-      choiceOptions: choices[0].choices
-    });
-  }
-
-  chapter3() {
-    this.stopSkip();
-    this.setState({
-      titleScreenShown: false,
-      frameIsRendering: true
-    });
-    this.setFrame(43);
-    this.setState({
-      choicesIndex: 0,
-      choiceOptions: choices[0].choices
-    });
-  }*/
-
   chapterSelection() {
     let lastIndex = story.length - 1;
     this.stopSkip();
@@ -466,8 +430,6 @@ class Game extends Component {
     return (
       <TitleScreen
         beginStory={this.beginStory.bind(this)}
-        /*chapter2={this.chapter2.bind(this)}
-        chapter3={this.chapter3.bind(this)}*/
         chapterSelection={this.chapterSelection.bind(this)}
         toggleLoadMenu={this.toggleLoadMenu.bind(this)}
       />
