@@ -5,6 +5,7 @@
   "dependencies": {
     "aws-amplify": "^1.1.19",
     "aws-sdk": "^2.409.0",
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "chromedriver": "^2.46.0",
     "concurrently": "^4.0.1",
@@ -32,8 +33,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "predeploy": "npm run build",
-    "deploy": "aws s3 sync build/ s3://genki-vn-beta --delete",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

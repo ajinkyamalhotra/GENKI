@@ -90,7 +90,8 @@ class Game extends Component {
     document.addEventListener("keydown", this.transFunction, false);
     //Prevents screen from scrolling down on spacebar press
     window.onkeydown = function(e) {
-      return !(e.keyCode == SPACEBAR);
+
+      return !(e.keyCode === spacebar);
     };
   }
 
@@ -118,7 +119,8 @@ class Game extends Component {
     if (event.keyCode === SPACEBAR && this.state.frameIsRendering) {
       if (english) {
         this.setState({ text: currentEng, textBoxShown: false });
-      } else {
+      }
+      if (english === false) {
         this.setState({ text: currentText, textBoxShown: false });
       }
     }

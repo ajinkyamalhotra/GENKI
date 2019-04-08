@@ -4,7 +4,6 @@ import { Icon, Divider} from 'semantic-ui-react';
 import { Auth } from "aws-amplify";
 import '../styles/Login.css';
 
-var jwt = require('jsonwebtoken');
 
 /**
  * Login component of Genki VN.  Communicates with backend server to verify
@@ -22,8 +21,6 @@ class Login extends Component{
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSignup = this.handleSignup.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
     this.FormField = this.FormField.bind(this);
     this.ButtonOptions = this.ButtonOptions.bind(this);
   }
@@ -55,7 +52,6 @@ class Login extends Component{
    * @param event           The Button click.
    */
   handleSignup = (event) => {
-    event.preventDefault();
     // If the SignUp button was clicked, switch to the SignUp component
     console.log('signup clicked');
     this.props.history.push('/SignUp');
@@ -66,14 +62,8 @@ class Login extends Component{
     event.preventDefault();
     try {
       await Auth.signIn(this.state.email, this.state.password);
-      let user = await Auth.currentAuthenticatedUser();
-      const { attributes } = user;
-      console.log(user);
-      console.log(attributes);
-      let decoded = jwt.decode(user.signInUserSession.accessToken.jwtToken);
-      let userType = decoded['cognito:groups'];
-      this.props.handleLogin(attributes, userType[0]);
-      this.props.history.push("/");
+      this.props.handleLogin();
+      this.props.history.push("/Home");
     } catch (e) {
       alert(e.message);
     }
@@ -176,7 +166,7 @@ class Login extends Component{
                         <Form inverted>
                             <this.FormField
                               color='orange'
-                              name='user circle'
+                              name='user'
                               label='email'
                               type='text'
                               placeholder='Email'
@@ -184,7 +174,7 @@ class Login extends Component{
                             <Divider />
                             <this.FormField
                               color='orange'
-                              name='lock circle'
+                              name='lock'
                               label='password'
                               type='password'
                               placeholder='Password'

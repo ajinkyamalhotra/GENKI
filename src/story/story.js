@@ -1,8 +1,6 @@
 // bg
 const clouds = require("./bg/Clouds.png");
 const school = require("./bg/Genki school (Scaled).png");
-const entrance = require("./bg/entrance.jpeg");
-const bedroom = require("./bg/Bedroom (Scaled).png");
 const restaurant = require("./bg/Restaurant (Scaled).jpg");
 const restaurantBedroom = require("./bg/Restaurant-Bedroom.png");
 const park = require("./bg/Park.jpg");
