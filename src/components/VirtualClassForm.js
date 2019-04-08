@@ -54,6 +54,8 @@ class VirtualClassForm extends Component{
     console.log(teacher);
     await this.setState({Teacher: teacher});
     console.log(this.state.Teacher);
+    await this.setState({Username: this.props.username});
+    console.log(this.state.Username);
     try {
       await this.createClass();
       this.props.history.push("/Home");
@@ -68,12 +70,13 @@ class VirtualClassForm extends Component{
     let classTime = this.state.Time;
     let semester = this.state.Semester;
     let teacher = this.state.Teacher;
+    let username = this.state.Username;
     console.log(className);
     console.log(section);
     console.log(classTime);
     console.log(semester);
     console.log(teacher);
-    console.log(this.props.username);
+    console.log(username);
     let apiName = 'genki-vn-beta';
     let path = '/createClass';
     let params = {
@@ -83,7 +86,7 @@ class VirtualClassForm extends Component{
         Teacher: teacher,
         ClassTime: classTime,
         Semester: semester,
-        Username: this.props.username
+        Username: username
       }
     }
     return (API.post(apiName, path, params));

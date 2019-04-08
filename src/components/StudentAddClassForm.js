@@ -61,6 +61,7 @@ class StudentAddClassForm extends Component {
         classID: this.state.classID
       }
     }
+    console.log(params);
     return API.post(apiName, path, params);
   }
   /**
