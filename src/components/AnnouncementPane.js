@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 import AddAnnouncementModal from './AddAnnouncementModal';
+import AnnouncementFeed from './AnnouncementFeed';
 
 class AnnouncementPane extends Component {
   constructor(props) {
@@ -35,10 +36,15 @@ class AnnouncementPane extends Component {
   render() {
     return(
       <div>
-        <this.AddAnnouncementButton />
+        {this.props.userType === 'teacher' &&
+          <div>
+            <this.AddAnnouncementButton />
+          </div>
+        }
         <AddAnnouncementModal showModal={this.state.showModal}
                               close={this.closeAddAnnouncementModal}
                               {...this.props}/>
+        <AnnouncementFeed {...this.props} />
       </div>
     )
   }

@@ -1,37 +1,43 @@
 import AWS from 'aws-sdk';
 
+const docClient = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
+// Set response headers to enable CORS (Cross-Origin Resource Sharing)
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Credentials': true
+};
+
+const ANNOUNCEMENTS_TABLENAME = 'Announcements';
+
 export function main (event, context, callback) {
-  const data = JSON.parse(event.body);
-  let docClient = new AWS.DynamoDB.DocumentClient();
-  let table = "Announcements";
-  let index = "ClassID-index";
-  let classID = data.classID;
+  console.log('Received Get');
+  console.log(event.pathParameters);
+  let classID = event.pathParameters.ClassID;
   let params = {
-    TableName: table,
-    IndexName: index,
+    TableName: ANNOUNCEMENTS_TABLENAME,
     KeyConditionExpression: "ClassID = :c_ID",
     ExpressionAttributeValues: {
       ":c_ID": classID
     },
-    ProjectionExpression: "Message, Date"
   };
-
-  console.log("Creating Announcement");
+  console.log("Fetching Announcements");
   docClient.query(params, function(err, result){
     if(err){
       const response = {
         statusCode: 500,
         body: JSON.stringify({ status: false })
       };
-      callback(null, response);
       console.error("Unable to query item. Error JSON:", JSON.stringify(err, null, 2));
+      callback(null, response);
     } else {
+      let announcementList = result['Items'];
       const response = {
         statusCode: 200,
-        body: JSON.stringify({ status: true })
+        headers: headers,
+        body: JSON.stringify(announcementList)
       };
-      callback(null, response);
       console.log("Queried item:", JSON.stringify(result, null, 2));
+      callback(null, response);
     }
   });
 

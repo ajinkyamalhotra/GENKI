@@ -37,4 +37,5 @@ Resources:
                   - dynamodb:DeleteItem
                   - dynamodb:GetItem
                   - dynamodb:BatchGetItem
+                  - dynamodb:Query
                 Resource: "arn:aws:dynamodb:us-west-2:132323314018:table/*"

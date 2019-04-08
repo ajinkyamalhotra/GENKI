@@ -1,6 +1,6 @@
 import {API} from 'aws-amplify';
 import React, {Component} from 'react';
-import { Label, Input, Button, Modal, Form, TextArea } from 'semantic-ui-react';
+import { Label, Button, Modal, Form } from 'semantic-ui-react';
 
 class AddAnnouncementModal extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class AddAnnouncementModal extends Component {
   }
 
   handleCancel() {
-    this.setState({ message: '' });
+    this.setState({ message: '', messageHeader: '' });
     this.props.close();
   }
 
@@ -52,7 +52,7 @@ class AddAnnouncementModal extends Component {
           }
         }
         await API.post(apiName, path, params);
-        this.setState({ message: '' });
+        this.setState({ message: '', messageHeader: '' });
         this.props.close();
       } catch(e) {
         console.log(e);
