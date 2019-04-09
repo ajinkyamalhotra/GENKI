@@ -89,6 +89,7 @@ class Game extends Component {
     document.addEventListener("keydown", this.transFunction, false);
     //Prevents screen from scrolling down on spacebar press
     window.onkeydown = function(e) {
+
       return !(e.keyCode === spacebar);
     };
   }
@@ -157,6 +158,7 @@ class Game extends Component {
         this.setState(INITIAL_STATE);
         return;
       }
+
       for (let i = 0; i < story.length; i++) {
         if (story[currentIndex].jumpTo === story[i].receiveJump) {
           this.setFrame(i);
@@ -176,6 +178,11 @@ class Game extends Component {
     }
     //reset value when switching pages in the VN
     english = true;
+
+    if (story[currentIndex].jumpTo === "chapter-selection") {
+      this.chapterSelection();
+      return;
+    }
   }
 
   setFrame(index) {
@@ -339,8 +346,9 @@ class Game extends Component {
 
     const intervalTimeSec = prompt("How many seconds per frame would you like?", "3");
     const intervalTime = intervalTimeSec * 1000;
+    const lessThanSecond = 999;
 
-    if (intervalTime > 0) {
+    if (intervalTime > lessThanSecond) {
       this.setState({
         isSkipping: true
       });
@@ -400,10 +408,26 @@ class Game extends Component {
     });
   }
 
+  chapterSelection() {
+    let lastIndex = story.length - 1;
+    this.stopSkip();
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+
+    this.setFrame(lastIndex); //This will always jump to Chapter Selection Frame
+    this.setState({
+      choicesIndex: 0,
+      choiceOptions: choices[0].choices
+    });
+  }
+
   titleScreen() {
     return (
       <TitleScreen
         beginStory={this.beginStory.bind(this)}
+        chapterSelection={this.chapterSelection.bind(this)}
         toggleLoadMenu={this.toggleLoadMenu.bind(this)}
       />
     );
