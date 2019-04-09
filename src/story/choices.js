@@ -5,6 +5,16 @@ var choices = [
     //Array index 0
     choices: [
       {
+        routeBegins: "chapter11Route",
+        content: "Chapter 11",
+        nextIndex: 0
+      },
+      {
+        routeBegins: "chapter12Route",
+        content: "Chapter 12",
+        nextIndex: 0
+      },
+      {
         routeBegins: "chapter13Route",
         content: "Chapter 13",
         nextIndex: 0
