@@ -1,5 +1,6 @@
 .container {
   overflow-x: hidden;
+	overflow-y: hidden;
   position: absolute;
   width: 84%;
   height: 81%;
