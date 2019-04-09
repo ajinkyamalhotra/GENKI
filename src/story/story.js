@@ -12,6 +12,7 @@ const yamashitasOffice = require("./bg/Yamashitas Office.jpg");
 const trainStation = require("./bg/Train Station.jpeg");
 const classroom = require("./bg/Classroom.jpg");
 const cafe = require("./bg/Cafe.jpg");
+const hospital = require("./bg/Hospital.png");
 
 // bgm
 const take = require("./bgm/take.mp3");
@@ -29,7 +30,8 @@ const mary = "メアリー";
 const infoAgent = "案内所の人";
 const stationAttendant = "駅員（えきいん)";
 const sue = "スー";
-const ken = "けん"
+const ken = "けん";
+const doctor = "医者（いしゃ）";
 
 // sprites
 const logo = require("./sprites/logo.png");
@@ -79,6 +81,10 @@ const takeshiOverworked = require("./sprites/Takeshi-overworked.png");
 const takeshiOverworkedGif = require("./sprites/Takeshi-overworked-gif.gif");
 const kenNeutral = require("./sprites/Ken-neutral.png");
 const kenNeutralGif = require("./sprites/Ken-neutral-gif.gif");
+const marySick = require("./sprites/Mary-sick.png");
+const marySickGif = require("./sprites/Mary-sick-gif.gif");
+const doctorNeutral = require("./sprites/Doctor-neutral.png");
+const doctorNeutralGif = require("./sprites/Doctor-neutral-gif.gif");
 
 let story = [
   /* Tutorial for Home Menu
@@ -120,6 +126,266 @@ let story = [
     text: "Sure! Let's get you ready for Genki VN!"
   } */
   //End of Tutorial
+
+  //////////////////////////Chapter 11//////////////////////////////////////////
+  {
+    routeBegins: "chapter11Route",
+    speaker: "Chapter 11",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: take,
+    text: "Click on the screen or press \"Enter\" to begin",
+    jumpTo: "chapter11"
+  },
+
+  //Scene 1
+  {
+    receiveJump: "chapter11",
+    bg: school,
+    bgm: take,
+    sprite: "",
+    speaker: "Scene 1",
+    text: "Michiko and Mary meet after the vacation"
+  },
+  {
+    speaker: michiko,
+    spriteRight: michikoNeutralGif,
+    text: "メアリーさん、久しぶりですね。休みはどうでしたか。"
+  },
+  {
+    speaker: mary,
+    spriteLeft: maryNeutralGif,
+    spriteRight: michikoNeutral,
+    text: "すごく楽しかったです。韓国で買い物をしたり、韓国料理を食べたりしました。"
+  },
+  {
+    speaker: michiko,
+    spriteLeft: maryNeutral,
+    spriteRight: michikoNeutralGif,
+    text: "いいですね。私も旅行したいです。"
+  },
+  {
+    speaker: mary,
+    spriteLeft: maryNeutralGif,
+    spriteRight: michikoNeutral,
+    text: "みちこさんの休みは楽しかったですか。"
+  },
+  {
+    speaker: michiko,
+    spriteLeft: maryNeutral,
+    spriteRight: michikoNeutralGif,
+    text: "まあまあでした。一日だけドライブに行きましたが、毎日アルバイトをしていました。"
+  },
+
+  //Scene 2
+  {
+    bg: school,
+    bgm: take,
+    sprite: "",
+    spriteLeft: "",
+    spriteRight: "",
+    speaker: "Scene 2",
+    text: "Mary introduces John to Michiko"
+  },
+  {
+    speaker: mary,
+    spriteLeft: maryNeutralGif,
+    text: "みちこさん、友だちを紹介します。こちらはジョンさんです。ジョンさんは先月、日本に来ました。"
+  },
+  {
+    speaker: john,
+    sprite: johnNeutralGif,
+    text: "初めまして。"
+  },
+  {
+    speaker: michiko,
+    sprite: johnNeutral,
+    spriteLeft: maryNeutral,
+    spriteRight: michikoNeutralGif,
+    text: "初めまして、山川みちこです。"
+  },
+
+  //Scene 3
+  {
+    bg: school,
+    bgm: take,
+    sprite: "",
+    spriteLeft: "",
+    spriteRight: "",
+    speaker: "Scene 3",
+    text: "John talks about himself"
+  },
+  {
+    speaker: michiko,
+    spriteRight: michikoNeutralGif,
+    text: "ジョンさん、出身はどこですか。"
+  },
+  {
+    speaker: john,
+    spriteLeft: johnNeutralGif,
+    spriteRight: michikoNeutral,
+    text: "オーストラリアのケアンズです。"
+  },
+  {
+    speaker: michiko,
+    spriteLeft: johnNeutral,
+    spriteRight: michikoNeutralGif,
+    text: "そうですか。"
+  },
+  {
+    speaker: john,
+    spriteLeft: johnNeutralGif,
+    spriteRight: michikoNeutral,
+    text: "みちこさんはケアンズに行ったことがありますか。"
+  },
+  {
+    speaker: michiko,
+    spriteLeft: johnNeutral,
+    spriteRight: michikoNeutralGif,
+    text: "いいえ、ありません。"
+  },
+  {
+    speaker: john,
+    spriteLeft: johnNeutralGif,
+    spriteRight: michikoNeutral,
+    text: "山や海があって、きれいな所ですよ。グレートバリアリーフで有名です。みちこさんはどこの出身ですか。"
+  },
+  {
+    speaker: michiko,
+    spriteLeft: johnNeutral,
+    spriteRight: michikoNeutralGif,
+    text: "長野です。今度遊びに来てください。食べ物もおいしいですよ。"
+  },
+  {
+    speaker: john,
+    spriteLeft: johnNeutralGif,
+    spriteRight: michikoNeutral,
+    text: "ぜひ、行きたいです。"
+  },
+
+  //////////////////////////Chapter 12//////////////////////////////////////////
+  {
+    routeBegins: "chapter12Route",
+    speaker: "Chapter 12",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: take,
+    text: "Click on the screen or press \"Enter\" to begin",
+    jumpTo: "chapter12"
+  },
+
+  //Scene 1
+  {
+    receiveJump: "chapter12",
+    bg: classroom,
+    bgm: take,
+    sprite: "",
+    speaker: "Scene 1",
+    text: "Mary and Michiko are talking at school"
+  },
+  {
+    speaker: michiko,
+    spriteRight: michikoNeutralGif,
+    text: "メアリーさん、元気がありませんね。"
+  },
+  {
+    speaker: mary,
+    spriteLeft: marySickGif,
+    spriteRight: michikoNeutral,
+    text: "うーん。ちょっとおなかが痛いんです。"
+  },
+  {
+    speaker: michiko,
+    spriteLeft: marySick,
+    spriteRight: michikoNeutralGif,
+    text: "どうしたんですか。"
+  },
+  {
+    speaker: mary,
+    spriteLeft: marySickGif,
+    spriteRight: michikoNeutral,
+    text: "きのう友だちと晩ご飯を食べに行ったんです。たぶん食べすぎたんだと思います。"
+  },
+  {
+    speaker: michiko,
+    spriteLeft: marySick,
+    spriteRight: michikoNeutralGif,
+    text: "大丈夫ですか。"
+  },
+  {
+    speaker: mary,
+    spriteLeft: marySickGif,
+    spriteRight: michikoNeutral,
+    text: "ええ。心配しないでください。……ああ、痛い。"
+  },
+  {
+    speaker: michiko,
+    spriteLeft: marySick,
+    spriteRight: michikoNeutralGif,
+    text: "病院に行った方がいいですよ。"
+  },
+
+  //Scene 2
+  {
+    bg: hospital,
+    bgm: take,
+    sprite: "",
+    spriteLeft: "",
+    spriteRight: "",
+    speaker: "Scene 2",
+    text: "At a hospital."
+  },
+  {
+    speaker: mary,
+    spriteLeft: marySickGif,
+    text: "先生、のどが痛いんです。きのうはおなかが痛かったんです。"
+  },
+  {
+    speaker: doctor,
+    spriteRight: doctorNeutralGif,
+    spriteLeft: marySick,
+    text: "ああ、そうですか。熱もありますね。かぜですね。"
+  },
+  {
+    speaker: mary,
+    spriteRight: doctorNeutral,
+    spriteLeft: marySickGif,
+    text: "あの、もうすぐテニスの試合があるので、練習しなきゃいけないんですが……。"
+  },
+  {
+    speaker: doctor,
+    spriteRight: doctorNeutralGif,
+    spriteLeft: marySick,
+    text: "二三日、運動しないほうがいいでしょう。"
+  },
+  {
+    speaker: mary,
+    spriteRight: doctorNeutral,
+    spriteLeft: marySickGif,
+    text: "わかりました。"
+  },
+  {
+    speaker: doctor,
+    spriteRight: doctorNeutralGif,
+    spriteLeft: marySick,
+    text: "今日は薬を飲んで、早く寝てください。"
+  },
+  {
+    speaker: mary,
+    spriteRight: doctorNeutral,
+    spriteLeft: marySickGif,
+    text: "はい、ありがとうございました。"
+  },
+  {
+    speaker: doctor,
+    spriteRight: doctorNeutralGif,
+    spriteLeft: marySick,
+    text: "お大事に。"
+  },
 
   //////////////////////////Chapter 13//////////////////////////////////////////
   {
@@ -290,10 +556,10 @@ let story = [
     jumpTo: "chapter14"
   },
 
-  //Scene 4
+  //Scene 1
   {
     receiveJump: "chapter14",
-    speaker: "Scene 4",
+    speaker: "Scene 1",
     bg: park,
     sprite: "",
     spriteLeft: "",
@@ -320,9 +586,9 @@ let story = [
     text: "それはいいかもしれませんね。"
   },
 
-  //Scene 5
+  //Scene 2
   {
-    speaker: "Scene 5",
+    speaker: "Scene 2",
     bg: takeshiHouse,
     spriteLeft: "",
     spriteRight: "",
@@ -367,9 +633,9 @@ let story = [
     text: "ちょうどいいよ。ありがとう。"
   },
 
-  //Scene 6
+  //Scene 3
   {
-    speaker: "Scene 6",
+    speaker: "Scene 3",
     bg: street,
     spriteLeft: "",
     spriteRight: "",
@@ -440,10 +706,10 @@ let story = [
     jumpTo: "chapter15"
   },
 
-  //Scene 7
+  //Scene 1
   {
     receiveJump: "chapter15",
-    speaker: "Scene 7",
+    speaker: "Scene 1",
     bg: school,
     sprite: "",
     spriteLeft: "",
@@ -495,9 +761,9 @@ let story = [
     text: "ありがとう。じゃあ、私、みちこさんに電話しておく。"
   },
 
-  //Scene 8
+  //Scene 2
   {
-    speaker: "Scene 8",
+    speaker: "Scene 2",
     bg: naganoStation,
     spriteLeft: "",
     spriteRight: "",
@@ -536,9 +802,9 @@ let story = [
     text: "長野はそばがおいしいから、そばを食べようよ。"
   },
 
-  //Scene 9
+  //Scene 3
   {
-    speaker: "Scene 9",
+    speaker: "Scene 3",
     bg: travelOffice,
     spriteLeft: "",
     spriteRight: "",
@@ -887,15 +1153,15 @@ let story = [
 
   //Chapter Selection
   {
-    //receiveJump: "chapterSelection", //Possible choice at end chapters
+    receiveJump: "chapterSelection", //Possible choice at end chapters
     speaker: "",
     spriteLeft: "",
     spriteRight: "",
     sprite: "",
 
     choicesExist: true,
-    text: ""
-    //jumpTo: "chapterSelection"
+    text: "",
+    jumpTo: "chapterSelection"
   },
 ];
 
