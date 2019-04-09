@@ -1,20 +1,30 @@
 import AWS from 'aws-sdk';
 
+// CORS headers
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Credentials': true
+};
+const docClient = new AWS.DynamoDB.DocumentClient();
+
+const ANNOUNCEMENTS_TABLENAME = "Announcements";
+
+/**
+ * This function accepts a POST request to add a new announcement to the
+ * announcements table.  It stores the messageHeader, message, classID, date,
+ * and Author (as username).
+ *
+ * Note: The ClassID is the Partition Key for this table.
+ */
 export function main (event, context, callback) {
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true
-  };
   const data = JSON.parse(event.body);
-  let docClient = new AWS.DynamoDB.DocumentClient();
-  let table = "Announcements";
   let messageHeader = data.MessageHeader;
   let message = data.Message;
   let classID = data.ClassID;
   let date = data.Date;
   let author = data.Author;
   let params = {
-    TableName:table,
+    TableName:ANNOUNCEMENTS_TABLENAME,
     Item:{
       "ClassID": classID,
       "Date": date,
@@ -31,7 +41,8 @@ export function main (event, context, callback) {
         statusCode: 500,
         body: JSON.stringify({ status: false })
       };
-      console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+      console.error("Unable to add item. Error JSON:",
+                                                JSON.stringify(err, null, 2));
       callback(null, response);
     } else {
       const response = {

@@ -2,6 +2,17 @@ import {API} from 'aws-amplify';
 import React, {Component} from 'react';
 import { Label, Button, Modal, Form } from 'semantic-ui-react';
 
+/**
+ * This component renders the modal where teachers can post announcements.
+ * It is a standard form which accepts input for the announcement title and
+ * the announcement body.  It will display warnings if the user attempts to
+ * submit an announcement that is missing either the title or body.
+ *
+ * This function accepts a closing function from the AnnouncementPane to handle
+ * closing the modal.
+ *
+ * Note: The actual form is a controlled form.
+ */
 class AddAnnouncementModal extends Component {
   constructor(props) {
     super(props);
@@ -18,21 +29,40 @@ class AddAnnouncementModal extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  /**
+   * Function which handles changes to the announcement body.
+   * @param  e      The change event
+   * @param  data   The message change
+   */
   handleMessageChange(e, data) {
     console.log(data.value);
     console.log(this.state.message);
     this.setState({ message: data.value });
   }
 
+  /**
+   * Function which handles changes to the announcement title.
+   * @param  e          The change event
+   * @param  data       The title change
+   */
   handleTitleChange(e, data) {
     this.setState({ messageHeader: data.value });
   }
 
+  /**
+   * Function which handles the cancellation of announcement creation.
+   * It sets the message and header to the empty string.
+   */
   handleCancel() {
     this.setState({ message: '', messageHeader: '' });
     this.props.close();
   }
 
+  /**
+   * Handles submission of the announcement.
+   * Prior to submission this verifies input exists in both the message and
+   * the messageHeader.
+   */
   async handleSubmit() {
     if (this.state.message.length === 0 || this.state.message.length === 0) {
       this.setState({ showWarnings: true });
@@ -52,7 +82,9 @@ class AddAnnouncementModal extends Component {
           }
         }
         await API.post(apiName, path, params);
+        // Reset the form after submission
         this.setState({ message: '', messageHeader: '' });
+        // Close the modal
         this.props.close();
       } catch(e) {
         console.log(e);
@@ -60,14 +92,19 @@ class AddAnnouncementModal extends Component {
     }
   }
 
+  /**
+   * This is the actual modal.
+   */
   AddAnnouncementModal() {
+    let className = this.props.clazz.ClassName;
+    let section = this.props.clazz.Section;
     return (
       <Modal  open={this.props.showModal}
               closeOnDimmerClick={false}
               onClose={this.props.close}
               closeIcon>
         <Modal.Header>
-          Add Announcement To {this.props.clazz.ClassName}-Section {this.props.clazz.Section}:
+          Add Announcement To {className}-Section {section}:
         </Modal.Header>
         <Modal.Content>
           <Form>
@@ -87,7 +124,6 @@ class AddAnnouncementModal extends Component {
                       placeholder='Announcement'
                       value={this.state.message}
                       onChange={this.handleMessageChange} />
-
           </Form>
         </Modal.Content>
         <Modal.Actions>

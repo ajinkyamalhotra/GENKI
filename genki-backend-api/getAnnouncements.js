@@ -9,6 +9,11 @@ const headers = {
 
 const ANNOUNCEMENTS_TABLENAME = 'Announcements';
 
+/**
+ * This Lambda function retrieves all announcements for a particular virtual
+ * class.  It returns these announcements as a list.
+ * @return Returns a list of announcements.
+ */
 export function main (event, context, callback) {
   console.log('Received Get');
   console.log(event.pathParameters);
@@ -27,7 +32,8 @@ export function main (event, context, callback) {
         statusCode: 500,
         body: JSON.stringify({ status: false })
       };
-      console.error("Unable to query item. Error JSON:", JSON.stringify(err, null, 2));
+      console.error("Unable to query item. Error JSON:",
+                                                JSON.stringify(err, null, 2));
       callback(null, response);
     } else {
       let announcementList = result['Items'];
