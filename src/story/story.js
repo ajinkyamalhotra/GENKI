@@ -140,7 +140,7 @@ let story = [
     jumpTo: "chapter11"
   },
 
-  //Scene 1
+  //Scene 1, Michiko and Mary meet after the vacation
   {
     receiveJump: "chapter11",
     bg: school,
@@ -179,7 +179,7 @@ let story = [
     text: "まあまあでした。一日だけドライブに行きましたが、毎日アルバイトをしていました。"
   },
 
-  //Scene 2
+  //Scene 2, Mary introduces John to Michiko
   {
     bg: school,
     bgm: take,
@@ -207,7 +207,7 @@ let story = [
     text: "初めまして、山川みちこです。"
   },
 
-  //Scene 3
+  //Scene 3, John talks about himself
   {
     bg: school,
     bgm: take,
@@ -278,7 +278,7 @@ let story = [
     jumpTo: "chapter12"
   },
 
-  //Scene 1
+  //Scene 1, Mary and Michiko are talking at school
   {
     receiveJump: "chapter12",
     bg: classroom,
@@ -329,7 +329,7 @@ let story = [
     text: "病院に行った方がいいですよ。"
   },
 
-  //Scene 2
+  //Scene 2, At a hospital.
   {
     bg: hospital,
     bgm: take,
@@ -556,7 +556,7 @@ let story = [
     jumpTo: "chapter14"
   },
 
-  //Scene 1
+  //Scene 1, A month before Valentine's Day.
   {
     receiveJump: "chapter14",
     speaker: "Scene 1",
@@ -586,7 +586,7 @@ let story = [
     text: "それはいいかもしれませんね。"
   },
 
-  //Scene 2
+  //Scene 2, On Valentine's Day at Takeshi's house.
   {
     speaker: "Scene 2",
     bg: takeshiHouse,
@@ -633,7 +633,7 @@ let story = [
     text: "ちょうどいいよ。ありがとう。"
   },
 
-  //Scene 3
+  //Scene 3, The next day.
   {
     speaker: "Scene 3",
     bg: street,
@@ -706,7 +706,7 @@ let story = [
     jumpTo: "chapter15"
   },
 
-  //Scene 1
+  //Scene 1, Before the vacation
   {
     receiveJump: "chapter15",
     speaker: "Scene 1",
@@ -761,7 +761,7 @@ let story = [
     text: "ありがとう。じゃあ、私、みちこさんに電話しておく。"
   },
 
-  //Scene 2
+  //Scene 2, At Nagano Station.
   {
     speaker: "Scene 2",
     bg: naganoStation,
@@ -802,7 +802,7 @@ let story = [
     text: "長野はそばがおいしいから、そばを食べようよ。"
   },
 
-  //Scene 3
+  //Scene 3, At the Travel Information Office.
   {
     speaker: "Scene 3",
     bg: travelOffice,
@@ -869,7 +869,7 @@ let story = [
     jumpTo: "chapter16"
   },
 
-  //Scene 1
+  //Scene 1, At Professor Yamashita's Office
   {
     receiveJump: "chapter16",
     speaker: "Scene 1",
@@ -921,7 +921,7 @@ let story = [
     text: "困りましたね。見つかるといいですね。"
   },
 
-  //Scene 2
+  //Scene 2, At the station
   {
     speaker: "Scene 2",
     bg: trainStation,
@@ -954,7 +954,7 @@ let story = [
     text: "ええと。。。ちょっと待ってください。電話して聞いてみます。"
   },
 
-  //Scene 3
+  //Scene 3, At school the next day
   {
     speaker: "Scene 3",
     bg: classroom,
@@ -1013,7 +1013,7 @@ let story = [
     jumpTo: "chapter17"
   },
 
-  //Scene 1
+  //Scene 1, Sue and Takeshi have just run into each other at the station
   {
     receiveJump: "chapter17",
     speaker: "Scene 1",
@@ -1075,7 +1075,7 @@ let story = [
     text: "旅行会社に入ったら、旅行ができると思ったんです。"
   },
 
-  //Scene 2
+  //Scene 2, Ken and Sue have arranged to meet at the coffee shop
   {
     speaker: "Scene 2",
     bg: cafe,
