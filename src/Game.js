@@ -53,7 +53,7 @@ const INITIAL_STATE = {
 };
 
 //This boolean controls which dialogue shows on screen
-const spacebar = 32;
+const SPACEBAR = 32;
 var english = true;
 
 class Game extends Component {
@@ -89,7 +89,7 @@ class Game extends Component {
     document.addEventListener("keydown", this.transFunction, false);
     //Prevents screen from scrolling down on spacebar press
     window.onkeydown = function(e) {
-      return !(e.keyCode === spacebar);
+      return !(e.keyCode === SPACEBAR);
     };
   }
 
@@ -112,7 +112,7 @@ class Game extends Component {
     const currentIndex = this.state.index;
     var currentText = story[currentIndex].text.toString();
     var currentEng = engTranslation[currentIndex].text.toString();
-    if (event.keyCode === spacebar) {
+    if (event.keyCode === SPACEBAR) {
       if (english === true) {
         this.setState({ text: currentEng, textBoxShown: false });
       }
@@ -157,6 +157,7 @@ class Game extends Component {
         this.setState(INITIAL_STATE);
         return;
       }
+
       for (let i = 0; i < story.length; i++) {
         if (story[currentIndex].jumpTo === story[i].receiveJump) {
           this.setFrame(i);
@@ -176,6 +177,21 @@ class Game extends Component {
     }
     //reset value when switching pages in the VN
     english = true;
+
+    /*if (story[currentIndex].jumpTo === "chapter-2") {
+      this.chapter2();
+      return;
+    }*/
+
+    /*if (story[currentIndex].jumpTo === "chapter-3") {
+      this.chapter3();
+      return;
+    }*/
+
+    if (story[currentIndex].jumpTo === "chapter-selection") {
+      this.chapterSelection();
+      return;
+    }
   }
 
   setFrame(index) {
@@ -339,8 +355,9 @@ class Game extends Component {
 
     const intervalTimeSec = prompt("How many seconds per frame would you like?", "3");
     const intervalTime = intervalTimeSec * 1000;
+    const lessThanSecond = 999;
 
-    if (intervalTime > 0) {
+    if (intervalTime > lessThanSecond) {
       this.setState({
         isSkipping: true
       });
@@ -377,7 +394,7 @@ class Game extends Component {
       JSON.stringify(this.state, (k, v) => (v === undefined ? null : v))
     );
     this.setState(this.state);
-    
+
   }
 
   loadSlot(number) {
@@ -400,10 +417,54 @@ class Game extends Component {
     });
   }
 
+  /*chapter2() {
+    this.stopSkip();
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+    this.setFrame(23);
+    this.setState({
+      choicesIndex: 0, //Sets the set of choices needed
+      choiceOptions: choices[0].choices
+    });
+  }
+
+  chapter3() {
+    this.stopSkip();
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+    this.setFrame(43);
+    this.setState({
+      choicesIndex: 0,
+      choiceOptions: choices[0].choices
+    });
+  }*/
+
+  chapterSelection() {
+    let lastIndex = story.length - 1;
+    this.stopSkip();
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+
+    this.setFrame(lastIndex); //This will always jump to Chapter Selection Frame
+    this.setState({
+      choicesIndex: 0,
+      choiceOptions: choices[0].choices
+    });
+  }
+
   titleScreen() {
     return (
       <TitleScreen
         beginStory={this.beginStory.bind(this)}
+        /*chapter2={this.chapter2.bind(this)}
+        chapter3={this.chapter3.bind(this)}*/
+        chapterSelection={this.chapterSelection.bind(this)}
         toggleLoadMenu={this.toggleLoadMenu.bind(this)}
       />
     );

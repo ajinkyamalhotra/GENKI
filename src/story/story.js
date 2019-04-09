@@ -1,4 +1,5 @@
 // bg
+const clouds = require("./bg/Clouds.png");
 const school = require("./bg/Genki school (Scaled).png");
 const restaurant = require("./bg/Restaurant (Scaled).jpg");
 const restaurantBedroom = require("./bg/Restaurant-Bedroom.png");
@@ -24,6 +25,7 @@ const mary = "メアリー";
 const infoAgent = "案内所の人";
 
 // sprites
+const logo = require("./sprites/logo.png");
 // Tutorial Images
 /*const tn = require("./sprites/Takeshi-neutral.png");
 const bh = require("./sprites/block-happy.png");
@@ -32,20 +34,31 @@ const mn = require("./sprites/Mary-neutral.png");*/
 const johnStudying = require("./sprites/John-studying.png");
 const johnStudyingGif = require("./sprites/John-studying-gif.gif");
 const johnWaiter = require("./sprites/John-waiter.png");
+const johnWaiterGif = require("./sprites/John-waiter-gif.gif");
 const managerNeutralGif = require("./sprites/Manager-neutral-gif.gif");
 const managerNeutral = require("./sprites/Manager-neutral.png");
 const yamashitaNeutral = require("./sprites/Yamashita-neutral.png");
+const yamashitaNeutralGif = require("./sprites/Yamashita-neutral-gif.gif");
 const maryNeutral = require("./sprites/Mary-neutral.png");
+const maryNeutralGif = require("./sprites/Mary-neutral-gif.gif");
 const maryTalking = require("./sprites/Mary-talking.png");
+const maryTalkingGif = require("./sprites/Mary-talking-gif.gif");
 const michikoNeutral = require("./sprites/Michiko-neutral.png");
+const michikoNeutralGif = require("./sprites/Michiko-neutral-gif.gif");
 const takeshiSweater = require("./sprites/Takeshi-sweater.png");
+const takeshiSweaterGif = require("./sprites/Takeshi-sweater-gif.gif");
 const takeshiTalking = require("./sprites/Takeshi-talking.png");
+const takeshiTalkingGif = require("./sprites/Takeshi-talking-gif.gif");
 const takeshiTemple = require("./sprites/Takeshi-temple.png");
 const takeshiSoba = require("./sprites/Takeshi-soba.png");
 const marySitting = require("./sprites/Mary-sitting.png");
-const johnNeutral = require("./sprites/John-neautral.png");
+const marySittingGif = require("./sprites/Mary-sitting-gif.gif");
+const johnNeutral = require("./sprites/John-neutral.png");
+const johnNeutralGif = require("./sprites/John-neutral-gif.gif");
 const takeshiInSweater = require("./sprites/Takeshi-in-sweater.png");
+const takeshiInSweaterGif = require("./sprites/Takeshi-in-sweater-gif.gif");
 const infoAgentNeutral = require("./sprites/Info-Agent-neutral.png");
+const infoAgentNeutralGif = require("./sprites/Info-Agent-neutral-gif.gif");
 
 let story = [
   /* Tutorial for Home Menu
@@ -353,10 +366,24 @@ let story = [
   */
 
   //////////////////////////Chapter 13//////////////////////////////////////////
+  {
+    routeBegins: "chapter13Route",
+    speaker: "Chapter 13",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: take,
+    text: "Please press \"Enter\" to begin",
+    jumpTo: "chapter13"
+  },
+
   //Scene 1, john calls Little Asia
   {
+    receiveJump: "chapter13",
     bg: restaurantBedroom,
     bgm: take,
+    sprite: "",
     speaker: "Scene 1",
     text: "John calls Little Asia."
   },
@@ -407,32 +434,43 @@ let story = [
   },
   {
     speaker: manager,
-    spriteLeft: managerNeutral,
+    spriteLeft: managerNeutralGif,
     text: "ワンさんはどうしてこのアルバイトに興味があるんですか。"
   },
   {
     speaker: john,
-    spriteRight: johnWaiter,
+    spriteLeft: managerNeutral,
+    spriteRight: johnWaiterGif,
     text: "おもしろそうですから。いろいろな人に会えるし、日本語も使えるし。"
   },
   {
     speaker: manager,
+    spriteLeft: managerNeutralGif,
+    spriteRight: johnWaiter,
     text: "レストランで働いたことがありますか。"
   },
   {
     speaker: john,
+    spriteLeft: managerNeutral,
+    spriteRight: johnWaiterGif,
     text: "はい。ウェイターならしたことがあります。"
   },
   {
     speaker: manager,
+    spriteLeft: managerNeutralGif,
+    spriteRight: johnWaiter,
     text: "あしたから始められますか。"
   },
   {
     speaker: john,
+    spriteLeft: managerNeutral,
+    spriteRight: johnWaiterGif,
     text: "はい。よろしくお願いします。"
   },
   {
     speaker: manager,
+    spriteLeft: managerNeutralGif,
+    spriteRight: johnWaiter,
     text: "がんばってください。"
   },
 
@@ -449,38 +487,59 @@ let story = [
     bg: restaurant,
     bgm: take,
     speaker: john,
-    spriteRight: johnWaiter,
+    spriteRight: johnWaiterGif,
     text: "いらっしゃいませ。あ、山下先生。"
   },
   {
     speaker: yamashita,
-    spriteLeft: yamashitaNeutral,
     spriteRight: johnWaiter,
+    spriteLeft: yamashitaNeutralGif,
     text: "ジョンさん。ここでアルバイトをしているんですか。"
   },
   {
     speaker: john,
+    spriteRight: johnWaiterGif,
+    spriteLeft: yamashitaNeutral,
     text: "ええ。一週間に三日働いています。"
   },
   {
     speaker: yamashita,
+    spriteRight: johnWaiter,
+    spriteLeft: yamashitaNeutralGif,
     text: "そうですか。どれがおいしいですか。"
   },
   {
     speaker: john,
+    spriteRight: johnWaiterGif,
+    spriteLeft: yamashitaNeutral,
     text: "このカレーが一番人気がありますよ。"
   },
   {
     speaker: yamashita,
+    spriteRight: johnWaiter,
+    spriteLeft: yamashitaNeutralGif,
     text: "おいしそうですね。じゃあ、食べてみます。"
   },
 
   //////////////////////////Chapter 14//////////////////////////////////////////
+  {
+    routeBegins: "chapter14Route",
+    speaker: "Chapter 14",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: take,
+    text: "Please press \"Enter\" to begin",
+    jumpTo: "chapter14"
+  },
 
   //Scene 4
   {
+    receiveJump: "chapter14",
     speaker: "Scene 4",
     bg: park,
+    sprite: "",
     spriteLeft: "",
     spriteRight: "",
     text: "A month before Valentine's Day."
@@ -488,17 +547,20 @@ let story = [
   {
     bgm: take,
     speaker: mary,
-    spriteLeft: maryNeutral,
+    spriteLeft: maryNeutralGif,
     text: "バレンタインのプレゼントは何がいいと思いますか。"
   },
   {
     speaker: michiko,
-    spriteRight: michikoNeutral,
+    spriteLeft: maryNeutral,
+    spriteRight: michikoNeutralGif,
     text:
       "そうですね。たけしさんはいつも同じセーターを着ているから、セーターをあげたらどうですか。"
   },
   {
     speaker: mary,
+    spriteLeft: maryNeutralGif,
+    spriteRight: michikoNeutral,
     text: "それはいいかもしれませんね。"
   },
 
@@ -513,30 +575,39 @@ let story = [
   {
     bgm: take,
     speaker: mary,
-    spriteRight: marySitting,
+    spriteRight: marySittingGif,
     text: "たけしくん、はい、これ。"
   },
   {
     speaker: takeshi,
-    spriteLeft: takeshiSweater,
+    spriteLeft: takeshiSweaterGif,
+    spriteRight: marySitting,
     text: "えっ、ぼくに？どうもありがとう。開けてもいい？"
   },
   {
     speaker: mary,
+    spriteLeft: takeshiSweater,
+    spriteRight: marySittingGif,
     text: "うん。"
   },
   {
     speaker: takeshi,
+    spriteLeft: takeshiSweaterGif,
+    spriteRight: marySitting,
     text:
       "わあ、いいね、このセーター。こんなのがほしかったんだ。メアリーが編んだの？"
   },
   {
     speaker: mary,
+    spriteLeft: takeshiSweater,
+    spriteRight: marySittingGif,
     text: "うん、小さいかもしれないから着てみて。"
   },
 
   {
     speaker: takeshi,
+    spriteLeft: takeshiSweaterGif,
+    spriteRight: marySitting,
     text: "ちょうどいいよ。ありがとう。"
   },
 
@@ -551,48 +622,74 @@ let story = [
   {
     bgm: take,
     speaker: john,
-    spriteLeft: johnNeutral,
+    spriteLeft: johnNeutralGif,
     text: "暖かそうなセーターですね。"
   },
   {
     speaker: takeshi,
-    spriteRight: takeshiInSweater,
+    spriteRight: takeshiInSweaterGif,
+    spriteLeft: johnNeutral,
     text: "これ、メアリーがくれたんです。"
   },
   {
     speaker: john,
+    spriteRight: takeshiInSweater,
+    spriteLeft: johnNeutralGif,
     text:
       "よく似合っていますよ。ぼくも彼女がほしいなあ。ロバートさんはチョコレートを十個ももらったんですよ。"
   },
   {
     speaker: takeshi,
+    spriteRight: takeshiInSweaterGif,
+    spriteLeft: johnNeutral,
     text: "へえ、すごいですね。ジョンさんは？"
   },
 
   {
     speaker: john,
+    spriteRight: takeshiInSweater,
+    spriteLeft: johnNeutralGif,
     text: "ぼくは一個しかもらえませんでした。大家さんから。さびしいなあ。"
   },
 
   {
     speaker: takeshi,
+    spriteRight: takeshiInSweaterGif,
+    spriteLeft: johnNeutral,
     text: "でも、ロバートさんはホワイトデーが大変ですよ。"
   },
   {
     speaker: john,
+    spriteRight: takeshiInSweater,
+    spriteLeft: johnNeutralGif,
     text: "ホワイトデー？"
   },
   {
     speaker: takeshi,
+    spriteRight: takeshiInSweaterGif,
+    spriteLeft: johnNeutral,
     text: "ええ、男の人は三月十四日にお返しをしなきゃいけないんですよ。"
   },
 
   ////////////////////Chapter 15 below//////////////////////////////////////
+  {
+    routeBegins: "chapter15Route",
+    speaker: "Chapter 15",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: take,
+    text: "Please press \"Enter\" to begin",
+    jumpTo: "chapter15"
+  },
 
   //Scene 7
   {
+    receiveJump: "chapter15",
     speaker: "Scene 7",
     bg: school,
+    sprite: "",
     spriteLeft: "",
     spriteRight: "",
     text: "Before the vacation"
@@ -600,34 +697,45 @@ let story = [
   {
     bgm: take,
     speaker: mary,
-    spriteLeft: maryTalking,
+    spriteLeft: maryTalkingGif,
     text: "たけしくん、今度の休み、予定ある？"
   },
   {
     speaker: takeshi,
-    spriteRight: takeshiTalking,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: maryTalking,
     text: "ううん。別に。どうして？"
   },
   {
     speaker: mary,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalkingGif,
     text: "みちこさんの長野のうちに行こうと思ってるんだけど、一緒に行かない？"
   },
   {
     speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: maryTalking,
     text: "いいの？"
   },
 
   {
     speaker: mary,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalkingGif,
     text: "うん。みちこさんが、「たけしくんも誘って」と言ってたから。"
   },
 
   {
     speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: maryTalking,
     text: "じゃあ、行く。電車の時間、調べておくよ。"
   },
   {
     speaker: mary,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalkingGif,
     text: "ありがとう。じゃあ、私、みちこさんに電話しておく。"
   },
 
@@ -642,26 +750,32 @@ let story = [
   {
     bgm: take,
     speaker: takeshi,
-    spriteRight: takeshiTalking,
+    spriteRight: takeshiTalkingGif,
     text: "早く着いたから、ちょっと観光しない？"
   },
   {
     speaker: mary,
-    spriteLeft: maryTalking,
+    spriteLeft: maryTalkingGif,
+    spriteRight: takeshiTalking,
     text: "うん。どこに行く？"
   },
   {
     speaker: takeshi,
-    spriteRight: takeshiTalking,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: maryTalking,
     sprite: takeshiTemple,
     text: "善光寺はどう？有名なお寺だよ。"
   },
   {
     speaker: mary,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalkingGif,
     text: "そうだね。昼ご飯は何にする？"
   },
   {
     speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: maryTalking,
     sprite: takeshiSoba,
     text: "長野はそばがおいしいから、そばを食べようよ。"
   },
@@ -678,35 +792,85 @@ let story = [
   {
     bgm: take,
     speaker: takeshi,
-    spriteRight: takeshiTalking,
+    spriteRight: takeshiTalkingGif,
     spriteLeft: maryTalking,
     text: "すみません、善光寺に行くバスはどれですか。"
   },
   {
     speaker: infoAgent,
-    sprite: infoAgentNeutral,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalking,
+    sprite: infoAgentNeutralGif,
     text: "善光寺なら、十一番のバスですよ。"
   },
   {
     speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: maryTalking,
+    sprite: infoAgentNeutral,
     text: "ありがとうございます。この地図、もらってもいいですか。"
   },
   {
     speaker: infoAgent,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalking,
+    sprite: infoAgentNeutralGif,
     text:
       "ええ、どうぞ。それから、これ、美術館の割引券ですが、よかったらどうぞ。"
   },
   {
     speaker: mary,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalkingGif,
+    sprite: infoAgentNeutral,
     text: "これ、東山魁夷の絵がある美術館ですね。あした行く予定なんです。"
   },
   {
     speaker: infoAgent,
+    spriteRight: takeshiTalking,
+    spriteLeft: maryTalking,
+    sprite: infoAgentNeutralGif,
     text: "気をつけて。",
+  },
+  {
+    bg: clouds,
+    bgm: "",
+    speaker: infoAgent,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: infoAgentNeutralGif,
+    text: "Thank You For Playing!",
     jumpTo: "title-screen"
-  }
+  },
 
   //end of game
+
+
+  //Title Screen Confirmation
+  {
+    routeBegins: "titleScreenConfirmation",
+    speaker: "",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: "",
+    text: "please press \"Enter\" to return to Title Screen",
+    jumpTo: "title-screen"
+  },
+
+  //Chapter Selection
+  {
+    //receiveJump: "chapterSelection", //Possible choice at end chapters
+    speaker: "",
+    spriteLeft: "",
+    spriteRight: "",
+    sprite: "",
+
+    choicesExist: true,
+    text: ""
+    //jumpTo: "chapterSelection"
+  },
 ];
 
 // The code below is to set undefined properties to the last defined property.
