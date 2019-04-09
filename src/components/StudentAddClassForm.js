@@ -44,7 +44,7 @@ class StudentAddClassForm extends Component {
     try {
       await this.addUserClass();
     } catch (e) {
-      alert(e);
+      alert("This class doesn't exist or you are already enrolled.");
     }
   }
   /**

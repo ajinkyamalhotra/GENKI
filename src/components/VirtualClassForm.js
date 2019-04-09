@@ -141,13 +141,18 @@ class VirtualClassForm extends Component{
    * given.
    */
   SubmitButton() {
-    //const {className, section, semester, classTime} = this.state;
+    let className = this.state.Name;
+    let section = this.state.Section;
+    let classTime = this.state.Time;
+    let semester = this.state.Semester;
+    const isEnabled = className && section && classTime && semester;
 
     return(
       <Button size='big'
               compact fluid
               color='orange'
               type='Submit'
+              disabled={!isEnabled}
               onClick={this.handleSubmit}>
         Submit
       </Button>
