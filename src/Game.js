@@ -91,7 +91,7 @@ class Game extends Component {
     //Prevents screen from scrolling down on spacebar press
     window.onkeydown = function(e) {
 
-      return !(e.keyCode === spacebar);
+      return !(e.keyCode === SPACEBAR);
     };
   }
 
@@ -412,13 +412,13 @@ class Game extends Component {
   }
 
   chapterSelection() {
-    let lastIndex = story.length - 1;
     this.stopSkip();
     this.setState({
       titleScreenShown: false,
       frameIsRendering: true
     });
 
+    let lastIndex = story.length - 1;
     this.setFrame(lastIndex); //This will always jump to Chapter Selection Frame
     this.setState({
       choicesIndex: 0,
