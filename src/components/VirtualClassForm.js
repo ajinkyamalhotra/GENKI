@@ -2,40 +2,43 @@ import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-
+import config from '../config';
 import '../styles/VirtualClassForm.css';
+
 
 class VirtualClassForm extends Component{
   constructor(props){
     super(props);
     this.state = {
-      ClassName: '',
+      Name: '',
       Section: '',
       Teacher: '',
       Semester: '',
-      ClassTime: ''
+      Time: '',
+      Username: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.FormField = this.FormField.bind(this);
-    this.ButtonOptions = this.ButtonOptions.bind(this);
     this.createClass = this.createClass.bind(this);
+    this.SubmitButton = this.SubmitButton.bind(this);
   }
 
   componentWillUnmount() {
     this.setState = {
-      ClassName: '',
+      Name: '',
       Section: '',
       Teacher: '',
       Semester: '',
-      ClassTime: ''
+      Time: '',
+      Username: ''
     }
   }
 
   /**
    * Used to make the form a controlled component.
-   * Will be called when the user types in the username or password textbox.
+   * Will be called when the user types in the textbox.
    * @param event           Represents the change coming from the form.
    */
   handleChange = (event) => {
@@ -48,29 +51,45 @@ class VirtualClassForm extends Component{
   handleSubmit = async event => {
     event.preventDefault();
     let teacher = this.props.firstName + ' ' + this.props.lastName;
-    this.setState({Teacher: teacher});
-    let className = this.state.ClassName;
-    let section = this.state.Section;
-    let classTime = this.state.ClassTime;
-    let semester = this.state.Semester;
-    let data = {
-      ClassName: className,
-      Section: section,
-      Teacher: teacher,
-      ClassTime: classTime,
-      Semester: semester
-    }
+    console.log(teacher);
+    await this.setState({Teacher: teacher});
+    console.log(this.state.Teacher);
+    await this.setState({Username: this.props.username});
+    console.log(this.state.Username);
     try {
-      await this.createClass(data);
-      this.props.history.push("/");
+      await this.createClass();
+      this.props.history.push("/Home");
     } catch (e) {
       alert(e);
     }
-
   }
 
-  createClass(data){
-    return (API.post('genki-vn-beta', '/createVirtualClass', data));
+  createClass(){
+    let className = this.state.Name;
+    let section = this.state.Section;
+    let classTime = this.state.Time;
+    let semester = this.state.Semester;
+    let teacher = this.state.Teacher;
+    let username = this.state.Username;
+    console.log(className);
+    console.log(section);
+    console.log(classTime);
+    console.log(semester);
+    console.log(teacher);
+    console.log(username);
+    let apiName = 'genki-vn-beta';
+    let path = '/createClass';
+    let params = {
+      body: {
+        ClassName: className,
+        Section: section,
+        Teacher: teacher,
+        ClassTime: classTime,
+        Semester: semester,
+        Username: username
+      }
+    }
+    return (API.post(apiName, path, params));
   }
   /**
    * Returns a Form.Field Semantic UI component.
@@ -79,14 +98,14 @@ class VirtualClassForm extends Component{
   FormField(props) {
     let stateField;
 
-    if(props.label == 'Class Name'){
-      stateField=this.state.className;
-    }else if(props.label == 'Section'){
-      stateField=this.state.section;
-    }else if(props.label == 'Semester'){
-      stateField=this.state.semester;
+    if(props.label === 'Name'){
+      stateField=this.state.ClassName;
+    }else if(props.label === 'Section'){
+      stateField=this.state.Section;
+    }else if(props.label === 'Semester'){
+      stateField=this.state.Semester;
     }else{
-      stateField=this.state.classTime;
+      stateField=this.state.ClassTime;
     }
     return (
       <Form.Field>
@@ -117,35 +136,25 @@ class VirtualClassForm extends Component{
   }
 
   /**
-   * Only one button options for this form, which will use
-   * handleSubmit function.
+   * Returns the submission button.
+   * This button is disabled until all of the necessary inputs have been
+   * given.
    */
-  ButtonOptions() {
-      return(
-        <div>
-          <this.GenkiButton color='orange'
-                            type='Submit'
-                            id='submit'
-                            onClick={this.handleSubmit}/>
-        </div>
-      )
-  }
+  SubmitButton() {
+    let className = this.state.Name;
+    let section = this.state.Section;
+    let classTime = this.state.Time;
+    let semester = this.state.Semester;
+    const isEnabled = className && section && classTime && semester;
 
-  /**
-   * Buttons specifically for this page.
-   * @param props           Color, floated, type, id, and onClick function.
-   */
-  GenkiButton(props) {
-    return (
-      <Button
-        size='big'
-        compact
-        color={props.color}
-        floated={props.floated}
-        type={props.type}
-        id={props.id}
-        onClick={props.onClick}>
-          {props.type}
+    return(
+      <Button size='big'
+              compact fluid
+              color='orange'
+              type='Submit'
+              disabled={!isEnabled}
+              onClick={this.handleSubmit}>
+        Submit
       </Button>
     )
   }
@@ -166,9 +175,9 @@ class VirtualClassForm extends Component{
                     <Form inverted>
                         <this.FormField
                           color='orange'
-                          label='Class Name'
+                          label='Name'
                           type='text'
-                          placeholder='Class Name'
+                          placeholder='Name'
                         />
                         <Divider />
                         <this.FormField
@@ -187,12 +196,12 @@ class VirtualClassForm extends Component{
                         <Divider />
                         <this.FormField
                           color='orange'
-                          label='Class Time'
+                          label='Time'
                           type='text'
-                          placeholder='Class Time'
+                          placeholder='Time'
                         />
                         <Divider />
-                        <this.ButtonOptions/>
+                        <this.SubmitButton/>
                     </Form>
             </Grid.Column>
         </Grid.Row>
