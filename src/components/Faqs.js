@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import {Accordion, Segment} from 'semantic-ui-react';
+import {Accordion, Breadcrumb, Modal, Segment} from 'semantic-ui-react';
 import _ from 'lodash';
 import '../styles/Faqs.css';
+import {API} from "aws-amplify";
 
+let scanResults = [];
 
 const panels = _.times(10, i => ({
   key: `panel-${i}`,
@@ -16,14 +18,38 @@ const panels = _.times(10, i => ({
 
 
 export default class Faqs extends Component {
+
+  componentWillMount() {
+    scanResults = this.getFaqList();
+    console.log(scanResults);
+  }
+
+  async getFaqList() {
+    let apiName = 'genki-vn-beta';
+    console.log('Getting Faq list');
+    let path = `getFaqsList`;
+    try {
+      let faqList = await API.get(apiName, path);
+      console.log('Faq list' + JSON.stringify(faqList));
+    } catch (e) {
+      console.log('problem getting Faqs');
+      console.log(e, e.stack);
+    }
+  }
+
   render() {
     return (
-      <Segment size='huge' color='orange' compact style={{margin: 'auto'}}>
-        <Accordion fluid styled>
-          <h1 className={'Custom-header-FAQs'}>Frequently Asked Questions</h1>
-        </Accordion>
-          <Accordion fluid styled exclusive={false} panels={panels}/>
-      </Segment>
+      <Modal trigger={
+        <Breadcrumb size="huge" style={{position: 'absolute', bottom: '8px', right: '16px'}}>
+          <Breadcrumb.Section link>FAQs</Breadcrumb.Section>
+        </Breadcrumb>} closeIcon centered={false}>
+        <Modal.Header style={{textAlign: 'center', backgroundColor: 'orange'}}><h1>Frequently Asked Questions</h1></Modal.Header>
+        <Modal.Content>
+          <Segment size='huge' fluid basic style={{margin: 'auto'}}>
+            <Accordion fluid styled exclusive={false} panels={panels} style={{wordWrap: "break-word"}}/>
+          </Segment>
+        </Modal.Content>
+      </Modal>
     )
   }
 }
