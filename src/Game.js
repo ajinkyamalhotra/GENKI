@@ -52,13 +52,11 @@ const INITIAL_STATE = {
   isSkipping: false
 };
 
-
 // Class constant for the shift key code
 const SHIFT = 16;
 const SPACEBAR = 32;
 const TITLE = 84;
 //This boolean controls which dialogue shows on screen
-const SPACEBAR = 32;
 var english = true;
 
 class Game extends Component {
