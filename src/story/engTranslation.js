@@ -5,6 +5,132 @@
  *for when the user presses the spacebar
  */
 let engTranslation = [
+  //////////////////////////Chapter 11//////////////////////////////////////////
+  {
+    text: "Click on the screen or press \"Enter\" to begin"
+  },
+  //Scene 1
+  {
+    text: "Michiko and Mary meet after the vacation"
+  },
+  {
+    text: "It has been a long time [Other Expression]"
+  },
+  {
+    text: "It was really fun. I went shopping, ate Korean dishes, and things like that in Korea."
+  },
+  {
+    text: "Sounds good. I want to travel, too."
+  },
+  {
+    text: "Did you have a fun vacation, Michiko?"
+  },
+  {
+    text: "まあまあ：okay; so-so [Adverb] | ～だけ：just; only [Other Expression] | ドライブ：drive [Noun]"
+  },
+
+  //Scene 2
+  {
+    text: "Mary introduces John to Michiko"
+  },
+  {
+    text: "紹介する(しょうかいする)：to introduce (person に person を) [Irregular Verb] | こちら：this person (polite) [Noun]"
+  },
+  {
+    text: "How do yo do?"
+  },
+  {
+    text: "How do yo do? I am Michiko Yamakawa."
+  },
+
+  //Scene 3
+  {
+    text: "Mary introduces John to Michiko"
+  },
+  {
+    text: "出身(しゅっしん)：coming from (place の) [Adverb]"
+  },
+  {
+    text: "オーストラリア：Australia [Noun]"
+  },
+  {
+    text: "Is that so."
+  },
+  {
+    text: "Have you been to Cairns?"
+  },
+  {
+    text: "No, I haven’t."
+  },
+  {
+    text: "山(やま)：mountain [Noun]"
+  },
+  {
+    text: "I am from Nagano. Please come to visit me sometime. The food is good, too."
+  },
+  {
+    text: "By all means, I would love to go."
+  },
+
+  //////////////////////////Chapter 12//////////////////////////////////////////
+  {
+    text: "Click on the screen or press \"Enter\" to begin"
+  },
+  //Scene 1
+  {
+    text: "Mary and Michiko are talking at school"
+  },
+  {
+    text: "元気がない(げんきがない)：don’t look well [Other Expression]"
+  },
+  {
+    text: "おなか：stomach [Noun] | 痛い(いたい)：hurt; painful [い - Adjective]"
+  },
+  {
+    text: "What’s the matter?"
+  },
+  {
+    text: "たぶん：probably; maybe [Adverb]"
+  },
+  {
+    text: "Are you all right?"
+  },
+  {
+    text: "心配する(しんぱいする)：to worry [Irregular Verb]"
+  },
+  {
+    text: "You had better go to a hospital."
+  },
+  
+  //Scene 2
+  {
+    text: "At a hospital."
+  },
+  {
+    text: "のど：throat [Noun]"
+  },
+  {
+    text: "熱がある(ねつがある)：to have a fever [U - Verb] | かぜ：cold [Noun]"
+  },
+  {
+    text: "もうすぐ：very soon; in a few moments/days [Adverb] | 試合(しあい)：match; game [Noun] | ～ので：because. . . [Other Expression]"
+  },
+  {
+    text: "二三日(にさんにち)：for two to three days [Other Expression] | ～でしょう：probably; . . . , right? [Other Expression]"
+  },
+  {
+    text: "I understand"
+  },
+  {
+    text: "Take medicine and go to bed early tonight"
+  },
+  {
+    text: "Yes. Thank you so much."
+  },
+  {
+    text: "お大事に(おだいじに)：Get well soon [Other Expression]"
+  },
+
   //////////////////////////Chapter 13//////////////////////////////////////////
   {
     text: "Click on the screen or press \"Enter\" to begin"
