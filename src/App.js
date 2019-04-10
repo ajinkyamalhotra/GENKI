@@ -22,6 +22,7 @@ class App extends Component {
     };
 
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   async componentDidMount() {
@@ -43,6 +44,12 @@ class App extends Component {
 
   userHasAuthenticated(authenticated) {
     this.setState({ isAuthenticated: authenticated });
+  }
+
+  async handleLogout(event) {
+    await Auth.signOut();
+
+    this.userHasAuthenticated(false);
   }
 
   async handleLogin() {
@@ -83,7 +90,7 @@ class App extends Component {
         <div className="App">
           {this.state.isAuthenticating ? <Loader active />
             : ( <React.Fragment>
-                  <Navigation childProps={childProps} />
+                  <Navigation childProps={childProps} handleLogout={this.handleLogout} />
                   <div>
                     {this.state.isAuthenticated ?
                       'Logged In as ' + this.state.userType  : 'Not Logged in'}

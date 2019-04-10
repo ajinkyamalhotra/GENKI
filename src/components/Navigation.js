@@ -138,11 +138,11 @@ class Navigation extends Component {
                             </Menu.Item>
                           </Link>
 
-                          <Link to='/Login'>
+                          <Link to='/Home'>
                             <Menu.Item id='SignOutButton'
                                        name = 'Login'
                                        active={activeItem === 'Login'}
-                                       onClick={this.handleItemClick}>
+                                       onClick={this.props.handleLogout}>
                               <Icon inverted name='sign out alternate'/>
                               Logout
                             </Menu.Item>
