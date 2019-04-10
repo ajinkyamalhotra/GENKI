@@ -2,6 +2,15 @@ import AWS from 'aws-sdk';
 
 const cognito = new AWS.CognitoIdentityServiceProvider({apiVersion: '2016-04-18'});
 
+/**
+ * This lambda function accepts a POST that contains a userType, userPoolId,
+ * and cognito username.  It then will place that user into the appropriate
+ * cognito group.  Users will not be added as admin.
+ *
+ * @param event     The POST event
+ * @param context   The lambda context
+ * @param callback  The callback function to the frontend 
+ */
 export function main (event, context, callback) {
   var data;
   // Set response headers to enable CORS (Cross-Origin Resource Sharing)
@@ -17,12 +26,11 @@ export function main (event, context, callback) {
       UserPoolId: data.userPoolId,
       Username: data.username
     };
+    // Don't allow people to sign up as admin
     if (params.GroupName === 'admin') {
       throw new Error('IllegalArgument: Cannot signup as type \'admin\'.');
     }
-    if (params.GroupName === 'teacher') {
-      params.GroupName = 'pendingTeacher';
-    }
+    // Just double checking for errors
     if (params.GroupName) {
       console.log(params);
       cognito.adminAddUserToGroup(params, function (err, data) {

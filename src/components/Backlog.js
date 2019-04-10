@@ -31,25 +31,28 @@ class Backlog extends Component {
       const index = indexHistory[i];
       const choicesIndex = choicesIndexHistory[i];
 
-      textHistory.push(
-        <div className="backlog" key={i}>
-          <div className="backlog-jump-container" onClick={() => this.handleJump(index, i, choicesIndex)}>
-            <span className="backlog-jump-text">Jump</span>
+      let lastIndex = story.length - 1;
+      if(story[index] != story[lastIndex]){
+        textHistory.push(
+          <div className="backlog" key={i}>
+            <div className="backlog-jump-container" onClick={() => this.handleJump(index, i, 0)}>
+              <span className="backlog-jump-text">Jump</span>
+            </div>
+            <div className="backlog-speaker">{story[index].speaker}</div>
+            {story[index].text}
           </div>
-          <div className="backlog-speaker">{story[index].speaker}</div>
-          {story[index].text}
-        </div>
-      );
+        );
+      }
     }
     return (
       <div className="overlay backlog-overlay">
         {textHistory}
         <ul className="header backlog-header" ref={el => (this.messagesEnd = el)}>
           <li>
-            <a>Backlog</a>
+            <h1>Backlog</h1>
           </li>
           <li className="exit-button backlog-exit" onClick={this.props.toggleBacklog}>
-            <a>&times;</a>
+            <h1 style={{paddingRight:"10px"}}>X</h1>
           </li>
         </ul>
       </div>

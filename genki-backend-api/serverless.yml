@@ -26,6 +26,7 @@ provider:
 
 functions:
   addUserToGroup:
+    role: CognitoAccessRole
     handler: addUserToGroup.main
     events:
       - http:
@@ -33,17 +34,63 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
-
-  saveGame:
-    handler: saveGame.main
+  listGroup:
+    role: CognitoAccessRole
+    handler: listGroup.main
     events:
       - http:
-          path: save #PATH_TO_YOUR_API
-          method: post #REST_METHOD
+          path: listGroup/{groupName}
+          method: get
           cors: true
           authorizer: aws_iam
-
+  getClassList:
+    role: DynamoDBAccessRole
+    handler: getClassList.main
+    events:
+      - http:
+          path: classList/{Username}
+          method: get
+          cors: true
+          authorizer: aws_iam
+  createVirtualClass:
+    role: DynamoDBAccessRole
+    handler: createVirtualClass.main
+    events:
+      - http:
+          path: createClass
+          method: post
+          cors: true
+          authorizer: aws_iam
+  classAdd:
+    role: DynamoDBAccessRole
+    handler: classAdd.main
+    events:
+      - http:
+          path: classAdd
+          method: post
+          cors: true
+          authorizer: aws_iam
+  addAnnouncement:
+    role: DynamoDBAccessRole
+    handler: addAnnouncement.main
+    events:
+      - http:
+          path: addAnnouncement
+          method: post
+          cors: true
+          authorizer: aws_iam
+  getAnnouncements:
+    role: DynamoDBAccessRole
+    handler: getAnnouncements.main
+    events:
+      - http:
+          path: getAnnouncements/{ClassID}
+          method: get
+          cors: true
+          authorizer: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
+  - ${file(resources/cognito-group-policy.yml)}
+  - ${file(resources/dynamodb-policies.yml)}
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}

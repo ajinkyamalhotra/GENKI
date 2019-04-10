@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Auth, API } from "aws-amplify";
-import config from '../config';
+import { API } from "aws-amplify";
 
 class SaveLoadMenu extends Component {
   constructor() {
@@ -23,7 +22,7 @@ class SaveLoadMenu extends Component {
         saveString: this.state.saveString,
         createdAt: Date.now()
       }
-    }
+    };
     return API.post(apiName, path, params);
   }
 
@@ -73,23 +72,26 @@ class SaveLoadMenu extends Component {
           }}
         >
           {JSON.parse(localStorage.getItem(this.state.slotNumber)).choicesExist ? this.renderChoiceMenu() : null}
-          <a>
             <img
+              alt="image4"
               draggable="false"
               className="slot-bg"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg}
             />
             <img
+              alt="image5"
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft}
               className="sprite left"
             />
             <img
+              alt="image6"
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite}
               className="sprite"
             />
             <img
+              alt="image7"
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight}
               className="sprite right"
@@ -107,7 +109,6 @@ class SaveLoadMenu extends Component {
                 <div className="text">{JSON.parse(localStorage.getItem(this.state.slotNumber)).text}</div>
               </div>
             ) : null}
-          </a>
         </div>
       );
     } else {
@@ -120,10 +121,10 @@ class SaveLoadMenu extends Component {
       <div className="overlay overlay-save-load">
         <ul className="header">
           <li>
-            <a>{this.props.menuType}</a>
+            <h1>{this.props.menuType}</h1>
           </li>
           <li className="exit-button" onClick={this.props.toggleMenu}>
-            <a>&times;</a>
+            <h1 style={{paddingRight: "10px"}}>X</h1>
           </li>
         </ul>
         {this.menuSlot(this.state.slotNumber)}

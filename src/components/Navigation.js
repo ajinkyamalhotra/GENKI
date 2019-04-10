@@ -1,9 +1,30 @@
-import React, {Component} from 'react';
-import { Link} from 'react-router-dom';
-import {Table, Image, Menu, Icon} from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Table, Image, Menu, Icon } from 'semantic-ui-react';
 import '../styles/Navigation.css';
+import logo from '../images/logo with title.png';
+import Game from '../Game';
 
-const logo= require('../images/logo with title.png');
+/**
+ * Function to extract current Active Item
+ * @returns {string}
+ */
+function extractActiveMenuItem() {
+  //Retrieving the URL and splitting it where "/" character occurs
+  let activeURL = window.location.href.split("/");
+
+  //activeURL is an array with value
+  //[http, null , domainName, page that is active]
+  //Hence, index of active menu items = 3
+  //Highly unlike that our URL structure is going to change
+  let activeMenuItemIndex = 3;
+
+  //Extracting the last element of the array
+  let activeMenuItem = activeURL[activeMenuItemIndex];
+  console.log("Page location is " + activeMenuItem);
+
+  return activeMenuItem;
+}
 
 /**
  * Component which contains all routing logic for the Genki VN application.
@@ -13,23 +34,36 @@ const logo= require('../images/logo with title.png');
  * Read more about the routing technique used here at
  * https://reacttraining.com/react-router/web/guides/quick-start
  */
-
 class Navigation extends Component {
 
-  //Default active item is set to home
-  state = { activeItem: 'home' };
+  constructor(props) {
+    super(props);
+    //Get the active Item by extracting the current active item from the URL
+    this.state = {
+      activeItem: extractActiveMenuItem()
+    }
+  }
 
   //To change active item to the selected menu-item when a menu-item is clicked
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   //To change the active item to home when GENKI logo or label is clicked
-  handleClickOnGENKI = () => this.setState({ activeItem: 'home' });
+  handleClickOnGENKILoggedIn = () => this.setState({ activeItem: 'Home' });
+
+  //To change the active item to none when user is not logged in
+  handleClickOnGENKINotLoggedIn = () => this.setState({ activeItem: '' });
 
   /** Semantic-UI menu used
    * https://react.semantic-ui.com/collections/menu/
    */
-   render() {
-    const { activeItem } = this.state
+  render() {
+    //Flag to indicate whether user is logged in or not
+    const isLoggedIn = this.props.childProps.isAuthenticated;
+    const { activeItem } = this.state;
+
+    //Can be used to suppress the errors
+    //console.error = () => {};
+
     return (
       <div className="navigation-bar"> {
         <Table color='black' inverted attached >
@@ -41,75 +75,119 @@ class Navigation extends Component {
 
                     {/*Cell to store the GENKI logo with title*/}
                     <Table.HeaderCell rowSpan='2' collapsing
-                    style={{padding: '0'}}>
-                        <Link to='/'>
+                    style={{padding: '0', marginLeft:'50px'}}>
+
+                      {isLoggedIn ? (
+                        <Link to='/Home'>
                             <Image size='small' src={logo}
-                            onClick={this.handleClickOnGENKI}/>
+                            onClick={this.handleClickOnGENKILoggedIn}/>
                         </Link>
-                    </Table.HeaderCell>
 
-                    {/*Cell to store the GENKI label header*/}
+                        ) : (
 
-                    {/*<Table.HeaderCell  textAlign='left' collapsing>
                         <Link to='/'>
-                        <Header as='h1' className='header' color='orange'
-                        onClick={this.handleClickOnGENKI}>
-                        GENKI </Header> </Link>
-                    </Table.HeaderCell>*/}
+                          <Image size='small' src={logo}
+                                 onClick={this.handleClickOnGENKINotLoggedIn}/>
+                        </Link>
+                        )}
 
-                    {/*Cell to store the Menu-Items*/}
-                    <Table.HeaderCell inverted>
-                        <Menu inverted pointing secondary floated='right'>
-
-                            <Link to='/'>
-                                <Menu.Item id='HomeButton' name = 'home'
-                                active={activeItem === 'home'}
-                                onClick={this.handleItemClick}>
-                                <Icon inverted name='home'/>
-                                Home</Menu.Item>
-                            </Link>
-
-                            <Link to='/Profile'>
-                                <Menu.Item name = 'profile'
-                                active={activeItem === 'profile'}
-                                onClick={this.handleItemClick}>
-                                <Icon inverted name='user circle'/>
-                                Profile</Menu.Item>
-                            </Link>
-
-                            <Link to='/Game'>
-                                <Menu.Item name = 'game'
-                                active={activeItem === 'game'}
-                                onClick={this.handleItemClick}>
-                                <Icon inverted name='game'/>
-                                Game</Menu.Item>
-                            </Link>
-
-                            <Link to='/Progress'>
-                                <Menu.Item name = 'Progress'
-                                active={activeItem === 'Progress'}
-                                onClick={this.handleItemClick}>
-                                <Icon inverted name='shipping fast'/>
-                                Progress</Menu.Item>
-                            </Link>
-
-                            <Link to='/Login'>
-                                <Menu.Item name = 'login'
-                                active={activeItem === 'login'}
-                                onClick={this.handleItemClick}>
-                                <Icon inverted name='sign out alternate'/>
-                                Logout</Menu.Item>
-                            </Link>
-
-                        </Menu>
                     </Table.HeaderCell>
 
+                    {/*Cell to store the Menu-Items or button*/}
+                    <Table.HeaderCell id={"navButtons"}>
+
+                      {isLoggedIn ? (
+
+                        <Menu inverted pointing secondary floated='right'>
+                          <Link to='/Home'>
+                            <Menu.Item id='HomeButton' name = 'Home'
+                                       active={activeItem === 'Home'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='home'/>
+                              Home
+                            </Menu.Item>
+                          </Link>
+
+                          <Link to='/Profile'>
+                            <Menu.Item id='ProfileButton'
+                                       name = 'Profile'
+                                       active={activeItem === 'Profile'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='user'/>
+                              Profile
+                            </Menu.Item>
+                          </Link>
+
+                          <Link to='/Game'>
+                            <Menu.Item id='GameButton'
+                                       name = 'Game'
+                                       active={activeItem === 'Game'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='game'/>
+                              Game
+                            </Menu.Item>
+                          </Link>
+
+                          <Link to='/Progress'>
+                            <Menu.Item id='ProgressButton'
+                                       name = 'Progress'
+                                       active={activeItem === 'Progress'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='shipping fast'/>
+                              Progress
+                            </Menu.Item>
+                          </Link>
+
+                          <Link to='/Login'>
+                            <Menu.Item id='SignOutButton'
+                                       name = 'Login'
+                                       active={activeItem === 'Login'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='sign out alternate'/>
+                              Logout
+                            </Menu.Item>
+                          </Link>
+                        </Menu>
+
+                      ) : (
+
+                        <Menu inverted pointing secondary floated='right'>
+                          <Link to='/Login'>
+                            <Menu.Item id='LoginButton'
+                                       name = 'Login'
+                                       active={activeItem === 'Login'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='sign-in alternate'/>
+                              Login
+                            </Menu.Item>
+                          </Link>
+
+                          <Link to='/SignUp'>
+                            <Menu.Item id='SignUpButton'
+                                       name = 'SignUp'
+                                       active={activeItem === 'SignUp'}
+                                       onClick={this.handleItemClick}>
+                              <Icon inverted name='user plus'/>
+                              SignUp
+                            </Menu.Item>
+                          </Link>
+                        </Menu>
+
+                      )}
+                    </Table.HeaderCell>
                     {/*Adding padding to the right side of the nav bar*/}
                     <Table.HeaderCell></Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
         </Table>
         }
+        {/*
+        {this.isLoggedIn ? (
+          console.log("User already logged dont show greetings msg")
+          ):(
+        <Greetings />
+          )}
+          */}
       </div>
     )
   }
