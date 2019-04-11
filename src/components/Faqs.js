@@ -3,15 +3,26 @@ import {Accordion, Breadcrumb, Modal, Segment} from 'semantic-ui-react';
 import _ from 'lodash';
 import '../styles/Faqs.css';
 
-let scanResults = [];
+let scanResults = [
+  {Question:"How do I sign up for a new account?",
+   Answer:"Click on the sign up button in the top bar," +
+      "fill up the required information and click Sign up.\n"+
+      "Check your email inbox used to signup for the account and" +
+      "enter the received confirmation code to create your account."},
 
-const panels = _.times(10, i => ({
+  {Question:"How do I log into an existing account?",
+   Answer:"Click on the log in button in the top bar," +
+     "enter your credentials and click Submit."},
+
+  ];
+
+const panels = _.times(scanResults.length, i => ({
   key: `panel-${i}`,
   title: {
-    content: 'Question '+(i+1),
+    content: (i+1)+". "+scanResults[i].Question,
   },
   content: {
-    content: 'Answer '+(i+1),
+    content: scanResults[i].Answer,
   },
 }));
 
