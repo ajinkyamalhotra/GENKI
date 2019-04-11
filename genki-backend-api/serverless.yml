@@ -52,6 +52,24 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+  createVirtualClass:
+    role: DynamoDBAccessRole
+    handler: createVirtualClass.main
+    events:
+      - http:
+          path: createClass
+          method: post
+          cors: true
+          authorizer: aws_iam
+  classAdd:
+    role: DynamoDBAccessRole
+    handler: classAdd.main
+    events:
+      - http:
+          path: classAdd
+          method: post
+          cors: true
+          authorizer: aws_iam
   addAnnouncement:
     role: DynamoDBAccessRole
     handler: addAnnouncement.main
@@ -59,6 +77,15 @@ functions:
       - http:
           path: addAnnouncement
           method: post
+          cors: true
+          authorizer: aws_iam
+  getAnnouncements:
+    role: DynamoDBAccessRole
+    handler: getAnnouncements.main
+    events:
+      - http:
+          path: getAnnouncements/{ClassID}
+          method: get
           cors: true
           authorizer: aws_iam
 # Create our resources with separate CloudFormation templates

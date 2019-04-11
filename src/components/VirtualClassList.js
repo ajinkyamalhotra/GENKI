@@ -19,6 +19,12 @@ class VirtualClassList extends Component {
     this.CardGroup = this.CardGroup.bind(this);
   }
 
+  componentDidMount() {
+    if (typeof this.props.username !== 'undefined') {
+      this.getClassList();
+    }
+  }
+
   /**
    * When this component is initially rendered, the username may not have
    * propogated, so we need to wait until it actually gets here.

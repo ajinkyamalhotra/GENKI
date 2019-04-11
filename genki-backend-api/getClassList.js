@@ -25,6 +25,7 @@ export function main(event, context, callback){
       console.error(err);
       const response = {
         statusCode: 500,
+        headers: headers,
         body: JSON.stringify({ status: false })
       };
       callback(null, response);
