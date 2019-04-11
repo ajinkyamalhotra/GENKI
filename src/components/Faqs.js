@@ -30,17 +30,27 @@ const panels = _.times(scanResults.length, i => ({
 export default class Faqs extends Component {
   render() {
     return (
-      <Modal trigger={
-        <Breadcrumb size="huge" style={{position: 'absolute', bottom: '8px', right: '16px'}}>
-          <Breadcrumb.Section link>FAQs</Breadcrumb.Section>
-        </Breadcrumb>} closeIcon centered={false}>
-        <Modal.Header style={{textAlign: 'center', backgroundColor: 'orange'}}><h1>Frequently Asked Questions</h1></Modal.Header>
-        <Modal.Content>
-          <Segment size='huge' fluid basic style={{margin: 'auto'}}>
-            <Accordion fluid styled exclusive={false} panels={panels} style={{wordWrap: "break-word"}}/>
-          </Segment>
-        </Modal.Content>
-      </Modal>
+        <Modal trigger={
+          <Breadcrumb size="large" >
+            <Breadcrumb.Section link>FAQs</Breadcrumb.Section>
+          </Breadcrumb>} closeIcon centered={false}>
+          <Modal.Header
+            style={{textAlign: 'center', backgroundColor: 'orange'}}>
+            <h1>Frequently Asked Questions</h1>
+          </Modal.Header>
+          <Modal.Content>
+            <Segment size='huge'
+                     fluid
+                     basic
+                     style={{margin: 'auto'}}>
+              <Accordion fluid
+                         styled
+                         exclusive={false}
+                         panels={panels}
+                         style={{wordWrap: "break-word"}}/>
+            </Segment>
+          </Modal.Content>
+        </Modal>
     )
   }
 }
