@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {Accordion, Breadcrumb, Modal, Segment} from 'semantic-ui-react';
 import _ from 'lodash';
 import '../styles/Faqs.css';
-import {API} from "aws-amplify";
 
 let scanResults = [];
 
@@ -18,25 +17,6 @@ const panels = _.times(10, i => ({
 
 
 export default class Faqs extends Component {
-
-  componentWillMount() {
-    scanResults = this.getFaqList();
-    console.log(scanResults);
-  }
-
-  async getFaqList() {
-    let apiName = 'genki-vn-beta';
-    console.log('Getting Faq list');
-    let path = `getFaqsList`;
-    try {
-      let faqList = await API.get(apiName, path);
-      console.log('Faq list' + JSON.stringify(faqList));
-    } catch (e) {
-      console.log('problem getting Faqs');
-      console.log(e, e.stack);
-    }
-  }
-
   render() {
     return (
       <Modal trigger={
