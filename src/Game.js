@@ -98,7 +98,9 @@ class Game extends Component {
 
   /**This function receives the keyboard press from the user and displays the
    *corresponding story/translation in the dialogue box
-   *keyCode 32 is the SHIFT key
+   *keyCode 16 is the SHIFT key
+   *keycode 32 is the SPACEBAR
+   *keycode 84 is the 't' button (TITLE)
    *
    *After receiving the SHIFT key input, if english is true, then display the
    *english translation textbox, if english is false, revert to original
