@@ -88,6 +88,15 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+  getClassRoster:
+    role: DynamoDBAccessRole
+    handler: getClassRoster.main
+    events:
+      - http:
+          path: getClassRoster/{ClassID}
+          method: get
+          cors: true
+          authorizer: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
   - ${file(resources/cognito-group-policy.yml)}
