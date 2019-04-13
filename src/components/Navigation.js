@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Table, Image, Menu, Icon } from 'semantic-ui-react';
+import { Table, Image, Menu, Icon, Grid, Popup } from 'semantic-ui-react';
+import { Button, Header } from 'semantic-ui-react';
 import '../styles/Navigation.css';
 import logo from '../images/logo with title.png';
 import Game from '../Game';
@@ -138,15 +139,28 @@ class Navigation extends Component {
                             </Menu.Item>
                           </Link>
 
-                          <Link to='/Login'>
-                            <Menu.Item id='SignOutButton'
-                                       name = 'Login'
-                                       active={activeItem === 'Login'}
-                                       onClick={this.handleItemClick}>
+                          <Popup
+                            trigger={<Menu.Item id='SignOutButton'
+                                                name = 'Logout'
+                                                active={activeItem === 'Logout'}
+                                                onClick={this.handleItemClick}>
                               <Icon inverted name='sign out alternate'/>
                               Logout
-                            </Menu.Item>
-                          </Link>
+                            </Menu.Item>}
+                            content={
+                              <Grid centered>
+                                <Grid.Column textAlign='center'>
+                                  <Header as='h4'>Are you sure?</Header>
+                                  <Link to='/Home'>
+                                    <Button onClick={this.props.handleLogout}>
+                                      Logout
+                                    </Button>
+                                  </Link>
+                                </Grid.Column>
+                              </Grid>}
+                            on='click'
+                            position='bottom center'
+                          />
                         </Menu>
 
                       ) : (
