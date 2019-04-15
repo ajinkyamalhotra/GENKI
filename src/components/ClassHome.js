@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { List, Tab, Loader } from 'semantic-ui-react';
 import AnnouncementPane from './AnnouncementPane';
+import ClassRosterPane from './ClassRosterPane';
 
 /**
  * This component represents the home page of a particular Virtual Class.
@@ -84,7 +85,9 @@ class ClassHome extends Component {
   ClassHomeTabs() {
     const panes = [
       { menuItem: 'Class Information', render: this.ClassInformation },
-      { menuItem: 'Class Announcements', render: () => <Tab.Pane><AnnouncementPane {...this.props} /></Tab.Pane>}
+      { menuItem: 'Class Announcements', render: () =>
+                    <Tab.Pane><AnnouncementPane {...this.props} /></Tab.Pane>},
+      { menuItem: 'Class Roster', render: () => <Tab.Pane><ClassRosterPane {...this.props} /></Tab.Pane>}
     ]
     return (
       <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />

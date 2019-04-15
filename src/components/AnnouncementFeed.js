@@ -91,7 +91,7 @@ class AnnouncementFeed extends Component {
       }
     });
     console.log(typeof announcements);
-    var cards = this.state.announcementList.map((announcement) =>
+    var cards = announcements.map((announcement) =>
                                           this.AnnouncementCard(announcement));
     return (
       <ul>
