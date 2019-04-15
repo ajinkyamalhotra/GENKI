@@ -143,7 +143,7 @@ class SignUp extends Component{
    * @param e           Event
    * @param data        Data sent from the
    */
-  handleChange = (e, data) => {
+  handleChange = async (e, data) => {
     // Some debugging logging
     console.log(data.name);
     console.log(data.value);
@@ -154,16 +154,18 @@ class SignUp extends Component{
                       this.state.confirmedPassword : this.state.password;
       const isMatch = data.value === unchangedElement;
 
-      this.setState({passwordErrors: handlePasswordValidation(e, data)});
+      await this.setState({passwordErrors: handlePasswordValidation(e, data)});
       const isValid = this.state.passwordErrors.valid;
-      this.setState({
+      console.log(isMatch);
+      console.log(isValid);
+      await this.setState({
         passwordsMatch: isMatch,
         passwordValid: isValid,
         [key]: data.value
       });
     } else {
       // Set any other part of the state other than the passwords
-      this.setState({ [key]: data.value });
+      await this.setState({ [key]: data.value });
     }
   }
 
@@ -315,8 +317,8 @@ class SignUp extends Component{
             "Password needs to have at least 1 number 0-9." : null};
           {this.state.passwordErrors.symbols ?
             "Password needs to have at least 1 special symbol." : null};
-          {this.state.passwordErrors.lowercase ?
-            "Password cannot contain spaces." : null};
+          {this.state.passwordErrors.spaces ?
+            "Password needs to have no spaces." : null};
       </Form.Group>
     )
   }

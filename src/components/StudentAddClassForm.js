@@ -57,10 +57,12 @@ class StudentAddClassForm extends Component {
     await this.setState({username: username});
     console.log(this.props.username);
     console.log(this.state.classID);
-    try {
-      await this.addUserClass();
-    } catch (e) {
-      alert("This class doesn't exist or you are already enrolled.");
+    if(window.confirm("When you enroll in a class your instructor will be able to see your email, first and last name.")){
+      try {
+        await this.addUserClass();
+      } catch (e) {
+        alert("This class doesn't exist or you are already enrolled.");
+      }
     }
   }
   /**
