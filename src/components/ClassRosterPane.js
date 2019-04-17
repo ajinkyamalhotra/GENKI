@@ -7,12 +7,13 @@ class ClassRosterPane extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      roster: [],
+      roster: {},
       isLoading: true
     }
 
     this.getClassRoster = this.getClassRoster.bind(this);
     this.ClassRoster = this.ClassRoster.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
   /**
@@ -45,21 +46,44 @@ class ClassRosterPane extends Component {
     try {
       let classRoster = await API.get(apiName, path);
       console.log('class roster: ' + JSON.stringify(classRoster));
-      this.setState({ roster: classRoster, isLoading: false });
+      let roster = classRoster.reduce((accumulator, student) => {
+        let username = student.UserInfo.Username;
+        student['isSelected'] = false;
+        return({
+          ...accumulator,
+          [username]: student
+        })
+      }, {});
+      this.setState({ roster: roster, isLoading: false });
     } catch (e) {
       console.log('problem getting roster');
       console.log(e, e.stack);
     }
   }
 
+  handleCheckboxChange(e) {
+    let username = e.target.name;
+    console.log(username);
+    let student = this.state.roster[username];
+    student.isSelected = !student.isSelected;
+    this.setState(prevState => ({
+      roster: {
+        ...prevState.roster,
+        [username]: student
+      }
+    }));
+  }
+
   RosterItem(student) {
+    console.log(student);
+    let username = student.UserInfo.Username;
     let lastName =  student.UserInfo.LastName;
     let firstName = student.UserInfo.FirstName;
-    let username = student.UserInfo.Username;
+
     return(
       <List.Item key={username}>
         <List.Content>
-          <List.Header><input type='checkbox'/>{' ' + lastName + ', ' + firstName}</List.Header>
+          <List.Header><input type='checkbox' checked={student.isSelected} name={username} onChange={this.handleCheckboxChange}/>{' ' + lastName + ', ' + firstName}</List.Header>
         </List.Content>
       </List.Item>
     )
@@ -67,15 +91,18 @@ class ClassRosterPane extends Component {
 
   ClassRoster() {
     console.log(this.state.roster);
-    let roster = this.state.roster;
-    roster.sort((a,b) => {
-      if (a.UserInfo.LastName < b.UserInfo.LastName) {
+    let rosterKeys = Object.keys(this.state.roster);
+    rosterKeys.sort((a,b) => {
+      if (this.state.roster[a].UserInfo.LastName < this.state.roster[b].UserInfo.LastName) {
         return -1;
       } else {
         return 1;
       }
     });
-    var rosterList = roster.map((student) => this.RosterItem(student));
+    var rosterList = [];
+    rosterKeys.forEach((username) => {
+      rosterList.push(this.RosterItem(this.state.roster[username]))
+    });
     return(
       <List celled>
         {rosterList}
