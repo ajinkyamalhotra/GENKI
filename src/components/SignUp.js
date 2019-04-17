@@ -4,6 +4,7 @@ import { Icon, Divider} from 'semantic-ui-react';
 import { Auth, API } from "aws-amplify";
 import config from '../config';
 import '../styles/SignUp.css';
+import handlePasswordValidation from './HandlePasswordValidation';
 
 /**
  * SignUp form to become a member of the GenkiVN website.
@@ -20,6 +21,8 @@ class SignUp extends Component{
       password: '',
       confirmedPassword: '',
       passwordsMatch: true,
+      passwordValid: false,
+      passwordErrors: {},
       userType: '',
       secretID: '',
       isSigningUp: false,
@@ -37,6 +40,7 @@ class SignUp extends Component{
     this.handleConfirmationSubmit = this.handleConfirmationSubmit.bind(this);
     this.ConfirmationCodeInput = this.ConfirmationCodeInput.bind(this);
     this.SignUpForm = this.SignUpForm.bind(this);
+
   }
 
   /**
@@ -88,6 +92,22 @@ class SignUp extends Component{
   }
 
   /**
+   * Function which invokes the classAdd API to create the User if they used
+   * a secret id in sign up
+   */
+  addUserClass(){
+    console.log('Adding class to user');
+    let apiName = 'genki-vn-beta';
+    let path ='/classAdd';
+    let params = {
+      body: {
+        username: this.state.username,
+        classID: this.state.secretID
+      }
+    }
+    return API.post(apiName, path, params);
+  }
+  /**
    * Handle the event that the user submits their confirmation code.
    * @param  event            Confirmation event
    */
@@ -107,6 +127,8 @@ class SignUp extends Component{
         name: this.state.firstName,
         family_name: this.state.lastName
       }
+      // Create the user and add class if classID was centered
+      await this.addUserClass();
       // Pass attributes to the App
       this.props.handleLogin(attributes, this.state.userType);
       // Display the HomePage
@@ -127,12 +149,16 @@ class SignUp extends Component{
     console.log(data.value);
     const key = data.name;
     // If one of the password inputs have changed do check to see if they match
-    if (key === 'password' || key === 'confirmedPassword') {
+    if ((key === 'password' || key === 'confirmedPassword')) {
       const unchangedElement = (key === 'password') ?
                       this.state.confirmedPassword : this.state.password;
       const isMatch = data.value === unchangedElement;
+
+      this.setState({passwordErrors: handlePasswordValidation(e, data)});
+      const isValid = this.state.passwordErrors.valid;
       this.setState({
         passwordsMatch: isMatch,
+        passwordValid: isValid,
         [key]: data.value
       });
     } else {
@@ -277,6 +303,20 @@ class SignUp extends Component{
                       name='confirmedPassword'
                       value={this.state.confirmedPassword}
                       onChange={this.handleChange}/>
+          {this.state.passwordErrors.min ?
+            "Password needs to be at least 8 characters." : null};
+          {this.state.passwordErrors.max ?
+            "Password needs to be less than 24 characters." : null};
+          {this.state.passwordErrors.lowercase ?
+            "Password needs to have at least 1 lowercase letter." : null};
+          {this.state.passwordErrors.uppercase ?
+            "Password needs to have at least 1 uppercase letter." : null};
+          {this.state.passwordErrors.digits ?
+            "Password needs to have at least 1 number 0-9." : null};
+          {this.state.passwordErrors.symbols ?
+            "Password needs to have at least 1 special symbol." : null};
+          {this.state.passwordErrors.lowercase ?
+            "Password cannot contain spaces." : null};
       </Form.Group>
     )
   }
@@ -287,10 +327,10 @@ class SignUp extends Component{
    * given.
    */
   SignUpButton() {
-    const {email, userType, password, passwordsMatch} = this.state;
+    const {email, userType, passwordValid, passwordsMatch} = this.state;
     const isEnabled = this.validateEmail(email)
                       && userType
-                      && password.length>0
+                      && passwordValid
                       && passwordsMatch;
     console.log("email= " + this.validateEmail(email));
     console.log("isEnabled = " + isEnabled);
