@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, Linking} from 'react';
 import { API } from 'aws-amplify';
-import { List, Checkbox } from 'semantic-ui-react';
+import { List, Checkbox, Button, Popup, Icon } from 'semantic-ui-react';
 
 
 class ClassRosterPane extends Component {
@@ -8,12 +8,17 @@ class ClassRosterPane extends Component {
     super(props);
     this.state = {
       roster: {},
+      selectAll: false,
       isLoading: true
     }
 
     this.getClassRoster = this.getClassRoster.bind(this);
     this.ClassRoster = this.ClassRoster.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.handleSelectAll = this.handleSelectAll.bind(this);
+    this.SelectionButton = this.SelectionButton.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.WriteEmailButton = this.WriteEmailButton.bind(this);
   }
 
   /**
@@ -61,6 +66,21 @@ class ClassRosterPane extends Component {
     }
   }
 
+  handleSelectAll() {
+    let selectAll = !this.state.selectAll;
+    Object.keys(this.state.roster).forEach(username => {
+      let student = this.state.roster[username];
+      student.isSelected = selectAll;
+      this.setState(prevState => ({
+        roster: {
+          ...prevState.roster,
+          [username]: student
+        }
+      }));
+    });
+    this.setState({ selectAll: selectAll});
+  }
+
   handleCheckboxChange(e) {
     let username = e.target.name;
     console.log(username);
@@ -74,6 +94,22 @@ class ClassRosterPane extends Component {
     }));
   }
 
+  handleEmail() {
+    let bcc = '?bcc=';
+    let firstEmail = true;
+    Object.keys(this.state.roster).forEach(username => {
+      if (this.state.roster[username].isSelected) {
+        if (!firstEmail) {
+          bcc = bcc + ',';
+        } else {
+          firstEmail = false;
+        }
+        bcc = bcc + this.state.roster[username].UserInfo.Email;
+      }
+    });
+    window.open('mailto:' + bcc);
+  }
+
   RosterItem(student) {
     console.log(student);
     let username = student.UserInfo.Username;
@@ -83,7 +119,14 @@ class ClassRosterPane extends Component {
     return(
       <List.Item key={username}>
         <List.Content>
-          <List.Header><input type='checkbox' checked={student.isSelected} name={username} onChange={this.handleCheckboxChange}/>{' ' + lastName + ', ' + firstName}</List.Header>
+          <List.Header>
+            {this.props.userType==='teacher' &&
+            <input  type='checkbox'
+                    checked={student.isSelected}
+                    name={username}
+                    onChange={this.handleCheckboxChange}/>}
+                  {' ' + lastName + ', ' + firstName}
+          </List.Header>
         </List.Content>
       </List.Item>
     )
@@ -110,9 +153,26 @@ class ClassRosterPane extends Component {
     )
   }
 
+  SelectionButton() {
+    return(
+      <Button color='orange' onClick={this.handleSelectAll}>
+        {this.state.selectAll ? "Unselect All" : "Select All"}
+      </Button>
+
+    )
+  }
+
+  WriteEmailButton() {
+    return(
+      <Popup trigger={<Button icon='write' floated='right' onClick={this.handleEmail}/>} content='Email Selected' />
+    )
+  }
+
   render() {
     return(
       <div>
+        <this.SelectionButton />
+        <this.WriteEmailButton />
         {this.state.isLoading ? null: <this.ClassRoster />}
       </div>
     );
