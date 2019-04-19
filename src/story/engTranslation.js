@@ -7,17 +7,18 @@
 let engTranslation = [
   //////////////////////////Chapter 11//////////////////////////////////////////
   {
-    text: "Click on the screen or press \"Enter\" to begin"
+    text: 'Click on the screen or press "Enter" to begin'
   },
   //Scene 1
   {
     text: "Michiko and Mary meet after the vacation"
   },
   {
-    text: "It has been a long time [Other Expression]"
+    text: "久しぶり(ひさしぶり)：It has been a long time [Other Expression]"
   },
   {
-    text: "It was really fun. I went shopping, ate Korean dishes, and things like that in Korea."
+    text:
+      "It was really fun. I went shopping, ate Korean dishes, and things like that in Korea."
   },
   {
     text: "Sounds good. I want to travel, too."
@@ -26,7 +27,8 @@ let engTranslation = [
     text: "Did you have a fun vacation, Michiko?"
   },
   {
-    text: "まあまあ：okay; so-so [Adverb] | ～だけ：just; only [Other Expression] | ドライブ：drive [Noun]"
+    text:
+      "まあまあ：okay; so-so [Adverb] | ～だけ：just; only [Other Expression] | ドライブ：drive [Noun]"
   },
 
   //Scene 2
@@ -34,7 +36,8 @@ let engTranslation = [
     text: "Mary introduces John to Michiko"
   },
   {
-    text: "紹介する(しょうかいする)：to introduce (person に person を) [Irregular Verb] | こちら：this person (polite) [Noun]"
+    text:
+      "紹介する(しょうかいする)：to introduce (person に person を) [Irregular Verb] | こちら：this person (polite) [Noun]"
   },
   {
     text: "How do yo do?"
@@ -66,7 +69,8 @@ let engTranslation = [
     text: "山(やま)：mountain [Noun]"
   },
   {
-    text: "I am from Nagano. Please come to visit me sometime. The food is good, too."
+    text:
+      "I am from Nagano. Please come to visit me sometime. The food is good, too."
   },
   {
     text: "By all means, I would love to go."
@@ -74,7 +78,7 @@ let engTranslation = [
 
   //////////////////////////Chapter 12//////////////////////////////////////////
   {
-    text: "Click on the screen or press \"Enter\" to begin"
+    text: 'Click on the screen or press "Enter" to begin'
   },
   //Scene 1
   {
@@ -84,7 +88,8 @@ let engTranslation = [
     text: "元気がない(げんきがない)：don’t look well [Other Expression]"
   },
   {
-    text: "おなか：stomach [Noun] | 痛い(いたい)：hurt; painful [い - Adjective]"
+    text:
+      "おなか：stomach [Noun] | 痛い(いたい)：hurt; painful [い - Adjective]"
   },
   {
     text: "What’s the matter?"
@@ -101,7 +106,7 @@ let engTranslation = [
   {
     text: "You had better go to a hospital."
   },
-  
+
   //Scene 2
   {
     text: "At a hospital."
@@ -113,10 +118,12 @@ let engTranslation = [
     text: "熱がある(ねつがある)：to have a fever [U - Verb] | かぜ：cold [Noun]"
   },
   {
-    text: "もうすぐ：very soon; in a few moments/days [Adverb] | 試合(しあい)：match; game [Noun] | ～ので：because. . . [Other Expression]"
+    text:
+      "もうすぐ：very soon; in a few moments/days [Adverb] | 試合(しあい)：match; game [Noun] | ～ので：because. . . [Other Expression]"
   },
   {
-    text: "二三日(にさんにち)：for two to three days [Other Expression] | ～でしょう：probably; . . . , right? [Other Expression]"
+    text:
+      "二三日(にさんにち)：for two to three days [Other Expression] | ～でしょう：probably; . . . , right? [Other Expression]"
   },
   {
     text: "I understand"
@@ -133,7 +140,7 @@ let engTranslation = [
 
   //////////////////////////Chapter 13//////////////////////////////////////////
   {
-    text: "Click on the screen or press \"Enter\" to begin"
+    text: 'Click on the screen or press "Enter" to begin'
   },
   //Scene 1, john calls Little Asia
   {
@@ -208,20 +215,20 @@ let engTranslation = [
     text: "It looks good. Well, I will try this one."
   },
 
-    //////////////////////////Chapter 14//////////////////////////////////////////
+  //////////////////////////Chapter 14//////////////////////////////////////////
   {
-    text: "Click on the screen or press \"Enter\" to begin"
+    text: 'Click on the screen or press "Enter" to begin'
   },
   //Scene 4 - From here on will be finished by end of sprint
   {
     text: "A month before Valentine's Day."
   },
   {
-    text: "What do you think is for a Valentine’s present?"
+    text: "バレンタインデー：Valentine's Day [Noun]"
   },
   {
     text:
-      "Well, Takeshi always the same sweater, so why don’t you give him a sweater?"
+      "同じ(おなじ)：same [Adverb] | あげる：to give (to others) (person に thing を) [RU - Verb]"
   },
   {
     text: "That might be a good idea."
@@ -232,7 +239,7 @@ let engTranslation = [
     text: "On Valentine's Day at Takeshi's house."
   },
   {
-    text: "Takeshi, this is for you."
+    text: "〜くん：Mr/Ms...(casual) [Other Expression]"
   },
   {
     text: "For me? Thank you. May I open it?"
@@ -242,13 +249,14 @@ let engTranslation = [
   },
   {
     text:
-      "Wow, this is a nice sweater! I’ve wanted one like this.  Did you knit it Mary?"
+      "こんな：...like this, this kind of...[Other Expression] | " +
+      "ほしい：to want (thing が)[い - Adjective] | 編む(あむ) to knit [U -Verb]"
   },
   {
     text: "Yes. It may be small, so please try it on."
   },
   {
-    text: "It fits perfectly. Thank you."
+    text: "ちょうど： exactly [Adverb]"
   },
 
   //Scene 6
@@ -259,20 +267,21 @@ let engTranslation = [
     text: "Your sweater looks warm."
   },
   {
-    text: "Mary gave me this."
+    text: "くれる：to give (me) (person に thing を) [RU - Verb]"
   },
   {
     text:
-      "It looks good on you. I want a girlfriend, too. You know, Robert got as many as ten chocolates."
+      "よく：well [Adverb] | 似合う(にあう)：to look good (on somebody) (thing が) [U - Verb] |" +
+      "チョコレート：chocolate [Noun] | 〜個(〜こ)：generic counter for small things [Counters]"
   },
   {
     text: "Hah, that’s incredible. How about you John?"
   },
   {
-    text: "Yes. I only got one. From my landlady. How sad?"
+    text: "大家さん(おおやさん)：landlord/landlady [Noun]"
   },
   {
-    text: "But Robert will probably have a tough day on White Day."
+    text: "ホワイトデー：White Day (Yet another gift-giving day) [Noun]"
   },
   {
     text: "White Day?"
@@ -283,30 +292,29 @@ let engTranslation = [
 
   ////////////////////Chapter 15 below//////////////////////////////////////
   {
-    text: "Click on the screen or press \"Enter\" to begin"
+    text: 'Click on the screen or press "Enter" to begin'
   },
   //Scene 7
   {
     text: "Before the vacation"
   },
   {
-    text: "Takeshi, do you have any plans for the holidays?"
+    text: "予定(よてい)：schedule; plan [Noun]"
   },
   {
     text: "Not really. Why?"
   },
   {
-    text:
-      "I am thinking of going to Michiko’s home in Nagano. Do you want to go?"
+    text: "〜けど：...,but; ...,so [Other Expression]"
   },
   {
     text: "Is it okay?"
   },
   {
-    text: "Yes, Michiko told me to invite you."
+    text: "誘う(さそう)：to invite (〜を) [U - Verb]"
   },
   {
-    text: "Then, I will go. I will check the train schedule."
+    text: "調べる(しらべる)：to look into (a matter) (matter を) [RU - Verb]"
   },
   {
     text: "Thanks. I will call Michiko."
@@ -317,7 +325,9 @@ let engTranslation = [
     text: "At Nagano Station."
   },
   {
-    text: "Since we got here early, do you want to do a little sightseeing?"
+    text:
+      "着く(つく)：to arrive (place に) [U - Verb] | " +
+      "観光する(かんこうする)：to do sightseeing [Irregular - Verb]"
   },
   {
     text: "Yes. Where shall we go?"
@@ -326,10 +336,10 @@ let engTranslation = [
     text: "How about Zenkoji Temple? It’s a famous temple."
   },
   {
-    text: "Sounds good. What shall we eat for lunch?"
+    text: "する：to decide on (an item) (item に) [Irregular Verb]"
   },
   {
-    text: "Soba noodles in Nagano are delicious, so let’s eat soba."
+    text: "そば：soba; Japanese Buckwheat Noodles [Noun]"
   },
 
   //Scene 9
@@ -340,18 +350,16 @@ let engTranslation = [
     text: "Excuse me, which bus goes to Zenkoji Temple?"
   },
   {
-    text: "For Zenkoji, it’s bus number 11."
+    text: "〜番(〜ばん)：number...[Other Expression]"
   },
   {
-    text: "Thank you very much. Can I have this map? "
+    text: "地図(ちず)：map [Noun]"
   },
   {
-    text:
-      "Yes, And these are discount tickets for the museum. Please take them, if you like."
+    text: "割引券(わりびきけん)：discount coupon [Noun]"
   },
   {
-    text:
-      "This is the museum that has paintings of Higashiyama Kaii, isn’t it? We are planning to go tomorrow. Thank you."
+    text: "絵(え)：painting; picture; drawing [Noun]"
   },
 
   {
@@ -360,7 +368,7 @@ let engTranslation = [
 
   ////////////////////Chapter 16 below//////////////////////////////////////
   {
-    text: "Click on the screen or press \"Enter\" to begin"
+    text: 'Click on the screen or press "Enter" to begin'
   },
   //Scene 1
   {
@@ -371,16 +379,14 @@ let engTranslation = [
       "失礼します(しつれいします)：Excuse me.; Sorry to interrupt you. [Other Expression] | 従業(じゅうぎょう)：Class [Noun]"
   },
   {
-    text:
-      "What happened?"
+    text: "What happened?"
   },
   {
     text:
       "朝寝坊する(あさねぼうする)：to oversleep [Irregular Verb] | 乗り遅れる(のりおくれる)：to miss (a train, bus, etc.) (～に) [RU - Verb]"
   },
   {
-    text:
-      "目覚まし時計(めざましとけい)：Alarm Clock [Noun]"
+    text: "目覚まし時計(めざましとけい)：Alarm Clock [Noun]"
   },
   {
     text:
@@ -402,7 +408,8 @@ let engTranslation = [
     text: "What is the file like?"
   },
   {
-    text: "このぐらい：About this much (＝これぐらい/このくらい/これくらい) [Other Expression] | 大きさ(おおきさ)：size [noun]"
+    text:
+      "このぐらい：About this much (＝これぐらい/このくらい/これくらい) [Other Expression] | 大きさ(おおきさ)：size [noun]"
   },
   {
     text: "ええと：well. . .; let me see. . . [Other Expression]"
@@ -431,10 +438,9 @@ let engTranslation = [
     text: "Yes, because the station attendant helped me."
   },
 
-
-////////////////////Chapter 17 below//////////////////////////////////////
+  ////////////////////Chapter 17 below//////////////////////////////////////
   {
-    text: "Click on the screen or press \"Enter\" to begin"
+    text: 'Click on the screen or press "Enter" to begin'
   },
   //Scene 1
   {
@@ -451,13 +457,15 @@ let engTranslation = [
     text: "慣れる(なれる)：to get used to. . . (～に) [RU - Verb]"
   },
   {
-    text: "～に比べて(～にくらべて)：Compared with. . . [Other Expression] | 自分(じぶん)：Oneself [Adverb]"
+    text:
+      "～に比べて(～にくらべて)：Compared with. . . [Other Expression] | 自分(じぶん)：Oneself [Adverb]"
   },
   {
     text: "残業(ざんぎょう)：Overtime work [Noun]"
   },
   {
-    text: "うらやましい：envious [い - adjective] | 少ない(すくない)：a little; a few [い - adjective] | 給料(きゅうりょう)：Salary [Noun] | 最低(さいてい)：the lowest; the worst [noun]"
+    text:
+      "うらやましい：envious [い - adjective] | 少ない(すくない)：a little; a few [い - adjective] | 給料(きゅうりょう)：Salary [Noun] | 最低(さいてい)：the lowest; the worst [noun]"
   },
   {
     text: "前(まえ)：before. . .[Other Expression]"
@@ -471,8 +479,7 @@ let engTranslation = [
     text: "Ken and Sue have arranged to meet at the coffee shop"
   },
   {
-    text:
-      "I happened to meet Takeshi at the station this morning."
+    text: "I happened to meet Takeshi at the station this morning."
   },
   {
     text: "I haven’t seen him since he graduated. How was he?"
@@ -481,28 +488,28 @@ let engTranslation = [
     text: "ずいぶん：very [Other Expression]"
   },
   {
-    text: "やっぱり：after all [Other Expression] | サラリーマン：salaryman; company employee [noun]"
+    text:
+      "やっぱり：after all [Other Expression] | サラリーマン：salaryman; company employee [noun]"
   },
   {
     text: "それに：moreover. . . [Other Expression]"
   },
   {
-    text: "そうか：”I see. (casual) [Other Expression] | 選ぶ(えらぶ)：to choose; to select [U - Verb] | ～かな(あ)：I wonder. . . (casual) [Other Expression]"
+    text:
+      "そうか：”I see. (casual) [Other Expression] | 選ぶ(えらぶ)：to choose; to select [U - Verb] | ～かな(あ)：I wonder. . . (casual) [Other Expression]"
   },
 
   //After Playing the last Chapter in the Game
   {
-    text:
-      "Thank You For Playing!"
+    text: "Thank You For Playing!"
   },
 
   //Title Screen Confirmation
   {
-    text:
-      "Click on the screen or press \"Enter\" to return to Title Screen"
+    text: 'Click on the screen or press "Enter" to return to Title Screen'
   },
 
-   //Chapter Selection
+  //Chapter Selection
   {
     text: ""
   }
