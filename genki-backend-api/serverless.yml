@@ -34,6 +34,15 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+  handlePendingTeacher:
+    role: CognitoDynamoAccessRole
+    handler: handlePendingTeacher.main
+    events:
+      - http:
+          path: handlePendingTeacher
+          method: post
+          cors: true
+          authorizer: aws_iam
   listGroup:
     role: CognitoAccessRole
     handler: listGroup.main
@@ -101,5 +110,6 @@ functions:
 resources:
   - ${file(resources/cognito-group-policy.yml)}
   - ${file(resources/dynamodb-policies.yml)}
+  - ${file(resources/cognito-dynamo-policy.yml)}
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}
