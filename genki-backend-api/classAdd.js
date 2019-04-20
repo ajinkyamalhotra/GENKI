@@ -116,6 +116,30 @@ function addToClass(classID, username, firstName, lastName, email, callback){
 
   docClient.update(params, function(err, result){
     if(err){
+      createUserInTable(table, username, classIDObj, infoObj, callback);
+    } else {
+      const response = {
+        statusCode: 200,
+        headers: headers,
+        body: JSON.stringify({ status: true })
+      };
+      callback(null, response);
+      console.log("Updated item:", JSON.stringify(result, null, 2));
+    }
+  })
+}
+
+function createUserInTable(table, username, classIDObj, infoObj, callback){
+  let params = {
+    TableName: table,
+    Item: {
+      "Username": username,
+      "Classes": classIDObj,
+      "UserInfo": infoObj
+    }
+  };
+  docClient.put(params, function(err, result){
+    if(err){
       const response = {
         statusCode: 500,
         headers: headers,
@@ -123,7 +147,7 @@ function addToClass(classID, username, firstName, lastName, email, callback){
       };
       callback(null, response);
       console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
-    } else {
+    }else{
       const response = {
         statusCode: 200,
         headers: headers,
