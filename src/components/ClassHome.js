@@ -85,12 +85,6 @@ class ClassHome extends Component {
           </List.Item>
           <List.Item>
             <List.Content>
-              <List.Header>Class ID:</List.Header>
-              <List.Description>{classID}</List.Description>
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
               <List.Header>Class ID</List.Header>
               <List.Description>{classID}</List.Description>
             </List.Content>
