@@ -115,7 +115,7 @@ class SignUp extends Component{
    * Function which invokes the createUser APIE to create the User if they didn't
    * use a secret id to sign up
    */
-  createUser(){
+  createUserNoClassID(){
     console.log('Creating user');
     let apiName = 'genki-vn-beta';
     let path ='/createUser';
@@ -129,6 +129,7 @@ class SignUp extends Component{
     }
     return API.post(apiName, path, params)
   }
+
   /**
    * Handle the event that the user submits their confirmation code.
    * @param  event            Confirmation event
@@ -153,7 +154,7 @@ class SignUp extends Component{
       if(this.state.secretID){
         await this.addUserClass();
       }else{
-        await this.createUser();
+        await this.createUserNoClassID();
       }
       // Pass attributes to the App
       this.props.handleLogin(attributes, this.state.userType);
