@@ -79,6 +79,15 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+  createUserNoClassID:
+    role: DynamoDBAccessRole
+    handler: createUserNoClassID.main
+    events:
+      - http:
+          path: createUser
+          method: post
+          cors: true
+          authorizer: aws_iam
   addAnnouncement:
     role: DynamoDBAccessRole
     handler: addAnnouncement.main
