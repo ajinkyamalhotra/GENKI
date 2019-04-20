@@ -112,24 +112,6 @@ class SignUp extends Component{
   }
 
   /**
-   * Function which invokes the createUser APIE to create the User if they didn't
-   * use a secret id to sign up
-   */
-  createUser(){
-    console.log('Creating user');
-    let apiName = 'genki-vn-beta';
-    let path ='/createUser';
-    let params = {
-      body: {
-        username: this.state.username,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email
-      }
-    }
-    return API.post(apiName, path, params)
-  }
-  /**
    * Handle the event that the user submits their confirmation code.
    * @param  event            Confirmation event
    */
@@ -152,8 +134,6 @@ class SignUp extends Component{
       // Create the user and add class if classID was centered
       if(this.state.secretID){
         await this.addUserClass();
-      }else{
-        await this.createUser();
       }
       // Pass attributes to the App
       this.props.handleLogin(attributes, this.state.userType);
