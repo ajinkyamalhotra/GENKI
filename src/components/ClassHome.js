@@ -46,6 +46,7 @@ class ClassHome extends Component {
     let semester = this.props.clazz.Semester;
     let section = this.props.clazz.Section;
     let teacher = this.props.clazz.Teacher;
+    let classID = this.props.clazz.ClassID;
     return (
       <Tab.Pane>
         <List>
@@ -71,6 +72,12 @@ class ClassHome extends Component {
             <List.Content>
               <List.Header>Instructor</List.Header>
               <List.Description>{teacher}</List.Description>
+            </List.Content>
+          </List.Item>
+          <List.Item>
+            <List.Content>
+              <List.Header>Class ID</List.Header>
+              <List.Description>{classID}</List.Description>
             </List.Content>
           </List.Item>
         </List>

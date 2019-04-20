@@ -102,7 +102,10 @@ class SignUp extends Component{
     let params = {
       body: {
         username: this.state.username,
-        classID: this.state.secretID
+        classID: this.state.secretID,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email
       }
     }
     return API.post(apiName, path, params);

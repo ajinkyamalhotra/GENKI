@@ -48,6 +48,7 @@ class StudentAddClassForm extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     let firstName = this.props.firstName;
+    console.log(this.props.firstName);
     let lastName = this.props.lastName;
     await this.setState({firstName: firstName});
     await this.setState({lastName: lastName});
