@@ -16,6 +16,7 @@ class ClassHome extends Component {
 
     this.ClassHomeTabs = this.ClassHomeTabs.bind(this);
     this.ClassInformation = this.ClassInformation.bind(this);
+    this.emailTeacher = this.emailTeacher.bind(this);
   }
 
   /**
@@ -37,6 +38,10 @@ class ClassHome extends Component {
                       && typeof this.props.clazz.ClassName !== 'undefined') {
       this.setState({ isLoading: false });
     }
+  }
+
+  emailTeacher() {
+    window.open('mailto:' + this.props.clazz.Email);
   }
 
   /**
@@ -73,7 +78,7 @@ class ClassHome extends Component {
             <List.Content>
               <List.Header>Instructor</List.Header>
               <List.Description>{teacher + ' '}
-                <Popup  trigger={<Button size='mini' icon='write' onClick={this.emailTeacher}/>} 
+                <Popup  trigger={<Button size='mini' icon='write' onClick={this.emailTeacher}/>}
                         content='Email Your Teacher' />
               </List.Description>
             </List.Content>

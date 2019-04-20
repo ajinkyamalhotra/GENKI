@@ -1,6 +1,6 @@
 import React, {Component, Linking} from 'react';
 import { API } from 'aws-amplify';
-import { List, Checkbox, Button, Popup, Icon } from 'semantic-ui-react';
+import { List, Checkbox, Button, Popup, Icon, Header } from 'semantic-ui-react';
 
 
 class ClassRosterPane extends Component {
@@ -171,8 +171,12 @@ class ClassRosterPane extends Component {
   render() {
     return(
       <div>
-        <this.SelectionButton />
-        <this.WriteEmailButton />
+        <Header size='huge'>
+          Class Roster for {' ' + this.props.clazz.ClassName}
+        </Header>
+        {this.props.userType === 'teacher' &&
+          <this.SelectionButton /> &&
+          <this.WriteEmailButton />}
         {this.state.isLoading ? null: <this.ClassRoster />}
       </div>
     );
