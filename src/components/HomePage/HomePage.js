@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Card } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
 import StudentTeacherHome from './StudentTeacherHome';
-import config from '../config';
+import config from '../../config';
 
 
 /**

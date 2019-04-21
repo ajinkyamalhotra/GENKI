@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Form, Input, Icon, Modal } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-import '../styles/VirtualClassForm.css';
+import '../../styles/VirtualClassForm.css';
 
 /**
  * This component renders a modal which teachers can use to create a new class.
@@ -25,7 +25,6 @@ class VirtualClassForm extends Component{
     this.handleCancel = this.handleCancel.bind(this);
     this.FormField = this.FormField.bind(this);
     this.createClass = this.createClass.bind(this);
-    this.SubmitButton = this.SubmitButton.bind(this);
     this.CreateClassModal = this.CreateClassModal.bind(this);
   }
 

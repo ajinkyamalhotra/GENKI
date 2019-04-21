@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Icon, Button, Divider } from 'semantic-ui-react';
 import VirtualClassList from './VirtualClassList';
 import ClassHome from './ClassHome';
-import StudentAddClassForm from './StudentAddClassForm';
-import VirtualClassForm from './VirtualClassForm';
+import StudentAddClassForm from '../Forms/StudentAddClassForm';
+import VirtualClassForm from '../Forms/VirtualClassForm';
 
 
 
