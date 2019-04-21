@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
-import { Button, Icon, Form, Modal} from 'semantic-ui-react';
+import { Button, Form, Modal} from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-import config from '../config';
 import '../styles/AddClassForm.css';
 
+/**
+ * This component renders the form students use to enroll themselves into
+ * a Virtual Class.  It renders as a modal, receiving open and close functions
+ * from the StudentTeacherHome component.  That is, it is a controlled
+ * component which is controlled by the StudentTeacherHome component.
+ * @extends Component
+ */
 class StudentAddClassForm extends Component {
   constructor(props){
     super(props);
@@ -19,6 +25,9 @@ class StudentAddClassForm extends Component {
     this.EnrollModal = this.EnrollModal.bind(this);
   }
 
+  /**
+   * Clear the form.
+   */
   componentWillUnmount(){
     this.setState ({ classID: '' });
   }
@@ -31,11 +40,17 @@ class StudentAddClassForm extends Component {
     this.setState({ classID: data.value });
   }
 
+  /**
+   * Handle the cancellation of the form by clearing the form.
+   */
   handleCancel() {
     this.setState({ classID: '' });
     this.props.closeEnrollModal();
   }
 
+  /**
+   * Submit the form to enroll in the class.
+   */
   async handleSubmit(event) {
     event.preventDefault();
     console.log(this.state.classID);
@@ -95,6 +110,9 @@ class StudentAddClassForm extends Component {
     )
   }
 
+  /**
+   * This is the modal itself.
+   */
   EnrollModal() {
     return(
       <Modal  open={this.props.showEnrollModal}

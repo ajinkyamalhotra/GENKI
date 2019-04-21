@@ -108,16 +108,6 @@ class Navigation extends Component {
                             </Menu.Item>
                           </Link>
 
-                          <Link to='/Profile'>
-                            <Menu.Item id='ProfileButton'
-                                       name = 'Profile'
-                                       active={activeItem === 'Profile'}
-                                       onClick={this.handleItemClick}>
-                              <Icon inverted name='user'/>
-                              Profile
-                            </Menu.Item>
-                          </Link>
-
                           <Link to='/Game'>
                             <Menu.Item id='GameButton'
                                        name = 'Game'

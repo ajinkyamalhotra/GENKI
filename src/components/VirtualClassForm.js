@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
-import { Icon, Divider, Modal} from 'semantic-ui-react';
+import { Button, Form, Input, Icon, Modal } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-import config from '../config';
 import '../styles/VirtualClassForm.css';
 
-
+/**
+ * This component renders a modal which teachers can use to create a new class.
+ * It is a controlled component which is controlled by the StudentTeacherHome.
+ */
 class VirtualClassForm extends Component{
   constructor(props){
     super(props);
@@ -162,30 +163,6 @@ class VirtualClassForm extends Component{
         <Icon color={props.color} name={props.name} />
           {props.label}
       </label>
-    )
-  }
-
-  /**
-   * Returns the submission button.
-   * This button is disabled until all of the necessary inputs have been
-   * given.
-   */
-  SubmitButton() {
-    let className = this.state.Name;
-    let section = this.state.Section;
-    let classTime = this.state.Time;
-    let semester = this.state.Semester;
-    const isEnabled = className && section && classTime && semester;
-
-    return(
-      <Button size='big'
-              compact fluid
-              color='orange'
-              type='Submit'
-              disabled={!isEnabled}
-              onClick={this.handleSubmit}>
-        Submit
-      </Button>
     )
   }
 
