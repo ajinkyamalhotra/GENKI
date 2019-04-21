@@ -25,7 +25,6 @@ class VirtualClassForm extends Component{
     this.handleCancel = this.handleCancel.bind(this);
     this.FormField = this.FormField.bind(this);
     this.createClass = this.createClass.bind(this);
-    this.SubmitButton = this.SubmitButton.bind(this);
     this.CreateClassModal = this.CreateClassModal.bind(this);
   }
 
