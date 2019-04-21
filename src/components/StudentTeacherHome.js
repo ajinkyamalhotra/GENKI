@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Icon, Button } from 'semantic-ui-react';
+import { Icon, Button, Divider } from 'semantic-ui-react';
 import VirtualClassList from './VirtualClassList';
 import ClassHome from './ClassHome';
 import StudentAddClassForm from './StudentAddClassForm';
+import VirtualClassForm from './VirtualClassForm';
 
 
 
@@ -16,13 +17,17 @@ class StudentTeacherHome extends Component {
 
     this.state = {
       classSelected: false,
-      showEnrollModal: false
+      showEnrollModal: false,
+      showCreateClassModal: false
     }
 
     this.handleClassSelection = this.handleClassSelection.bind(this);
     this.EnrollInClassButton = this.EnrollInClassButton.bind(this);
     this.showEnrollInClassModal = this.showEnrollInClassModal.bind(this);
     this.closeEnrollInClassModal = this.closeEnrollInClassModal.bind(this);
+    this.showCreateClassModal = this.showCreateClassModal.bind(this);
+    this.closeCreateClassModal = this.closeCreateClassModal.bind(this);
+    this.CreateClassButton = this.CreateClassButton.bind(this);
   }
 
   showEnrollInClassModal() {
@@ -31,6 +36,14 @@ class StudentTeacherHome extends Component {
 
   closeEnrollInClassModal() {
     this.setState({ showEnrollModal: false });
+  }
+
+  showCreateClassModal() {
+    this.setState({ showCreateClassModal: true });
+  }
+
+  closeCreateClassModal() {
+    this.setState({ showCreateClassModal: false });
   }
 
   /**
@@ -58,16 +71,33 @@ class StudentTeacherHome extends Component {
     )
   }
 
+  CreateClassButton() {
+    return (
+      <Button color='orange'
+              icon
+              labelposition='left'
+              onClick={this.showCreateClassModal}>
+        <Icon name='add' />
+        Create A Class
+      </Button>
+    )
+  }
+
   render() {
     return (
       <React.Fragment>
-        {this.props.userType === 'student'
-          && <this.EnrollInClassButton />
-        }
-        {this.props.userType === 'student' && <StudentAddClassForm  showEnrollModal={this.state.showEnrollModal}
-                                  closeEnrollModal={this.closeEnrollInClassModal}
-                                  {...this.props}/>}
-
+        {this.props.userType === 'student' &&
+          <this.EnrollInClassButton /> }
+        {this.props.userType === 'teacher' && <this.CreateClassButton /> }
+        {this.props.userType === 'student' &&
+          <StudentAddClassForm  showEnrollModal={this.state.showEnrollModal}
+                                closeEnrollModal={this.closeEnrollInClassModal}
+                                {...this.props}/> }
+        {this.props.userType === 'teacher' &&
+          <VirtualClassForm showCreateClassModal={this.state.showCreateClassModal}
+                            closeCreateClassModal={this.closeCreateClassModal}
+                            {...this.props}/>}
+        <Divider hidden />
         {this.state.classSelected ? <ClassHome {...this.props} clazz={this.state.clazz} /> :
           <VirtualClassList {...this.props}
                             classSelect={this.handleClassSelection} />}
