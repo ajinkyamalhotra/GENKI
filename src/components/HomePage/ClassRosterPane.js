@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { API } from 'aws-amplify';
-import { List, Button, Popup, Header } from 'semantic-ui-react';
+import { List, Button, Popup, Header, Modal } from 'semantic-ui-react';
 
 /**
  * This component renders the class roster pane for a particular class.  It can
@@ -12,6 +12,7 @@ class ClassRosterPane extends Component {
     this.state = {
       roster: {},
       selectAll: false,
+      showRemoveModal: false,
       isLoading: true
     }
 
@@ -22,6 +23,9 @@ class ClassRosterPane extends Component {
     this.SelectionButton = this.SelectionButton.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.WriteEmailButton = this.WriteEmailButton.bind(this);
+    this.toggleRemoveModal = this.toggleRemoveModal.bind(this);
+    this.RemoveFromClassButton = this.RemoveFromClassButton.bind(this);
+    this.RemoveFromClassModal = this.RemoveFromClassModal.bind(this);
   }
 
   /**
@@ -135,13 +139,17 @@ class ClassRosterPane extends Component {
     window.open('mailto:' + bcc);
   }
 
+  toggleRemoveModal() {
+    this.setState({ showRemoveModal: !this.state.showRemoveModal });
+  }
+
   /**
    * This creates the actual list component for each student.
    * Their name appears in the form last name, first name.
    * If the user is a teacher, each name will have a checkbox next to it so
    * that the teacher can email/remove them from the class.
    */
-  RosterItem(student) {
+  RosterItem(student, includeCheckbox) {
     console.log(student);
     let username = student.UserInfo.Username;
     let lastName =  student.UserInfo.LastName;
@@ -151,7 +159,7 @@ class ClassRosterPane extends Component {
       <List.Item key={username}>
         <List.Content>
           <List.Header>
-            {this.props.userType==='teacher' &&
+            {this.props.userType==='teacher' && includeCheckbox &&
             <input  type='checkbox'
                     checked={student.isSelected}
                     name={username}
@@ -179,7 +187,7 @@ class ClassRosterPane extends Component {
     });
     var rosterList = [];
     rosterKeys.forEach((username) => {
-      rosterList.push(this.RosterItem(this.state.roster[username]))
+      rosterList.push(this.RosterItem(this.state.roster[username], true))
     });
     return(
       <List celled>
@@ -213,6 +221,45 @@ class ClassRosterPane extends Component {
     )
   }
 
+  RemoveFromClassModal() {
+    let removeStudentList = [];
+    Object.keys(this.state.roster).forEach(username => {
+      if (this.state.roster[username].isSelected) {
+        removeStudentList.push(this.RosterItem(this.state.roster[username], false));
+      }
+    });
+    return(
+      <Modal open={this.state.showRemoveModal} onClose={this.toggleRemoveModal} closeIcon>
+        <Modal.Header>
+          Remove These Students?
+        </Modal.Header>
+        <Modal.Content>
+          <List>
+            {removeStudentList}
+          </List>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button icon='delete'
+                  negative
+                  labelposition='right'
+                  content='Cancel'
+                  onClick={this.toggleRemoveModal} />
+          <Button icon='checkmark'
+                  positive
+                  labelposition='right'
+                  content='Create Announcement'
+                  onClick={this.toggleRemoveModal} />
+        </Modal.Actions>
+      </Modal>
+    )
+  }
+
+  RemoveFromClassButton() {
+    return(
+      <Button icon='delete' floated='right' onClick={this.toggleRemoveModal}/>
+    )
+  }
+
   render() {
     return(
       <div>
@@ -220,9 +267,14 @@ class ClassRosterPane extends Component {
           Class Roster for {' ' + this.props.clazz.ClassName}
         </Header>
         {this.props.userType === 'teacher' &&
-          <this.SelectionButton /> &&
+          <this.SelectionButton />}
+        {this.props.userType === 'teacher' &&
           <this.WriteEmailButton />}
+        {this.props.userType === 'teacher' &&
+          <this.RemoveFromClassButton />}
         {this.state.isLoading ? null: <this.ClassRoster />}
+        {this.props.userType === 'teacher' &&
+          <this.RemoveFromClassModal />}
       </div>
     );
   }
