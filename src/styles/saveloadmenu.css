@@ -12,9 +12,9 @@
 
 .save-load-slot {
   overflow: hidden;
-  min-width: 1280px;
-  min-height: 720px;
-  transform: translateY(-80px) scale(0.625);
+  min-width: 100%;
+  min-height: 99%;
+  transform: translateY(-8%) scale(0.625);
   background: #333;
   cursor: pointer;
   box-shadow: 0px 2px 3px 2px #222;
@@ -53,7 +53,7 @@
 
 .slot-date {
   position: absolute;
-  bottom: 110px;
+  bottom: 28.1%;
   text-align: center;
   width: 100%;
   font-size: 26px;
@@ -65,7 +65,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  bottom: 50px;
+  bottom: 7%;
   width: 100%;
   height: 40px;
 }
