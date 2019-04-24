@@ -26,6 +26,7 @@ class ClassRosterPane extends Component {
     this.toggleRemoveModal = this.toggleRemoveModal.bind(this);
     this.RemoveFromClassButton = this.RemoveFromClassButton.bind(this);
     this.RemoveFromClassModal = this.RemoveFromClassModal.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   /**
@@ -143,6 +144,31 @@ class ClassRosterPane extends Component {
     this.setState({ showRemoveModal: !this.state.showRemoveModal });
   }
 
+  async handleRemove() {
+    let removeStudentList = [];
+    Object.keys(this.state.roster).forEach(username => {
+      if (this.state.roster[username].isSelected) {
+        removeStudentList.push(username);
+      }
+    });
+    try {
+      console.log('Removing students: ' + JSON.stringify(removeStudentList));
+      let apiName = 'genki-vn-beta';
+      let path = '/removeFromClass';
+      let params = {
+        body: {
+          usernames: removeStudentList,
+          classID: this.props.clazz.ClassID
+        }
+      }
+      await API.post(apiName, path, params);
+      this.toggleRemoveModal();
+      this.getClassRoster();
+    } catch(e) {
+      console.log(e);
+    }
+  }
+
   /**
    * This creates the actual list component for each student.
    * Their name appears in the form last name, first name.
@@ -247,8 +273,8 @@ class ClassRosterPane extends Component {
           <Button icon='checkmark'
                   positive
                   labelposition='right'
-                  content='Create Announcement'
-                  onClick={this.toggleRemoveModal} />
+                  content='Remove Students'
+                  onClick={this.handleRemove} />
         </Modal.Actions>
       </Modal>
     )
