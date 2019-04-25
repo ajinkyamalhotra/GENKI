@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { List, Tab, Loader } from 'semantic-ui-react';
+import { List, Tab, Loader, Popup, Button } from 'semantic-ui-react';
 import AnnouncementPane from './AnnouncementPane';
+import ClassRosterPane from './ClassRosterPane';
 
 /**
  * This component represents the home page of a particular Virtual Class.
@@ -15,6 +16,7 @@ class ClassHome extends Component {
 
     this.ClassHomeTabs = this.ClassHomeTabs.bind(this);
     this.ClassInformation = this.ClassInformation.bind(this);
+    this.emailTeacher = this.emailTeacher.bind(this);
   }
 
   /**
@@ -38,6 +40,10 @@ class ClassHome extends Component {
     }
   }
 
+  emailTeacher() {
+    window.open('mailto:' + this.props.clazz.Email);
+  }
+
   /**
    * Create the class information pane.
    */
@@ -46,6 +52,7 @@ class ClassHome extends Component {
     let semester = this.props.clazz.Semester;
     let section = this.props.clazz.Section;
     let teacher = this.props.clazz.Teacher;
+    let classID = this.props.clazz.ClassID;
     return (
       <Tab.Pane>
         <List>
@@ -70,7 +77,22 @@ class ClassHome extends Component {
           <List.Item>
             <List.Content>
               <List.Header>Instructor</List.Header>
-              <List.Description>{teacher}</List.Description>
+              <List.Description>{teacher + ' '}
+                <Popup  trigger={<Button size='mini' icon='write' onClick={this.emailTeacher}/>}
+                        content='Email Your Teacher' />
+              </List.Description>
+            </List.Content>
+          </List.Item>
+          <List.Item>
+            <List.Content>
+              <List.Header>Class ID:</List.Header>
+              <List.Description>{classID}</List.Description>
+            </List.Content>
+          </List.Item>
+          <List.Item>
+            <List.Content>
+              <List.Header>Class ID</List.Header>
+              <List.Description>{classID}</List.Description>
             </List.Content>
           </List.Item>
         </List>
@@ -84,7 +106,9 @@ class ClassHome extends Component {
   ClassHomeTabs() {
     const panes = [
       { menuItem: 'Class Information', render: this.ClassInformation },
-      { menuItem: 'Class Announcements', render: () => <Tab.Pane><AnnouncementPane {...this.props} /></Tab.Pane>}
+      { menuItem: 'Class Announcements', render: () =>
+                    <Tab.Pane><AnnouncementPane {...this.props} /></Tab.Pane>},
+      { menuItem: 'Class Roster', render: () => <Tab.Pane><ClassRosterPane {...this.props} /></Tab.Pane>}
     ]
     return (
       <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
