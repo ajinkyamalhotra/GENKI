@@ -4,8 +4,6 @@ import AppliedRoute from './AppliedRoute';
 import HomePage from '../components/HomePage';
 import Game from '../Game';
 import Login from '../components/Login';
-import Profile from '../components/Profile';
-import Progress from '../components/Progress';
 import SignUp from '../components/SignUp';
 import SignUpConfirmation from '../components/SignUpConfirmation';
 
@@ -34,17 +32,6 @@ function renderSwitchObj(childProps) {
                 exact
                 path='/Login'
                 component={Login}
-                props={childProps}/>
-
-              <AppliedRoute
-                exact
-                path='/Profile'
-                component={Profile}
-                props={childProps}/>
-
-              <AppliedRoute
-                exact path='/Progress'
-                component={Progress}
                 props={childProps}/>
 
               <AppliedRoute

@@ -90,10 +90,6 @@ class App extends Component {
           {this.state.isAuthenticating ? <Loader active />
             : ( <React.Fragment>
                   <Navigation childProps={childProps} handleLogout={this.handleLogout} />
-                  <div>
-                    {this.state.isAuthenticated ?
-                      'Logged In as ' + this.state.userType  : 'Not Logged in'}
-                  </div>
                   <Routes childProps={childProps} />
                 </React.Fragment>)}
         </div>

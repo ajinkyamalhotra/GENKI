@@ -47,7 +47,7 @@ class AnnouncementPane extends Component {
   AddAnnouncementButton() {
     return(
       <Button icon labelposition='left' onClick={this.showAddAnnouncementModal}>
-        <Icon name='plus square outline' />
+        <Icon name='add' />
         Add Announcement
       </Button>
     )

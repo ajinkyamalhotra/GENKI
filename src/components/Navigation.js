@@ -4,7 +4,6 @@ import { Table, Image, Menu, Icon, Grid, Popup } from 'semantic-ui-react';
 import { Button, Header } from 'semantic-ui-react';
 import '../styles/Navigation.css';
 import logo from '../images/logo with title.png';
-import Game from '../Game';
 
 /**
  * Function to extract current Active Item
@@ -109,16 +108,6 @@ class Navigation extends Component {
                             </Menu.Item>
                           </Link>
 
-                          <Link to='/Profile'>
-                            <Menu.Item id='ProfileButton'
-                                       name = 'Profile'
-                                       active={activeItem === 'Profile'}
-                                       onClick={this.handleItemClick}>
-                              <Icon inverted name='user'/>
-                              Profile
-                            </Menu.Item>
-                          </Link>
-
                           <Link to='/Game'>
                             <Menu.Item id='GameButton'
                                        name = 'Game'
@@ -126,16 +115,6 @@ class Navigation extends Component {
                                        onClick={this.handleItemClick}>
                               <Icon inverted name='game'/>
                               Game
-                            </Menu.Item>
-                          </Link>
-
-                          <Link to='/Progress'>
-                            <Menu.Item id='ProgressButton'
-                                       name = 'Progress'
-                                       active={activeItem === 'Progress'}
-                                       onClick={this.handleItemClick}>
-                              <Icon inverted name='shipping fast'/>
-                              Progress
                             </Menu.Item>
                           </Link>
 
