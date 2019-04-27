@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import { Auth, API } from "aws-amplify";
-import config from '../config';
-import '../styles/SignUp.css';
+import config from '../../config';
+import '../../styles/SignUp.css';
 import handlePasswordValidation from './HandlePasswordValidation';
 
 /**

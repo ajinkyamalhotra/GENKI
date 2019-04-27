@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch } from "react-router-dom";
 import AppliedRoute from './AppliedRoute';
-import HomePage from '../components/HomePage';
-import Game from '../Game';
-import Login from '../components/Login';
-import SignUp from '../components/SignUp';
-import SignUpConfirmation from '../components/SignUpConfirmation';
+import HomePage from '../components/HomePage/HomePage';
+import Game from '../components/VisualNovel/Game';
+import Login from '../components/Forms/Login';
+import SignUp from '../components/Forms/SignUp';
+import SignUpConfirmation from '../components/Forms/SignUpConfirmation';
 
 /**
  * This change prevents the non-logged in user to have access to profile, game,
