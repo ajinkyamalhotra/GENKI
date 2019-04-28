@@ -1,11 +1,13 @@
 import React from "react";
 import { Switch } from "react-router-dom";
 import AppliedRoute from './AppliedRoute';
-import HomePage from '../components/HomePage/HomePage';
-import Game from '../components/VisualNovel/Game';
-import Login from '../components/Forms/Login';
-import SignUp from '../components/Forms/SignUp';
-import SignUpConfirmation from '../components/Forms/SignUpConfirmation';
+import HomePage from '../components/HomePage';
+import Game from '../Game';
+import Login from '../components/Login';
+import Profile from '../components/Profile';
+import Progress from '../components/Progress';
+import SignUp from '../components/SignUp';
+import SignUpConfirmation from '../components/SignUpConfirmation';
 
 /**
  * This change prevents the non-logged in user to have access to profile, game,
@@ -32,6 +34,17 @@ function renderSwitchObj(childProps) {
                 exact
                 path='/Login'
                 component={Login}
+                props={childProps}/>
+
+              <AppliedRoute
+                exact
+                path='/Profile'
+                component={Profile}
+                props={childProps}/>
+
+              <AppliedRoute
+                exact path='/Progress'
+                component={Progress}
                 props={childProps}/>
 
               <AppliedRoute

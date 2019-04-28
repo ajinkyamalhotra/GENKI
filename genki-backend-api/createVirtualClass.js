@@ -16,11 +16,10 @@ export function main (event, context, callback) {
   let classTime = data.ClassTime;
   let className = data.ClassName;
   let section = data.Section;
-  let email = data.Email;
   let usernameObj = {Username: username};
   console.log(usernameObj)
   let classID =
-    crypto.createHash('md5').update(className + teacher + semester + section + classTime + email + username).digest('hex');
+    crypto.createHash('md5').update(className + teacher + semester + section + classTime).digest('hex');
   let params = {
     TableName:table,
     Item:{
@@ -30,8 +29,7 @@ export function main (event, context, callback) {
       "Section": section,
       "Semester": semester,
       "ClassTime": classTime,
-      "ClassRoster": [usernameObj],
-      "Email": email
+      "ClassRoster": [usernameObj]
     }
   }
   console.log("Adding new virtual class");

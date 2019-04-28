@@ -9,25 +9,25 @@ import story from "./story/story";
 import engTranslation from "./story/engTranslation";
 import choices from "./story/choices";
 // Components
-import TitleScreen from "./TitleScreen";
-import Backlog from "./Backlog";
-import ChoiceMenu from "./ChoiceMenu";
-import ConfigMenu from "./ConfigMenu";
-import RenderFrame from "./RenderFrame";
-import MenuButtons from "./MenuButtons";
-import SaveLoadMenu from "./SaveLoadMenu";
+import TitleScreen from "./components/TitleScreen";
+import Backlog from "./components/Backlog";
+import ChoiceMenu from "./components/ChoiceMenu";
+import ConfigMenu from "./components/ConfigMenu";
+import RenderFrame from "./components/RenderFrame";
+import MenuButtons from "./components/MenuButtons";
+import SaveLoadMenu from "./components/SaveLoadMenu";
 // CSS
-import "../../styles/config.css";
-import "../../styles/container.css";
-import "../../styles/backlog.css";
-import "../../styles/choicesoverlay.css";
-import "../../styles/effects.css";
-import "../../styles/menubuttons.css";
-import "../../styles/saveloadmenu.css";
-import "../../styles/sprites.css";
-import "../../styles/textbox.css";
-import "../../styles/titlescreen.css";
-import "../../styles/transitions.css";
+import "./styles/config.css";
+import "./styles/container.css";
+import "./styles/backlog.css";
+import "./styles/choicesoverlay.css";
+import "./styles/effects.css";
+import "./styles/menubuttons.css";
+import "./styles/saveloadmenu.css";
+import "./styles/sprites.css";
+import "./styles/textbox.css";
+import "./styles/titlescreen.css";
+import "./styles/transitions.css";
 
 const INITIAL_STATE = {
   bgmVolume: 80,
