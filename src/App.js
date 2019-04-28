@@ -65,9 +65,10 @@ class App extends Component {
       let email = attributes.email;
       let firstName = attributes.name;
       let lastName = attributes.family_name;
-      this.userHasAuthenticated(true);
+
       this.setState({ username, email, firstName, lastName, userType });
       console.log(username + ' ' + email + ' ' + firstName + ' ' + lastName + ' ' + userType);
+      this.props.history.push('/Home');
     } catch (e) {
       console.log(e);
     }

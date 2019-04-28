@@ -4,7 +4,6 @@ import { API } from 'aws-amplify';
 import StudentTeacherHome from './StudentTeacherHome';
 import BreadCrumbBottomBar from "./BreadCrumbBottomBar.js";
 import VirtualClassForm from './VirtualClassForm';
-import config from '../config';
 
 
 /**
@@ -87,19 +86,6 @@ class HomePage extends Component {
     return user[0];
   }
 
-  submitDecision(approved, username) {
-    let apiName = 'genki-vn-beta';
-    let path = '/handlePendingTeacher';
-    let params = {
-      body: {
-        username: username,
-        userPoolId: config.cognito.USER_POOL_ID,
-        approved: approved
-      }
-    }
-    return API.post(apiName, path, params);
-  }
-
   /**
    * Handle an approval event.
    * @param  event          Event target.id holds user email
@@ -107,12 +93,20 @@ class HomePage extends Component {
   handleApproval(event) {
     const email = event.target.id;
     let approvedUser = this.getUser(email);
-    this.submitDecision(true, approvedUser.username).then(response => {
-      alert(approvedUser.firstName + ' approved successfully!');
-      this.updatePending(email);
-    }).catch(error => {
-      alert(approvedUser.firstName + ' could not be approved');
+    // Approve the user
+    fetch('/accept', {
+      method: 'POST',
+      body: JSON.stringify(approvedUser),
+      headers: {"Content-Type": "application/json"}
     })
+    .then(response => {
+      if (response.status === 200) {
+        alert(approvedUser.firstName + ' approved successfully!');
+        this.updatePending(email);
+      } else if (response.status === 401) {
+        alert(approvedUser.firstName + ' could not be approved.');
+      }
+    });
   }
 
   /**
@@ -122,12 +116,20 @@ class HomePage extends Component {
   handleDecline(event) {
     const email = event.target.id;
     let declinedUser = this.getUser(email);
-    this.submitDecision(false, declinedUser.username).then(response => {
-      alert(declinedUser.firstName + ' declined successfully!');
-      this.updatePending(email);
-    }).catch(error => {
-      alert(declinedUser.firstName + ' could not be declined.');
+    // Decline the user
+    fetch('/decline', {
+      method: 'POST',
+      body: JSON.stringify(declinedUser),
+      headers: {"Content-Type": "application/json"}
     })
+    .then(response => {
+      if (response.status === 200) {
+        alert(declinedUser.firstName + ' declined successfully!');
+        this.updatePending(email);
+      } else if (response.status === 401) {
+        alert(declinedUser.firstName + ' could not be declined.');
+      }
+    });
   }
 
   /***************************************************************************

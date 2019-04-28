@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import StudentAddClassForm from './StudentAddClassForm';
+import VirtualClassForm from './VirtualClassForm';
 
 class Progress extends Component {
   render() {
     return (
       <div>
-        <StudentAddClassForm {...this.props} />
+        <VirtualClassForm />
         This is the Progress!
       </div>
     )

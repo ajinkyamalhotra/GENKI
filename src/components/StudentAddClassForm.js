@@ -9,11 +9,7 @@ class StudentAddClassForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      classID: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      username: ''
+      classID: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,11 +21,7 @@ class StudentAddClassForm extends Component {
 
   componentWillUnmount(){
     this.setState = {
-      classID: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      username: ''
+      classID: ''
     }
   }
   /**
@@ -47,23 +39,12 @@ class StudentAddClassForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    let firstName = this.props.firstName;
-    console.log(this.props.firstName);
-    let lastName = this.props.lastName;
-    await this.setState({firstName: firstName});
-    await this.setState({lastName: lastName});
-    let email = this.props.email;
-    await this.setState({email: email});
-    let username = this.props.username;
-    await this.setState({username: username});
     console.log(this.props.username);
     console.log(this.state.classID);
-    if(window.confirm("When you enroll in a class your instructor will be able to see your email, first and last name.")){
-      try {
-        await this.addUserClass();
-      } catch (e) {
-        alert("This class doesn't exist or you are already enrolled.");
-      }
+    try {
+      await this.addUserClass();
+    } catch (e) {
+      alert("This class doesn't exist or you are already enrolled.");
     }
   }
   /**
@@ -76,10 +57,7 @@ class StudentAddClassForm extends Component {
     let path ='/classAdd';
     let params = {
       body: {
-        username: this.state.username,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
+        username: this.props.username,
         classID: this.state.classID
       }
     }

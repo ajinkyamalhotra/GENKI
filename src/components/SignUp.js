@@ -102,15 +102,11 @@ class SignUp extends Component{
     let params = {
       body: {
         username: this.state.username,
-        classID: this.state.secretID,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email
+        classID: this.state.secretID
       }
     }
     return API.post(apiName, path, params);
   }
-
   /**
    * Handle the event that the user submits their confirmation code.
    * @param  event            Confirmation event
@@ -132,9 +128,7 @@ class SignUp extends Component{
         family_name: this.state.lastName
       }
       // Create the user and add class if classID was centered
-      if(this.state.secretID){
-        await this.addUserClass();
-      }
+      await this.addUserClass();
       // Pass attributes to the App
       this.props.handleLogin(attributes, this.state.userType);
       // Display the HomePage
@@ -149,7 +143,7 @@ class SignUp extends Component{
    * @param e           Event
    * @param data        Data sent from the
    */
-  handleChange = async (e, data) => {
+  handleChange = (e, data) => {
     // Some debugging logging
     console.log(data.name);
     console.log(data.value);
@@ -160,18 +154,16 @@ class SignUp extends Component{
                       this.state.confirmedPassword : this.state.password;
       const isMatch = data.value === unchangedElement;
 
-      await this.setState({passwordErrors: handlePasswordValidation(e, data)});
+      this.setState({passwordErrors: handlePasswordValidation(e, data)});
       const isValid = this.state.passwordErrors.valid;
-      console.log(isMatch);
-      console.log(isValid);
-      await this.setState({
+      this.setState({
         passwordsMatch: isMatch,
         passwordValid: isValid,
         [key]: data.value
       });
     } else {
       // Set any other part of the state other than the passwords
-      await this.setState({ [key]: data.value });
+      this.setState({ [key]: data.value });
     }
   }
 
@@ -323,8 +315,8 @@ class SignUp extends Component{
             "Password needs to have at least 1 number 0-9." : null};
           {this.state.passwordErrors.symbols ?
             "Password needs to have at least 1 special symbol." : null};
-          {this.state.passwordErrors.spaces ?
-            "Password needs to have no spaces." : null};
+          {this.state.passwordErrors.lowercase ?
+            "Password cannot contain spaces." : null};
       </Form.Group>
     )
   }

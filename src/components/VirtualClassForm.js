@@ -15,8 +15,7 @@ class VirtualClassForm extends Component{
       Teacher: '',
       Semester: '',
       Time: '',
-      Username: '',
-      Email: ''
+      Username: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,8 +32,7 @@ class VirtualClassForm extends Component{
       Teacher: '',
       Semester: '',
       Time: '',
-      Username: '',
-      Email: ''
+      Username: ''
     }
   }
 
@@ -58,8 +56,6 @@ class VirtualClassForm extends Component{
     console.log(this.state.Teacher);
     await this.setState({Username: this.props.username});
     console.log(this.state.Username);
-    await this.setState({Email: this.props.email});
-    console.log(this.state.Email);
     try {
       await this.createClass();
       this.props.history.push("/Home");
@@ -75,7 +71,6 @@ class VirtualClassForm extends Component{
     let semester = this.state.Semester;
     let teacher = this.state.Teacher;
     let username = this.state.Username;
-    let email = this.state.Email;
     console.log(className);
     console.log(section);
     console.log(classTime);
@@ -91,8 +86,7 @@ class VirtualClassForm extends Component{
         Teacher: teacher,
         ClassTime: classTime,
         Semester: semester,
-        Username: username,
-        Email: email
+        Username: username
       }
     }
     return (API.post(apiName, path, params));
