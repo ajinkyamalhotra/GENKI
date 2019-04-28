@@ -16,11 +16,9 @@ const hospital = require("./bg/Hospital.png");
 
 // bgm
 const take = require("./bgm/take.mp3");
+const ishikariLore = require("./bgm/Ishikari Lore.m4a");
 
 // speakers
-// Tutorial Characters
-/*const takeshi = "たけし";
-const mary = "メアリー";*/
 const john = "ジョン";
 const manager = "店長";
 const yamashita = "山下先生";
@@ -36,8 +34,8 @@ const doctor = "医者（いしゃ）";
 // sprites
 const logo = require("./sprites/logo.png");
 // Tutorial Images
-/*const tn = require("./sprites/Takeshi-neutral.png");
-const mn = require("./sprites/Mary-neutral.png");*/
+const takeshiNeutral = require("./sprites/Takeshi-neutral.png");
+const takeshiNeutralGif = require("./sprites/Takeshi-neutral-gif.gif");
 const johnStudying = require("./sprites/John-studying.png");
 const johnStudyingGif = require("./sprites/John-studying-gif.gif");
 const johnWaiter = require("./sprites/John-waiter.png");
@@ -87,44 +85,162 @@ const doctorNeutral = require("./sprites/Doctor-neutral.png");
 const doctorNeutralGif = require("./sprites/Doctor-neutral-gif.gif");
 
 let story = [
-  /* Tutorial for Home Menu
+  //////////////////////////Tutorial//////////////////////////////////////////
+  {
+    speaker: "Tutorial",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: ishikariLore,
+    text: "Click on the screen or press \"Enter\" to begin"
+  },
   {
     bg: school,
-    bgm: take,
-    sprite: tn,
+    bgm: ishikariLore,
+    sprite: takeshiNeutralGif,
     speaker: takeshi,
-    text: "こんにちは！私の名前はたけしです。遊び方を教えてあげます。スクリーンを押してください。Hello! My name is Takeshi. I will teach you how to play. Please Click on the screen"
+    text: "Hello! Welcome to Genki VN! My name is Takeshi and I am here to guide you on how to play the game. First let us press that “ENTER” button on your keyboard."
   },
   {
-    text: "いいですね！Good"
+    text: "Well done! You made it to the next dialogue! Throughout Genki VN, multiple characters will be speaking like me. To navigate through their dialogues, you can simple press “ENTER” or click on the screen."
   },
   {
-    text: "このゲームはVN. This is a Virtual Novel game"
-  },
-  {
-    text: "VNゲームは。。。A virtual novel game is..."
+    text: "This is a Visual Novel game. A visual novel game is..."
   },
   {
     text: "Oh, hi Mary!"
   },
   {
-    //sprite is the middle sprite, putting "" makes it null
     speaker: mary,
     sprite: "",
-    spriteLeft: mn,
-    spriteRight: tn,
+    spriteLeft: maryNeutralGif,
+    spriteRight: takeshiTalking,
     text: "Hello Takeshi, who is your friend here?"
   },
   {
-    //sprite is the middle sprite, putting "" makes it null
     speaker: takeshi,
-    text: "This is my friend, he is learning Japanese! Can you help me guide him through the game?"
+    spriteLeft: maryNeutral,
+    spriteRight: takeshiTalkingGif,
+    text: "This is our guest! He is learning Japanese! Can you help me guide him through the game?"
   },
   {
-    //sprite is the middle sprite, putting "" makes it null
     speaker: mary,
+    spriteLeft: maryNeutralGif,
+    spriteRight: takeshiTalking,
     text: "Sure! Let's get you ready for Genki VN!"
-  } */
+  },
+  {
+    speaker: takeshi,
+    spriteLeft:maryNeutral,
+    spriteRight: takeshiTalkingGif,
+    text: "Now where was I? Oh yeah! Genki VN stands for Genki Visual Novel."
+  },
+  {
+    text: "A place where you the player can see the story unfold throughout the chapters of Genki I or II in the form of dialogues between Genki characters like me and Mary!"
+  },
+  {
+    text: "Genki VN is not only a great way to immerse yourself with the story in Genki textbooks, but also a fun way to learn Japanese!"
+  },
+  {
+    text: "In Genki VN, you can learn about the new vocabulary presented within the dialogues and their translations by pressing the “SHIFT” button on your keyboard. In case you want to shift things around. See what I did there?"
+  },
+  {
+    text: "What’s a game without giving the player options to toggle and fiddle with right? In Genki VN, there are settings you can choose from."
+  },
+  {
+    speaker: mary,
+    spriteLeft: maryNeutralGif,
+    spriteRight: takeshiTalking,
+    text: "By pressing the “SPACEBAR” on your keyboard, the page will scroll down for options to choose from! Here try it out, press the SPACEBAR."
+  },
+  {
+    text: "What do we have here! So many options! Skip, Save, Load, Config, Full Screen. So many things you can do to enjoy Genki VN the way you want to!  I will explain about the SKIP button first."
+  },
+  {
+    text: "With the the SKIP button, you can navigate through the dialogues without pushing anything. Upon clicking on SKIP, you will be prompted to input how many seconds you want between dialogues. Isn’t that neat?"
+  },
+  {
+    speaker: takeshi,
+    spriteLeft:maryNeutral,
+    spriteRight: takeshiTalkingGif,
+    text: "Don’t you hate it when you are playing a game and you have to reach a checkpoint to save your current progress...No? Well I do!"
+  },
+  {
+    text: "In Genki VN, you can save your progress at any point and load back in whenever you desire. (*Sometimes I wish I could do this in real life to load back to the times I’ve bailed on Mary san...*)"
+  },
+  {
+    text: "If you look next to the SKIP button, you can see the SAVE button. Once you click it, you will be able to select a slot, then click onto the big grey square to save your progress!"
+  },
+  {
+    text: "Try it now, click a slot and then the square screen to save. NOTE: *Saves to local machine only and will not carry over if you play on a different device!*"
+  },
+  {
+    speaker: mary,
+    spriteLeft: maryNeutralGif,
+    spriteRight: takeshiTalking,
+    text: "Now that you know how to save, now it is time to learn how to load your saved progress. Next to the save button, you can see the LOAD button."
+  },
+  {
+    text: "Upon clicking it, you will see all the save slots, the ones with save data will be black while the ones with no save data will be grey."
+  },
+  {
+    text: "Click the desired save slot, then click on the big square. You will be prompted with “Load save? Click ok to load your game. *You will be taken back to the SAVE instructions"
+  },
+  {
+    text: "Now that you mastered saving and loading your progress, let us take a look at the CONFIG button next to the load button."
+  },
+  {
+    text: "With config, you can adjust the audio setting in the game (BGM) and also adjust the text font style. Why don’t you try it? Change the font style to Courier New."
+  },
+  {
+    speaker: takeshi,
+    spriteLeft:maryNeutral,
+    spriteRight: takeshiTalkingGif,
+    text: "Feeling fancy with all these tools huh? Well, we got something big for you, quiet literally."
+  },
+  {
+    text: "You see that FULL SCREEN button to the right? If you click it, the game will go into full screen mode, things are looking big now huh? Have that skip option on, full screen mode and you have yourself Genki: The Movie!"
+  },
+  {
+    text: "Don’t grab some popcorn just yet! We still got a tutorial to finish here!"
+  },
+  {
+    text: "It’s time to jump around! You think I’m joking? In Genki VN, there is a JUMP feature that lets you well... jump back to previous dialogues you have read. "
+  },
+  {
+    text: "Scroll up with your mouse while on the game’s screen to pull up the BACKLOG of all the previous dialogues read! By clicking on JUMP next to the dialogue you will be taken back to that moment in the game. Try it out!"
+  },
+  {
+    text: "Congratulations on making it to the end of the tutorial! Thank you Mary for helping me teach our guest here today."
+  },
+  {
+    speaker: mary,
+    spriteLeft: maryNeutralGif,
+    spriteRight: takeshiTalking,
+    text: "I am glad I could help! Best of luck to you and have fun!"
+  },
+  {
+    speaker: takeshi,
+    sprite: takeshiNeutralGif,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "Before you go, I’d like to introduce to you the “T” command. By pressing “T” on your keyboard, you will be taken back to the game’s title screen. Press “T” to return to the game’s title."
+  },
+  {
+    text: "Hmmm… it seems you did not press “T”...press “T” to return to the title screen."
+  },
+  {
+    text: "Didn’t I tell you to press “T”?!... You know what, press ENTER and see what happens!"
+  },
+  {
+    speaker: "",
+    sprite: "",
+    text: "End of tutorial"
+  },
+
+
+
   //End of Tutorial
 
   //////////////////////////Chapter 11//////////////////////////////////////////
@@ -135,7 +251,7 @@ let story = [
     spriteLeft: "",
     sprite: logo,
     bg: clouds,
-    bgm: take,
+    bgm: ishikariLore,
     text: "Click on the screen or press \"Enter\" to begin",
     jumpTo: "chapter11"
   },
@@ -144,7 +260,7 @@ let story = [
   {
     receiveJump: "chapter11",
     bg: school,
-    bgm: take,
+    bgm: ishikariLore,
     sprite: "",
     speaker: "Scene 1",
     text: "Michiko and Mary meet after the vacation"
@@ -182,7 +298,7 @@ let story = [
   //Scene 2, Mary introduces John to Michiko
   {
     bg: school,
-    bgm: take,
+    bgm: ishikariLore,
     sprite: "",
     spriteLeft: "",
     spriteRight: "",
@@ -197,6 +313,7 @@ let story = [
   {
     speaker: john,
     sprite: johnNeutralGif,
+    spriteLeft: maryNeutral,
     text: "初めまして。"
   },
   {
@@ -210,7 +327,7 @@ let story = [
   //Scene 3, John talks about himself
   {
     bg: school,
-    bgm: take,
+    bgm: ishikariLore,
     sprite: "",
     spriteLeft: "",
     spriteRight: "",
@@ -273,7 +390,7 @@ let story = [
     spriteLeft: "",
     sprite: logo,
     bg: clouds,
-    bgm: take,
+    bgm: ishikariLore,
     text: "Click on the screen or press \"Enter\" to begin",
     jumpTo: "chapter12"
   },
@@ -282,7 +399,7 @@ let story = [
   {
     receiveJump: "chapter12",
     bg: classroom,
-    bgm: take,
+    bgm: ishikariLore,
     sprite: "",
     speaker: "Scene 1",
     text: "Mary and Michiko are talking at school"
@@ -332,7 +449,7 @@ let story = [
   //Scene 2, At a hospital.
   {
     bg: hospital,
-    bgm: take,
+    bgm: ishikariLore,
     sprite: "",
     spriteLeft: "",
     spriteRight: "",
@@ -395,7 +512,7 @@ let story = [
     spriteLeft: "",
     sprite: logo,
     bg: clouds,
-    bgm: take,
+    bgm: ishikariLore,
     text: "Click on the screen or press \"Enter\" to begin",
     jumpTo: "chapter13"
   },
@@ -404,7 +521,7 @@ let story = [
   {
     receiveJump: "chapter13",
     bg: restaurantBedroom,
-    bgm: take,
+    bgm: ishikariLore,
     sprite: "",
     speaker: "Scene 1",
     text: "John calls Little Asia."
@@ -448,7 +565,7 @@ let story = [
   //Scene 2, John arrives for interview at Little Asia
   {
     bg: restaurant,
-    bgm: take,
+    bgm: ishikariLore,
     speaker: "Scene 2",
     spriteLeft: "",
     spriteRight: "",
@@ -499,7 +616,7 @@ let story = [
   //Scene 3, John is on the job at the restaurant
   {
     bg: restaurant,
-    bgm: take,
+    bgm: ishikariLore,
     speaker: "Scene 3",
     spriteLeft: "",
     spriteRight: "",
@@ -507,7 +624,7 @@ let story = [
   },
   {
     bg: restaurant,
-    bgm: take,
+    bgm: ishikariLore,
     speaker: john,
     spriteRight: johnWaiterGif,
     text: "いらっしゃいませ。あ、山下先生。"
@@ -551,7 +668,7 @@ let story = [
     spriteLeft: "",
     sprite: logo,
     bg: clouds,
-    bgm: take,
+    bgm: ishikariLore,
     text: "Click on the screen or press \"Enter\" to begin",
     jumpTo: "chapter14"
   },
@@ -567,7 +684,7 @@ let story = [
     text: "A month before Valentine's Day."
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: mary,
     spriteLeft: maryNeutralGif,
     text: "バレンタインのプレゼントは何がいいと思いますか。"
@@ -595,7 +712,7 @@ let story = [
     text: "On Valentine's Day at Takeshi's house."
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: mary,
     spriteRight: marySittingGif,
     text: "たけしくん、はい、これ。"
@@ -642,7 +759,7 @@ let story = [
     text: "The next day."
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: john,
     spriteLeft: johnNeutralGif,
     text: "暖かそうなセーターですね。"
@@ -701,7 +818,7 @@ let story = [
     spriteLeft: "",
     sprite: logo,
     bg: clouds,
-    bgm: take,
+    bgm: ishikariLore,
     text: "Click on the screen or press \"Enter\" to begin",
     jumpTo: "chapter15"
   },
@@ -717,7 +834,7 @@ let story = [
     text: "Before the vacation"
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: mary,
     spriteLeft: maryTalkingGif,
     text: "たけしくん、今度の休み、予定ある？"
@@ -770,7 +887,7 @@ let story = [
     text: "At Nagano Station."
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: takeshi,
     spriteRight: takeshiTalkingGif,
     text: "早く着いたから、ちょっと観光しない？"
@@ -812,7 +929,7 @@ let story = [
     text: "At the Travel Information Office."
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: takeshi,
     spriteRight: takeshiTalkingGif,
     spriteLeft: maryTalking,
@@ -864,7 +981,7 @@ let story = [
     spriteLeft: "",
     sprite: logo,
     bg: clouds,
-    bgm: take,
+    bgm: ishikariLore,
     text: "Click on the screen or press \"Enter\" to begin",
     jumpTo: "chapter16"
   },
@@ -880,7 +997,7 @@ let story = [
     text: "At Professor Yamashita's Office"
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: john,
     spriteLeft: "",
     spriteRight: johnWorriedGif,
@@ -930,7 +1047,7 @@ let story = [
     text: "At the station"
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: john,
     spriteRight: johnWorriedGif,
     text: "すみません。ファイルをなくしたんですが。"
@@ -964,7 +1081,7 @@ let story = [
     text: "At school the next day"
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: yamashita,
     spriteLeft: yamashitaInOfficeGif,
     text: "ジョンさん、ファイルはありましたか。"
@@ -1008,7 +1125,7 @@ let story = [
     spriteLeft: "",
     sprite: logo,
     bg: clouds,
-    bgm: take,
+    bgm: ishikariLore,
     text: "Click on the screen or press \"Enter\" to begin",
     jumpTo: "chapter17"
   },
@@ -1024,7 +1141,7 @@ let story = [
     text: "Sue and Takeshi have just run into each other at the station"
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: sue,
     spriteLeft: sueNeutralGif,
     spriteRight: "",
@@ -1084,7 +1201,7 @@ let story = [
     text: "Ken and Sue have arranged to meet at the coffee shop"
   },
   {
-    bgm: take,
+    bgm: ishikariLore,
     speaker: sue,
     spriteLeft: sueNeutralGif,
     spriteRight: kenNeutral,
@@ -1147,7 +1264,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: "",
-    text: "Click on the screen or press \"Enter\" to return to Title Screen",
+    text: "Are you sure you want to return to the Title Screen?",
     jumpTo: "title-screen"
   },
 
