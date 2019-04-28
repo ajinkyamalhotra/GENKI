@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { Button, Header, Form, Grid, Input} from 'semantic-ui-react';
-import { Icon, Divider} from 'semantic-ui-react';
+import { Button, Form, Input, Icon, Modal } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-import config from '../config';
-import '../styles/VirtualClassForm.css';
+import '../../styles/VirtualClassForm.css';
 
-
+/**
+ * This component renders a modal which teachers can use to create a new class.
+ * It is a controlled component which is controlled by the StudentTeacherHome.
+ */
 class VirtualClassForm extends Component{
   constructor(props){
     super(props);
@@ -15,14 +16,16 @@ class VirtualClassForm extends Component{
       Teacher: '',
       Semester: '',
       Time: '',
-      Username: ''
+      Username: '',
+      Email: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.FormField = this.FormField.bind(this);
     this.createClass = this.createClass.bind(this);
-    this.SubmitButton = this.SubmitButton.bind(this);
+    this.CreateClassModal = this.CreateClassModal.bind(this);
   }
 
   componentWillUnmount() {
@@ -32,7 +35,8 @@ class VirtualClassForm extends Component{
       Teacher: '',
       Semester: '',
       Time: '',
-      Username: ''
+      Username: '',
+      Email: ''
     }
   }
 
@@ -48,7 +52,20 @@ class VirtualClassForm extends Component{
     this.setState({[key]: event.target.value});
   }
 
-  handleSubmit = async event => {
+  handleCancel() {
+    this.setState({
+      Name: '',
+      Section: '',
+      Teacher: '',
+      Semester: '',
+      Time: '',
+      Username: '',
+      Email: ''
+    });
+    this.props.closeCreateClassModal();
+  }
+
+  async handleSubmit(event) {
     event.preventDefault();
     let teacher = this.props.firstName + ' ' + this.props.lastName;
     console.log(teacher);
@@ -56,9 +73,20 @@ class VirtualClassForm extends Component{
     console.log(this.state.Teacher);
     await this.setState({Username: this.props.username});
     console.log(this.state.Username);
+    await this.setState({Email: this.props.email});
+    console.log(this.state.Email);
     try {
       await this.createClass();
-      this.props.history.push("/Home");
+      this.setState({
+        Name: '',
+        Section: '',
+        Teacher: '',
+        Semester: '',
+        Time: '',
+        Username: '',
+        Email: ''
+      });
+      this.props.closeCreateClassModal();
     } catch (e) {
       alert(e);
     }
@@ -71,6 +99,7 @@ class VirtualClassForm extends Component{
     let semester = this.state.Semester;
     let teacher = this.state.Teacher;
     let username = this.state.Username;
+    let email = this.state.Email;
     console.log(className);
     console.log(section);
     console.log(classTime);
@@ -86,7 +115,8 @@ class VirtualClassForm extends Component{
         Teacher: teacher,
         ClassTime: classTime,
         Semester: semester,
-        Username: username
+        Username: username,
+        Email: email
       }
     }
     return (API.post(apiName, path, params));
@@ -135,80 +165,69 @@ class VirtualClassForm extends Component{
     )
   }
 
-  /**
-   * Returns the submission button.
-   * This button is disabled until all of the necessary inputs have been
-   * given.
-   */
-  SubmitButton() {
+  CreateClassModal() {
     let className = this.state.Name;
     let section = this.state.Section;
     let classTime = this.state.Time;
     let semester = this.state.Semester;
     const isEnabled = className && section && classTime && semester;
-
     return(
-      <Button size='big'
-              compact fluid
+      <Modal  open={this.props.showCreateClassModal}
+              onClose={this.props.closeCreateClassModal}
+              closeIcon>
+        <Modal.Header>
+          Create A Class
+        </Modal.Header>
+        <Modal.Content>
+          <Form>
+            <this.FormField
               color='orange'
-              type='Submit'
-              disabled={!isEnabled}
-              onClick={this.handleSubmit}>
-        Submit
-      </Button>
+              label='Name'
+              type='text'
+              placeholder='Name'
+            />
+            <this.FormField
+              color='orange'
+              label='Section'
+              type='text'
+              placeholder='Section'
+            />
+            <this.FormField
+              color='orange'
+              label='Semester'
+              type='text'
+              placeholder='Semester'
+            />
+            <this.FormField
+              color='orange'
+              label='Time'
+              type='text'
+              placeholder='Time'
+            />
+          </Form>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button icon='delete'
+                  negative
+                  labelposition='right'
+                  content='Cancel'
+                  onClick={this.handleCancel} />
+          <Button icon='checkmark'
+                  positive
+                  labelposition='right'
+                  content='Submit'
+                  disabled={!isEnabled}
+                  onClick={this.handleSubmit} />
+        </Modal.Actions>
+      </Modal>
     )
   }
 
   render(){
     return(
-      <div className='page'> {
-        <Grid  padded='vertically'>
-            <Divider />
-            <Grid.Row>
-                <Grid.Column width={4} className='virtualClassForm'>
-                    <Divider />
-                    <Grid.Row>
-                        <Header as='h1' inverted color='orange'>
-                        Create Class</Header>
-                    </Grid.Row>
-                    <Divider />
-                    <Form inverted>
-                        <this.FormField
-                          color='orange'
-                          label='Name'
-                          type='text'
-                          placeholder='Name'
-                        />
-                        <Divider />
-                        <this.FormField
-                          color='orange'
-                          label='Section'
-                          type='text'
-                          placeholder='Section'
-                        />
-                        <Divider />
-                        <this.FormField
-                          color='orange'
-                          label='Semester'
-                          type='text'
-                          placeholder='Semester'
-                        />
-                        <Divider />
-                        <this.FormField
-                          color='orange'
-                          label='Time'
-                          type='text'
-                          placeholder='Time'
-                        />
-                        <Divider />
-                        <this.SubmitButton/>
-                    </Form>
-            </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    }
-
-    </div>
+      <React.Fragment>
+        <this.CreateClassModal />
+      </React.Fragment>
     )
   }
 
