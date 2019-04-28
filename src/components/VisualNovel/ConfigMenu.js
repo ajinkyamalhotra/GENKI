@@ -45,7 +45,7 @@ class ConfigMenu extends Component {
     return (
       <div class="config-container slider-container">
         <span>{type}</span>
-        <Slider value={value} onChange={onChangeFunction}/>
+        <Slider value={value} onChange={onChangeFunction} />
       </div>
     );
   }
@@ -66,7 +66,6 @@ class ConfigMenu extends Component {
     const options = [
       { label: "Arial" },
       { label: "Arial Black" },
-      { label: "Comic Sans MS" },
       { label: "Courier New" },
       { label: "Georgia" },
       { label: "Helvetica" },
@@ -107,6 +106,8 @@ class ConfigMenu extends Component {
           {audioShown ? (
             <div>
               {this.slider("BGM", bgmVolume, bgmVolumeChange)}
+              {this.slider("Voice", voiceVolume, voiceVolumeChange)}
+              {this.slider("Sound Effect", soundEffectVolume, soundEffectVolumeChange)}
             </div>
           ) : null}
           {textShown ? (

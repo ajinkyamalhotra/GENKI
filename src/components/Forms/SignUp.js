@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
 import { Icon, Divider} from 'semantic-ui-react';
 import { Auth, API } from "aws-amplify";
-import config from '../config';
-import '../styles/SignUp.css';
+import config from '../../config';
+import '../../styles/SignUp.css';
 import handlePasswordValidation from './HandlePasswordValidation';
 
 /**
@@ -102,11 +102,34 @@ class SignUp extends Component{
     let params = {
       body: {
         username: this.state.username,
-        classID: this.state.secretID
+        classID: this.state.secretID,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email
       }
     }
     return API.post(apiName, path, params);
   }
+
+  /**
+   * Function which invokes the createUser APIE to create the User if they didn't
+   * use a secret id to sign up
+   */
+  createUserNoClassID(){
+    console.log('Creating user');
+    let apiName = 'genki-vn-beta';
+    let path ='/createUser';
+    let params = {
+      body: {
+        username: this.state.username,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email
+      }
+    }
+    return API.post(apiName, path, params)
+  }
+
   /**
    * Handle the event that the user submits their confirmation code.
    * @param  event            Confirmation event
@@ -128,7 +151,11 @@ class SignUp extends Component{
         family_name: this.state.lastName
       }
       // Create the user and add class if classID was centered
-      await this.addUserClass();
+      if(this.state.secretID){
+        await this.addUserClass();
+      }else{
+        await this.createUserNoClassID();
+      }
       // Pass attributes to the App
       this.props.handleLogin(attributes, this.state.userType);
       // Display the HomePage
@@ -143,7 +170,7 @@ class SignUp extends Component{
    * @param e           Event
    * @param data        Data sent from the
    */
-  handleChange = (e, data) => {
+  handleChange = async (e, data) => {
     // Some debugging logging
     console.log(data.name);
     console.log(data.value);
@@ -154,16 +181,18 @@ class SignUp extends Component{
                       this.state.confirmedPassword : this.state.password;
       const isMatch = data.value === unchangedElement;
 
-      this.setState({passwordErrors: handlePasswordValidation(e, data)});
+      await this.setState({passwordErrors: handlePasswordValidation(e, data)});
       const isValid = this.state.passwordErrors.valid;
-      this.setState({
+      console.log(isMatch);
+      console.log(isValid);
+      await this.setState({
         passwordsMatch: isMatch,
         passwordValid: isValid,
         [key]: data.value
       });
     } else {
       // Set any other part of the state other than the passwords
-      this.setState({ [key]: data.value });
+      await this.setState({ [key]: data.value });
     }
   }
 
@@ -315,8 +344,8 @@ class SignUp extends Component{
             "Password needs to have at least 1 number 0-9." : null};
           {this.state.passwordErrors.symbols ?
             "Password needs to have at least 1 special symbol." : null};
-          {this.state.passwordErrors.lowercase ?
-            "Password cannot contain spaces." : null};
+          {this.state.passwordErrors.spaces ?
+            "Password needs to have no spaces." : null};
       </Form.Group>
     )
   }

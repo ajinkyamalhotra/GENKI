@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Container, Grid} from 'semantic-ui-react';
-import '../styles/Greetings.css'
+import '../../styles/Greetings.css'
 
 // Tell Webpack this JS file uses this image
 import logo from '../images/logo.png';
