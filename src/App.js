@@ -65,9 +65,10 @@ class App extends Component {
       let email = attributes.email;
       let firstName = attributes.name;
       let lastName = attributes.family_name;
-      this.userHasAuthenticated(true);
+
       this.setState({ username, email, firstName, lastName, userType });
       console.log(username + ' ' + email + ' ' + firstName + ' ' + lastName + ' ' + userType);
+      this.props.history.push('/Home');
     } catch (e) {
       console.log(e);
     }
@@ -90,6 +91,10 @@ class App extends Component {
           {this.state.isAuthenticating ? <Loader active />
             : ( <React.Fragment>
                   <Navigation childProps={childProps} handleLogout={this.handleLogout} />
+                  <div>
+                    {this.state.isAuthenticated ?
+                      'Logged In as ' + this.state.userType  : 'Not Logged in'}
+                  </div>
                   <Routes childProps={childProps} />
                 </React.Fragment>)}
         </div>

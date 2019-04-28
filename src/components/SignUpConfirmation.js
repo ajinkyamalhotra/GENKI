@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Button, Header, Form, Grid} from 'semantic-ui-react';
 import { Divider} from 'semantic-ui-react';
-import '../../styles/SignUpConfirmation.css';
+import '../styles/SignUpConfirmation.css';
 
 class SignUpConfirmation extends Component{
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import story from "./story/story";
+import story from "../story/story";
 
 class Backlog extends Component {
   componentDidMount() {
