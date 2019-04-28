@@ -9,31 +9,31 @@ import story from "./story/story";
 import engTranslation from "./story/engTranslation";
 import choices from "./story/choices";
 // Components
-import TitleScreen from "./TitleScreen";
-import Backlog from "./Backlog";
-import ChoiceMenu from "./ChoiceMenu";
-import ConfigMenu from "./ConfigMenu";
-import RenderFrame from "./RenderFrame";
-import MenuButtons from "./MenuButtons";
-import SaveLoadMenu from "./SaveLoadMenu";
+import TitleScreen from "./components/TitleScreen";
+import Backlog from "./components/Backlog";
+import ChoiceMenu from "./components/ChoiceMenu";
+import ConfigMenu from "./components/ConfigMenu";
+import RenderFrame from "./components/RenderFrame";
+import MenuButtons from "./components/MenuButtons";
+import SaveLoadMenu from "./components/SaveLoadMenu";
 // CSS
-import "../../styles/config.css";
-import "../../styles/container.css";
-import "../../styles/backlog.css";
-import "../../styles/choicesoverlay.css";
-import "../../styles/effects.css";
-import "../../styles/menubuttons.css";
-import "../../styles/saveloadmenu.css";
-import "../../styles/sprites.css";
-import "../../styles/textbox.css";
-import "../../styles/titlescreen.css";
-import "../../styles/transitions.css";
+import "./styles/config.css";
+import "./styles/container.css";
+import "./styles/backlog.css";
+import "./styles/choicesoverlay.css";
+import "./styles/effects.css";
+import "./styles/menubuttons.css";
+import "./styles/saveloadmenu.css";
+import "./styles/sprites.css";
+import "./styles/textbox.css";
+import "./styles/titlescreen.css";
+import "./styles/transitions.css";
 
 const INITIAL_STATE = {
   bgmVolume: 80,
   soundEffectVolume: 90,
   voiceVolume: 100,
-  font: "Trebuchet MS",
+  font: "Comic Sans MS",
   isFull: false,
   choicesStore: {},
   index: 0,
@@ -122,8 +122,18 @@ class Game extends Component {
     }
     english = !english;
 
-    if (event.keyCode === TITLE) {
-      this.setState(INITIAL_STATE);
+    if (event.keyCode === TITLE && this.state.titleScreenShown === false) {
+
+      this.titleScreenConfirmation();
+
+      this.setState({
+        configMenuShown: false,
+        backlogShown: false,
+        saveMenuShown: false,
+        loadMenuShown: false,
+        isSkipping: false
+      });
+
       return;
     }
 
@@ -164,7 +174,23 @@ class Game extends Component {
     }
     if (story[currentIndex].jumpTo) {
       if (story[currentIndex].jumpTo === "title-screen") {
-        this.setState(INITIAL_STATE);
+        this.setState({
+          choicesStore: {},
+          index: 0,
+          stateHistory: [],
+          choicesHistory: [],
+          choicesIndexHistory: [],
+          indexHistory: [],
+          choicesExist: false,
+          configMenuShown: false,
+          titleScreenShown: true,
+          frameIsRendering: false,
+          backlogShown: false,
+          saveMenuShown: false,
+          loadMenuShown: false,
+          isSkipping: false
+        });
+
         return;
       }
 
@@ -409,7 +435,8 @@ class Game extends Component {
     this.stopSkip();
     this.setState({
       titleScreenShown: false,
-      frameIsRendering: true
+      frameIsRendering: true,
+
     });
     this.setFrame(0);
     this.setState({
@@ -427,6 +454,21 @@ class Game extends Component {
 
     let lastIndex = story.length - 1;
     this.setFrame(lastIndex); //This will always jump to Chapter Selection Frame
+    this.setState({
+      choicesIndex: 0,
+      choiceOptions: choices[0].choices
+    });
+  }
+
+  titleScreenConfirmation() {
+    this.stopSkip();
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+
+    let confirmationIndex = story.length - 2;
+    this.setFrame(confirmationIndex); //This will always jump to Title Screen Confirmation Frame
     this.setState({
       choicesIndex: 0,
       choiceOptions: choices[0].choices
