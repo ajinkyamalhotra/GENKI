@@ -5,6 +5,8 @@ import { Button, Header } from 'semantic-ui-react';
 import '../styles/Navigation.css';
 import logo from '../images/logo with title.png';
 
+import LandingPage from './LandingPage';
+
 /**
  * Function to extract current Active Item
  * @returns {string}
@@ -174,13 +176,11 @@ class Navigation extends Component {
             </Table.Header>
         </Table>
         }
-        {/*
-        {this.isLoggedIn ? (
+        {isLoggedIn ? (
           console.log("User already logged dont show greetings msg")
           ):(
-        <Greetings />
+        <LandingPage />
           )}
-          */}
       </div>
     )
   }
