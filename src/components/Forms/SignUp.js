@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Header, Form, Grid, Input } from 'semantic-ui-react';
-import { Icon, Divider} from 'semantic-ui-react';
+import { Icon, Divider, List} from 'semantic-ui-react';
 import { Auth, API } from "aws-amplify";
 import config from '../../config';
 import '../../styles/SignUp.css';
@@ -40,7 +40,7 @@ class SignUp extends Component{
     this.handleConfirmationSubmit = this.handleConfirmationSubmit.bind(this);
     this.ConfirmationCodeInput = this.ConfirmationCodeInput.bind(this);
     this.SignUpForm = this.SignUpForm.bind(this);
-
+    this.PasswordValidationList = this.PasswordValidationList.bind(this);
   }
 
   /**
@@ -238,13 +238,6 @@ class SignUp extends Component{
               checked={this.state.userType === 'pendingTeacher'}
               onChange={this.handleChange}
           />
-          <Form.Radio
-              label='Admin'
-              value='admin'
-              name='userType'
-              checked={this.state.userType === 'admin'}
-              onChange={this.handleChange}
-          />
       </Form.Group>
     )
   }
@@ -332,24 +325,33 @@ class SignUp extends Component{
                       name='confirmedPassword'
                       value={this.state.confirmedPassword}
                       onChange={this.handleChange}/>
-          {this.state.passwordErrors.min ?
-            "Password needs to be at least 8 characters." : null};
-          {this.state.passwordErrors.max ?
-            "Password needs to be less than 24 characters." : null};
-          {this.state.passwordErrors.lowercase ?
-            "Password needs to have at least 1 lowercase letter." : null};
-          {this.state.passwordErrors.uppercase ?
-            "Password needs to have at least 1 uppercase letter." : null};
-          {this.state.passwordErrors.digits ?
-            "Password needs to have at least 1 number 0-9." : null};
-          {this.state.passwordErrors.symbols ?
-            "Password needs to have at least 1 special symbol." : null};
-          {this.state.passwordErrors.spaces ?
-            "Password needs to have no spaces." : null};
       </Form.Group>
     )
   }
 
+  /**
+   * Creates a list of errors with the password that is currently entered.
+   */
+  PasswordValidationList(){
+    return(
+      <List>
+        <List.Item className="passwordValidationList">{this.state.passwordErrors.lowercase ?
+          "Password needs to have at least 1 lowercase letter." : null}</List.Item>
+        <List.Item className="passwordValidationList">{this.state.passwordErrors.uppercase ?
+          "Password needs to have at least 1 uppercase letter." : null}</List.Item>
+        <List.Item className="passwordValidationList">{this.state.passwordErrors.digits ?
+          "Password needs to have at least 1 number 0-9." : null}</List.Item>
+        <List.Item className="passwordValidationList">{this.state.passwordErrors.symbols ?
+          "Password needs to have at least 1 special symbol." : null}</List.Item>
+        <List.Item className="passwordValidationList">{this.state.passwordErrors.min ?
+          "Password needs to be at least 8 characters." : null}</List.Item>
+        <List.Item className="passwordValidationList">{this.state.passwordErrors.max ?
+          "Password needs to be less than 24 characters." : null}</List.Item>
+        <List.Item className="passwordValidationList">{this.state.passwordErrors.spaces ?
+          "Password needs to have no spaces." : null}</List.Item>
+      </List>
+    )
+  }
   /**
    * Returns the submission button.
    * This button is disabled until all of the necessary inputs have been
@@ -390,6 +392,7 @@ class SignUp extends Component{
         <this.EmailInput />
         <Divider />
         <this.PasswordInput />
+        <this.PasswordValidationList />
         <Divider />
         <this.SignUpButton />
       </Form>
