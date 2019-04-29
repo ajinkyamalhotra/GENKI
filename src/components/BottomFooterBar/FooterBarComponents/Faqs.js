@@ -3,7 +3,12 @@ import {Accordion, Breadcrumb, Modal, Segment} from 'semantic-ui-react';
 import _ from 'lodash';
 import '../../../styles/Faqs.css';
 
-let scanResults = [
+
+/**
+ * This variable will contain all the Questions and Answers data that are to be
+ * displayed in the FAQs pop up window.
+ */
+let QuestionsAndAnswers = [
   {Question:"How do I sign up for a new account?",
    Answer:"Click on the sign up button in the top bar," +
       "fill up the required information and click Sign up.\n"+
@@ -16,17 +21,24 @@ let scanResults = [
 
   ];
 
-const panels = _.times(scanResults.length, i => ({
+/**
+ * Loads all the data contained in the QuestionsAndAnswers variable
+ */
+const panels = _.times(QuestionsAndAnswers.length, i => ({
   key: `panel-${i}`,
   title: {
-    content: (i+1)+". "+scanResults[i].Question,
+    content: (i+1)+". "+QuestionsAndAnswers[i].Question,
   },
   content: {
-    content: scanResults[i].Answer,
+    content: QuestionsAndAnswers[i].Answer,
   },
 }));
 
 
+/**
+ * This is the Faqs component for the bottom footer bar.
+ * It acts as a Pop-up component to display all the questions and answers.
+ */
 export default class Faqs extends Component {
   render() {
     return (
