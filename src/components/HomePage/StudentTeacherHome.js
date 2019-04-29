@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Icon, Divider, Card } from 'semantic-ui-react';
+import { Icon, Divider, Card, Image, Grid } from 'semantic-ui-react';
 import VirtualClassList from './VirtualClassList';
 import ClassHome from './ClassHome';
 import StudentAddClassForm from '../Forms/StudentAddClassForm';
 import VirtualClassForm from '../Forms/VirtualClassForm';
-
+import logo from '../../images/logo.png';
 
 
 /**
@@ -106,9 +106,16 @@ class StudentTeacherHome extends Component {
                             closeCreateClassModal={this.closeCreateClassModal}
                             {...this.props}/>}
         <Divider hidden fitted/>
-        {this.state.classSelected ? <ClassHome {...this.props} clazz={this.state.clazz} goBack={this.returnHome} /> :
-          <VirtualClassList {...this.props}
-                            classSelect={this.handleClassSelection} />}
+        <Grid columns={2}>
+          <Grid.Column>
+            {this.state.classSelected ? <ClassHome {...this.props} clazz={this.state.clazz} goBack={this.returnHome} /> :
+              <VirtualClassList {...this.props}
+                                classSelect={this.handleClassSelection} />}
+          </Grid.Column>
+          <Grid.Column>
+            <Image src={logo} />
+          </Grid.Column>
+        </Grid>
       </React.Fragment>
     )
   }
