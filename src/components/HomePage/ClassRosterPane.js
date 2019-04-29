@@ -213,7 +213,10 @@ class ClassRosterPane extends Component {
     });
     var rosterList = [];
     rosterKeys.forEach((username) => {
-      rosterList.push(this.RosterItem(this.state.roster[username], true))
+      if (this.props.userType !== 'teacher' ||
+        (this.props.userType === 'teacher' && username !== this.props.username)) {
+          rosterList.push(this.RosterItem(this.state.roster[username], true))
+        }
     });
     return(
       <List celled>
