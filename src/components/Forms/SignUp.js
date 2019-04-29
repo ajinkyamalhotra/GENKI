@@ -4,7 +4,7 @@ import { Icon, Divider, List} from 'semantic-ui-react';
 import { Auth, API } from "aws-amplify";
 import config from '../../config';
 import '../../styles/SignUp.css';
-import handlePasswordValidation from './HandlePasswordValidation';
+import handlePassword from './HandlePassword';
 
 /**
  * SignUp form to become a member of the GenkiVN website.
@@ -177,11 +177,12 @@ class SignUp extends Component{
     const key = data.name;
     // If one of the password inputs have changed do check to see if they match
     if ((key === 'password' || key === 'confirmedPassword')) {
-      const unchangedElement = (key === 'password') ?
-                      this.state.confirmedPassword : this.state.password;
-      const isMatch = data.value === unchangedElement;
-
-      await this.setState({passwordErrors: handlePasswordValidation(e, data)});
+      let isMatch;
+      if(key === 'password'){
+        await this.setState({passwordErrors: handlePassword(e, data)});
+      }else{
+        isMatch = data.value;
+      }
       const isValid = this.state.passwordErrors.valid;
       console.log(isMatch);
       console.log(isValid);
