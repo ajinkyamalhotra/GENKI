@@ -4,7 +4,7 @@ import { Breadcrumb, Modal, Segment } from 'semantic-ui-react';
 
 /**
  * This is the About Us component for the bottom footer bar.
- * On-Click a pop window will appear about the desire information.
+ * On-Click a pop window will appear displaying the desire information.
  */
 export default class AboutUs extends Component {
   render() {
