@@ -43,6 +43,13 @@ class SignUp extends Component{
 
   }
 
+  componentDidMount() {
+    let slideshow = document.getElementById("slideShowContainer");
+    if(slideshow != null) {
+      slideshow.style.display = "none";
+    }
+  }
+
   /**
    * Handle the submission of the form.
    * Pre-Req: All necessary portions of the form are filled in and validated.
