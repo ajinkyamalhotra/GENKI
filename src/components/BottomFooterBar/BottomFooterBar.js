@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { Segment } from 'semantic-ui-react';
-import FAQs from './Faqs';
-import Aboutus from './Aboutus';
-import ContactAdmin from './ContactAdmin';
+import FAQs from './FooterBarComponents/Faqs';
+import AboutUs from './FooterBarComponents/AboutUs';
+import ContactAdmin from './FooterBarComponents/ContactAdmin';
 
-export default class BreadCrumbBottomBar extends Component {
+export default class BottomFooterBar extends Component {
 
   render() {
     return (
       <Segment basic
                style={{position: 'fixed', bottom: '10px', right: '15px'}}>
         <FAQs />
-        <Aboutus />
+        <AboutUs />
         <ContactAdmin/>
       </Segment>
     )

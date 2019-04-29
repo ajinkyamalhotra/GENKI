@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Breadcrumb, Modal, Segment } from 'semantic-ui-react';
 
 
-export default class Aboutus extends Component {
+export default class AboutUs extends Component {
   render() {
     return (
         <Modal trigger={

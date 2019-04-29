@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Accordion, Breadcrumb, Modal, Segment} from 'semantic-ui-react';
 import _ from 'lodash';
-import '../styles/Faqs.css';
+import '../../../styles/Faqs.css';
 
 let scanResults = [
   {Question:"How do I sign up for a new account?",
