@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import ImageGallery from 'react-image-gallery';
-import "../../node_modules/react-image-gallery/styles/css/image-gallery.css";
-import '../styles/LandingPage.css';
+import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
+import '../../styles/LandingPage.css';
+import BottomFooterBar from '../BottomFooterBar/BottomFooterBar';
+
+//Importing all images required for slide show
+import image1 from "./ImagesForSlideShow/image1.png";
+import image2 from "./ImagesForSlideShow/download.jpg";
 
 /**
  * This component will contain all the images for the slideshow on the landing
@@ -14,11 +19,11 @@ class LandingPage extends Component {
     //Variable to contain all the images and their descriptions
     const images = [
       {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
+        original: image1,
         description: <h1>This is the description</h1>,
       },
       {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
+        original: image2,
         description: <h1>This is the description</h1>,
       },
       {
@@ -33,6 +38,7 @@ class LandingPage extends Component {
           <ImageGallery showThumbnails={false} showFullscreenButton={false}
                     showPlayButton={false} items={images}
           />
+          <BottomFooterBar />
         </div>
     );
   }

@@ -5,7 +5,7 @@ import { Button, Header } from 'semantic-ui-react';
 import '../styles/Navigation.css';
 import logo from '../images/logo with title.png';
 
-import LandingPage from './LandingPage';
+import LandingPage from './LandingPage/LandingPage';
 
 /**
  * Function to extract current Active Item
