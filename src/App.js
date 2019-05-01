@@ -3,7 +3,6 @@ import Navigation from './components/Navigation';
 import Routes from './routing/Routes';
 import { Auth } from 'aws-amplify';
 import { Loader } from 'semantic-ui-react';
-import BottomFooterBar from './components/BottomFooterBar/BottomFooterBar';
 
 import './App.css';
 
@@ -93,7 +92,6 @@ class App extends Component {
                   <Navigation childProps={childProps} handleLogout={this.handleLogout} />
                   <Routes childProps={childProps} />
                 </React.Fragment>)}
-                <BottomFooterBar />
         </div>
       );
   }
