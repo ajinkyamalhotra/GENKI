@@ -1,0 +1,7 @@
+.config-btn--stripe:hover, .active {
+    background-color: white;
+    color: black;
+}
+.title {
+    color: black;
+}

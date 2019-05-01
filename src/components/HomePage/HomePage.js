@@ -3,7 +3,7 @@ import { Button, Card } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
 import StudentTeacherHome from './StudentTeacherHome';
 import config from '../../config';
-
+import BottomFooterBar from '../BottomFooterBar/BottomFooterBar';
 
 /**
  * This is the HomePage of the Genki VN App.
@@ -201,6 +201,7 @@ class HomePage extends Component {
                       <StudentTeacherHome {...this.props} /> : null}
         {this.props.userType === 'admin' ?
             <this.PendingCards userList={this.state.pendingTeachers} /> : null}
+            <BottomFooterBar/>
       </div>
     )
   }
