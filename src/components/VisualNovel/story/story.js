@@ -13,6 +13,7 @@ const trainStation = require("./bg/Train Station.jpeg");
 const classroom = require("./bg/Classroom.jpg");
 const cafe = require("./bg/Cafe.jpg");
 const hospital = require("./bg/Hospital.png");
+const teamCast = require("./bg/Team Cast.png");
 
 // bgm
 const take = require("./bgm/take.mp3");
@@ -1243,11 +1244,22 @@ let story = [
   {
     bg: clouds,
     bgm: "",
-    speaker: infoAgent,
+    speaker: takeshi,
     spriteRight: "",
     spriteLeft: "",
-    sprite: infoAgentNeutralGif,
+    sprite: takeshiNeutralGif,
     text: "Thank You For Playing!",
+  },
+
+  //Credits
+  {
+    bg: teamCast,
+    bgm: "",
+    speaker: "",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: "",
+    text: "",
     jumpTo: "title-screen"
   },
 
@@ -1264,7 +1276,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: "",
-    text: "Are you sure you want to return to the Title Screen?",
+    text: "Are you sure? \n Click on the screen or press \"Enter\" to return to the Title Screen. Or scroll up to access backlog and jump back to your current progress.",
     jumpTo: "title-screen"
   },
 
