@@ -614,6 +614,11 @@ let engTranslation = [
     text: "Thank You For Playing!"
   },
 
+  //Credits
+  {
+    text: ""
+  },
+
   //Title Screen Confirmation
   {
     text: 'Click on the screen or press "Enter" to return to Title Screen'
