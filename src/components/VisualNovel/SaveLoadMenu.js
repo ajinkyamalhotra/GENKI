@@ -79,7 +79,7 @@ class SaveLoadMenu extends Component {
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg}
             />
             <img
-              alt=""
+              alt="Left Sprite"
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft}
               className="sprite left"

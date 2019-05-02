@@ -475,11 +475,27 @@ class Game extends Component {
     });
   }
 
+  credits() {
+    this.stopSkip();
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+
+    let creditsIndex = story.length - 3;
+    this.setFrame(creditsIndex); //This will always jump to the credits Frame
+    this.setState({
+      choicesIndex: 0,
+      choiceOptions: choices[0].choices
+    });
+  }
+
   titleScreen() {
     return (
       <TitleScreen
         beginStory={this.beginStory.bind(this)}
         chapterSelection={this.chapterSelection.bind(this)}
+        credits={this.credits.bind(this)}
         toggleLoadMenu={this.toggleLoadMenu.bind(this)}
       />
     );

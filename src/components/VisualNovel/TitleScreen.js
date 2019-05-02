@@ -18,7 +18,11 @@ function TitleScreen(props) {
           <li>
             <span onClick={props.toggleLoadMenu}>Continue</span>
           </li>
-    
+
+          <li>
+            <span onClick={props.credits}>Credits</span>
+          </li>
+
         </ul>
       </div>
     </div>
