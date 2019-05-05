@@ -17,6 +17,7 @@ class VirtualClassList extends Component {
 
     this.getClassList = this.getClassList.bind(this);
     this.CardGroup = this.CardGroup.bind(this);
+    this.VirtualClassCard = this.VirtualClassCard.bind(this);
   }
 
   componentDidMount() {
@@ -64,10 +65,11 @@ class VirtualClassList extends Component {
    * The classSelect function comes from the StudentTeacherHome component.
    * @param clazz   The class information
    */
-  VirtualClassCard(clazz) {
+  VirtualClassCard(localProps) {
+    let clazz = localProps.clazz;
     return(
       <Card key={clazz.ClassID}
-            onClick={(e) => this.props.classSelect(clazz, e)}
+            onClick={(e) => this.props.classSelect(localProps.clazz, e)}
             color='orange'>
         <Card.Content>
           <Card.Header textAlign='left' className='cardHeader'>
@@ -86,20 +88,20 @@ class VirtualClassList extends Component {
    */
   CardGroup() {
     let classes = this.state.classList;
-    var cards = classes.map((clazz) => this.VirtualClassCard(clazz));
+    var cards = classes.map((clazz) => <li key={clazz.ClassID}><this.VirtualClassCard clazz={clazz} /></li>);
     return (
-      <Card.Group centered>
+      <ul style={{'listStyle': 'none', 'paddingInlineStart': '0px'}}>
         {cards}
-      </Card.Group>
+      </ul>
     )
   }
 
   render() {
     return (
       <React.Fragment>
-      {this.state.isLoading ? <Loader active /> :
-          <this.CardGroup />
-      }
+        {this.state.isLoading ? <Loader active /> :
+            <this.CardGroup />
+        }
       </React.Fragment>
     );
   }
