@@ -42,12 +42,12 @@
   border-top: 4px double #aaa;
   border-bottom: 4px double #aaa;
   position: relative;
-  text-align: right; /*or center*/
+  text-align: center;
 }
 #menu li {
   cursor: pointer;
   display: inline-block;
-  width: 30%;
+  width: 23%;
   margin: -15px 10px 0px;
   position: relative;
   -webkit-transform: skewy(-3deg);
@@ -57,7 +57,7 @@
 #menu li span {
   text-transform: uppercase;
   font-family: "Squada One", cursive;
-  font-weight: 800;
+  font-weight: 900;
   display: block;
   background: #fff;
   padding: 6px 0;
@@ -89,7 +89,7 @@
     0 0 20px -5px rgba(0, 0, 0, 0.4), 0 0 0px 3px #fff inset;
 }
 #menu li:hover {
-  width: 30%;
+  width: 24%;
 }
 #menu span:hover {
   color: rgb(255, 115, 55);

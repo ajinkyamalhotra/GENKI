@@ -43,7 +43,16 @@ export function main(event, context, callback){
       console.log(result);
       let classRoster = result.Item.ClassRoster;
       // Use the list of usernames to retrieve actual information
-      getClassRoster(classRoster, callback);
+      if (classRoster.length > 0) {
+        getClassRoster(classRoster, callback);
+      } else {
+        const response = {
+          statusCode: 200,
+          headers: headers,
+          body: JSON.stringify(classRoster)
+        };
+        callback(null, response);
+      }
     }
   })
 }

@@ -73,25 +73,25 @@ class SaveLoadMenu extends Component {
         >
           {JSON.parse(localStorage.getItem(this.state.slotNumber)).choicesExist ? this.renderChoiceMenu() : null}
             <img
-              alt="image4"
+              alt="Backgroud"
               draggable="false"
               className="slot-bg"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg}
             />
             <img
-              alt="image5"
+              alt="Left Sprite"
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft}
               className="sprite left"
             />
             <img
-              alt="image6"
+              alt=""
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite}
               className="sprite"
             />
             <img
-              alt="image7"
+              alt=""
               draggable="false"
               src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight}
               className="sprite right"
@@ -122,6 +122,9 @@ class SaveLoadMenu extends Component {
         <ul className="header">
           <li>
             <h1>{this.props.menuType}</h1>
+          </li>
+          <li style={{paddingLeft: "24%"}}>
+            <h1 style={{transform: "scale(0.800)"}}>Click on the Container Box to Save/Load</h1>
           </li>
           <li className="exit-button" onClick={this.props.toggleMenu}>
             <h1 style={{paddingRight: "10px"}}>X</h1>

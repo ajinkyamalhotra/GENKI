@@ -33,7 +33,7 @@ const INITIAL_STATE = {
   bgmVolume: 80,
   soundEffectVolume: 90,
   voiceVolume: 100,
-  font: "Trebuchet MS",
+  font: "Comic Sans MS",
   isFull: false,
   choicesStore: {},
   index: 0,
@@ -122,8 +122,18 @@ class Game extends Component {
     }
     english = !english;
 
-    if (event.keyCode === TITLE) {
-      this.setState(INITIAL_STATE);
+    if (event.keyCode === TITLE && this.state.titleScreenShown === false) {
+
+      this.titleScreenConfirmation();
+
+      this.setState({
+        configMenuShown: false,
+        backlogShown: false,
+        saveMenuShown: false,
+        loadMenuShown: false,
+        isSkipping: false
+      });
+
       return;
     }
 
@@ -164,7 +174,23 @@ class Game extends Component {
     }
     if (story[currentIndex].jumpTo) {
       if (story[currentIndex].jumpTo === "title-screen") {
-        this.setState(INITIAL_STATE);
+        this.setState({
+          choicesStore: {},
+          index: 0,
+          stateHistory: [],
+          choicesHistory: [],
+          choicesIndexHistory: [],
+          indexHistory: [],
+          choicesExist: false,
+          configMenuShown: false,
+          titleScreenShown: true,
+          frameIsRendering: false,
+          backlogShown: false,
+          saveMenuShown: false,
+          loadMenuShown: false,
+          isSkipping: false
+        });
+
         return;
       }
 
@@ -409,7 +435,8 @@ class Game extends Component {
     this.stopSkip();
     this.setState({
       titleScreenShown: false,
-      frameIsRendering: true
+      frameIsRendering: true,
+
     });
     this.setFrame(0);
     this.setState({
@@ -433,11 +460,42 @@ class Game extends Component {
     });
   }
 
+  titleScreenConfirmation() {
+    this.stopSkip();
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+
+    let confirmationIndex = story.length - 2;
+    this.setFrame(confirmationIndex); //This will always jump to Title Screen Confirmation Frame
+    this.setState({
+      choicesIndex: 0,
+      choiceOptions: choices[0].choices
+    });
+  }
+
+  credits() {
+    this.stopSkip();
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+
+    let creditsIndex = story.length - 3;
+    this.setFrame(creditsIndex); //This will always jump to the credits Frame
+    this.setState({
+      choicesIndex: 0,
+      choiceOptions: choices[0].choices
+    });
+  }
+
   titleScreen() {
     return (
       <TitleScreen
         beginStory={this.beginStory.bind(this)}
         chapterSelection={this.chapterSelection.bind(this)}
+        credits={this.credits.bind(this)}
         toggleLoadMenu={this.toggleLoadMenu.bind(this)}
       />
     );

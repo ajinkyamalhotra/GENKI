@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Form, Modal} from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-import '../../styles/AddClassForm.css';
 
 /**
  * This component renders the form students use to enroll themselves into

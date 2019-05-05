@@ -9,8 +9,10 @@ function MenuButtons(props) {
   return (
     <div className="container menu-buttons-container">
       <div className="menu-buttons">
+        <h1 style={{ "color": "rgb(255, 129, 79)", "background-color": "black", "line-height": "215%", "font-size": "155%", "text-align": "center" }}>
+          Press "Spacebar" For Menu Buttons
+        </h1>
         {handleToggles(KEYDOWN, " ", props.toggleTextBox)}
-        {handleToggles(KEYDOWN, "Control", props.setNextFrame)}
         {handleToggles(KEYUP, "Enter", props.setNextFrame)}
         {props.isSkipping ? (
           <button onClick={props.stopSkip}>Stop</button>
