@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Tab, Loader, Popup, Button } from 'semantic-ui-react';
+import { List, Tab, Loader, Popup, Button, Breadcrumb, Divider } from 'semantic-ui-react';
 import AnnouncementPane from './AnnouncementPane';
 import ClassRosterPane from './ClassRosterPane';
 
@@ -112,6 +112,10 @@ class ClassHome extends Component {
   render() {
     return (
       <div>
+        <Breadcrumb size='tiny'>
+          <Breadcrumb.Section link onClick={this.props.goBack}>Back To Class Select</Breadcrumb.Section>
+        </Breadcrumb>
+        <Divider hidden />
         {this.state.isLoading ? <Loader active /> : <this.ClassHomeTabs />}
       </div>
     )

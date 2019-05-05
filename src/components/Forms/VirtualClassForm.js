@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Form, Input, Icon, Modal } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
-import '../../styles/VirtualClassForm.css';
 
 /**
  * This component renders a modal which teachers can use to create a new class.
