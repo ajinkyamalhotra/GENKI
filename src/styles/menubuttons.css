@@ -5,7 +5,7 @@
 
 .menu-buttons {
   position: relative;
-  top: 110%;
+  bottom: -101%;
   width: 100%;
   float: left;
 }
