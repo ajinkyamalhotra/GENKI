@@ -79,6 +79,15 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+  removeFromClass:
+    role: DynamoDBAccessRole
+    handler: removeStudentFromClass.main
+    events:
+      - http:
+          path: removeFromClass
+          method: post
+          cors: true
+          authorizer: aws_iam
   createUserNoClassID:
     role: DynamoDBAccessRole
     handler: createUserNoClassID.main
