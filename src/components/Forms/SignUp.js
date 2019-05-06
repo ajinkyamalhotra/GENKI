@@ -181,7 +181,7 @@ class SignUp extends Component{
       if(key === 'password'){
         await this.setState({passwordErrors: handlePassword(e, data)});
       }else{
-        isMatch = data.value;
+        isMatch = handlePassword(e, data, this.state.password);
       }
       const isValid = this.state.passwordErrors.valid;
       console.log(isMatch);
