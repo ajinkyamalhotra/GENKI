@@ -69,10 +69,18 @@ class ClassRosterPane extends Component {
       let roster = classRoster.reduce((accumulator, student) => {
         let username = student.UserInfo.Username;
         student['isSelected'] = false;
-        return({
-          ...accumulator,
-          [username]: student
-        })
+        if (this.props.clazz.Email !== student.UserInfo.Email) {
+          return({
+            ...accumulator,
+            [username]: student
+          })
+        } else {
+          return(
+            {
+              ...accumulator
+            }
+          )
+        }
       }, {});
       this.setState({ roster: roster, isLoading: false });
     } catch (e) {
