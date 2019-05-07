@@ -94,17 +94,19 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: ishikariLore,
-    text: "Click on the screen or press \"Enter\" to begin"
+    text: 'Click on the screen or press "Enter" to begin'
   },
   {
     bg: school,
     bgm: ishikariLore,
     sprite: takeshiNeutralGif,
     speaker: takeshi,
-    text: "Hello! Welcome to Genki VN! My name is Takeshi and I am here to guide you on how to play the game. First let us press that “ENTER” button on your keyboard."
+    text:
+      "Hello! Welcome to Genki VN! My name is Takeshi and I am here to guide you on how to play the game. First let us press that “ENTER” button on your keyboard."
   },
   {
-    text: "Well done! You made it to the next dialogue! Throughout Genki VN, multiple characters will be speaking like me. To navigate through their dialogues, you can simple press “ENTER” or click on the screen."
+    text:
+      "Well done! You made it to the next dialogue! Throughout Genki VN, multiple characters will be speaking like me. To navigate through their dialogues, you can simple press “ENTER” or click on the screen."
   },
   {
     text: "This is a Visual Novel game. A visual novel game is..."
@@ -123,7 +125,8 @@ let story = [
     speaker: takeshi,
     spriteLeft: maryNeutral,
     spriteRight: takeshiTalkingGif,
-    text: "This is our guest! He is learning Japanese! Can you help me guide him through the game?"
+    text:
+      "This is our guest! He is learning Japanese! Can you help me guide him through the game?"
   },
   {
     speaker: mary,
@@ -133,87 +136,109 @@ let story = [
   },
   {
     speaker: takeshi,
-    spriteLeft:maryNeutral,
+    spriteLeft: maryNeutral,
     spriteRight: takeshiTalkingGif,
     text: "Now where was I? Oh yeah! Genki VN stands for Genki Visual Novel."
   },
   {
-    text: "A place where you the player can see the story unfold throughout the chapters of Genki I or II in the form of dialogues between Genki characters like me and Mary!"
+    text:
+      "A place where you the player can see the story unfold throughout the chapters of Genki I or II in the form of dialogues between Genki characters like me and Mary!"
   },
   {
-    text: "Genki VN is not only a great way to immerse yourself with the story in Genki textbooks, but also a fun way to learn Japanese!"
+    text:
+      "Genki VN is not only a great way to immerse yourself with the story in Genki textbooks, but also a fun way to learn Japanese!"
   },
   {
-    text: "In Genki VN, you can learn about the new vocabulary presented within the dialogues and their translations by pressing the “SHIFT” button on your keyboard. In case you want to shift things around. See what I did there?"
+    text:
+      "In Genki VN, you can learn about the new vocabulary presented within the dialogues and their translations by pressing the “SHIFT” button on your keyboard. In case you want to shift things around. See what I did there?"
   },
   {
-    text: "What’s a game without giving the player options to toggle and fiddle with right? In Genki VN, there are settings you can choose from."
-  },
-  {
-    speaker: mary,
-    spriteLeft: maryNeutralGif,
-    spriteRight: takeshiTalking,
-    text: "By pressing the “SPACEBAR” on your keyboard, the page will scroll down for options to choose from! Here try it out, press the SPACEBAR."
-  },
-  {
-    text: "What do we have here! So many options! Skip, Save, Load, Config, Full Screen. So many things you can do to enjoy Genki VN the way you want to!  I will explain about the SKIP button first."
-  },
-  {
-    text: "With the the SKIP button, you can navigate through the dialogues without pushing anything. Upon clicking on SKIP, you will be prompted to input how many seconds you want between dialogues. Isn’t that neat?"
-  },
-  {
-    speaker: takeshi,
-    spriteLeft:maryNeutral,
-    spriteRight: takeshiTalkingGif,
-    text: "Don’t you hate it when you are playing a game and you have to reach a checkpoint to save your current progress...No? Well I do!"
-  },
-  {
-    text: "In Genki VN, you can save your progress at any point and load back in whenever you desire. (*Sometimes I wish I could do this in real life to load back to the times I’ve bailed on Mary san...*)"
-  },
-  {
-    text: "If you look next to the SKIP button, you can see the SAVE button. Once you click it, you will be able to select a slot, then click onto the big grey square to save your progress!"
-  },
-  {
-    text: "Try it now, click a slot and then the square screen to save. NOTE: *Saves to local machine only and will not carry over if you play on a different device!*"
+    text:
+      "What’s a game without giving the player options to toggle and fiddle with right? In Genki VN, there are settings you can choose from."
   },
   {
     speaker: mary,
     spriteLeft: maryNeutralGif,
     spriteRight: takeshiTalking,
-    text: "Now that you know how to save, now it is time to learn how to load your saved progress. Next to the save button, you can see the LOAD button."
+    text:
+      "By pressing the “SPACEBAR” on your keyboard, the page will scroll down for options to choose from! Here try it out, press the SPACEBAR."
   },
   {
-    text: "Upon clicking it, you will see all the save slots, the ones with save data will be black while the ones with no save data will be grey."
+    text:
+      "What do we have here! So many options! Skip, Save, Load, Config, Full Screen. So many things you can do to enjoy Genki VN the way you want to!  I will explain about the SKIP button first."
   },
   {
-    text: "Click the desired save slot, then click on the big square. You will be prompted with “Load save? Click ok to load your game. *You will be taken back to the SAVE instructions"
-  },
-  {
-    text: "Now that you mastered saving and loading your progress, let us take a look at the CONFIG button next to the load button."
-  },
-  {
-    text: "With config, you can adjust the audio setting in the game (BGM) and also adjust the text font style. Why don’t you try it? Change the font style to Courier New."
+    text:
+      "With the the SKIP button, you can navigate through the dialogues without pushing anything. Upon clicking on SKIP, you will be prompted to input how many seconds you want between dialogues. Isn’t that neat?"
   },
   {
     speaker: takeshi,
-    spriteLeft:maryNeutral,
+    spriteLeft: maryNeutral,
     spriteRight: takeshiTalkingGif,
-    text: "Feeling fancy with all these tools huh? Well, we got something big for you, quiet literally."
+    text:
+      "Don’t you hate it when you are playing a game and you have to reach a checkpoint to save your current progress...No? Well I do!"
   },
   {
-    text: "You see that FULL SCREEN button to the right? If you click it, the game will go into full screen mode, things are looking big now huh? Have that skip option on, full screen mode and you have yourself Genki: The Movie!"
+    text:
+      "In Genki VN, you can save your progress at any point and load back in whenever you desire. (*Sometimes I wish I could do this in real life to load back to the times I’ve bailed on Mary san...*)"
   },
   {
-    text: "Don’t grab some popcorn just yet! We still got a tutorial to finish here!"
+    text:
+      "If you look next to the SKIP button, you can see the SAVE button. Once you click it, you will be able to select a slot, then click onto the big grey square to save your progress!"
   },
   {
-    text: "It’s time to jump around! You think I’m joking? In Genki VN, there is a JUMP feature that lets you well... jump back to previous dialogues you have read. "
+    text:
+      "Try it now, click a slot and then the square screen to save. NOTE: *Saves to local machine only and will not carry over if you play on a different device!*"
   },
   {
-    text: "Scroll up with your mouse while on the game’s screen to pull up the BACKLOG of all the previous dialogues read! By clicking on JUMP next to the dialogue you will be taken back to that moment in the game. Try it out!"
+    speaker: mary,
+    spriteLeft: maryNeutralGif,
+    spriteRight: takeshiTalking,
+    text:
+      "Now that you know how to save, now it is time to learn how to load your saved progress. Next to the save button, you can see the LOAD button."
   },
   {
-    text: "Congratulations on making it to the end of the tutorial! Thank you Mary for helping me teach our guest here today."
+    text:
+      "Upon clicking it, you will see all the save slots, the ones with save data will be black while the ones with no save data will be grey."
+  },
+  {
+    text:
+      "Click the desired save slot, then click on the big square. You will be prompted with “Load save? Click ok to load your game. *You will be taken back to the SAVE instructions"
+  },
+  {
+    text:
+      "Now that you mastered saving and loading your progress, let us take a look at the CONFIG button next to the load button."
+  },
+  {
+    text:
+      "With config, you can adjust the audio setting in the game (BGM) and also adjust the text font style. Why don’t you try it? Change the font style to Courier New."
+  },
+  {
+    speaker: takeshi,
+    spriteLeft: maryNeutral,
+    spriteRight: takeshiTalkingGif,
+    text:
+      "Feeling fancy with all these tools huh? Well, we got something big for you, quiet literally."
+  },
+  {
+    text:
+      "You see that FULL SCREEN button to the right? If you click it, the game will go into full screen mode, things are looking big now huh? Have that skip option on, full screen mode and you have yourself Genki: The Movie!"
+  },
+  {
+    text:
+      "Don’t grab some popcorn just yet! We still got a tutorial to finish here!"
+  },
+  {
+    text:
+      "It’s time to jump around! You think I’m joking? In Genki VN, there is a JUMP feature that lets you well... jump back to previous dialogues you have read. "
+  },
+  {
+    text:
+      "Scroll up with your mouse while on the game’s screen to pull up the BACKLOG of all the previous dialogues read! By clicking on JUMP next to the dialogue you will be taken back to that moment in the game. Try it out!"
+  },
+  {
+    text:
+      "Congratulations on making it to the end of the tutorial! Thank you Mary for helping me teach our guest here today."
   },
   {
     speaker: mary,
@@ -226,21 +251,22 @@ let story = [
     sprite: takeshiNeutralGif,
     spriteLeft: "",
     spriteRight: "",
-    text: "Before you go, I’d like to introduce to you the “T” command. By pressing “T” on your keyboard, you will be taken back to the game’s title screen. Press “T” to return to the game’s title."
+    text:
+      "Before you go, I’d like to introduce to you the “T” command. By pressing “T” on your keyboard, you will be taken back to the game’s title screen. Press “T” to return to the game’s title."
   },
   {
-    text: "Hmmm… it seems you did not press “T”...press “T” to return to the title screen."
+    text:
+      "Hmmm… it seems you did not press “T”...press “T” to return to the title screen."
   },
   {
-    text: "Didn’t I tell you to press “T”?!... You know what, press ENTER and see what happens!"
+    text:
+      "Didn’t I tell you to press “T”?!... You know what, press ENTER and see what happens!"
   },
   {
     speaker: "",
     sprite: "",
     text: "End of tutorial"
   },
-
-
 
   //End of Tutorial
 
@@ -253,7 +279,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: ishikariLore,
-    text: "Click on the screen or press \"Enter\" to begin",
+    text: 'Click on the screen or press "Enter" to begin',
     jumpTo: "chapter11"
   },
 
@@ -275,7 +301,8 @@ let story = [
     speaker: mary,
     spriteLeft: maryNeutralGif,
     spriteRight: michikoNeutral,
-    text: "すごく楽しかったです。韓国で買い物をしたり、韓国料理を食べたりしました。"
+    text:
+      "すごく楽しかったです。かんこくで買い物をしたり、かんこくりょうりを食べたりしました。"
   },
   {
     speaker: michiko,
@@ -293,7 +320,8 @@ let story = [
     speaker: michiko,
     spriteLeft: maryNeutral,
     spriteRight: michikoNeutralGif,
-    text: "まあまあでした。一日だけドライブに行きましたが、毎日アルバイトをしていました。"
+    text:
+      "まあまあでした。一日だけドライブに行きましたが、毎日アルバイトをしていました。"
   },
 
   //Scene 2, Mary introduces John to Michiko
@@ -309,7 +337,8 @@ let story = [
   {
     speaker: mary,
     spriteLeft: maryNeutralGif,
-    text: "みちこさん、友だちを紹介します。こちらはジョンさんです。ジョンさんは先月、日本に来ました。"
+    text:
+      "みちこさん、友だちをしょうかいします。こちらはジョンさんです。ジョンさんは先月、日本に来ました。"
   },
   {
     speaker: john,
@@ -322,7 +351,7 @@ let story = [
     sprite: johnNeutral,
     spriteLeft: maryNeutral,
     spriteRight: michikoNeutralGif,
-    text: "初めまして、山川みちこです。"
+    text: "初めまして、やまかわみちこです。"
   },
 
   //Scene 3, John talks about himself
@@ -368,13 +397,14 @@ let story = [
     speaker: john,
     spriteLeft: johnNeutralGif,
     spriteRight: michikoNeutral,
-    text: "山や海があって、きれいな所ですよ。グレートバリアリーフで有名です。みちこさんはどこの出身ですか。"
+    text:
+      "山や海があって、きれいな所ですよ。グレートバリアリーフで有名です。みちこさんはどこの出身ですか。"
   },
   {
     speaker: michiko,
     spriteLeft: johnNeutral,
     spriteRight: michikoNeutralGif,
-    text: "長野です。今度遊びに来てください。食べ物もおいしいですよ。"
+    text: "長野です。今度あそびに来てください。食べ物もおいしいですよ。"
   },
   {
     speaker: john,
@@ -392,7 +422,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: ishikariLore,
-    text: "Click on the screen or press \"Enter\" to begin",
+    text: 'Click on the screen or press "Enter" to begin',
     jumpTo: "chapter12"
   },
 
@@ -426,7 +456,8 @@ let story = [
     speaker: mary,
     spriteLeft: marySickGif,
     spriteRight: michikoNeutral,
-    text: "きのう友だちと晩ご飯を食べに行ったんです。たぶん食べすぎたんだと思います。"
+    text:
+      "きのう友だちと晩ご飯を食べに行ったんです。たぶん食べすぎたんだと思います。"
   },
   {
     speaker: michiko,
@@ -444,7 +475,7 @@ let story = [
     speaker: michiko,
     spriteLeft: marySick,
     spriteRight: michikoNeutralGif,
-    text: "病院に行った方がいいですよ。"
+    text: "病院に行ったほうがいいですよ。"
   },
 
   //Scene 2, At a hospital.
@@ -472,7 +503,8 @@ let story = [
     speaker: mary,
     spriteRight: doctorNeutral,
     spriteLeft: marySickGif,
-    text: "あの、もうすぐテニスの試合があるので、練習しなきゃいけないんですが……。"
+    text:
+      "あの、もうすぐテニスの試合があるので、練習しなきゃいけないんですが……。"
   },
   {
     speaker: doctor,
@@ -514,7 +546,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: ishikariLore,
-    text: "Click on the screen or press \"Enter\" to begin",
+    text: 'Click on the screen or press "Enter" to begin',
     jumpTo: "chapter13"
   },
 
@@ -536,7 +568,8 @@ let story = [
     speaker: john,
     spriteRight: johnStudyingGif,
     spriteLeft: managerNeutral,
-    text: "私、ジョン・ワンと申します。アルバイト募集の広告を見たんですが。"
+    text:
+      "私、ジョン・ワンともうします。アルバイトぼしゅうのこうこくを見たんですが。"
   },
   {
     speaker: manager,
@@ -575,7 +608,7 @@ let story = [
   {
     speaker: manager,
     spriteLeft: managerNeutralGif,
-    text: "ワンさんはどうしてこのアルバイトに興味があるんですか。"
+    text: "ワンさんはどうしてこのアルバイトにきょうみがあるんですか。"
   },
   {
     speaker: john,
@@ -605,7 +638,7 @@ let story = [
     speaker: john,
     spriteLeft: managerNeutral,
     spriteRight: johnWaiterGif,
-    text: "はい。よろしくお願いします。"
+    text: "はい。よろしくおねがいします。"
   },
   {
     speaker: manager,
@@ -652,7 +685,7 @@ let story = [
     speaker: john,
     spriteRight: johnWaiterGif,
     spriteLeft: yamashitaNeutral,
-    text: "このカレーが一番人気がありますよ。"
+    text: "このカレーがいちばん人気がありますよ。"
   },
   {
     speaker: yamashita,
@@ -670,7 +703,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: ishikariLore,
-    text: "Click on the screen or press \"Enter\" to begin",
+    text: 'Click on the screen or press "Enter" to begin',
     jumpTo: "chapter14"
   },
 
@@ -735,7 +768,7 @@ let story = [
     spriteLeft: takeshiSweaterGif,
     spriteRight: marySitting,
     text:
-      "わあ、いいね、このセーター。こんなのがほしかったんだ。メアリーが編んだの？"
+      "わあ、いいね、このセーター。こんなのがほしかったんだ。メアリーがあんだの？"
   },
   {
     speaker: mary,
@@ -763,7 +796,7 @@ let story = [
     bgm: ishikariLore,
     speaker: john,
     spriteLeft: johnNeutralGif,
-    text: "暖かそうなセーターですね。"
+    text: "あたたかそうなセーターですね。"
   },
   {
     speaker: takeshi,
@@ -808,7 +841,7 @@ let story = [
     speaker: takeshi,
     spriteRight: takeshiInSweaterGif,
     spriteLeft: johnNeutral,
-    text: "ええ、男の人は三月十四日にお返しをしなきゃいけないんですよ。"
+    text: "ええ、男の人は三月十四日におかえしをしなきゃいけないんですよ。"
   },
 
   ////////////////////Chapter 15 below//////////////////////////////////////
@@ -820,7 +853,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: ishikariLore,
-    text: "Click on the screen or press \"Enter\" to begin",
+    text: 'Click on the screen or press "Enter" to begin',
     jumpTo: "chapter15"
   },
 
@@ -838,7 +871,7 @@ let story = [
     bgm: ishikariLore,
     speaker: mary,
     spriteLeft: maryTalkingGif,
-    text: "たけしくん、今度の休み、予定ある？"
+    text: "たけしくん、今度の休み、よていある？"
   },
   {
     speaker: takeshi,
@@ -863,7 +896,7 @@ let story = [
     speaker: mary,
     spriteRight: takeshiTalking,
     spriteLeft: maryTalkingGif,
-    text: "うん。みちこさんが、「たけしくんも誘って」と言ってたから。"
+    text: "うん。みちこさんが、「たけしくんもさそって」と言ってたから。"
   },
 
   {
@@ -891,7 +924,7 @@ let story = [
     bgm: ishikariLore,
     speaker: takeshi,
     spriteRight: takeshiTalkingGif,
-    text: "早く着いたから、ちょっと観光しない？"
+    text: "早く着いたから、ちょっとかんこうしない？"
   },
   {
     speaker: mary,
@@ -904,7 +937,7 @@ let story = [
     spriteRight: takeshiTalkingGif,
     spriteLeft: maryTalking,
     sprite: takeshiTemple,
-    text: "善光寺はどう？有名なお寺だよ。"
+    text: "ぜんこうじはどう？有名なお寺だよ。"
   },
   {
     speaker: mary,
@@ -934,14 +967,14 @@ let story = [
     speaker: takeshi,
     spriteRight: takeshiTalkingGif,
     spriteLeft: maryTalking,
-    text: "すみません、善光寺に行くバスはどれですか。"
+    text: "すみません、ぜんこうじに行くバスはどれですか。"
   },
   {
     speaker: infoAgent,
     spriteRight: takeshiTalking,
     spriteLeft: maryTalking,
     sprite: infoAgentNeutralGif,
-    text: "善光寺なら、十一番のバスですよ。"
+    text: "ぜんこうじなら、十一番のバスですよ。"
   },
   {
     speaker: takeshi,
@@ -956,23 +989,23 @@ let story = [
     spriteLeft: maryTalking,
     sprite: infoAgentNeutralGif,
     text:
-      "ええ、どうぞ。それから、これ、美術館の割引券ですが、よかったらどうぞ。"
+      "ええ、どうぞ。それから、これ、びじゅつかんのわりびきけんですが、よかったらどうぞ。"
   },
   {
     speaker: mary,
     spriteRight: takeshiTalking,
     spriteLeft: maryTalkingGif,
     sprite: infoAgentNeutral,
-    text: "これ、東山魁夷の絵がある美術館ですね。あした行く予定なんです。"
+    text:
+      "これ、ひがしやまかいいの絵があるびじゅつかんですね。あした行く予定なんです。どうもありがとう。"
   },
   {
     speaker: infoAgent,
     spriteRight: takeshiTalking,
     spriteLeft: maryTalking,
     sprite: infoAgentNeutralGif,
-    text: "気をつけて。",
+    text: "気をつけて。"
   },
-
 
   ////////////////////Chapter 16 below//////////////////////////////////////
   {
@@ -983,7 +1016,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: ishikariLore,
-    text: "Click on the screen or press \"Enter\" to begin",
+    text: 'Click on the screen or press "Enter" to begin',
     jumpTo: "chapter16"
   },
 
@@ -1002,7 +1035,7 @@ let story = [
     speaker: john,
     spriteLeft: "",
     spriteRight: johnWorriedGif,
-    text: "失礼します。先生、今日従業に来られなくてすみませんでした。"
+    text: "しつれいします。先生、今日授業に来られなくてすみませんでした。"
   },
   {
     speaker: yamashita,
@@ -1014,7 +1047,7 @@ let story = [
     speaker: john,
     spriteRight: johnWorriedGif,
     spriteLeft: yamashitaInOffice,
-    text: "実は、朝寝坊して、電車に乗り遅れたんです。すみません。"
+    text: "実は、あさねぼうして、電車に乗り遅れたんです。すみません。"
   },
   {
     speaker: yamashita,
@@ -1028,7 +1061,8 @@ let story = [
     sprite: homeworkFile,
     spriteRight: johnWorriedGif,
     spriteLeft: yamashitaInOffice,
-    text: "はい。あの、先生、宿題をあしたまで待っていただけませんか。宿題を入れたファイルがないんです。"
+    text:
+      "はい。あの、先生、宿題をあしたまで待っていただけませんか。宿題を入れたファイルがないんです。"
   },
 
   {
@@ -1115,7 +1149,7 @@ let story = [
     speaker: john,
     spriteRight: johnWorriedGif,
     spriteLeft: yamashitaInOffice,
-    text: "ええ、駅員さんに手伝ってもらいましたから。",
+    text: "ええ、駅員さんに手伝ってもらいましたから。"
   },
 
   ////////////////////Chapter 17 below//////////////////////////////////////
@@ -1127,7 +1161,7 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: ishikariLore,
-    text: "Click on the screen or press \"Enter\" to begin",
+    text: 'Click on the screen or press "Enter" to begin',
     jumpTo: "chapter17"
   },
 
@@ -1146,7 +1180,8 @@ let story = [
     speaker: sue,
     spriteLeft: sueNeutralGif,
     spriteRight: "",
-    text: "たけしさん、久しぶりですね。旅行会社に就職したそうですね。おめでとうございます。"
+    text:
+      "たけしさん、久しぶりですね。旅行会社にしゅうしょくしたそうですね。おめでとうございます。"
   },
   {
     speaker: takeshi,
@@ -1158,27 +1193,30 @@ let story = [
     speaker: sue,
     spriteRight: takeshiOverworked,
     spriteLeft: sueNeutralGif,
-    text: "もう仕事に慣れましたか。"
+    text: "もう仕事になれましたか。"
   },
   {
     speaker: takeshi,
     spriteRight: takeshiOverworkedGif,
     spriteLeft: sueNeutral,
-    text: "ええ。でも学生の時に比べてすごく忙しくなりました。自分の時間がぜんぜんないんです。"
+    text:
+      "ええ。でも学生の時に比べてすごく忙しくなりました。自分の時間がぜんぜんないんです。"
   },
 
   {
     speaker: sue,
     spriteRight: takeshiOverworked,
     spriteLeft: sueNeutralGif,
-    text: "大変ですね。私の友だちの会社は休みが多くて、残業をしなくてもいいそうですよ。"
+    text:
+      "大変ですね。私の友だちの会社は休みが多くて、残業をしなくてもいいそうですよ。"
   },
 
   {
     speaker: takeshi,
     spriteRight: takeshiOverworkedGif,
     spriteLeft: sueNeutral,
-    text: "うらやましいですよ。ぼくの会社は休みも少ないし、給料も安いし、最低です。"
+    text:
+      "うらやましいですよ。ぼくの会社は休みも少ないし、給料も安いし、最低です。"
   },
   {
     speaker: sue,
@@ -1236,9 +1274,9 @@ let story = [
     speaker: ken,
     spriteRight: kenNeutralGif,
     spriteLeft: sueNeutral,
-    text: "そうか。ぼくだったら、仕事より彼女を選ぶけど。あの二人、大丈夫かなあ。"
+    text:
+      "そうか。ぼくだったら、仕事より彼女を選ぶけど。あの二人、大丈夫かなあ。"
   },
-
 
   //After Playing the last Chapter in the Game
   {
@@ -1248,7 +1286,7 @@ let story = [
     spriteRight: "",
     spriteLeft: "",
     sprite: takeshiNeutralGif,
-    text: "Thank You For Playing!",
+    text: "Thank You For Playing!"
   },
 
   //Credits
@@ -1265,8 +1303,6 @@ let story = [
 
   //end of game
 
-
-
   //Title Screen Confirmation
   {
     routeBegins: "titleScreenConfirmation",
@@ -1276,7 +1312,8 @@ let story = [
     sprite: logo,
     bg: clouds,
     bgm: "",
-    text: "Are you sure? \n Click on the screen or press \"Enter\" to return to the Title Screen. Or scroll up to access backlog and jump back to your current progress.",
+    text:
+      'Are you sure? \n Click on the screen or press "Enter" to return to the Title Screen. Or scroll up to access backlog and jump back to your current progress.',
     jumpTo: "title-screen"
   },
 
@@ -1291,7 +1328,7 @@ let story = [
     choicesExist: true,
     text: "",
     jumpTo: "chapterSelection"
-  },
+  }
 ];
 
 // The code below is to set undefined properties to the last defined property.
