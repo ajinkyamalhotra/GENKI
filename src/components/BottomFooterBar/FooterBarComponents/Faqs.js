@@ -9,14 +9,19 @@ import '../../../styles/Faqs.css';
  * displayed in the FAQs pop up window.
  */
 let QuestionsAndAnswers = [
+
+  {Question:"How do I create a class?",
+   Answer:"Please visit our YouTube video for step by step instructions to learn the tools:\n " +
+     "https://www.youtube.com/watch?v=DEhWPkEJhC0&feature=youtu.be"},
+
   {Question:"How do I sign up for a new account?",
-   Answer:"Click on the sign up button in the top bar," +
-      "fill up the required information and click Sign up.\n"+
-      "Check your email inbox used to signup for the account and" +
+   Answer:"Click on the sign up button in the top bar, " +
+      "fill up the required information and click Sign up. \n"+
+      "Check your email inbox used to signup for the account and " +
       "enter the received confirmation code to create your account."},
 
   {Question:"How do I log into an existing account?",
-   Answer:"Click on the log in button in the top bar," +
+   Answer:"Click on the log in button in the top bar, " +
      "enter your credentials and click Submit."},
 
   ];
