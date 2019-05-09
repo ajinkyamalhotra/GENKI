@@ -9,6 +9,11 @@ import '../../../styles/Faqs.css';
  * displayed in the FAQs pop up window.
  */
 let QuestionsAndAnswers = [
+
+  {Question:"How do I create a class?",
+   Answer:"Please visit our YouTube video for step by step instructions to learn the tools:\n " +
+     "https://www.youtube.com/watch?v=DEhWPkEJhC0&feature=youtu.be"},
+
   {Question:"How do I sign up for a new account?",
    Answer:"Click on the sign up button in the top bar, " +
       "fill up the required information and click Sign up.\n"+
