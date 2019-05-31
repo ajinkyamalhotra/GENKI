@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../../config';
 import { API } from 'aws-amplify';
 import { Card, Loader } from 'semantic-ui-react';
 
@@ -46,7 +47,7 @@ class VirtualClassList extends Component {
    * and adds it to the state of this component.
    */
   async getClassList() {
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let username = this.props.username;
     console.log('Getting class list for: ' + username);
     let path = `/classList/${username}`;

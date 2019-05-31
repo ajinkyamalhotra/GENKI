@@ -36,7 +36,7 @@ class HomePage extends Component {
    */
   async getPendingTeachers() {
     console.log('fetching pending teachers');
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let groupName = 'pendingTeacher';
     // Funny symbol to setup URL parameters
     let path = `/listGroup/${groupName}`;
@@ -86,7 +86,7 @@ class HomePage extends Component {
   }
 
   submitDecision(approved, username) {
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let path = '/handlePendingTeacher';
     let params = {
       body: {

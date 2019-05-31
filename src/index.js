@@ -25,7 +25,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "genki-vn-beta",
+        name: config.API_NAME,
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION
       },

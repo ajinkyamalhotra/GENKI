@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../../config';
 import { API } from 'aws-amplify';
 import { List, Button, Popup, Header, Modal } from 'semantic-ui-react';
 
@@ -55,7 +56,7 @@ class ClassRosterPane extends Component {
    * This function retrieves the class roster from Dynamo via Lambda.
    */
   async getClassRoster() {
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let classID = this.props.clazz.ClassID;
     console.log('Getting class roster for: ' + classID);
     let path = `/getClassRoster/${classID}`;
@@ -161,7 +162,7 @@ class ClassRosterPane extends Component {
     });
     try {
       console.log('Removing students: ' + JSON.stringify(removeStudentList));
-      let apiName = 'genki-vn-beta';
+      let apiName = config.API_NAME;
       let path = '/removeFromClass';
       let params = {
         body: {

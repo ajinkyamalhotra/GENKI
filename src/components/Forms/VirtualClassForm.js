@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import config from '../../config';
 import { Button, Form, Input, Icon, Modal } from 'semantic-ui-react';
 import { API } from 'aws-amplify';
 
@@ -105,7 +106,7 @@ class VirtualClassForm extends Component{
     console.log(semester);
     console.log(teacher);
     console.log(username);
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let path = '/createClass';
     let params = {
       body: {

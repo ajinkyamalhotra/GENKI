@@ -1,4 +1,5 @@
 import {API} from 'aws-amplify';
+import config from '../../config';
 import React, {Component} from 'react';
 import { Label, Button, Modal, Form } from 'semantic-ui-react';
 
@@ -69,7 +70,7 @@ class AddAnnouncementModal extends Component {
     } else {
       try {
         console.log('Submitting Announcement');
-        let apiName = 'genki-vn-beta';
+        let apiName = config.API_NAME;
         let path = '/addAnnouncement';
         let date = new Date();
         let params = {

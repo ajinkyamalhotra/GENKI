@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import config from '../../config';
 import { API } from "aws-amplify";
 
 class SaveLoadMenu extends Component {
@@ -15,7 +16,7 @@ class SaveLoadMenu extends Component {
    */
   saveGameData() {
     console.log('Saving game progress');
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let path = '/save';
     let params = {
       body: {

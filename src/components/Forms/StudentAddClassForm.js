@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import config from '../../config';
 import { Button, Form, Modal} from 'semantic-ui-react';
 import { API } from 'aws-amplify';
 
@@ -69,7 +70,7 @@ class StudentAddClassForm extends Component {
    */
   addUserClass(){
     console.log('Adding class to user');
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let path ='/classAdd';
     let params = {
       body: {

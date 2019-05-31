@@ -79,7 +79,7 @@ class SignUp extends Component{
    */
   moveUserToGroup() {
     console.log('Moving User To Group');
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let path = '/group';
     let params = {
       body: {
@@ -97,7 +97,7 @@ class SignUp extends Component{
    */
   addUserClass(){
     console.log('Adding class to user');
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let path ='/classAdd';
     let params = {
       body: {
@@ -117,7 +117,7 @@ class SignUp extends Component{
    */
   createUserNoClassID(){
     console.log('Creating user');
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let path ='/createUser';
     let params = {
       body: {

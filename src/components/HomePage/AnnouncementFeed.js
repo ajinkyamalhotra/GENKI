@@ -1,4 +1,5 @@
 import {API} from 'aws-amplify';
+import config from '../../config';
 import React, {Component} from 'react';
 import { Card, Loader, Divider } from 'semantic-ui-react';
 
@@ -39,7 +40,7 @@ class AnnouncementFeed extends Component {
   }
 
   async getAnnouncementList() {
-    let apiName = 'genki-vn-beta';
+    let apiName = config.API_NAME;
     let ClassID = this.props.clazz.ClassID;
     console.log('Getting announcements for: ' + ClassID);
     let path = `/getAnnouncements/${ClassID}`;

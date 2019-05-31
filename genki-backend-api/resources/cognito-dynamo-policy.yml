@@ -36,8 +36,8 @@ Resources:
                   - cognito-idp:AdminRemoveUserFromGroup
                   - cognito-idp:ListUsersInGroup
                   - cognito-idp:AdminDeleteUser
-                Resource: 'arn:aws:cognito-idp:us-west-2:132323314018:userpool/us-west-2_WV9ZxGPoJ'
+                Resource: 'arn:aws:cognito-idp:us-west-2:518872580259:userpool/us-west-2_1T0BDHNGx'
               - Effect: Allow
                 Action:
                   - dynamodb:DeleteItem
-                Resource: "arn:aws:dynamodb:us-west-2:132323314018:table/*"
+                Resource: "arn:aws:dynamodb:us-west-2:518872580259:table/*"
