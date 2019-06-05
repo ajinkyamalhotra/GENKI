@@ -1,4 +1,4 @@
-1T0BDHNGximport AWS from 'aws-sdk';
+import AWS from 'aws-sdk';
 
 const USER_POOL_ID = 'us-west-2_1T0BDHNGx';
 const USER_LOAD_LIMIT = 50;
