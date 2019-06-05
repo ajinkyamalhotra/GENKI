@@ -5,6 +5,8 @@ import { Button, Header } from 'semantic-ui-react';
 import '../styles/Navigation.css';
 import logo from '../images/logo with title.png';
 
+import LandingPage from './LandingPage/LandingPage';
+
 /**
  * Function to extract current Active Item
  * @returns {string}
@@ -44,14 +46,39 @@ class Navigation extends Component {
     }
   }
 
-  //To change active item to the selected menu-item when a menu-item is clicked
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  /**
+   * To change active item to the selected menu-item when a menu-item is clicked
+   *
+   * Also changes the slideshow container display property to none to hide the
+   * container, when the user is not logged in.
+   */
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+
+    let slideshow = document.getElementById("slideShowContainer");
+    if(slideshow != null) {
+      slideshow.style.display = "none";
+    }
+
+  };
 
   //To change the active item to home when GENKI logo or label is clicked
   handleClickOnGENKILoggedIn = () => this.setState({ activeItem: 'Home' });
 
-  //To change the active item to none when user is not logged in
-  handleClickOnGENKINotLoggedIn = () => this.setState({ activeItem: '' });
+  /**
+   * To change the active item to none when user is not logged in
+   *
+   * Also changes the slideshow container display property to null to show the
+   * container, when the user is not logged in.
+   */
+  handleClickOnGENKINotLoggedIn = () => {
+    this.setState({ activeItem: '' });
+
+    let slideshow = document.getElementById("slideShowContainer");
+    if(slideshow != null) {
+        slideshow.style.display = "";
+    }
+  };
 
   /** Semantic-UI menu used
    * https://react.semantic-ui.com/collections/menu/
@@ -174,13 +201,11 @@ class Navigation extends Component {
             </Table.Header>
         </Table>
         }
-        {/*
-        {this.isLoggedIn ? (
+        {isLoggedIn ? (
           console.log("User already logged dont show greetings msg")
           ):(
-        <Greetings />
+        <LandingPage />
           )}
-          */}
       </div>
     )
   }
