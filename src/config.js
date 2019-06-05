@@ -11,7 +11,7 @@ export default {
     REGION: "us-west-2",
     USER_POOL_ID: "us-west-2_1T0BDHNGx",
     APP_CLIENT_ID: "6ji1h1t25kr6ns64luv61rtf1",
-    IDENTITY_POOL_ID: "us-west-2:cff82784-8ea9-431b-9cd1-1c6c3ec2d499"
+    IDENTITY_POOL_ID: "us-west-2:d1198928-0a32-421d-815f-3a9e415ed4eb"
   },
   API_NAME: "genki-vn-prod"
 };
