@@ -1,6 +1,6 @@
-import AWS from 'aws-sdk';
+1T0BDHNGximport AWS from 'aws-sdk';
 
-const USER_POOL_ID = 'us-west-2_WV9ZxGPoJ';
+const USER_POOL_ID = 'us-west-2_1T0BDHNGx';
 const USER_LOAD_LIMIT = 50;
 const cognito = new AWS.CognitoIdentityServiceProvider({apiVersion: '2016-04-18'});
 
