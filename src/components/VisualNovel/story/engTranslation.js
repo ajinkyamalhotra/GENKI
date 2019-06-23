@@ -10,109 +10,137 @@ let engTranslation = [
     text: 'Click on the screen or press "Enter" to begin'
   },
   {
-    text: 'Hello! Welcome to Genki VN! My name is Takeshi and I am here to guide you on how to play the game. First let us press that “ENTER” button on your keyboard.'
+    text:
+      "Hello! Welcome to Genki VN! My name is Takeshi and I am here to guide you on how to play the game. First let us press that “ENTER” button on your keyboard."
   },
   {
-    text: 'Well done! You made it to the next dialogue! Throughout Genki VN, multiple characters will be speaking like me. To navigate through their dialogues, you can simple press “ENTER” or click on the screen.'
+    text:
+      "Well done! You made it to the next dialogue! Throughout Genki VN, multiple characters will be speaking like me. To navigate through their dialogues, you can simple press “ENTER” or click on the screen."
   },
   {
-    text: 'This is a Visual Novel game. A visual novel game is...'
+    text: "This is a Visual Novel game. A visual novel game is..."
   },
   {
-    text: 'Oh, hi Mary!'
+    text: "Oh, hi Mary!"
   },
   {
-    text: 'Hello Takeshi, who is your friend here?'
+    text: "Hello Takeshi, who is your friend here?"
   },
   {
-    text: 'This is our guest! He is learning Japanese! Can you help me guide him through the game?'
+    text:
+      "This is our guest! He is learning Japanese! Can you help me guide him through the game?"
   },
   {
     text: "Sure! Let's get you ready for Genki VN!"
   },
   {
-    text: 'Now where was I? Oh yeah! Genki VN stands for Genki Visual Novel.'
+    text: "Now where was I? Oh yeah! Genki VN stands for Genki Visual Novel."
   },
   {
-    text: 'A place where you the player can see the story unfold throughout the chapters of Genki I or II in the form of dialogues between Genki characters like me and Mary!'
+    text:
+      "A place where you the player can see the story unfold throughout the chapters of Genki I or II in the form of dialogues between Genki characters like me and Mary!"
   },
   {
-    text: 'Genki VN is not only a great way to immerse yourself with the story in Genki textbooks, but also a fun way to learn Japanese!'
+    text:
+      "Genki VN is not only a great way to immerse yourself with the story in Genki textbooks, but also a fun way to learn Japanese!"
   },
   {
-    text: '"In case you want to shift things around. See what I did there?" -> Bad pun by Takeshi...'
+    text:
+      '"In case you want to shift things around. See what I did there?" -> Bad pun by Takeshi...'
   },
   {
-    text: 'What’s a game without giving the player options to toggle and fiddle with right? In Genki VN, there are settings you can choose from.'
+    text:
+      "What’s a game without giving the player options to toggle and fiddle with right? In Genki VN, there are settings you can choose from."
   },
   {
-    text: 'By pressing the “SPACEBAR” on your keyboard, the page will scroll down for options to choose from! Here try it out, press the SPACEBAR.'
+    text:
+      "By pressing the “SPACEBAR” on your keyboard, the page will scroll down for options to choose from! Here try it out, press the SPACEBAR."
   },
   {
-    text: 'What do we have here! So many options! Skip, Save, Load, Config, Full Screen. So many things you can do to enjoy Genki VN the way you want to!  I will explain about the SKIP button first.'
+    text:
+      "What do we have here! So many options! Skip, Save, Load, Config, Full Screen. So many things you can do to enjoy Genki VN the way you want to!  I will explain about the SKIP button first."
   },
   {
-    text: 'With the the SKIP button, you can navigate through the dialogues without pushing anything. Upon clicking on SKIP, you will be prompted to input how many seconds you want between dialogues. Isn’t that neat?'
+    text:
+      "With the the SKIP button, you can navigate through the dialogues without pushing anything. Upon clicking on SKIP, you will be prompted to input how many seconds you want between dialogues. Isn’t that neat?"
   },
   {
-    text: 'Don’t you hate it when you are playing a game and you have to reach a checkpoint to save your current progress...No? Well I do!'
+    text:
+      "Don’t you hate it when you are playing a game and you have to reach a checkpoint to save your current progress...No? Well I do!"
   },
   {
-    text: 'In Genki VN, you can save your progress at any point and load back in whenever you desire. (*Sometimes I wish I could do this in real life to load back to the times I’ve bailed on Mary san...*)'
+    text:
+      "In Genki VN, you can save your progress at any point and load back in whenever you desire. (*Sometimes I wish I could do this in real life to load back to the times I’ve bailed on Mary san...*)"
   },
   {
-    text: 'If you look next to the SKIP button, you can see the SAVE button. Once you click it, you will be able to select a slot, then click onto the big grey square to save your progress!'
+    text:
+      "If you look next to the SKIP button, you can see the SAVE button. Once you click it, you will be able to select a slot, then click onto the big grey square to save your progress!"
   },
   {
-    text: 'Try it now, click a slot and then the square screen to save. NOTE: *Saves to local machine only and will not carry over if you play on a different device!*'
+    text:
+      "Try it now, click a slot and then the square screen to save. NOTE: *Saves to local machine only and will not carry over if you play on a different device!*"
   },
   {
-    text: 'Now that you know how to save, now it is time to learn how to load your saved progress. Next to the save button, you can see the LOAD button.'
+    text:
+      "Now that you know how to save, now it is time to learn how to load your saved progress. Next to the save button, you can see the LOAD button."
   },
   {
-    text: 'Upon clicking it, you will see all the save slots, the ones with save data will be black while the ones with no save data will be grey.'
+    text:
+      "Upon clicking it, you will see all the save slots, the ones with save data will be black while the ones with no save data will be grey."
   },
   {
-    text: 'Click the desired save slot, then click on the big square. You will be prompted with “Load save? Click ok to load your game. *You will be taken back to the SAVE instructions'
+    text:
+      "Click the desired save slot, then click on the big square. You will be prompted with “Load save? Click ok to load your game. *You will be taken back to the SAVE instructions"
   },
   {
-    text: 'Now that you mastered saving and loading your progress, let us take a look at the CONFIG button next to the load button.'
+    text:
+      "Now that you mastered saving and loading your progress, let us take a look at the CONFIG button next to the load button."
   },
   {
-    text: 'With config, you can adjust the audio setting in the game (BGM) and also adjust the text font style. Why don’t you try it? Change the font style to Courier New.'
+    text:
+      "With config, you can adjust the audio setting in the game (BGM) and also adjust the text font style. Why don’t you try it? Change the font style to Courier New."
   },
   {
-    text: 'Feeling fancy with all these tools huh? Well, we got something big for you, quiet literally.'
+    text:
+      "Feeling fancy with all these tools huh? Well, we got something big for you, quiet literally."
   },
   {
-    text: 'You see that FULL SCREEN button to the right? If you click it, the game will go into full screen mode, things are looking big now huh? Have that skip option on, full screen mode and you have yourself Genki: The Movie!'
+    text:
+      "You see that FULL SCREEN button to the right? If you click it, the game will go into full screen mode, things are looking big now huh? Have that skip option on, full screen mode and you have yourself Genki: The Movie!"
   },
   {
-    text: 'Don’t grab some popcorn just yet! We still got a tutorial to finish here!'
+    text:
+      "Don’t grab some popcorn just yet! We still got a tutorial to finish here!"
   },
   {
-    text: 'It’s time to jump around! You think I’m joking? In Genki VN, there is a JUMP feature that lets you well... jump back to previous dialogues you have read. '
+    text:
+      "It’s time to jump around! You think I’m joking? In Genki VN, there is a JUMP feature that lets you well... jump back to previous dialogues you have read. "
   },
   {
-    text: 'Scroll up with your mouse while on the game’s screen to pull up the BACKLOG of all the previous dialogues read! By clicking on JUMP next to the dialogue you will be taken back to that moment in the game. Try it out!'
+    text:
+      "Scroll up with your mouse while on the game’s screen to pull up the BACKLOG of all the previous dialogues read! By clicking on JUMP next to the dialogue you will be taken back to that moment in the game. Try it out!"
   },
   {
-    text: 'Congratulations E Congratulations A Congratulations H Congratulations A Congratulations B Congratulations......Is this an easter egg...?'
+    text:
+      "Congratulations E Congratulations A Congratulations H Congratulations A Congratulations B Congratulations......Is this an easter egg...?"
   },
   {
-    text: 'I am glad I could help! Best of luck to you and have fun!'
+    text: "I am glad I could help! Best of luck to you and have fun!"
   },
   {
-    text: 'Before you go, I’d like to introduce to you the “T” command. By pressing “T” on your keyboard, you will be taken back to the game’s title screen. Press “T” to return to the game’s title.'
+    text:
+      "Before you go, I’d like to introduce to you the “T” command. By pressing “T” on your keyboard, you will be taken back to the game’s title screen. Press “T” to return to the game’s title."
   },
   {
-    text: 'Hmmm… it seems you did not press “T”...press “T” to return to the title screen.'
+    text:
+      "Hmmm… it seems you did not press “T”...press “T” to return to the title screen."
   },
   {
-    text: 'Didn’t I tell you to press “T”?!... You know what, press ENTER and see what happens!'
+    text:
+      "Didn’t I tell you to press “T”?!... You know what, press ENTER and see what happens!"
   },
   {
-    text: 'End of tutorial'
+    text: "End of tutorial"
   },
 
   //////////////////////////Chapter 11//////////////////////////////////////////
@@ -607,6 +635,159 @@ let engTranslation = [
   {
     text:
       "そうか：”I see. (casual) [Other Expression] | 選ぶ(えらぶ)：to choose; to select [U - Verb] | ～かな(あ)：I wonder. . . (casual) [Other Expression]"
+  },
+
+  ////////////////////Chapter 18 below//////////////////////////////////////
+  {
+    text: 'Click on the screen or press "Enter" to begin'
+  },
+  //Scene 1
+  {
+    text: "At Little Asia Restaurant"
+  },
+  {
+    text:
+      "夕方(ゆうがた)：evening [Noun] |  頼む(たのむ)：to ask (a favor) (person に ~を)"
+  },
+  {
+    text: "Sure, I will do my best."
+  },
+  {
+    text:
+      "まず：first of all [Other Expression]｜冷蔵庫(れいぞうこ)：refrigerator [Noun] | 外(そと)：outside [Noun]｜つく：(something) turns on (~が) [U-Verbs]"
+  },
+  {
+    text: "No it isn’t. Shall I turn it on."
+  },
+  {
+    text:
+      "スイッチ：switch [Noun] | 押す(おす)：to press; to push (~を) [U-Verb] "
+  },
+  //Scene 2
+  {
+    text: "A customer calls John."
+  },
+  {
+    text:
+      "しょうゆ：soy sauce [Noun] | 落とす(おとす)：to drop (something) (~を) [U-Verb]"
+  },
+  {
+    text:
+      "汚れる(よごれる)：to become dirty (~が) [RU-Verb] | スカート：skirt [Noun]"
+  },
+  {
+    text:
+      "本当に(ほんとうに)：really [Adverb] | どうしよう：What should I/we do? [Other Expression]"
+  },
+  {
+    text: "今すぐ(いますぐ)：right away [Adverb] |  タオル：towel [Noun]"
+  },
+  //Scene 3
+  {
+    text: "After closing time."
+  },
+  {
+    text:
+      "おかげで：thanks to. . . (~の) [Adverb] ｜ 助かる(たすかる)：to be saved; to be helped [U-Verb]"
+  },
+  {
+    text: "Don’t mention it. But, it was such a busy day."
+  },
+  {
+    text: "~(ん)だろう：short form of ~(ん)でしょう [Other Expression]"
+  },
+  {
+    text: "Yes, I am late for classes sometimes. "
+  },
+  {
+    text:
+      "後(あと)：the rest [Noun]｜片付ける(かたつける)：to tidy up (~を) [RU-Verb]"
+  },
+  {
+    text:
+      "お先に失礼します(おさきにしつれいします)：See you. (lit., I’m leaving ahead of you.) [Other Expression] | おつかれさま(でした)：You must be tired after working so hard. (ritualistic expression) [Other Expression]"
+  },
+  {
+    text: "Thank you. Bye."
+  },
+
+  ////////////////////Chapter 19 below//////////////////////////////////////
+
+  {
+    text: 'Click on the screen or press "Enter" to begin'
+  },
+  //Scene 1
+  {
+    text:
+      "Takeshi came to the airport to pick up the department manager who went to America on business."
+  },
+  {
+    text:
+      "部長(ぶちょう)：department manager [Noun] | 出張(しゅっちょう)：business trip [Noun]"
+  },
+  {
+    text:
+      "本当は(ほんとうは)：in fact; originally [Adverb] | 遅れる(おくれる)：to become late (~に) [RU-Verb]"
+  },
+  {
+    text: "You must be tired then."
+  },
+  {
+    text: "No, I am fine, but I am a little hungry."
+  },
+  {
+    text:
+      "召し上がる(めしあがる)：honorific expression for たべる and のむ [U-Verb]"
+  },
+  {
+    text: "That sounds good to me."
+  },
+  //Scene 2
+  {
+    text: "At a restaurant"
+  },
+  {
+    text: "~名様(~めいさま)：part of. . .people [Adverb]"
+  },
+  {
+    text: "Two."
+  },
+  {
+    text: "Do you smoke?"
+  },
+  {
+    text: "No."
+  },
+  {
+    text:
+      "こちら：this way (polite) [Noun] | 決まる(きまる)：to be decided (~が) [U-Verb] | 呼ぶ(よぶ)：to call (one’s name) (~を) [U-Verb]"
+  },
+  //Scene 3
+  {
+    text: "In front of the department manager’s house."
+  },
+  {
+    text:
+      "送る(おくる)：to walk/drive (someone) (person を place まで) [U-Verb]"
+  },
+  {
+    text:
+      "ごちそうする：to treat/invite (someone) to a meal (person に meal を) [Irregular Verb]"
+  },
+  {
+    text:
+      "話(はなし)：chat; talk [Noun] | 話をする(はなしをする)：to have a talk [Irregular Verb] | 寄る(よる)：to stop by (~に) [U-Verb]"
+  },
+  {
+    text:
+      "奥様(おくさま)：(your/his) wife (polite) [Noun] | お休みになる(おやすみになる)：honorable expression for ねる [U-Verb]"
+  },
+  {
+    text: "まだ：still [Adverb]"
+  },
+  {
+    text:
+      "遠慮する(えんりょする)：to hold back for the time being; to refrain from [Irregular Verb] | よろしくお伝えください(よろしくおつたえください)：Please give my best regards (to. . .) (~に) [Other Expression]"
   },
 
   //After Playing the last Chapter in the Game

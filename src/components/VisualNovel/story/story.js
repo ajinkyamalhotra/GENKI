@@ -31,6 +31,10 @@ const stationAttendant = "駅員（えきいん)";
 const sue = "スー";
 const ken = "けん";
 const doctor = "医者（いしゃ）";
+const customer = "客";
+const takeshi = "たけし";
+const departmentManager = "部長";
+const waitress = "ウェイトレス";
 
 // sprites
 const logo = require("./sprites/logo.png");
@@ -1287,6 +1291,221 @@ let story = [
     spriteLeft: "",
     sprite: takeshiNeutralGif,
     text: "Thank You For Playing!"
+  },
+
+  ////////////////////Chapter 18 below//////////////////////////////////////
+
+  {
+    routeBegins: "chapter18Route",
+    speaker: "Chapter 18",
+    bg: clouds,
+    bgm: ishikariLore,
+    text: 'Click on the screen or press "Enter" to begin',
+    jumpTo: "chapter18"
+  },
+  //Scene 1: At little Asia restaurant
+  {
+    receiveJump: "chapter18",
+    speaker: "Scene 1",
+    bg: trainStation,
+    sprite: "",
+    spriteLeft: "",
+    spriteRight: "",
+    text: "At Little Asia Restaurant"
+  },
+  {
+    speaker: manager,
+    text:
+      "ジョン、今日は森田くん、かぜで来られないそうだ。夕方になると忙しくなるから、頼むよ。"
+  },
+  {
+    speaker: john,
+    text: "はい。がんばります。"
+  },
+  {
+    speaker: manager,
+    text:
+      "ます、冷蔵庫に野菜が入っているから、出しておいて。それから、外の天気はついている？"
+  },
+  {
+    speaker: john,
+    text: "いいえ、ついていません。つけましょうか。"
+  },
+  {
+    speaker: manager,
+    text: "うん。そこのスイッチを押すとつくよ。"
+  },
+  {
+    speaker: john,
+    text: "はい。"
+  },
+
+  //Scene 2: A customer calls John
+  {
+    speaker: "Scene 2",
+    bg: cafe,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "A customer calls John"
+  },
+  {
+    speaker: customer,
+    text: "すみません。しょうゆを落としちゃったんです。ごめんなさい。"
+  },
+  {
+    speaker: john,
+    text: "ジョン：”いえ、大丈夫です。あっ、スカートが汚れてしまいましたね。"
+  },
+  {
+    speaker: customer,
+    text: "本当だ。どうしよう。"
+  },
+  {
+    speaker: john,
+    text: "今すぐ、タオルを持ってきます。"
+  },
+  //Scene 3: After closing time
+  {
+    speaker: "Scene 3",
+    bg: cafe,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "After closing time."
+  },
+  {
+    speaker: manager,
+    text: "今日はジョンのおかげで、助かったよ。"
+  },
+  {
+    speaker: john,
+    text: "いいえ。でも本当に忙しかったですね"
+  },
+  {
+    speaker: manager,
+    text:
+      "あしたは学校があるんだろう。アルバイトをしながら学校に行くのは大変だね。"
+  },
+  {
+    speaker: john,
+    text: "ええ、時々、遅刻しちゃうんですよ。"
+  },
+  {
+    speaker: manager,
+    text: "ぼくも学生の時はよく授業をサボったよ。もっと勉強すればよかったなあ。"
+  },
+  {
+    speaker: john,
+    text: "じゃあ、お先に失礼します。お疲れさまでした。"
+  },
+  {
+    speaker: manager,
+    text: "お疲れさま。"
+  },
+
+  ////////////////////Chapter 19 below//////////////////////////////////////
+  {
+    routeBegins: "chapter19Route",
+    speaker: "Chapter 19",
+    bg: clouds,
+    bgm: ishikariLore,
+    text: 'Click on the screen or press "Enter" to begin',
+    jumpTo: "chapter19"
+  },
+  //Scene 1: Takeshi came to the airport to pick up the department manager who went to America on business.
+  {
+    receiveJump: "chapter19",
+    speaker: "Scene 1",
+    bg: trainStation,
+    sprite: "",
+    spriteLeft: "",
+    spriteRight: "",
+    text:
+      "Takeshi came to the airport to pick up the department manager who went to America on business."
+  },
+  {
+    speaker: takeshi,
+    text: "部長、出張お疲れさまでした。"
+  },
+  {
+    speaker: departmentManager,
+    text:
+      "木村くん、迎えに来てくれてありがとう。本当はシアトルを一時に出るはずだったんだけど、遅れちゃってね。"
+  },
+  {
+    speaker: takeshi,
+    text: "じゃあ、お疲れになったでしょう。"
+  },
+  {
+    speaker: departmentManager,
+    text: "大丈夫だけど、ちょっとおなかがすいてるんだ。"
+  },
+  {
+    speaker: takeshi,
+    text: "じゃあ、何か召し上がってから、お帰りになりますか。"
+  },
+  {
+    speaker: departmentManager,
+    text: "うん。そうしようか。"
+  },
+  //Scene 2: At a restaurant
+  {
+    speaker: "Scene 2",
+    bg: cafe,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "At a restaurant"
+  },
+  {
+    speaker: waitress,
+    text: "いらっしゃいませ。何名様ですか。"
+  },
+  {
+    speaker: takeshi,
+    text: "二人です。"
+  },
+  {
+    speaker: waitress,
+    text: "”おたばこをお吸いになりますか。"
+  },
+  {
+    speaker: departmentManager,
+    text: "いいえ。"
+  },
+  {
+    speaker: waitress,
+    text: "こちらへどうぞ。お決まりになりましたらお呼びください。"
+  },
+  //Scene 3: In front of the department manager’s house.
+  {
+    speaker: "Scene 3",
+    bg: cafe,
+    spriteLeft: "",
+    spriteRight: "",
+    text: "In front of the department manager’s house."
+  },
+  {
+    speaker: departmentManager,
+    text: "うちまで送ってくれてありがとう。"
+  },
+  {
+    speaker: takeshi,
+    text: "いいえ。今日はごちそうしてくださってありがとうございました"
+  },
+  {
+    speaker: departmentManager,
+    text: "ゆっくり話ができてよかったよ。ちょっとうちに寄らない？"
+  },
+  {
+    speaker: takeshi,
+    text: "いえ、もう遅いし、奥様もお休みになっているでしょうから。"
+  },
+  {
+    speaker: departmentManager,
+    text: "この時間ならまだ起きているはずだよ。"
+  },
+  {
+    speaker: takeshi,
+    text: "でも、今日は遠慮しておきます。奥様によろしくお伝えください。"
   },
 
   //Credits
