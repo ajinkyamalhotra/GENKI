@@ -35,6 +35,13 @@ class Login extends Component{
     });
   }
 
+  componentDidMount() {
+    let slideshow = document.getElementById("slideShowContainer");
+    if(slideshow != null) {
+       slideshow.style.display = "none";
+    }
+  }
+
   /**
    * Used to make the form a controlled component.
    * Will be called when the user types in the username or password textbox.

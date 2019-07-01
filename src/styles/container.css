@@ -85,3 +85,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+*, :after, :before {
+  box-sizing: initial !important;
+}
