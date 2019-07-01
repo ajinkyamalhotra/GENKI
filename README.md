@@ -1,7 +1,8 @@
 # Genki Visual Novel
 
 Genki Visual Novel is a React powered online visual novel for Japanese language learners.  Genki VN follows the dialogues found in the Genki I and II language books and provides an immersive environment to learn Japanese.
-Official Website: http://genki-vn-prod.s3-website-us-west-2.amazonaws.com/
+
+# Official Website: http://genki-vn-prod.s3-website-us-west-2.amazonaws.com/
 
 ## Getting Started
 
