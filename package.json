@@ -37,7 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "aws s3 sync build/ s3://genki-vn-beta --delete",
+    "deploy": "aws s3 sync build/ s3://genki-vn-prod --delete",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
