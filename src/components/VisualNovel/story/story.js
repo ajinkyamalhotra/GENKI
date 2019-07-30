@@ -15,9 +15,20 @@ const cafe = require("./bg/Cafe.jpg");
 const hospital = require("./bg/Hospital.png");
 const teamCast = require("./bg/Team Cast.png");
 
+const airport = require("./bg/Airport.png");
+const airport2 = require("./bg/Airport2.png");
+const airport3 = require("./bg/Airport3.png");
+const dogoOnsen = require("./bg/Dogo-Onsen.jpeg");
+const udonyaOutside = require("./bg/Udonya-Outside.png");
+const udonyaInside = require("./bg/Udonya-Inside.png");
+const bus = require("./bg/Bus2.jpg");
+const taiSmile = require("./bg/Tai-Smile.png");
+const miyajima = require("./bg/Miyajima.jpg");
+
 // bgm
 const take = require("./bgm/take.mp3");
 const ishikariLore = require("./bgm/Ishikari Lore.m4a");
+const miyakoJapan = require("./bgm/Miyako Japan.mp3");
 
 // speakers
 const john = "ジョン";
@@ -31,6 +42,33 @@ const stationAttendant = "駅員（えきいん)";
 const sue = "スー";
 const ken = "けん";
 const doctor = "医者（いしゃ）";
+
+const unknown = "？？？"; //used for when character names are not known yet to the player
+const sean = "ショーン";
+const may = "めい";
+const rui = "るい";
+const satomi = "さとみ";
+const japanClub = "ジャパンクラブ";
+const minasan = "みなさん"
+const eahab = "イハブ";
+const vicky = "ヴィッキー";
+const kris = "クリス";
+const seanW = "ショーン・ウィークス";
+const christian = "クリスチャン";
+const christianP = "クリスチャン";
+const jake = "ジェーク";
+const clayton = "クレイトン";
+const masuyama = "増山先生";
+const vassil = "バッセル先生";
+const kelly = "ケリー先生";
+const briana = "ブリアナ";
+const hollie = "ホーリー";
+const david = "デービッド";
+const freddy = "フレディ";
+const amr = "アムル";
+const tyler = "タイラー";
+const yarrchan = "ヤールちゃん";
+const jose = "ホゼ";
 
 // sprites
 const logo = require("./sprites/logo.png");
@@ -84,6 +122,57 @@ const marySick = require("./sprites/Mary-sick.png");
 const marySickGif = require("./sprites/Mary-sick-gif.gif");
 const doctorNeutral = require("./sprites/Doctor-neutral.png");
 const doctorNeutralGif = require("./sprites/Doctor-neutral-gif.gif");
+
+const seanNeutral = require("./sprites/Sean-neutral.png");
+const seanNeutralGif = require("./sprites/Sean-neutral-gif.gif");
+const mayNeutral = require("./sprites/May-neutral.png");
+const mayNeutralGif = require("./sprites/May-neutral-gif.gif");
+const ruiNeutral = require("./sprites/Rui-neutral.png");
+const ruiNeutralGif = require("./sprites/Rui-neutral-gif.gif");
+const satomiNeutral = require("./sprites/Satomi-neutral.png");
+const satomiNeutralGif = require("./sprites/Satomi-neutral-gif.gif");
+const japanClubArrival = require("./sprites/JapanClubArrival2.png");
+const japanClubDeparture = require("./sprites/JapanClubDeparture.png");
+//const welcomeGroupNeutral = require("./sprites/WelcomeGroup-neutral.png");
+//const welcomeGroupNeutralGif = require("./sprites/WelcomeGroup-neutral-gif.gif");
+const eahabNeutral = require("./sprites/Eahab-neutral.png");
+const eahabNeutralGif = require("./sprites/Eahab-neutral-gif.gif");
+const vickyNeutral = require("./sprites/Vicky-neutral.png");
+const vickyNeutralGif = require("./sprites/Vicky-neutral-gif.gif");
+const krisNeutral = require("./sprites/Kris-neutral.png");
+const krisNeutralGif = require("./sprites/Kris-neutral-gif.gif");
+const seanWNeutral = require("./sprites/SeanW-neutral.png");
+const seanWNeutralGif = require("./sprites/SeanW-neutral-gif.gif");
+const christianNeutral = require("./sprites/Christian-neutral.png");
+const christianNeutralGif = require("./sprites/Christian-neutral-gif.gif");
+const christianPNeutral = require("./sprites/ChristianP-neutral.png");
+const christianPNeutralGif = require("./sprites/ChristianP-neutral-gif.gif");
+const jakeNeutral = require("./sprites/Jake-neutral.png");
+const jakeNeutralGif = require("./sprites/Jake-neutral-gif.gif");
+const claytonNeutral = require("./sprites/Clayton-neutral.png");
+const claytonNeutralGif = require("./sprites/Clayton-neutral-gif.gif");
+const masuyamaNeutral = require("./sprites/Masuyama-neutral.png");
+const masuyamaNeutralGif = require("./sprites/Masuyama-neutral-gif.gif");
+const vassilNeutral = require("./sprites/Vassil-neutral.png");
+const vassilNeutralGif = require("./sprites/Vassil-neutral-gif.gif");
+const kellyNeutral = require("./sprites/Kelly-neutral.png");
+const kellyNeutralGif = require("./sprites/Kelly-neutral-gif.gif");
+const brianaNeutral = require("./sprites/Briana-neutral.png");
+const brianaNeutralGif = require("./sprites/Briana-neutral-gif.gif");
+const hollieNeutral = require("./sprites/Hollie-neutral.png");
+const hollieNeutralGif = require("./sprites/Hollie-neutral-gif.gif");
+const davidNeutral = require("./sprites/David-neutral.png");
+const davidNeutralGif = require("./sprites/David-neutral-gif.gif");
+const freddyNeutral = require("./sprites/Freddy-neutral.png");
+const freddyNeutralGif = require("./sprites/Freddy-neutral-gif.gif");
+const amrNeutral = require("./sprites/Amr-neutral.png");
+const amrNeutralGif = require("./sprites/Amr-neutral-gif.gif");
+const tylerNeutral = require("./sprites/Tyler-neutral.png");
+const tylerNeutralGif = require("./sprites/Tyler-neutral-gif.gif");
+const yarrchanNeutral = require("./sprites/Yarrchan-neutral.png");
+const yarrchanNeutralGif = require("./sprites/Yarrchan-neutral-gif.gif");
+const joseNeutral = require("./sprites/Jose-neutral.png");
+const joseNeutralGif = require("./sprites/Jose-neutral-gif.gif");
 
 let story = [
   //////////////////////////Tutorial//////////////////////////////////////////
@@ -1275,11 +1364,984 @@ let story = [
     spriteRight: kenNeutralGif,
     spriteLeft: sueNeutral,
     text:
-      "そうか。ぼくだったら、仕事より彼女を選ぶけど。あの二人、大丈夫かなあ。"
+      "そうか。ぼくだったら、仕事より彼女を選ぶけど。あの二人、大丈夫かなあ。",
+    jumpTo: "endGame"
   },
+
+  ////////////////////Chapter 24 below//////////////////////////////////////
+  {
+    routeBegins: "chapter24Route",
+    speaker: "Chapter 24",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: logo,
+    bg: clouds,
+    bgm: miyakoJapan,
+    text: 'Click on the screen or press "Enter" to begin',
+    jumpTo: "chapter24"
+  },
+
+  //Scene 1, At the airport after Mary's departure.
+  {
+    receiveJump: "chapter24",
+    speaker: "Scene 1",
+    bg: airport,
+    sprite: "",
+    spriteLeft: "",
+    spriteRight: "",
+    text: "At the airport after Mary's departure."
+  },
+  {
+    bgm: miyakoJapan,
+    speaker: "",
+    spriteLeft: "",
+    spriteRight: "",
+    text:
+      "たけしさんは歩いている時、誰かにぶつかった。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: takeshiOverworked,
+    spriteLeft: eahabNeutralGif,
+    text: "おい、気をつけろ！"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiOverworkedGif,
+    spriteLeft: eahabNeutral,
+    text: "すみません。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: takeshiOverworked,
+    spriteLeft: eahabNeutralGif,
+    text: "あっ、大丈夫なの？"
+  },
+  {
+    speaker: takeshi,
+    spriteLeft: eahabNeutral,
+    text: "・・・・・・"
+  },
+  {
+    speaker: unknown,
+    spriteRight: "",
+    spriteLeft: eahabNeutralGif,
+    text: "かわいそうな人だね。友達と別れたみたいかな。とにかく、ジャパンクラブの全員はもうすぐ来るだろう。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: satomiNeutralGif,
+    spriteLeft: eahabNeutral,
+    text: "そうだね。みんなと一緒に松山に旅行したり、また会えたりして嬉しい。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: satomiNeutral,
+    spriteLeft: eahabNeutralGif,
+    text: "あれ？ショーン、めい、るいくんはまだ来てないのか。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: seanNeutralGif,
+    spriteLeft: eahabNeutral,
+    text: "ギリギリセーフ！"
+  },
+  {
+    speaker: unknown,
+    spriteRight: seanNeutral,
+    spriteLeft: eahabNeutralGif,
+    text: "遅いよ、ショーン！ウェルカムポスターを持ってきた？"
+  },
+  {
+    speaker: sean,
+    spriteRight: seanNeutralGif,
+    spriteLeft: eahabNeutral,
+    text: "もちろん！るいとめいも手伝ってくれたよ。イハブがポスターの準備を全然手伝わなかった。"
+  },
+  {
+    speaker: eahab,
+    spriteRight: seanNeutral,
+    spriteLeft: eahabNeutralGif,
+    text: "お前も全然手伝わなかったよ！ショーンはポスターの作り方が分かんないでしょ。"
+  },
+  {
+    speaker: sean,
+    spriteRight: seanNeutralGif,
+    spriteLeft: eahabNeutral,
+    text: "なんでやねん！るい、めい、さとみ、僕は手伝ってあげたんだろう。"
+  },
+  {
+    speaker: may,
+    spriteRight: "",
+    spriteLeft: mayNeutralGif,
+    text: "もういい。ジャパンクラブのみんなはもうすぐ着くよ。"
+  },
+  {
+    speaker: satomi,
+    spriteRight: satomiNeutralGif,
+    spriteLeft: mayNeutral,
+    text: "そうだね。ウェルカムポスターをさし上げてね。"
+  },
+  {
+    speaker: rui,
+    spriteRight: satomiNeutral,
+    sprite: ruiNeutralGif,
+    text: "あっ！みんなが着いた！"
+  },
+  {
+    speaker: "",
+    spriteRight: seanNeutralGif,
+    spriteLeft:mayNeutralGif,
+    sprite: japanClubArrival,
+    text: "ようこそ！"
+  },
+
+  //Scene 2, Takeshi on his way home
+  {
+    speaker: "Scene 2",
+    bg: dogoOnsen,
+    spriteLeft: "",
+    spriteRight: "",
+    sprite: "",
+    text: "Takeshi on his way home."
+  },
+  {
+    bgm: miyakoJapan,
+    speaker: takeshi,
+    spriteRight: takeshiOverworkedGif,
+    text: "メアリーがもうアメリカに帰ったことを信じられない。悲しい・・・・・・"
+  },
+  {
+    speaker: unknown,
+    spriteLeft: davidNeutralGif,
+    spriteRight: "",
+    text: "道後温泉！ハブちゃん！みんな！行こう！"
+  },
+  {
+    speaker: takeshi,
+    spriteLeft: "",
+    spriteRight: takeshiOverworkedGif,
+    text: "道後温泉か。気持ちが良さそう・・・・・・"
+  },
+  {
+    speaker: unknown,
+    sprite: masuyamaNeutralGif,
+    spriteRight: "",
+    text: "みなさん、坊ちゃんという本を読みましたね。道後温泉の左には、坊ちゃんの登場人物の像があります。ちょっと見ましょう。"
+  },
+  {
+    speaker: unknown,
+    spriteLeft: davidNeutralGif,
+    spriteRight: freddyNeutral,
+    sprite: "",
+    text: "温泉に入りたいんですが・・・・・・"
+  },
+  {
+    speaker: unknown,
+    spriteLeft: davidNeutral,
+    spriteRight: freddyNeutralGif,
+    text: "デービッドさん、ちょっとがまんして。もうすぐ道後温泉に入れるからね。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: vickyNeutralGif,
+    text: "うん、フレディさんの話を聞いたほうがいい。増山先生は案内してくれてるよ。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: krisNeutralGif,
+    text: "ヴィッキーさんの言った通り。それに、クリスチャンさんは素敵な写真を取ってあげる。"
+  },
+  {
+    speaker: david,
+    spriteLeft: davidNeutralGif,
+    spriteRight: christianNeutral,
+    text: "本当に？僕、フレディ，ヴィッキー、クリスが道後温泉の前で面白い写真を取ってくれ！"
+  },
+  {
+    speaker: christian,
+    spriteLeft: "",
+    spriteRight: "",
+    sprite: christianNeutralGif,
+    text: "はい、チーズ！"
+  },
+  {
+    speaker: kris,
+    spriteLeft: vickyNeutral,
+    spriteRight: krisNeutralGif,
+    sprite: "",
+    text: "とにかく、イハブさんとジェークさんはどこに行った？"
+  },
+  {
+    speaker: vicky,
+    spriteLeft: vickyNeutralGif,
+    spriteRight: krisNeutral,
+    text: "さっき彼らを見たけど、どこに行ったか分からん・・・・・・"
+  },
+  {
+    speaker: freddy,
+    spriteLeft: vickyNeutral,
+    sprite: freddyNeutralGif,
+    text: "ふしぎだね。"
+  },
+
+  //Scene 3, Takeshi stops by mammam
+  {
+    speaker: "Scene 3",
+    bg: udonyaOutside,
+    spriteLeft: "",
+    spriteRight: "",
+    sprite: "",
+    text: "Takeshi stops by mammam."
+  },
+  {
+    bgm: miyakoJapan,
+    speaker: eahab,
+    sprite: eahabNeutralGif,
+    text: "みんな、うどんを食べよう！まんまといううどん屋さんはうまいよ。連れて行ってあげる。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: seanWNeutralGif,
+    sprite: "",
+    text: "でも、みんなをはなれたから、増山先生に怒られるよ。"
+  },
+  {
+    speaker: unknown,
+    spriteRight: seanWNeutral,
+    spriteLeft: jakeNeutralGif,
+    text: "気にしないでよ。ショーン・ウィークスさんもうどんを食べたがっているね？"
+  },
+  {
+    speaker: seanW,
+    spriteRight: seanWNeutralGif,
+    spriteLeft: jakeNeutral,
+    text: "そうだけど・・・・・・"
+  },
+  {
+    speaker: unknown,
+    spriteRight: seanWNeutral,
+    sprite: kellyNeutralGif,
+    text: "大丈夫だよ。"
+  },
+  {
+    speaker: seanW,
+    spriteRight: seanWNeutralGif,
+    sprite: kellyNeutral,
+    text: "ケリー先生？！"
+  },
+  {
+    speaker: kelly,
+    spriteRight: seanWNeutral,
+    sprite: kellyNeutralGif,
+    text: "ジェークさんもクレイトンさんもお腹がすいてるよ。"
+  },
+  {
+    speaker: "ジェーク、クレイトン",
+    spriteRight: claytonNeutralGif,
+    spriteLeft: jakeNeutralGif,
+    sprite: kellyNeutral,
+    text: "はい！うどんが食べたいです！"
+  },
+  {
+    speaker: eahab,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: eahabNeutralGif,
+    text: "ここだ。入ろう。"
+  },
+  {
+    speaker: "",
+    sprite: "",
+    text: "５分後・・・・・・"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiOverworkedGif,
+    text: "はらへったなぁ。このうどん屋さんは美味しそう。"
+  },
+  {
+    speaker: takeshi,
+    bg: udonyaInside,
+    text: "龍と鯉うどんを一つください。"
+  },
+  {
+    speaker: "イハブ、ジェーク",
+    spriteRight: eahabNeutralGif,
+    spriteLeft: jakeNeutralGif,
+    text: "龍と鯉？！"
+  },
+  {
+    speaker: satomi,
+    spriteRight: eahabNeutral,
+    spriteLeft: satomiNeutralGif,
+    text: "あの人は空港でイハブさんにぶつかったでしょう？"
+  },
+  {
+    speaker: eahab,
+    spriteRight: eahabNeutralGif,
+    spriteLeft: satomiNeutral,
+    text: "そうだね。ちょっと話してみるぜ。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiOverworkedGif,
+    spriteLeft: eahabNeutral,
+    text: "＊ずるずる＊"
+  },
+  {
+    speaker: eahab,
+    spriteRight: takeshiOverworked,
+    spriteLeft: eahabNeutralGif,
+    text: "すみません、空港でぶつかったんでしょう？悲しそうでした。大丈夫ですか。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiOverworkedGif,
+    spriteLeft: eahabNeutral,
+    text: "実は、友達がアメリカに帰りました。メアリーさんのことが恋しいですよ。"
+  },
+  {
+    speaker: eahab,
+    spriteRight: takeshiOverworked,
+    spriteLeft: eahabNeutralGif,
+    text: "別れることは大変ですね。メアリーさんは君が寂しくなってほしくないですね。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiOverworkedGif,
+    spriteLeft: eahabNeutral,
+    text: "メアリーさんと食べて良かったです。一人で食べたくないです。"
+  },
+  {
+    speaker: eahab,
+    spriteRight: takeshiOverworked,
+    spriteLeft: eahabNeutralGif,
+    text: "じゃあ、みなさんに紹介します。僕はイハブです。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiOverworkedGif,
+    spriteLeft: eahabNeutral,
+    text: "たけしと申します。よろしくお願いします。"
+  },
+  {
+    speaker: eahab,
+    spriteRight: takeshiOverworked,
+    spriteLeft: eahabNeutralGif,
+    text: "みなさん、こちらの方はたけしさんです。"
+  },
+  {
+    speaker: sean,
+    spriteLeft: eahabNeutral,
+    sprite: seanNeutralGif,
+    text: "こんにちは！僕はショーン！宜しくね！"
+  },
+  {
+    speaker: eahab,
+    spriteLeft: eahabNeutralGif,
+    sprite: seanNeutral,
+    text: "ショーンに気を付けたほうがいいですよ。"
+  },
+  {
+    speaker: sean,
+    spriteLeft: eahabNeutral,
+    sprite: seanNeutralGif,
+    text: "なんでやねん、お前！"
+  },
+  {
+    speaker: "みなさん",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: "",
+    text: "あははは"
+  },
+
+  //Scene 4, Takeshi rides the bus to Hiroshima with Japan Club.
+  {
+    speaker: "Scene 4",
+    bg: bus,
+    text: "Takeshi rides the bus to Hiroshima with Japan Club."
+  },
+  {
+    bgm: miyakoJapan,
+    speaker: masuyama,
+    sprite: masuyamaNeutralGif,
+    text: "みなさん、これからバッセル先生は広島を案内します。"
+  },
+  {
+    speaker: vassil,
+    sprite: vassilNeutralGif,
+    text: "みなさん、お元気ですか。案内する前に誰か質問はありますか。"
+  },
+  {
+    speaker: clayton,
+    sprite: claytonNeutralGif,
+    text: "はい！質問です！広島のお好み焼きと関西のお好み焼きとどちらの方がおいしいと思いますか。"
+  },
+  {
+    speaker: christian,
+    sprite: claytonNeutral,
+    spriteRight: christianNeutralGif,
+    text: "関西の方が好きです！"
+  },
+  {
+    speaker: jake,
+    spriteRight: christianNeutral,
+    spriteLeft: jakeNeutralGif,
+    text: "俺も関西のが好き！"
+  },
+  {
+    speaker: kris,
+    spriteRight: krisNeutralGif,
+    spriteLeft: jakeNeutral,
+    text: "もちろん広島のです！"
+  },
+  {
+    speaker: kris,
+    spriteRight: krisNeutral,
+    spriteLeft: vickyNeutralGif,
+    text: "両方がおいしいと思います！"
+  },
+  {
+    speaker: freddy,
+    spriteRight: freddyNeutralGif,
+    spriteLeft: vickyNeutral,
+    text: "ビッグ・キュートお好み焼きが買えるかな。"
+  },
+  {
+    speaker: eahab,
+    spriteRight: freddyNeutral,
+    spriteLeft: eahabNeutralGif,
+    text: "龍のお好み焼きが食べてみたいなぁ。"
+  },
+  {
+    speaker: jake,
+    spriteRight: jakeNeutralGif,
+    spriteLeft: eahabNeutral,
+    text: "鯉のお好み焼きが一番美味しいですよ！"
+  },
+  {
+    speaker: masuyama,
+    spriteRight: masuyamaNeutralGif,
+    spriteLeft: "",
+    sprite: vassilNeutral,
+    text: "みなさんはお好み焼きが好きみたいですね。"
+  },
+  {
+    speaker: vassil,
+    spriteRight: masuyamaNeutral,
+    sprite: vassilNeutralGif,
+    text: "そうですね。みなさん、バスを降りたらお好み焼きを食べましょう。"
+  },
+  {
+    speaker: rui,
+    spriteRight: ruiNeutralGif,
+    sprite: "",
+    text: "よっしゃー！僕もはらへった。広島のお好み焼きを食べることが楽しみだね。"
+  },
+  {
+    speaker: may,
+    spriteRight: ruiNeutral,
+    spriteLeft: mayNeutralGif,
+    text: "そうだね。広島のお好み焼きはおいしそう！"
+  },
+  {
+    speaker: satomi,
+    spriteLeft: mayNeutral,
+    sprite: satomiNeutralGif,
+    text: "広島の方はおいしいよ。テーブルの上にお好み焼きを自分で作れるレストランもあるよ。"
+  },
+  {
+    speaker: "るい、めい",
+    spriteRight: ruiNeutralGif,
+    spriteLeft: mayNeutralGif,
+    sprite: satomiNeutral,
+    text: "へぇー。"
+  },
+  {
+    speaker: sean,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: seanNeutralGif,
+    text: "長野の方がザ・ベストだよ。"
+  },
+  {
+    speaker: "みなさん",
+    sprite: seanNeutral,
+    text: "長野のスタイルはないよ！"
+  },
+  {
+    speaker: "バッセル、増山先生",
+    sprite: "",
+    spriteRight: masuyamaNeutralGif,
+    spriteLeft: vassilNeutralGif,
+    text: "ははは"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: "",
+    text: "あははは！ジャパンクラブのみなさんは面白いです。"
+  },
+  {
+    speaker: seanW,
+    spriteRight: takeshiTalking,
+    spriteLeft: seanWNeutralGif,
+    text: "たけしさん、お好み焼きが好きですか。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: seanWNeutral,
+    text: "うん、好きです。メアリーさんとよくお好み焼きを食べました。"
+  },
+  {
+    speaker: kelly,
+    spriteRight: takeshiTalking,
+    sprite: kellyNeutralGif,
+    text: "メアリーさんは親しい友達ですね。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    sprite: kellyNeutral,
+    text: "うん、メアリーさんがジャパンクラブの全員のように元気です。"
+  },
+  {
+    speaker: david,
+    spriteRight: takeshiTalking,
+    sprite: davidNeutralGif,
+    text: "メアリーさんは日本にまた遊びに来ますか。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    sprite: davidNeutral,
+    text: "メアリーさんが日本でたくさん友達がいるし、ホストファミリーがいるし、また来ると思います。"
+  },
+  {
+    speaker: seanW,
+    spriteRight: takeshiTalking,
+    spriteLeft: seanWNeutralGif,
+    text: "きっとメアリーさんにまた会いますね。"
+  },
+  {
+    speaker: rui,
+    spriteLeft: seanWNeutral,
+    sprite: ruiNeutralGif,
+    text: "友情は大切だと思います。"
+  },
+  {
+    speaker: may,
+    spriteLeft: mayNeutralGif,
+    sprite: ruiNeutral,
+    text: "みなさんは友情を大切にしていますね。メアリーさんも君達の友情を大切にしていると思います。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: mayNeutral,
+    text: "ありがとう。これからも宜しくお願いします。"
+  },
+
+  //Scene 5, Takeshi and Japan Club go to Miyajima.
+  {
+    speaker: "Scene 5",
+    bg: taiSmile,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: "",
+    text: "Takeshi and Japan Club go to Miyajima."
+  },
+  {
+    bgm: miyakoJapan,
+    speaker: vassil,
+    spriteRight: vassilNeutralGif,
+    text: "みなさん、タイスマイルというレストランに着きました。今日スペシャルゲストがいますよ。このゲストは山口から来ました。"
+  },
+  {
+    speaker: christianP,
+    spriteRight: christianPNeutralGif,
+    text: "みなさん、こんにちは！"
+  },
+  {
+    speaker: clayton,
+    spriteRight: christianPNeutral,
+    spriteLeft: claytonNeutralGif,
+    text: "クリスチャンさん！"
+  },
+  {
+    speaker: christian,
+    spriteLeft: christianNeutralGif,
+    text: "クリスチャン・パーマーさんは広島に来ました！"
+  },
+  {
+    speaker: jake,
+    spriteLeft: jakeNeutralGif,
+    text: "山口はどうですか。"
+  },
+  {
+    speaker: christianP,
+    spriteRight: christianPNeutralGif,
+    spriteLeft: jakeNeutral,
+    text: "いい場所です。山口に住むことが好きになって、もうなれましたよ。愛媛の旅行はどうですか。"
+  },
+  {
+    speaker: freddy,
+    spriteRight: christianPNeutral,
+    spriteLeft: freddyNeutralGif,
+    text: "楽しいですよ。もうすぐ宮島に行きます。"
+  },
+  {
+    speaker: christianP,
+    spriteRight: christianPNeutralGif,
+    spriteLeft: freddyNeutral,
+    text: "宮島は楽しそうです。僕も行きますよ。"
+  },
+  {
+    speaker: kelly,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: kellyNeutralGif,
+    text: "みなさん、今宮島に行きます！船に乗ってください。"
+  },
+  {
+    bg: miyajima,
+    speaker: unknown,
+    sprite: yarrchanNeutralGif,
+    text: "お宝！タイラー！ついてこい！"
+  },
+  {
+    speaker: tyler,
+    sprite: tylerNeutralGif,
+    text: "はい、ヤールちゃん！"
+  },
+  {
+    speaker: kris,
+    sprite: "",
+    spriteRight: krisNeutralGif,
+    text: "あれ？みなさん、その声が聞こえますか。"
+  },
+  {
+    speaker: eahab,
+    spriteRight: krisNeutral,
+    spriteLeft: eahabNeutralGif,
+    text: "みきゃん？！まさか。"
+  },
+  {
+    speaker: "ブリアナ、ホーリー",
+    spriteRight: brianaNeutralGif,
+    spriteLeft: hollieNeutralGif,
+    sprite: eahabNeutral,
+    text: "ハブちゃん！"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: "",
+    text: "ハブちゃん？"
+  },
+  {
+    speaker: eahab,
+    spriteRight: brianaNeutral,
+    spriteLeft: hollieNeutral,
+    sprite: eahabNeutralGif,
+    text: "ブリアナ？！ホーリー？！ここで何をやっているの？"
+  },
+  {
+    speaker: unknown,
+    sprite: eahabNeutral,
+    spriteRight: amrNeutralGif,
+    spriteLeft: "",
+    text: "お宝だよ。"
+  },
+  {
+    speaker: clayton,
+    spriteRight: amrNeutral,
+    spriteLeft: claytonNeutralGif,
+    text: "アムルさんもいる？"
+  },
+  {
+    speaker: unknown,
+    spriteLeft: claytonNeutral,
+    sprite: joseNeutralGif,
+    text: "アムル！ヤールちゃんはお宝を見つけたよ！あっ、みなさん、こんにちは！ホゼです。"
+  },
+  {
+    speaker: amr,
+    spriteRight: amrNeutralGif,
+    sprite: joseNeutral,
+    text: "はい！行こう！"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: jakeNeutral,
+    sprite: "",
+    text: "ちょっと見ましょうか。宮島のお宝はなんでしょう？"
+  },
+  {
+    speaker: jake,
+    spriteRight: takeshiTalking,
+    spriteLeft: jakeNeutralGif,
+    text: "時間があるので、お宝の場所に見に行きましょう。"
+  },
+  {
+    speaker: yarrchan,
+    spriteRight: tylerNeutral,
+    spriteLeft: "",
+    sprite: yarrchanNeutralGif,
+    text: "お宝じゃねぇ・・・・・・"
+  },
+  {
+    speaker: tyler,
+    spriteRight: tylerNeutralGif,
+    sprite: yarrchanNeutral,
+    text: "おもちゃの宝・・・・・・"
+  },
+  {
+    speaker: yarrchan,
+    spriteRight: tylerNeutral,
+    spriteLeft: eahabNeutral,
+    sprite: yarrchanNeutralGif,
+    text: "ハブちゃん？！久しぶりだね！ここでお宝を見つけると思ったけど、もうだめだ。もうがまんできない！"
+  },
+  {
+    speaker: briana,
+    spriteRight: brianaNeutralGif,
+    spriteLeft: hollieNeutral,
+    sprite: yarrchanNeutral,
+    text: "ヤールちゃん、あきらめないでよ。いつかお宝を見つけるよ。"
+  },
+  {
+    speaker: hollie,
+    spriteRight: brianaNeutral,
+    spriteLeft: hollieNeutralGif,
+    text: "そうだね。一緒に頑張ろう！"
+  },
+  {
+    speaker: jose,
+    spriteRight: brianaNeutral,
+    spriteLeft: joseNeutralGif,
+    text: "じゃあ、アメリカに帰ろうか。ここでお宝はないね。"
+  },
+  {
+    speaker: yarrchan,
+    spriteRight: brianaNeutral,
+    spriteLeft: joseNeutral,
+    sprite: yarrchanNeutralGif,
+    text: "ジャパンクラブの全員は明日アメリカに帰るでしょう？行く前に私達と遊んでくれない？"
+  },
+  {
+    speaker: briana,
+    spriteRight: brianaNeutralGif,
+    spriteLeft: hollieNeutral,
+    sprite: yarrchanNeutral,
+    text: "しかをなでよう！"
+  },
+  {
+    speaker: hollie,
+    spriteRight: brianaNeutral,
+    spriteLeft: hollieNeutralGif,
+    text: "しかはかわいい！"
+  },
+  {
+    speaker: jose,
+    spriteRight: joseNeutralGif,
+    spriteLeft: "",
+    sprite: "",
+    text: "ビーチでリラックスするのはいいなあ。"
+  },
+  {
+    speaker: amr,
+    spriteRight: amrNeutralGif,
+    spriteLeft: tylerNeutral,
+    text: "宮島のビーチで遊ぼう！"
+  },
+  {
+    speaker: tyler,
+    spriteRight: amrNeutral,
+    spriteLeft: tylerNeutralGif,
+    text: "よっしゃー！たいやきも食べよう！"
+  },
+  {
+    speaker: amr,
+    spriteRight: amrNeutralGif,
+    spriteLeft: tylerNeutral,
+    text: "おい！お宝を見つけなくて、どうやって僕に払い戻す？"
+  },
+  {
+    speaker: tyler,
+    spriteRight: amrNeutral,
+    spriteLeft: tylerNeutralGif,
+    text: "えっとね・・・・・・誰か助けてくれ！"
+  },
+  {
+    speaker: amr,
+    spriteRight: amrNeutralGif,
+    spriteLeft: tylerNeutral,
+    text: "待って！"
+  },
+  {
+    speaker: jose,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: joseNeutralGif,
+    text: "その二人が絶対に変わらない・・・・・・"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: takeshiTalkingGif,
+    text: "ジャパンクラブは本当に面白いグループです。"
+  },
+
+  //Scene 6, Takeshi’s Treasure.
+  {
+    speaker: "Scene 6",
+    bg: airport,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: "",
+    text: "Takeshi’s Treasure."
+  },
+  {
+    bgm: miyakoJapan,
+    speaker: vicky,
+    spriteRight: vickyNeutralGif,
+    spriteLeft: krisNeutral,
+    sprite: takeshiTalking,
+    text: "たけしさん、ジャパンクラブと遊んでよかったです。"
+  },
+  {
+    speaker: kris,
+    spriteRight: vickyNeutral,
+    spriteLeft: krisNeutralGif,
+    sprite: takeshiTalking,
+    text: "アメリカに来たら、また遊びましょう。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: vickyNeutral,
+    spriteLeft: krisNeutral,
+    sprite: takeshiTalkingGif,
+    text: "ジャパンクラブの全員に出会えて嬉しいです。"
+  },
+  {
+    speaker: briana,
+    spriteRight: brianaNeutralGif,
+    spriteLeft: hollieNeutral,
+    sprite: christianNeutral,
+    text: "残念ながら、ヤールちゃんがお宝を見つけなかった。"
+  },
+  {
+    speaker: hollie,
+    spriteRight: brianaNeutral,
+    spriteLeft: hollieNeutralGif,
+    sprite: christianNeutral,
+    text: "お宝・・・・・・"
+  },
+  {
+    speaker: christian,
+    spriteRight: brianaNeutral,
+    spriteLeft: hollieNeutral,
+    sprite: christianNeutralGif,
+    text: "お宝の写真が取ればよかった。"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: yarrchanNeutral,
+    sprite: "",
+    text: "いいえ、見つけましたよ。"
+  },
+  {
+    speaker: yarrchan,
+    spriteRight: takeshiTalking,
+    spriteLeft: yarrchanNeutralGif,
+    text: "どういう意味ですか？"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: yarrchanNeutral,
+    text: "宮島で見つけたお宝はここですよ。みなさんがジャパンクラブを大切にして、強い友情が持っています。ジャパンクラブはお宝です。"
+  },
+  {
+    speaker: sean,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: seanNeutralGif,
+    text: "ジャパンクラブがいなければ寂しくなりますよ。"
+  },
+  {
+    speaker: rui,
+    sprite: ruiNeutralGif,
+    text: "うん、別れるのは悲しいですね。"
+  },
+  {
+    speaker: satomi,
+    sprite: satomiNeutralGif,
+    text: "ジャパンクラブと色々な思い出ができて良かったです。"
+  },
+  {
+    speaker: christianP,
+    sprite: christianPNeutralGif,
+    text: "ジャパンクラブにまた会えて、嬉しいです。"
+  },
+  {
+    speaker: may,
+    sprite: mayNeutralGif,
+    text: "バイバイじゃないです。また会いましょうよ。"
+  },
+  {
+    speaker: eahab,
+    sprite: eahabNeutralGif,
+    text: "ジャパンクラブのみなさん！大きいハグしましょう！"
+  },
+  {
+    speaker: takeshi,
+    spriteRight: takeshiTalkingGif,
+    spriteLeft: eahabNeutral,
+    sprite: "",
+    text: "ジャパンクラブ、本当にありがとうございます。この経験を絶対に忘れません。"
+  },
+  {
+    speaker: eahab,
+    spriteRight: takeshiTalking,
+    spriteLeft: eahabNeutralGif,
+    text: "メアリーさんによろしくね。ジャパンクラブのみなさんはたけしさんを応援しています！"
+  },
+  {
+    speaker: david,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: davidNeutralGif,
+    text: "みなさん、写真を取りましょう！"
+  },
+  {
+    speaker: christian,
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: christianNeutralGif,
+    text: "オッケーみなさん!　チーズ！"
+  },
+  {
+    bg: airport3,
+    speaker: "",
+    spriteRight: "",
+    spriteLeft: "",
+    sprite: "",
+    text: ""
+  },
+
+
 
   //After Playing the last Chapter in the Game
   {
+    receiveJump: "endGame",
     bg: clouds,
     bgm: "",
     speaker: takeshi,
@@ -1316,6 +2378,7 @@ let story = [
       'Are you sure? \n Click on the screen or press "Enter" to return to the Title Screen. Or scroll up to access backlog and jump back to your current progress.',
     jumpTo: "title-screen"
   },
+
 
   //Chapter Selection
   {

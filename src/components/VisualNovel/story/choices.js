@@ -41,6 +41,11 @@ var choices = [
         nextIndex: 0
       },
       {
+        routeBegins: "chapter24Route",
+        content: "Bonus: Chapter 24",
+        nextIndex: 0
+      },
+      {
         routeBegins: "titleScreenConfirmation",
         content: "Back",
         nextIndex: 0

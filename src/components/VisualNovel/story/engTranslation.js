@@ -609,6 +609,478 @@ let engTranslation = [
       "そうか：”I see. (casual) [Other Expression] | 選ぶ(えらぶ)：to choose; to select [U - Verb] | ～かな(あ)：I wonder. . . (casual) [Other Expression]"
   },
 
+  ////////////////////Chapter 24 below//////////////////////////////////////
+  {
+    text: 'Click on the screen or press "Enter" to begin'
+  },
+  //Scene 1
+  {
+    text: "At the airport after Mary's departure."
+  },
+  {
+    text: 'While Takeshi was walking, he bumped into someone.'
+  },
+  {
+    text: 'Hey, watch it!'
+  },
+  {
+    text: 'Pardon me.'
+  },
+  {
+    text: 'Huh? Are you ok?'
+  },
+  {
+    text: '・・・・・・'
+  },
+  {
+    text: 'How pitiful. I wonder if he said goodbye to a close friend. Anyways, Japan Club is arriving soon right?'
+  },
+  {
+    text: 'Yea. I am glad that everyone is traveling to Matsuyama and I can see them again.'
+  },
+  {
+    text: 'Huh? Sean, May, and Rui didn’t come yet?'
+  },
+  {
+    text: 'I Barely made it!'
+  },
+  {
+    text: 'You’re late Sean! Did you bring the welcome sign?'
+  },
+  {
+    text: 'Of course! Rui and May also helped. You didn’t help at all with preparing the poster.'
+  },
+  {
+    text: 'You too! I bet you cannot do it yourself.'
+  },
+  {
+    text: 'What did you say?! Rui, May, Satomi, I helped you right?'
+  },
+  {
+    text: 'That’s enough. Everyone from Japan Club is arriving soon.'
+  },
+  {
+    text: 'Yea. Lift up the welcome sign.'
+  },
+  {
+    text: 'Oh! They’re here!'
+  },
+  {
+    text: 'Welcome!'
+  },
+
+  //Scene 2
+  {
+    text: 'Takeshi on his way home.'
+  },
+  {
+    text: 'I cannot believe Mary already returned to America. I’m sad...'
+  },
+  {
+    text: 'Dogo Onsen! Habu-chan! Everyone! Let’s go!'
+  },
+  {
+    text: 'Dogo Onsen? That seems relaxing...'
+  },
+  {
+    text: "We all read Botchan right? To the left of Dogo Onsen, there are the statue figures of the book's characters. Let’s go take a look."
+  },
+  {
+    text: 'But I want to go into the hotspring...'
+  },
+  {
+    text: 'Have some patience David. We’ll go inside Dogo Onsen soon. '
+  },
+  {
+    text: 'Yea. You should listen to Freddy. Masuyama sensei is showing us around.'
+  },
+  {
+    text: 'Just like what Vicky said. Also, Christian will take some nice pictures for you.'
+  },
+  {
+    text: 'Really?! Take a photo of me, Freddy, Vicky, and Kris posing in front of Dogo Onsen!'
+  },
+  {
+    text: 'Sure thing. Say Cheese!'
+  },
+  {
+    text: 'Anyways, where did Eahab and Jake go?'
+  },
+  {
+    text: 'I just saw them not too long ago. I do not know where they went...'
+  },
+  {
+    text: 'That’s strange huh?'
+  },
+
+  //Scene 3
+  {
+    text: 'Takeshi stops by mammam.'
+  },
+  {
+    text: 'Everyone, let’s eat some Udon! This Udon place called “mammam” is delicious. I’ll take you guys there.'
+  },
+  {
+    text: 'But wouldn’t Masuyama sensei get mad? Because we separated from everyone else.'
+  },
+  {
+    text: 'Don’t worry about it. You want to eat some Udon too right Sean Weeks?'
+  },
+  {
+    text: 'Yea, but...'
+  },
+  {
+    text: 'It’s fine.'
+  },
+  {
+    text: 'Kelly sensei?!'
+  },
+  {
+    text: 'Jake and Clayton are also hungry.'
+  },
+  {
+    text: 'Yes! We want to eat some Udon!'
+  },
+  {
+    text: 'Here we are. Let’s go in.'
+  },
+  {
+    text: '5 mins later...'
+  },
+  {
+    text: 'I’m hungry. This Udon place looks good.'
+  },
+  {
+    text: 'I’ll have one of the Dragon & Koi Udon please.'
+  },
+  {
+    text: 'Dragon & Koi?!'
+  },
+  {
+    text: 'Isn’t that the person you bumped into at the airport Eahab?'
+  },
+  {
+    text: 'It seems like it. I’m going to try to talk with him.'
+  },
+  {
+    text: '*Slurp*'
+  },
+  {
+    text: 'Excuse me, we bumped into each other at the airport right? You looked sad. Is everything alright?'
+  },
+  {
+    text: 'Not really. My close friend went back to America. I miss Mary.'
+  },
+  {
+    text: 'It is tough to say goodbye. I’m sure your friend Mary wouldn’t want you to be lonely.'
+  },
+  {
+    text: 'It was nice to eat with Mary. I don’t want to eat by myself.'
+  },
+  {
+    text: 'Well then, let me introduce you to everyone here. My name is Eahab.'
+  },
+  {
+    text: 'My name is Takeshi, nice to meet you.'
+  },
+  {
+    text: "Hey guys, I'd like you to meet Takeshi."
+  },
+  {
+    text: "Hello! I am Sean! Pleased to meet you!"
+  },
+  {
+    text: "You should probably watch out from that guy."
+  },
+  {
+    text: "Hey! What’re you saying!"
+  },
+  {
+    text: "Hahaha"
+  },
+
+  //Scene 4
+  {
+    text: 'Takeshi rides the bus to Hiroshima with Japan Club.'
+  },
+  {
+    text: 'Everyone, from here on Vassil sensei will guide you around Hiroshima.'
+  },
+  {
+    text: 'How is everyone doing? Before the tour, does anyone have any questions?'
+  },
+  {
+    text: 'Yes! I have a question! Which do you like more? The Hiroshima Okonomiyaki or the Kansai Okonomiyaki?'
+  },
+  {
+    text: "I like Kansai style more!"
+  },
+  {
+    text: "Me too!"
+  },
+  {
+    text: "Without a doubt Hiroshima style!"
+  },
+  {
+    text: "I think they’re both delicious!"
+  },
+  {
+    text: "I wonder if I can buy a “Big Cute” Okonomiyaki."
+  },
+  {
+    text: "I want to try and eat the Dragon Okonomiyaki."
+  },
+  {
+    text: "Koi Okonomiyaka is the best!"
+  },
+  {
+    text: "It looks like everyone likes Okonomiyaki huh?"
+  },
+  {
+    text: "Yea. Everyone, let’s eat Okonomiyaki after we get off the bus."
+  },
+  {
+    text: "All right! I’m hungry too. I’m looking forward to trying the Hiroshima style."
+  },
+  {
+    text: "Yea. Hiroshima Okonomiyaki looks good!"
+  },
+  {
+    text: "It is good. There’s also an Okonomiyaki restaurant where you can make it on the table yourself!"
+  },
+  {
+    text: "Really?!"
+  },
+  {
+    text: "Nagano style is the best."
+  },
+  {
+    text: "There is no Nagano style!"
+  },
+  {
+    text: "Hahaha."
+  },
+  {
+    text: "Hahaha! Everyone in Japan Club is funny."
+  },
+  {
+    text: "Hey Takeshi, do you like Okonomiyaki?"
+  },
+  {
+    text: "I sure do. I used to often eat Okonomiyaki with Mary."
+  },
+  {
+    text: "Mary is a close friend  of yours huh?"
+  },
+  {
+    text: "Yea. Mary is energetic like you guys."
+  },
+  {
+    text: "Is Mary coming to Japan again?"
+  },
+  {
+    text: "Because Mary has a lot of friends and a host family in Japan, I think she will visit again."
+  },
+  {
+    text: "You will surely meet her again."
+  },
+  {
+    text: "I think friendship is important."
+  },
+  {
+    text: "Everyone here values their friendships. I am sure she treasures the friendship you two have."
+  },
+  {
+    text: "Thank you for your continuous support."
+  },
+
+  //Scene 5
+  {
+    text: 'Takeshi and Japan Club go to Miyajima.'
+  },
+  {
+    text: 'Everyone, we have arrived at Tai Smile. We have a special guest today. This guest is from Yamaguchi.'
+  },
+  {
+    text: 'Hello everyone!'
+  },
+  {
+    text: 'Christian!'
+  },
+  {
+    text: 'Chrisitan Palmer came to Hiroshima!'
+  },
+  {
+    text: 'How’s Yamaguchi?'
+  },
+  {
+    text: 'It’s good. I’ve come to like living there and have already gotten used to it. How’s the Ehime trip going?'
+  },
+  {
+    text: 'We’re having fun! We’re going Miyajima Island soon.'
+  },
+  {
+    text: 'Miyajima sounds fun. I am also going with you guys.'
+  },
+  {
+    text: 'Everyone, we are leaving for Miyajima! Please board the boat.'
+  },
+  {
+    text: 'Treasure! Tyler! Come with me!'
+  },
+  {
+    text: 'Yes Yarrchan!'
+  },
+  {
+    text: 'Hmm? Did you guys hear that voice?'
+  },
+  {
+    text: 'Mikyan? No way! Can it be?!'
+  },
+  {
+    text: 'Habu-chan!'
+  },
+  {
+    text: 'Habu chan?'
+  },
+  {
+    text: 'Briana? Hollie? What’re you doing here?'
+  },
+  {
+    text: 'For treasure.'
+  },
+  {
+    text: 'Amr is here too?!'
+  },
+  {
+    text: 'Amr! Yarrchan found some treasure! Oh, hello everyone. I’m Jose.'
+  },
+  {
+    text: 'Ok, let’s go!'
+  },
+  {
+    text: 'Should we go take a look? I wonder what is the Miyajima treasure?'
+  },
+  {
+    text: 'Since we have some time, let’s go to the treasure’s location.'
+  },
+  {
+    text: 'This is not treasure...'
+  },
+  {
+    text: 'A toy treasure chest...'
+  },
+  {
+    text: 'Habu-chan?! It’s been so long! I thought I could find some treasure here...it’s hopeless! I can’t take it anymore!'
+  },
+  {
+    text: 'Don’t give up Yarrchan. You’ll find treasure one day.'
+  },
+  {
+    text: 'That’s right. We’ll give it our best together!'
+  },
+  {
+    text: 'So, shall we return to America? There is no treasure here.'
+  },
+  {
+    text: 'Japan Club is returning to America tomorrow right? Do you want to play with us before you leave?'
+  },
+  {
+    text: 'Let’s pet the dears!'
+  },
+  {
+    text: 'The dears are so cute!'
+  },
+  {
+    text: 'It will be nice to relax at the beach.'
+  },
+  {
+    text: 'Let’s play at Miyajima’s beach!'
+  },
+  {
+    text: 'All right! Let’s also eat some Taiyaki!'
+  },
+  {
+    text: 'Hey! We didn’t find any treasure. How do you plan on paying me back?'
+  },
+  {
+    text: 'Uhh…someone help me!'
+  },
+  {
+    text: 'Come back here!'
+  },
+  {
+    text: 'Those two will never change...'
+  },
+  {
+    text: 'Japan Club is a very interesting group.'
+  },
+
+  //Scene 6
+  {
+    text: 'Takeshi’s Treasure.'
+  },
+  {
+    text: "I'm glad you hung out with us Takeshi."
+  },
+  {
+    text: 'If you come to America, let’s hangout again.'
+  },
+  {
+    text: 'I am glad I came across Japan CLub.'
+  },
+  {
+    text: 'Unfortunately, Yarrchan never found the treasure.'
+  },
+  {
+    text: 'The treasure...'
+  },
+  {
+    text: 'I wish I could have taken a picture of the treasure.'
+  },
+  {
+    text: 'That’s not true. You did find it.'
+  },
+  {
+    text: 'What do you mean?'
+  },
+  {
+    text: 'The treasure you found at Miyajima Island is right here.. Everyone here cherishes Japan Club and carries strong friendships. Japan Club is the treasure.'
+  },
+  {
+    text: 'It’s going to become lonely without Japan Club...'
+  },
+  {
+    text: 'Yea. It’s sad to bid farewell.'
+  },
+  {
+    text: 'I am glad I was able to make a lot of memories with Japan Club.'
+  },
+  {
+    text: 'I am glad I was able to see Japan Club again.'
+  },
+  {
+    text: "It’s not ‘goodbye’ but ‘see you again’!!"
+  },
+  {
+    text: 'Japan Club! come on in for a big hug!'
+  },
+  {
+    text: 'Japan Club, thank you so much. I will never forget this experience.'
+  },
+  {
+    text: 'Say hi to Mary for us. We will be rooting for you Takeshi!'
+  },
+  {
+    text: "Let’s take a picture everyone!"
+  },
+  {
+    text: 'Okay everyone, say cheese!'
+  },
+  {
+    text: ""
+  },
+
   //After Playing the last Chapter in the Game
   {
     text: "Thank You For Playing!"
