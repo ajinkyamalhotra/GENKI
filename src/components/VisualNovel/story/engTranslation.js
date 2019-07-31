@@ -677,7 +677,7 @@ let engTranslation = [
     text: 'I cannot believe Mary already returned to America. I’m sad...'
   },
   {
-    text: 'Dogo Onsen! Habu-chan! Everyone! Let’s go!'
+    text: "It's ya boy! Dogo Onsen! Habu-chan! Everyone! Let’s go!"
   },
   {
     text: 'Dogo Onsen? That seems relaxing...'
@@ -1027,7 +1027,7 @@ let engTranslation = [
     text: 'If you come to America, let’s hangout again.'
   },
   {
-    text: 'I am glad I came across Japan CLub.'
+    text: 'I am glad I came across Japan Club.'
   },
   {
     text: 'Unfortunately, Yarrchan never found the treasure.'
@@ -1080,6 +1080,23 @@ let engTranslation = [
   {
     text: ""
   },
+  {
+    text: "Special thanks to Eahab Masoud for Story Writer and Developer of Chapter 24."
+  },
+  {
+    text: "Special thanks to Sean Weeks for the Art Design of characters in Chapter 24."
+  },
+  {
+    text: "Special thanks to Briana Cruz for the Art Design of the Genki Cast/Developers (Credits portraits and in Chapter 24)."
+  },
+  {
+    text: "Special thanks to Christian Palmer for assisting with the grammar/sentence structure found in Chapter 24's dialogues."
+  },
+  {
+    text: "Special thanks to Amr Masoud for Quality Assurance and assistance with chapter 24's development."
+  },
+
+
 
   //After Playing the last Chapter in the Game
   {

@@ -1515,7 +1515,7 @@ let story = [
     speaker: unknown,
     spriteLeft: davidNeutralGif,
     spriteRight: "",
-    text: "道後温泉！ハブちゃん！みんな！行こう！"
+    text: "イツヤボい！道後温泉！ハブちゃん！みんな！行こう！"
   },
   {
     speaker: takeshi,
@@ -1798,7 +1798,7 @@ let story = [
     text: "もちろん広島のです！"
   },
   {
-    speaker: kris,
+    speaker: vicky,
     spriteRight: krisNeutral,
     spriteLeft: vickyNeutralGif,
     text: "両方がおいしいと思います！"
@@ -2336,6 +2336,34 @@ let story = [
     sprite: "",
     text: ""
   },
+  //Chapter 24 credits
+  {
+    bg: clouds,
+    speaker: "",
+    sprite: eahabNeutral,
+    text: "Special thanks to Eahab Masoud for Story Writer and Developer of Chapter 24."
+  },
+  {
+    speaker: "",
+    sprite: seanWNeutral,
+    text: "Special thanks to Sean Weeks for the Art Design of characters in Chapter 24."
+  },
+  {
+    speaker: "",
+    sprite: brianaNeutral,
+    text: "Special thanks to Briana Cruz for the Art Design of the Genki Cast/Developers (Credits portraits and in Chapter 24)."
+  },
+  {
+    speaker: "",
+    sprite: christianPNeutral,
+    text: "Special thanks to Christian Palmer for assisting with the grammar/sentence structure found in Chapter 24's dialogues."
+  },
+  {
+    speaker: "",
+    sprite: amrNeutral,
+    text: "Special thanks to Amr Masoud for Quality Assurance and assistance with chapter 24's development."
+  },
+
 
 
 
